@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -15,6 +15,7 @@ public class Vendedor extends Empleado {
 	private float plus;
 	
 	@NotNull
+	@OneToOne
 	private Sucursal sucursal;
 
 	public Vendedor(String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
