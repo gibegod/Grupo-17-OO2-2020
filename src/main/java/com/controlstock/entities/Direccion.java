@@ -1,4 +1,4 @@
-package com.controlstock.models.entity;
+package com.controlstock.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,43 +1,61 @@
-package com.controlstock.models.entity;
+package com.controlstock.entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+/* Problema: cuando actualizo un producto el createdat se transforma en null, y no se si eso deberia pasar. */
+
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Producto {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull
+	//@NotNull
 	private boolean status;
 	
-	@NotNull
+	//@NotNull
 	private String descripcion;
 	
-	@NotNull
+	//@NotNull
 	private float precioUnitario;
 	
-	@NotNull
-	private LocalDate fechaAlta;
+	//@NotNull
+	//private LocalDate fechaAlta;
 	
-	@NotNull
+	//@NotNull
 	private String marca;
 	
-	public Producto(int id, boolean status, String descripcion, float precioUnitario, LocalDate fechaAlta,
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+	
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
+	
+	
+	public Producto() {}
+	
+	public Producto(int id, boolean status, String descripcion, float precioUnitario/*, LocalDate fechaAlta*/,
 			String marca) {
 		super();
 		this.id = id;
 		this.status = status;
 		this.descripcion = descripcion;
 		this.precioUnitario = precioUnitario;
-		this.fechaAlta = fechaAlta;
+		//this.fechaAlta = fechaAlta;
 		this.marca = marca;
 	}
 
@@ -72,7 +90,7 @@ public class Producto {
 	public void setPrecioUnitario(float precioUnitario) {
 		this.precioUnitario = precioUnitario;
 	}
-
+/*
 	public LocalDate getFechaAlta() {
 		return fechaAlta;
 	}
@@ -80,7 +98,7 @@ public class Producto {
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-
+*/
 	public String getMarca() {
 		return marca;
 	}
@@ -88,15 +106,33 @@ public class Producto {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-
 	
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	
+	
+	
+
 	public boolean equals(Producto producto) {
 	return producto.getDescripcion().equalsIgnoreCase(descripcion);
 	}
 
-	public String toString(){
-		return id+"/"+status+"/"+descripcion+"/"+precioUnitario+"/"+fechaAlta+"/"+marca; 
-	}
+	//public String toString(){
+		//return id+"/"+status+"/"+descripcion+"/"+precioUnitario+"/"+fechaAlta+"/"+marca; 
+	//}
 	
 	/*--------------------------------------------------*/
 	
