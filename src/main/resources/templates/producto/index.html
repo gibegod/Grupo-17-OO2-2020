@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Productos</title>
+</head>
+<body>	
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>Descripcion</th>
+				<th>View</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="producto : ${productos}">
+				<td><span th:text="${producto.descripcion}"/></td>
+				<td>
+					<a th:href="@{/producto/{id}(id=${producto.id})}">View</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/producto/new">Crear nuevo producto</a>
+	
+	
+	
+	
+	
+	
+		
+
+</body>
+</html>
