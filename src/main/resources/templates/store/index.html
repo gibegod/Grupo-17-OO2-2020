@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Store</title>
+</head>
+<body>	
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>Ubicación</th>
+				<th>Telefono</th>
+				<th>Gerente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="store : ${stores}">
+				<td><span th:text="${store.ubicacion.ciudad}"/></td>
+				<td><span th:text="${store.telefono}"/></td>
+				<td><span th:text="${store.gerente.nombre}"/>
+				<span th:text="${store.gerente.apellido}"/></td>
+				<td>
+					<a th:href="@{/store/{id}(id=${store.id})}">View</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/store/new">New store</a>
+	
+	

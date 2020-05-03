@@ -231,5 +231,4 @@ public class Sucursal {
 		return cierre;
 	}
 	
-
 }
