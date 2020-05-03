@@ -25,4 +25,5 @@ public class ViewRouteHelper {
 	public final static String PRODUCTO_ROOT = "/producto";
 	public final static String STORE_ROOT = "/store";
 	public final static String CLIENT_ROOT = "/client";
+
 }

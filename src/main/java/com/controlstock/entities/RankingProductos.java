@@ -43,6 +43,4 @@ public class RankingProductos {
 		return "\nRankingProductos [producto=" + producto + ", cantidad=" + cantidad + "]";
 	}
 	
-	
-
 }

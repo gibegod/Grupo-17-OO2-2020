@@ -20,5 +20,4 @@ public class Gerente extends Empleado{
 				+ ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", dni=" + dni + "]";
 	}
 
-	
 }

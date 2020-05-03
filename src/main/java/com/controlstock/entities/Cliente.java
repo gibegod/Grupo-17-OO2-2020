@@ -1,3 +1,4 @@
+
 package com.controlstock.entities;
 
 import java.time.LocalDate;

@@ -48,3 +48,4 @@ public class Vendedor extends Empleado {
 				+ sueldoBasico + "]";
 	}
 }
+
