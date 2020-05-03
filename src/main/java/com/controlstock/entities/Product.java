@@ -18,7 +18,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Producto {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,16 +28,18 @@ public class Producto {
 	private boolean status;
 	
 	//@NotNull
-	private String descripcion;
+	private String description;
 	
+	//PrecioUnitario
 	//@NotNull
-	private float precioUnitario;
+	private float unitPrice;
 	
 	//@NotNull
 	//private LocalDate fechaAlta;
 	
+	//Marca
 	//@NotNull
-	private String marca;
+	private String brand;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -46,17 +48,17 @@ public class Producto {
 	private LocalDateTime updatedAt;
 	
 	
-	public Producto() {}
+	public Product() {}
 	
-	public Producto(int id, boolean status, String descripcion, float precioUnitario/*, LocalDate fechaAlta*/,
-			String marca) {
+	public Product(int id, boolean status, String description, float unitPrice/*, LocalDate fechaAlta*/,
+			String brand) {
 		super();
 		this.id = id;
 		this.status = status;
-		this.descripcion = descripcion;
-		this.precioUnitario = precioUnitario;
+		this.description = description;
+		this.unitPrice = unitPrice;
 		//this.fechaAlta = fechaAlta;
-		this.marca = marca;
+		this.brand = brand;
 	}
 
 	public int getId() {
@@ -75,20 +77,20 @@ public class Producto {
 		this.status = status;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public float getPrecioUnitario() {
-		return precioUnitario;
+	public float getUnitPrice() {
+		return unitPrice;
 	}
 
-	public void setPrecioUnitario(float precioUnitario) {
-		this.precioUnitario = precioUnitario;
+	public void setUnitPrice(float unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 /*
 	public LocalDate getFechaAlta() {
@@ -99,12 +101,12 @@ public class Producto {
 		this.fechaAlta = fechaAlta;
 	}
 */
-	public String getMarca() {
-		return marca;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 	
 	public LocalDateTime getCreatedAt() {
@@ -126,8 +128,8 @@ public class Producto {
 	
 	
 
-	public boolean equals(Producto producto) {
-	return producto.getDescripcion().equalsIgnoreCase(descripcion);
+	public boolean equals(Product product) {
+	return product.getDescription().equalsIgnoreCase(description);
 	}
 
 	//public String toString(){
@@ -145,7 +147,8 @@ public class Producto {
 	 * 
 	 */
 
-	public void desactivarProducto() {
+	//desactivarProducto
+	public void deactivateProduct() {
 		status = false;
 	}
 	
@@ -159,7 +162,8 @@ public class Producto {
 	 * 
 	 */
 	
-	public void activarProducto() {
+	//ActivarProducto
+	public void activateProduct() {
 		status = true;
 	}
 	

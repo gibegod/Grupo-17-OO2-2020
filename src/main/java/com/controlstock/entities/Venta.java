@@ -116,10 +116,10 @@ public class Venta {
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public boolean generarPedidoConStockPropio(Producto producto, int cantidad) {
+	public boolean generarPedidoConStockPropio(Product producto, int cantidad) {
 		this.vendedorEncargado.getSucursal().restarLotes(producto, cantidad);
 		
-		float plus=((producto.getPrecioUnitario()*5)/100)*cantidad;
+		float plus=((producto.getUnitPrice()*5)/100)*cantidad;
 		
 		this.vendedorEncargado.setPlus(this.vendedorEncargado.getPlus()+plus);
 		return lstPedidos.add(new Pedido(producto, cantidad,null));
@@ -129,7 +129,7 @@ public class Venta {
 	
 	public void calcularTotal() {
 		for(int i=0; i<lstPedidos.size(); i++) {
-			this.setPrecioTotal(precioTotal+(lstPedidos.get(i).getCantidad() * lstPedidos.get(i).getProducto().getPrecioUnitario()));
+			this.setPrecioTotal(precioTotal+(lstPedidos.get(i).getCantidad() * lstPedidos.get(i).getProducto().getUnitPrice()));
 		}
 	}
 

@@ -1,0 +1,19 @@
+<form action="#" th:action="@{/product/create}" th:object="${product}" method="post">
+	<p>
+		Description: <input type="text" th:field="*{description}" />
+	</p>
+	<p>
+		Brand (Marca): <input type="text" th:field="*{brand}" />
+	</p>
+	<p>
+		Unit price: <input type="text" th:field="*{unitPrice}" />
+	</p>
+	<p>
+		Status (boolean): <input type="text" th:field="*{status}" />
+	</p>
+	<!--  <p>
+		Fecha alta: <input type="text" th:field="*{fechaAlta}" />
+	</p> -->
+
+	<input type="submit" value="create" />
+</form>

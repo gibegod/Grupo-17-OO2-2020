@@ -16,20 +16,20 @@ public class RankingProductos {
 	
 	@NotNull
 	@OneToOne
-	private Producto producto;
+	private Product producto;
 	
 	@NotNull
 	private int cantidad;
 	
-	public RankingProductos(Producto producto, int cantidad) {
+	public RankingProductos(Product producto, int cantidad) {
 		super();
 		this.producto = producto;
 		this.cantidad = cantidad;
 	}
-	public Producto getProducto() {
+	public Product getProducto() {
 		return producto;
 	}
-	public void setProducto(Producto producto) {
+	public void setProducto(Product producto) {
 		this.producto = producto;
 	}
 	public int getCantidad() {

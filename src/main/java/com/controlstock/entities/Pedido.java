@@ -16,7 +16,7 @@ public class Pedido {
 	
 	@NotNull
 	@OneToOne
-	private Producto producto;
+	private Product producto;
 	
 	@NotNull
 	private int cantidad;
@@ -24,17 +24,17 @@ public class Pedido {
 	@OneToOne
 	private Vendedor vendedorAuxiliar;
 	
-	public Pedido(Producto producto, int cantidad, Vendedor vendedorAuxiliar) {
+	public Pedido(Product producto, int cantidad, Vendedor vendedorAuxiliar) {
 		super();
 		this.producto = producto;
 		this.cantidad = cantidad;
 	}
 	
-	public Producto getProducto() {
+	public Product getProducto() {
 		return producto;
 	}
 	
-	public void setProducto(Producto producto) {
+	public void setProducto(Product producto) {
 		this.producto = producto;
 	}
 	
