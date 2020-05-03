@@ -8,12 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Sucursal {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Store {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,7 +41,9 @@ public class Sucursal {
 	@OneToMany
 	private List<Lote> lstLotes;
 	
-	public Sucursal(Direccion ubicacion, int id, long telefono, Gerente gerente) {
+	public Store() {}
+	
+	public Store (Direccion ubicacion, int id, long telefono, Gerente gerente) {
 		super();
 		this.ubicacion = ubicacion;
 		this.id = id;
@@ -88,7 +93,7 @@ public class Sucursal {
 		return lstLotes;
 	}
 	
-	public boolean equals(Sucursal sucursal)
+	public boolean equals(Store sucursal)
 	{
 		return sucursal.getUbicacion().equals(ubicacion);
 	}
@@ -204,7 +209,7 @@ public class Sucursal {
 	
 	/*--------------------------------------------------*/
 	
-	public float calcularDistancia(Sucursal sucursal) {
+	public float calcularDistancia(Store sucursal) {
 		return (float) Math.sqrt((Math.pow((sucursal.getUbicacion().getLatitud() - this.getUbicacion().getLatitud()), 2) +
 					((Math.pow((sucursal.getUbicacion().getLongitud() - this.getUbicacion().getLongitud()), 2)))));
 	}
