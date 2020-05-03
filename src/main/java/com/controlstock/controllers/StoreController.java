@@ -53,7 +53,7 @@ public class StoreController {
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("producto") StoreModel storeModel) {
 		storeService.insertOrUpdate(storeModel);
-		return new RedirectView(ViewRouteHelper.PRODUCTO_ROOT);
+		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}
 
 	@PostMapping("/delete/{id}")

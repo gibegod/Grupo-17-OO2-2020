@@ -20,7 +20,7 @@ public class Lote {
 	
 	@NotNull
 	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Producto producto;
+	private Product producto;
 	
 	@NotNull
 	private char talle;
@@ -35,7 +35,7 @@ public class Lote {
 	private LocalDate fechaIngreso;
 	
 	
-	public Lote(Producto producto, char talle, int cantidadInicial, LocalDate fechaIngreso) {
+	public Lote(Product producto, char talle, int cantidadInicial, LocalDate fechaIngreso) {
 		super();
 		this.producto = producto;
 		this.talle = talle;
@@ -45,12 +45,12 @@ public class Lote {
 	}
 
 
-	public Producto getProducto() {
+	public Product getProducto() {
 		return producto;
 	}
 
 
-	public void setProducto(Producto producto) {
+	public void setProducto(Product producto) {
 		this.producto = producto;
 	}
 

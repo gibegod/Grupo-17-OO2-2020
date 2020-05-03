@@ -150,7 +150,7 @@ public class Store {
 	
 	/*--------------------------------------------------*/
 	
-	public int traerCantidad(Producto producto) {
+	public int traerCantidad(Product producto) {
 		int cantidad=0;
 		for(int indice=0; indice<this.traerLotesActivos(producto).size(); indice++){
 			if(this.traerLotesActivos(producto).get(indice).getProducto().equals(producto)){
@@ -162,13 +162,13 @@ public class Store {
 	
 	/*--------------------------------------------------*/
 	
-	public boolean agregarLote(Producto producto, char talle, int cantidadInicial, LocalDate fechaIngreso) {
+	public boolean agregarLote(Product producto, char talle, int cantidadInicial, LocalDate fechaIngreso) {
 		return lstLotes.add(new Lote(producto, talle, cantidadInicial, fechaIngreso));
 	}
 	
 	/*--------------------------------------------------*/
 	
-	public List<Lote> traerLotesActivos(Producto producto){
+	public List<Lote> traerLotesActivos(Product producto){
 		List<Lote> lotesActivos = new ArrayList<Lote>();
 	
 		for(int i=0; i<lstLotes.size();i++) {
@@ -182,13 +182,13 @@ public class Store {
 	/*--------------------------------------------------*/
 	
 	//Devuelve True si la cantidad que hay en stock es suficiente para la cantidad pedida
-	public boolean validarStock (Producto producto, int cantidad) {
+	public boolean validarStock (Product producto, int cantidad) {
 		return this.traerCantidad(producto)>=cantidad;
 	}
 	
 	/*--------------------------------------------------*/
 	
-	public void restarLotes(Producto producto, int cantidad) {
+	public void restarLotes(Product producto, int cantidad) {
 		int indice=0;
 		
 		List<Lote> activos = this.traerLotesActivos(producto);
