@@ -12,11 +12,11 @@ import com.controlstock.models.StoreModel;
 import com.controlstock.repositories.IStoreRepository;
 import com.controlstock.services.IStoreService;
 
-	@Service("StoreService")
+	@Service("storeService")
 	public class StoreService implements IStoreService {
 		
 		@Autowired
-		@Qualifier("StoreRepository")
+		@Qualifier("storeRepository")
 		private IStoreRepository storeRepository;
 		
 		@Autowired
