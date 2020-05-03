@@ -16,10 +16,10 @@ public class Vendedor extends Empleado {
 	
 	@NotNull
 	@OneToOne
-	private Sucursal sucursal;
+	private Store sucursal;
 
 	public Vendedor(String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
-			float sueldoBasico, Sucursal sucursal) {
+			float sueldoBasico, Store sucursal) {
 		super(nombre, apellido, fechaNacimiento, dni, horasPorJornada, sueldoBasico);
 		this.plus = 0;
 		this.sucursal = sucursal;
@@ -33,11 +33,11 @@ public class Vendedor extends Empleado {
 		this.plus = plus;
 	}
 
-	public Sucursal getSucursal() {
+	public Store getSucursal() {
 		return sucursal;
 	}
 
-	public void setSucursal(Sucursal sucursal) {
+	public void setSucursal(Store sucursal) {
 		this.sucursal = sucursal;
 	}
 

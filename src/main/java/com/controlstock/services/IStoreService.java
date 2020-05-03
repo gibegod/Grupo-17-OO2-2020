@@ -2,12 +2,12 @@ package com.controlstock.services;
 
 import java.util.List;
 
-import com.controlstock.entities.Sucursal;
+import com.controlstock.entities.Store;
 import com.controlstock.models.StoreModel;
 
 public interface IStoreService {
 	
-	public List<Sucursal> getAll();
+	public List<Store> getAll();
 	
 	public StoreModel findById(int id);
 	
