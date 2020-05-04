@@ -1,24 +1,24 @@
 <form action="#" th:action="@{/store/create}" th:object="${store}" method="post">
 	<p>
-		ID Gerente: <input type="text" th:field="*{gerente.id}" />
+		ID Gerente: <input type="text" th:field="*{manager.id}" />
 	</p>
 	<p>
-		Ciudad: <input type="text" th:field="*{ubicacion.ciudad}" />
+		Ciudad: <input type="text" th:field="*{address.city}" />
 	</p>
 		<p>
-		Calle: <input type="text" th:field="*{ubicacion.calle}" />
+		Calle: <input type="text" th:field="*{address.street}" />
 	</p>
 		<p>
-		Numero: <input type="text" th:field="*{ubicacion.numero}" />
+		Numero: <input type="text" th:field="*{address.number}" />
 	</p>
 		<p>
-		Latitud: <input type="text" th:field="*{ubicacion.latitud}" />
+		Latitud: <input type="text" th:field="*{address.latitude}" />
 	</p>
 		<p>
-		Longitud: <input type="text" th:field="*{ubicacion.longitud}" />
+		Longitud: <input type="text" th:field="*{address.longitude}" />
 	</p>
 	<p>
-		Telefono: <input type="text" th:field="*{telefono}" />
+		Telefono: <input type="text" th:field="*{phoneNumber}" />
 	</p>
 
 	<input type="submit" value="crear" />
