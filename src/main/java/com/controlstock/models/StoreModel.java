@@ -1,107 +1,82 @@
 package com.controlstock.models;
 
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-import com.controlstock.entities.Address;
-import com.controlstock.entities.Employee;
-import com.controlstock.entities.Batch;
+import com.controlstock.entities.Direccion;
+import com.controlstock.entities.Gerente;
+import com.controlstock.entities.Lote;
 import com.controlstock.entities.Store;
+import com.controlstock.entities.Vendedor;
 
 public class StoreModel {
 
-private int id;
-	
-	private Address address;
+	private int id;
 
-	private long phoneNumber;
+	private Direccion ubicacion;
 
-	private Employee manager;
+	private long telefono;
 
-	private Set <Employee> setEmployees;
+	private Gerente gerente;
 
-	private Set<Batch> setBatchs;
+	private List<Vendedor> lstVendedores;
+
+	private List<Lote> lstLotes;
 
 	public StoreModel() {}
 
-	public StoreModel (Address address, int id, long phoneNumber, Employee manager) {
+	public StoreModel(Direccion ubicacion, int id, long telefono, Gerente gerente) {
 		super();
-		this.address = address;
-		this.id = id;
-		this.phoneNumber = phoneNumber;
-		this.manager = manager;
-		this.setEmployees = new HashSet<Employee>();
-		this.setBatchs = new HashSet<Batch>();
+		this.ubicacion = ubicacion;
+		this.setId(id);
+		this.telefono = telefono;
+		this.gerente = gerente;
+		this.lstVendedores = new ArrayList<Vendedor>();
+		this.lstLotes = new ArrayList<Lote>();
 	}
 
-	public Address getAddress() {
-		return address;
+	public Direccion getUbicacion() {
+		return ubicacion;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public long getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(long phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public Employee getManager() {
-		return manager;
-	}
-
-	public void setManager(Employee manager) {
-		this.manager = manager;
-	}
-
-	public Set<Employee> getSetEmployees() {
-		return setEmployees;
-	}
-
-	public void setSetEmployees(Set<Employee> setEmployees) {
-		this.setEmployees = setEmployees;
-	}
-
-	public Set<Batch> getSetBatchs() {
-		return setBatchs;
-	}
-
-	public void setSetBatchs(Set<Batch> setBatchs) {
-		this.setBatchs = setBatchs;
+	public void setUbicacion(Direccion ubicacion) {
+		this.ubicacion = ubicacion;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		StoreModel other = (StoreModel) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (id != other.id)
-			return false;
-		return true;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	
+	public long getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(long telefono) {
+		this.telefono = telefono;
+	}
+
+	public Gerente getGerente() {
+		return gerente;
+	}
+
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
+	}
+
+	public List<Vendedor> getLstVendedores() {
+		return lstVendedores;
+	}
+
+	public List<Lote> getLstLotes() {
+		return lstLotes;
+	}
+
+	public boolean equals(Store sucursal) {
+		return sucursal.getUbicacion().equals(ubicacion);
+	}
 
 }

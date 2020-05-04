@@ -8,17 +8,17 @@
 	<table border="1px">
 		<thead>
 			<tr>
-				<th>Address</th>
-				<th>PhoneNumber</th>
-				<th>Manager</th>
+				<th>Ubicación</th>
+				<th>Telefono</th>
+				<th>Gerente</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="store : ${stores}">
-				<td><span th:text="${store.address.city}"/></td>
-				<td><span th:text="${store.phoneNumber}"/></td>
-				<td><span th:text="${store.manager.name}"/>
-				<span th:text="${store.manager.surname}"/></td>
+				<td><span th:text="${store.ubicacion.ciudad}"/></td>
+				<td><span th:text="${store.telefono}"/></td>
+				<td><span th:text="${store.gerente.nombre}"/>
+				<span th:text="${store.gerente.apellido}"/></td>
 				<td>
 					<a th:href="@{/store/{id}(id=${store.id})}">View</a>
 				</td>

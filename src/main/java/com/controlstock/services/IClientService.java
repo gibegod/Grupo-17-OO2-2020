@@ -2,13 +2,13 @@ package com.controlstock.services;
 
 import java.util.List;
 
-import com.controlstock.entities.Client;
+import com.controlstock.entities.Cliente;
 import com.controlstock.models.ClientModel;
 
 
 public interface IClientService {
 	
-	public List<Client> getAll();
+	public List<Cliente> getAll();
 	
 	public ClientModel findById(int id);
 	

@@ -15,56 +15,52 @@ import com.sun.istack.NotNull;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "PERSON_TYPE")
-public abstract class Person {
+public abstract class Persona {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
     @NotNull
-	protected String name;
+	protected String nombre;
     
     @NotNull
-	protected String surname;
+	protected String apellido;
     
     @NotNull
-	protected LocalDate birthdate;
+	protected LocalDate fechaNacimiento;
 	
     @NotNull
     protected long dni;
 	
-	public Person() {}
+	public Persona() {}
 	
-	public Person(String name, String surname, LocalDate birthdate, long dni) {
+	public Persona(String nombre, String apellido, LocalDate fechaNacimiento, long dni) {
 		super();
-		this.name = name;
-		this.surname = surname;
-		this.birthdate = birthdate;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fechaNacimiento = fechaNacimiento;
 		this.dni = dni;
 	}
-	
-	public int getId() {
-		return id;
-	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public String getSurname() {
-		return surname;
+	public String getApellido() {
+		return apellido;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
-	public LocalDate getBirthdate() {
-		return birthdate;
+	public LocalDate getFechaNacimiento() {
+		return fechaNacimiento;
 	}
-	public void setBirthdate(LocalDate birthdate) {
-		this.birthdate = birthdate;
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 	public long getDni() {
 		return dni;
@@ -73,10 +69,10 @@ public abstract class Person {
 		this.dni = dni;
 	}
 
-	/*@Override
+	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento
 				+ ", dni=" + dni + "]";
-	}*/
+	}
     
 }

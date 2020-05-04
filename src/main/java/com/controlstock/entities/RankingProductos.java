@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class ProductRanking {
+public class RankingProductos {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,45 +16,31 @@ public class ProductRanking {
 	
 	@NotNull
 	@OneToOne
-	private Product product;
+	private Product producto;
 	
 	@NotNull
-	private int amount;
+	private int cantidad;
 	
-	public ProductRanking(){};
-	
-	public ProductRanking(Product product, int amount) {
+	public RankingProductos(Product producto, int cantidad) {
 		super();
-		this.product = product;
-		this.amount = amount;
+		this.producto = producto;
+		this.cantidad = cantidad;
 	}
-
-	public Product getProduct() {
-		return product;
+	public Product getProducto() {
+		return producto;
 	}
-
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProducto(Product producto) {
+		this.producto = producto;
 	}
-
-	public int getAmount() {
-		return amount;
+	public int getCantidad() {
+		return cantidad;
 	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
-
-	public int getId() {
-		return id;
-	}
-	
-	
-	
-	/*@Override
+	@Override
 	public String toString() {
 		return "\nRankingProductos [producto=" + producto + ", cantidad=" + cantidad + "]";
 	}
-	*/
 	
 }
