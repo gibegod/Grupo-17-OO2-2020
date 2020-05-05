@@ -51,7 +51,7 @@ public class StoreController {
 	}
 
 	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("producto") StoreModel storeModel) {
+	public RedirectView update(@ModelAttribute("store") StoreModel storeModel) {
 		storeService.insertOrUpdate(storeModel);
 		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}

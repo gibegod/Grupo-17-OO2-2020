@@ -1,8 +1,8 @@
 package com.controlstock.entities;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Set;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,78 +24,88 @@ public class Store {
 	
 	@NotNull
 	@OneToOne
-	private Direccion ubicacion;
+	//Direccion
+	private Address address;
 	
 	@NotNull
-	private long telefono;
+	//Telefono
+	private long phoneNumber;
 	
 	@NotNull
 	@OneToOne
-	private Gerente gerente;
+	//Gerente
+	private Employee manager;
 	
 	@NotNull
 	@OneToMany
-	private List<Vendedor> lstVendedores;
+	//Vendedores
+	private Set <Employee> setEmployees;
 	
 	@NotNull
 	@OneToMany
-	private List<Lote> lstLotes;
+	private Set<Batch> setBatchs;
 	
 	public Store() {}
 	
-	public Store (Direccion ubicacion, int id, long telefono, Gerente gerente) {
+	public Store (Address address, int id, long phoneNumber, Employee manager) {
 		super();
-		this.ubicacion = ubicacion;
+		this.address = address;
 		this.id = id;
-		this.telefono = telefono;
-		this.gerente = gerente;
-		this.lstVendedores = new ArrayList<Vendedor>();
-		this.lstLotes = new ArrayList<Lote>();
+		this.phoneNumber = phoneNumber;
+		this.manager = manager;
+		this.setEmployees = new HashSet<Employee>();
+		this.setBatchs = new HashSet<Batch>();
 	}
 
-	public Direccion getUbicacion() {
-		return ubicacion;
+	
+	
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setUbicacion(Direccion ubicacion) {
-		this.ubicacion = ubicacion;
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Employee getManager() {
+		return manager;
+	}
+
+	public void setManager(Employee manager) {
+		this.manager = manager;
+	}
+
+	public Set<Employee> getSetEmployees() {
+		return setEmployees;
+	}
+
+	public void setSetEmployees(Set<Employee> setEmployees) {
+		this.setEmployees = setEmployees;
+	}
+
+	public Set<Batch> getSetBatchs() {
+		return setBatchs;
+	}
+
+	public void setSetBatchs(Set<Batch> setBatchs) {
+		this.setBatchs = setBatchs;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public long getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(long telefono) {
-		this.telefono = telefono;
-	}
-
-	public Gerente getGerente() {
-		return gerente;
-	}
-
-	public void setGerente(Gerente gerente) {
-		this.gerente = gerente;
-	}
-
-	public List<Vendedor> getLstVendedores() {
-		return lstVendedores;
-	}
-
-	public List<Lote> getLstLotes() {
-		return lstLotes;
-	}
-	
-	public boolean equals(Store sucursal)
+	public boolean equals(Store store)
 	{
-		return sucursal.getUbicacion().equals(ubicacion);
+		return store.getAddress().equals(address);
 	}
 	/*--------------------------------------------------*/
 
@@ -104,15 +114,15 @@ public class Store {
 	 * Metodos con la lista de vendedores. Agregar, traer, modificar y eliminar
 	 * 
 	 */
-	public boolean agregarVendedor(String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
-			float sueldoBasico) throws Exception{
+	/*public boolean addEmployee(String name, String surname, LocalDate birthdate, long dni, int workingHours,
+			float minimunWage) throws Exception{
 		if(this.traerVendedor(dni) != null) throw new Exception("El vendedor que se quiere agregar ya esta en el sistema.");
-		return lstVendedores.add(new Vendedor(nombre,apellido, fechaNacimiento, dni, horasPorJornada,
-			 sueldoBasico, this));  
+		return setEmployees.add(new Employee(name,surname, birthdate, dni, workingHours,
+			 minimunWage,false, 0f, this));  
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	public Vendedor traerVendedor(long dni) {
 		int indice=0;
 		Vendedor v = null;
@@ -125,7 +135,7 @@ public class Store {
 		return v;
 	}
 	/*--------------------------------------------------*/
-	
+	/*
 	public void modificarVendedor(String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
 			float sueldoBasico, float plus) throws Exception{
 	if(this.traerVendedor(dni) == null) throw new Exception("Error: El vendedor no existe");
@@ -140,7 +150,7 @@ public class Store {
 	}
 
 	/*--------------------------------------------------*/
-
+/*
 	public boolean eliminarVendedor(long dni) throws Exception{
 		
 		if(this.traerVendedor(dni) != null) throw new Exception("El vendedor que se quiere eliminar no esta en el sistema.");
@@ -149,7 +159,7 @@ public class Store {
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	public int traerCantidad(Product producto) {
 		int cantidad=0;
 		for(int indice=0; indice<this.traerLotesActivos(producto).size(); indice++){
@@ -161,13 +171,13 @@ public class Store {
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	public boolean agregarLote(Product producto, char talle, int cantidadInicial, LocalDate fechaIngreso) {
 		return lstLotes.add(new Lote(producto, talle, cantidadInicial, fechaIngreso));
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	public List<Lote> traerLotesActivos(Product producto){
 		List<Lote> lotesActivos = new ArrayList<Lote>();
 	
@@ -180,14 +190,14 @@ public class Store {
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	//Devuelve True si la cantidad que hay en stock es suficiente para la cantidad pedida
 	public boolean validarStock (Product producto, int cantidad) {
 		return this.traerCantidad(producto)>=cantidad;
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	public void restarLotes(Product producto, int cantidad) {
 		int indice=0;
 		
@@ -208,14 +218,14 @@ public class Store {
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	public float calcularDistancia(Store sucursal) {
 		return (float) Math.sqrt((Math.pow((sucursal.getUbicacion().getLatitud() - this.getUbicacion().getLatitud()), 2) +
 					((Math.pow((sucursal.getUbicacion().getLongitud() - this.getUbicacion().getLongitud()), 2)))));
 	}
 	
 	/*--------------------------------------------------*/
-
+	/*
 	@Override
 	public String toString() {
 		return "Sucursal [ubicacion=" + ubicacion + ", id=" + id + ", telefono=" + telefono + ", gerente=" + gerente
@@ -223,7 +233,7 @@ public class Store {
 	}
 	
 	/*--------------------------------------------------*/
-	
+	/*
 	public List<String> cierreDelMes(){
 		List<String> cierre = new ArrayList<String>();
 		
@@ -234,6 +244,6 @@ public class Store {
 		}
 		
 		return cierre;
-	}
+	}*/
 	
 }

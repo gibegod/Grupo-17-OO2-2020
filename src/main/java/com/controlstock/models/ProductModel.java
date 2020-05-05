@@ -12,22 +12,22 @@ public class ProductModel {
 
 	//Precio Unitario
 	private float unitPrice;
-
-	//private LocalDate fechaAlta;
+	
+	/*private LocalDate dischargeDate;*/
 	
 	//Marca
 	private String brand;
 	
 	public ProductModel() {}
 
-	public ProductModel(int id, boolean status, String description, float unitPrice/*, LocalDate fechaAlta */,
+	public ProductModel(int id, boolean status, String description, float unitPrice/*, LocalDate dischargeDate */,
 			String brand) {
 		super();
 		this.setId(id);
 		this.status = status;
 		this.description = description;
 		this.unitPrice = unitPrice;
-		//this.fechaAlta = fechaAlta;
+		/*this.dischargeDate = dischargeDate;*/
 		this.brand = brand;
 	}
 
@@ -62,15 +62,9 @@ public class ProductModel {
 	public void setUnitPrice(float unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-/*
-	public LocalDate getFechaAlta() {
-		return fechaAlta;
-	}
 
-	public void setFechaAlta(LocalDate fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-*/
+
+
 	public String getBrand() {
 		return brand;
 	}
