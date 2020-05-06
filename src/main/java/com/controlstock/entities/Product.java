@@ -65,10 +65,6 @@ public class Product {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public boolean isStatus() {
 		return status;
 	}
@@ -133,7 +129,7 @@ public class Product {
 	}
 
 	//public String toString(){
-		//return id+"/"+status+"/"+descripcion+"/"+precioUnitario+"/"+fechaAlta+"/"+marca; 
+		//return id+"/"+status+"/"+description+"/"+precioUnitario+"/"+fechaAlta+"/"+b; 
 	//}
 	
 	/*--------------------------------------------------*/

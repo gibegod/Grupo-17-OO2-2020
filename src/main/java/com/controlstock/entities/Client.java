@@ -7,14 +7,14 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@DiscriminatorValue(value = "Cliente")
-public class Cliente extends Persona {
+@DiscriminatorValue(value = "Client")
+public class Client extends Person {
 	
 	@NotNull
 	private String mail;
-
-	public Cliente(String nombre, String apellido, LocalDate fechaNacimiento, long dni, String mail) {
-		super(nombre, apellido, fechaNacimiento, dni);
+	public Client(){};
+	public Client(String name, String surname, LocalDate birthdate, long dni, String mail) {
+		super(name, surname, birthdate, dni);
 		this.mail = mail;
 	}
 
@@ -26,9 +26,9 @@ public class Cliente extends Persona {
 		this.mail = mail;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento
 				+ ", mail=" + mail + ", dni=" + dni + "]";
-	}
+	}*/
 }

@@ -2,9 +2,9 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
-import com.controlstock.entities.Persona;
+import com.controlstock.entities.Person;
 
-public class ClientModel extends Persona {
+public class ClientModel extends Person {
 	
 	private String mail;
 	
