@@ -8,11 +8,14 @@ import com.controlstock.models.ClientModel;
 @Component("clientConverter")
 public class ClientConverter {
 
-	public ClientModel entityToModel(Client client)
-{
-		return new ClientModel(client.getName(), client.getSurname(), client.getBirthdate(), client.getDni(), client.getMail());
-}
+	public ClientModel entityToModel(Client client) {
+		return new ClientModel(client.getId(), client.getName(), client.getSurname(), client.getBirthdate(), client.getDni(), 
+								client.getMail());
+	}
 	
-//	public Client modelToEntity
+	public Client modelToEntity(ClientModel clientModel) {
+		return new Client(clientModel.getId(), clientModel.getName(), clientModel.getSurname(), clientModel.getBirthdate(),
+						clientModel.getDni(), clientModel.getMail());
+	}
 
 }

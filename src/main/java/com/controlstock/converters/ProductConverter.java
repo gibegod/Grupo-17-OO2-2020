@@ -1,7 +1,5 @@
 package com.controlstock.converters;
 
-import java.time.LocalDate;
-
 import org.springframework.stereotype.Component;
 
 import com.controlstock.entities.Product;
@@ -14,12 +12,12 @@ public class ProductConverter {
 	
 	public ProductModel entityToModel(Product product) {
 		return new ProductModel(product.getId(), product.isStatus(), product.getDescription(),
-								product.getUnitPrice(), product.getBrand());
+								product.getUnitPrice(), product.getDischargeDate(), product.getBrand());
 	}
 	
 	public Product modelToEntity(ProductModel productModel) {
 		return new Product(productModel.getId(), productModel.isStatus(), productModel.getDescription(),
-							productModel.getUnitPrice()/*, productoModel.getFechaAlta()*/, productModel.getBrand());
+							productModel.getUnitPrice(), productModel.getDischargeDate(), productModel.getBrand());
 	}
 	
 }

@@ -13,13 +13,14 @@ import javax.persistence.InheritanceType;
 import com.sun.istack.NotNull;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "PERSON_TYPE")
 public abstract class Person {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    protected int id;
     
     @NotNull
 	protected String name;
@@ -35,8 +36,9 @@ public abstract class Person {
 	
 	public Person() {}
 	
-	public Person(String name, String surname, LocalDate birthdate, long dni) {
+	public Person(int id, String name, String surname, LocalDate birthdate, long dni) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.birthdate = birthdate;
@@ -45,6 +47,10 @@ public abstract class Person {
 	
 	public int getId() {
 		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {

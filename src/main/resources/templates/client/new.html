@@ -1,0 +1,19 @@
+<form action="#" th:action="@{/client/create}" th:object="${client}" method="post">
+	<p>
+		Name: <input type="text" th:field="*{name}" />
+	</p>
+	<p>
+		Surname: <input type="text" th:field="*{surname}" />
+	</p>
+	<p>
+		Birthdate: <input type="date" th:field="*{birthdate}" />
+	</p>
+	<p>
+		DNI: <input type="number" th:field="*{dni}" />
+	</p>
+	<p>
+		Mail: <input type="text" th:field="*{mail}" />
+	</p>
+
+	<input type="submit" value="create" />
+</form>

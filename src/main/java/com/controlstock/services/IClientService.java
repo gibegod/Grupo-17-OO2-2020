@@ -5,7 +5,6 @@ import java.util.List;
 import com.controlstock.entities.Client;
 import com.controlstock.models.ClientModel;
 
-
 public interface IClientService {
 	
 	public List<Client> getAll();
@@ -15,6 +14,5 @@ public interface IClientService {
 	public ClientModel insertOrUpdate(ClientModel clientModel);
 	
 	public boolean remove(int id);
-
 
 }
