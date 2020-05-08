@@ -5,7 +5,8 @@
 <title>Update</title>
 </head>
 <body>
-	<form action="#" th:action="@{/product/update}" th:object=${product} method="post">
+	<form action="#" th:action="@{/product/update}" th:object=${product}
+		method="post">
 		<input type="hidden" th:field="*{id}" />
 		<p>
 			Description: <input type="text" th:field="*{description}" />
@@ -19,9 +20,13 @@
 		<p>
 			Status: <input type="text" th:field="*{status}" />
 		</p>
+		<p>
+			Discharge date: <input type="date" th:field="*{dischargeDate}" />
+		</p>
 		<input type="submit" value="Edit" />
 	</form>
-	<form action="#" th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
+	<form action="#" th:action="@{/product/delete/{id}(id=${product.id})}"
+		method="post">
 		<input type="submit" value="Delete product" />
 	</form>
 

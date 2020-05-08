@@ -2,6 +2,8 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ProductModel {
 	
 	private int id;
@@ -13,21 +15,22 @@ public class ProductModel {
 	//Precio Unitario
 	private float unitPrice;
 	
-	/*private LocalDate dischargeDate;*/
+	//FechaAlta
+	@DateTimeFormat(pattern = "yyyy-MM-dd") //Sirve para que funcione el type="date" del input del HTML.
+	private LocalDate dischargeDate;
 	
 	//Marca
 	private String brand;
 	
 	public ProductModel() {}
 
-	public ProductModel(int id, boolean status, String description, float unitPrice/*, LocalDate dischargeDate */,
+	public ProductModel(int id, boolean status, String description, float unitPrice, LocalDate dischargeDate ,
 			String brand) {
-		super();
 		this.setId(id);
 		this.status = status;
 		this.description = description;
 		this.unitPrice = unitPrice;
-		/*this.dischargeDate = dischargeDate;*/
+		this.dischargeDate = dischargeDate;
 		this.brand = brand;
 	}
 
@@ -35,6 +38,7 @@ public class ProductModel {
 		return id;
 	}
 
+	//Tiene que ser public
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -63,7 +67,13 @@ public class ProductModel {
 		this.unitPrice = unitPrice;
 	}
 
+	public LocalDate getDischargeDate() {
+		return dischargeDate;
+	}
 
+	public void setDischargeDate(LocalDate dischargeDate) {
+		this.dischargeDate = dischargeDate;
+	}
 
 	public String getBrand() {
 		return brand;

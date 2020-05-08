@@ -34,8 +34,9 @@ public class Product {
 	//@NotNull
 	private float unitPrice;
 	
+	//Fecha de alta
 	//@NotNull
-	//private LocalDate fechaAlta;
+	private LocalDate dischargeDate;
 	
 	//Marca
 	//@NotNull
@@ -50,19 +51,23 @@ public class Product {
 	
 	public Product() {}
 	
-	public Product(int id, boolean status, String description, float unitPrice/*, LocalDate fechaAlta*/,
+	public Product(int id, boolean status, String description, float unitPrice, LocalDate dischargeDate,
 			String brand) {
-		super();
 		this.id = id;
 		this.status = status;
 		this.description = description;
 		this.unitPrice = unitPrice;
-		//this.fechaAlta = fechaAlta;
+		this.dischargeDate = dischargeDate;
 		this.brand = brand;
 	}
 
 	public int getId() {
 		return id;
+	}
+	
+	//Tiene que ser public
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public boolean isStatus() {
@@ -88,15 +93,15 @@ public class Product {
 	public void setUnitPrice(float unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-/*
-	public LocalDate getFechaAlta() {
-		return fechaAlta;
+
+	public LocalDate getDischargeDate() {
+		return dischargeDate;
 	}
 
-	public void setFechaAlta(LocalDate fechaAlta) {
-		this.fechaAlta = fechaAlta;
+	public void setDischargeDate(LocalDate dischargeDate) {
+		this.dischargeDate = dischargeDate;
 	}
-*/
+
 	public String getBrand() {
 		return brand;
 	}
