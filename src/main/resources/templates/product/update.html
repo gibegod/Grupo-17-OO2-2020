@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update</title>
+</head>
+<body>
+	<form action="#" th:action="@{/product/update}" th:object=${product}
+		method="post">
+		<input type="hidden" th:field="*{id}" />
+		<p>
+			Description: <input type="text" th:field="*{description}" />
+		</p>
+		<p>
+			Brand: <input type="text" th:field="*{brand}" />
+		</p>
+		<p>
+			Unit price: <input type="text" th:field="*{unitPrice}" />
+		</p>
+		<p>
+			Status: <input type="text" th:field="*{status}" />
+		</p>
+		<p>
+			Discharge date: <input type="date" th:field="*{dischargeDate}" />
+		</p>
+		<input type="submit" value="Edit" />
+	</form>
+	<form action="#" th:action="@{/product/delete/{id}(id=${product.id})}"
+		method="post">
+		<input type="submit" value="Delete product" />
+	</form>
+
+</body>
+</html>

@@ -18,7 +18,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Producto {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,16 +28,19 @@ public class Producto {
 	private boolean status;
 	
 	//@NotNull
-	private String descripcion;
+	private String description;
 	
+	//PrecioUnitario
 	//@NotNull
-	private float precioUnitario;
+	private float unitPrice;
 	
+	//Fecha de alta
 	//@NotNull
-	//private LocalDate fechaAlta;
+	private LocalDate dischargeDate;
 	
+	//Marca
 	//@NotNull
-	private String marca;
+	private String brand;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -46,23 +49,23 @@ public class Producto {
 	private LocalDateTime updatedAt;
 	
 	
-	public Producto() {}
+	public Product() {}
 	
-	public Producto(int id, boolean status, String descripcion, float precioUnitario/*, LocalDate fechaAlta*/,
-			String marca) {
-		super();
+	public Product(int id, boolean status, String description, float unitPrice, LocalDate dischargeDate,
+			String brand) {
 		this.id = id;
 		this.status = status;
-		this.descripcion = descripcion;
-		this.precioUnitario = precioUnitario;
-		//this.fechaAlta = fechaAlta;
-		this.marca = marca;
+		this.description = description;
+		this.unitPrice = unitPrice;
+		this.dischargeDate = dischargeDate;
+		this.brand = brand;
 	}
 
 	public int getId() {
 		return id;
 	}
-
+	
+	//Tiene que ser public
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -75,36 +78,36 @@ public class Producto {
 		this.status = status;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public float getPrecioUnitario() {
-		return precioUnitario;
+	public float getUnitPrice() {
+		return unitPrice;
 	}
 
-	public void setPrecioUnitario(float precioUnitario) {
-		this.precioUnitario = precioUnitario;
-	}
-/*
-	public LocalDate getFechaAlta() {
-		return fechaAlta;
+	public void setUnitPrice(float unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
-	public void setFechaAlta(LocalDate fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-*/
-	public String getMarca() {
-		return marca;
+	public LocalDate getDischargeDate() {
+		return dischargeDate;
 	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public void setDischargeDate(LocalDate dischargeDate) {
+		this.dischargeDate = dischargeDate;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 	
 	public LocalDateTime getCreatedAt() {
@@ -126,12 +129,12 @@ public class Producto {
 	
 	
 
-	public boolean equals(Producto producto) {
-	return producto.getDescripcion().equalsIgnoreCase(descripcion);
+	public boolean equals(Product product) {
+	return product.getDescription().equalsIgnoreCase(description);
 	}
 
 	//public String toString(){
-		//return id+"/"+status+"/"+descripcion+"/"+precioUnitario+"/"+fechaAlta+"/"+marca; 
+		//return id+"/"+status+"/"+description+"/"+precioUnitario+"/"+fechaAlta+"/"+b; 
 	//}
 	
 	/*--------------------------------------------------*/
@@ -145,7 +148,8 @@ public class Producto {
 	 * 
 	 */
 
-	public void desactivarProducto() {
+	//desactivarProducto
+	public void deactivateProduct() {
 		status = false;
 	}
 	
@@ -159,10 +163,10 @@ public class Producto {
 	 * 
 	 */
 	
-	public void activarProducto() {
+	//ActivarProducto
+	public void activateProduct() {
 		status = true;
 	}
 	
 	/*--------------------------------------------------*/
-
 }

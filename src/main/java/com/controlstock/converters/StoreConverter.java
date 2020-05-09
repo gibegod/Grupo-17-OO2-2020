@@ -1,19 +1,21 @@
 package com.controlstock.converters;
 
 import org.springframework.stereotype.Component;
-import com.controlstock.entities.Sucursal;
+
+import com.controlstock.entities.Address;
+import com.controlstock.entities.Employee;
+import com.controlstock.entities.Store;
 import com.controlstock.models.StoreModel;
 
 @Component("storeConverter")
 public class StoreConverter {
 	
-	public StoreModel entityToModel(Sucursal store) {
-		return new StoreModel(store.getUbicacion(),store.getId(),  store.getTelefono(), store.getGerente());
+	public StoreModel entityToModel(Store store) {
+		return new StoreModel(store.getAddress(), store.getId(),  store.getPhoneNumber(), store.getManager());
 	}
 	
-	public Sucursal modelToEntity(StoreModel storeModel) {
-		return new Sucursal( storeModel.getUbicacion(), storeModel.getId(), storeModel.getTelefono(), storeModel.getGerente());
+	public Store modelToEntity(StoreModel storeModel) {
+		return new Store (storeModel.getAddress(), storeModel.getId(), storeModel.getPhoneNumber(), storeModel.getManager()); 
 	}
 	
-
 }

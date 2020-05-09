@@ -2,7 +2,11 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/grupo-17-bdd-oo2-2020
     username: root
+<<<<<<< HEAD
     password: Yagami40811091
+=======
+    password: 
+>>>>>>> refs/remotes/origin/dev
   jpa:
     show-sql: true
     hibernate:

@@ -2,16 +2,16 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
-import com.controlstock.entities.Persona;
+import com.controlstock.entities.Person;
 
-public class ClientModel extends Persona {
+public class ClientModel extends PersonModel {
 	
 	private String mail;
 	
 	public ClientModel() {};
 
-	public ClientModel(String nombre, String apellido, LocalDate fechaNacimiento, long dni, String mail) {
-		super(nombre, apellido, fechaNacimiento, dni);
+	public ClientModel(int id, String name, String surname, LocalDate birthdate, long dni, String mail) {
+		super(id, name, surname, birthdate, dni);
 		this.mail = mail;
 	}
 
