@@ -14,6 +14,7 @@ import com.controlstock.services.IStoreService;
 
 	@Service("storeService")
 	public class StoreService implements IStoreService {
+
 		
 		@Autowired
 		@Qualifier("storeRepository")
