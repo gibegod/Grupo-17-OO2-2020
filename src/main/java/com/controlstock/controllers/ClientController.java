@@ -67,11 +67,5 @@ public class ClientController {
 		clientService.remove(id);
 		return new RedirectView(ViewRouteHelper.CLIENT_ROOT);
 	}
-	
-	//Para que funcione el cambio de date a localdate (no funca xd).
-	@InitBinder     
-	public void initBinder(WebDataBinder binder){
-	     binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true, 10));   
-	}
 		
 }

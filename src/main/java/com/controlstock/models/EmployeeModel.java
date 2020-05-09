@@ -1,43 +1,27 @@
-package com.controlstock.entities;
+package com.controlstock.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-@Entity
-@DiscriminatorValue(value = "Employee")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Employee extends Person {
+public class EmployeeModel extends PersonModel {
 	
-	@NotNull
 	private int workingHours;
 	
-	@NotNull
 	private boolean manager;
-	
-	@NotNull
+
 	private float minimunWage;
 	
-	@NotNull
 	private float plus;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
-	private Store store;
+	private StoreModel store;
 	
-	public Employee() {};
-	
-	public Employee(int id, String name, String surname, LocalDate birthdate, long dni, 
-			int workingHours, boolean manager, float minimunWage,  float plus, Store store) {
+	public EmployeeModel() {}
+
+	public EmployeeModel(int id, String name, String surname, LocalDate birthdate, long dni, int workingHours,
+						boolean manager, float minimunWage, float plus, StoreModel store) {
 		super(id, name, surname, birthdate, dni);
-		this.minimunWage = minimunWage;
 		this.workingHours = workingHours;
 		this.manager = manager;
+		this.minimunWage = minimunWage;
 		this.plus = plus;
 		this.store = store;
 	}
@@ -74,11 +58,11 @@ public class Employee extends Person {
 		this.plus = plus;
 	}
 
-	public Store getStore() {
+	public StoreModel getStore() {
 		return store;
 	}
 
-	public void setStore(Store store) {
+	public void setStore(StoreModel store) {
 		this.store = store;
 	}
 

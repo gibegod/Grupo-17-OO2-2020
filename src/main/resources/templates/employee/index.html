@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employees</title>
+</head>
+<body>
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>ID Employee</th>
+				<th>View</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee : ${employees}">
+				<td><span th:text="${employee.id}" /></td>
+				<td><a th:href="@{/employee/{id}(id=${employee.id})}">View</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/employee/new">Create new employee</a>
+
+
+
+
+
+
+
+
+</body>
+</html>

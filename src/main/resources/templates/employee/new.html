@@ -1,0 +1,33 @@
+<form action="#" th:action="@{/employee/create}" th:object="${employee}"
+	method="post">
+	<p>
+		Name: <input type="text" th:field="*{name}" />
+	</p>
+	<p>
+		Surname: <input type="text" th:field="*{surname}" />
+	</p>
+	<p>
+		Birthdate: <input type="date" th:field="*{birthdate}" />
+	</p>
+	<p>
+		DNI: <input type="number" th:field="*{dni}" />
+	</p>
+	<p>
+		Working Hours: <input type="number" th:field="*{workingHours}" />
+	</p>
+	<p>
+		Manager? (boolean): <input type="text" th:field="*{manager}" />
+	</p>
+	<p>
+		Minimun Wage: <input type="number" th:field="*{minimunWage}" />
+	</p>
+	<p>
+		Plus: <input type="number" th:field="*{plus}" />
+	</p>
+	<p>Store:</p>
+	<select placeholder="Store" th:field="*{store.id}">
+		<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.phoneNumber}"></option>
+	</select> 
+	
+	<input type="submit" value="create" />
+</form>

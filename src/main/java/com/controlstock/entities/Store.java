@@ -1,6 +1,5 @@
 package com.controlstock.entities;
 
-
 import java.util.Set;
 import java.util.HashSet;
 
