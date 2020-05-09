@@ -3,33 +3,48 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Update</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/client-new.css}">
 </head>
 <body>
-	<form action="#" th:action="@{/client/update}" th:object=${client}
-		method="post">
-		<input type="hidden" th:field="*{id}" />
-		<p>
-			Name: <input type="text" th:field="*{name}" />
-		</p>
-		<p>
-			Surname: <input type="text" th:field="*{surname}" />
-		</p>
-		<p>
-			Birthdate: <input type="date" th:field="*{birthdate}" />
-		</p>
-		<p>
-			DNI: <input type="number" th:field="*{dni}" />
-		</p>
-		<p>
-			Mail: <input type="text" th:field="*{mail}" />
-		</p>
-		
-		<input type="submit" value="Edit" />
-	</form>
-	<form action="#" th:action="@{/client/delete/{id}(id=${client.id})}"
-		method="post">
-		<input type="submit" value="Delete client" />
-	</form>
-
+	<div class="client-new">
+		<div class="client-new-header">
+			<h5>Edit Client</h5>
+		</div>
+		<form action="#" th:action="@{/client/create}" th:object="${client}"
+			method="post">
+			<div class="form-group">
+				<label>Name</label> <input type="text" class="form-control"
+					placeholder="Enter your name" th:field="*{name}">
+			</div>
+			<div class="form-group">
+				<label>Surname</label> <input type="text" class="form-control"
+					placeholder="Enter your surname" th:field="*{surname}">
+			</div>
+			<div class="form-group">
+				<label>Birthdate</label> <input type="date" class="form-control"
+					placeholder="Enter your birthdate" th:field="*{birthdate}">
+			</div>
+			<div class="form-group">
+				<label>DNI</label> <input type="text" class="form-control"
+					placeholder="Enter your DNI" th:field="*{dni}">
+			</div>
+			<div class="form-group">
+				<label>Mail</label> <input type="text" class="form-control"
+					placeholder="Enter your email" th:field="*{mail}">
+			</div>
+			<div class="button-row">
+				<input class="btn btn-outline-dark" type="submit"
+					value="Edit client">
+			</div>
+		</form>
+		<form class="delete-button"
+			th:action="@{/client/delete/{id}(id=${client.id})}" method="post">
+			<input class="btn btn-danger" type="submit" value="Delete client">
+		</form>
+	</div>
 </body>
 </html>

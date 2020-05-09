@@ -3,31 +3,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employees</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
 </head>
 <body>
-	<table border="1px">
-		<thead>
-			<tr>
-				<th>ID Employee</th>
-				<th>View</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="employee : ${employees}">
-				<td><span th:text="${employee.id}" /></td>
-				<td><a th:href="@{/employee/{id}(id=${employee.id})}">View</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="/employee/new">Create new employee</a>
-
-
-
-
-
-
-
-
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">ID Employee</th>
+					<th scope="col">View</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td><span th:text="${employee.id}" /></td>
+					<td><a th:href="@{/employee/{id}(id=${employee.id})}">View</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/employee/new">Create new employee</a>
+	</div>
 </body>
 </html>
