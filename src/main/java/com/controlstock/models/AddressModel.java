@@ -1,36 +1,28 @@
-package com.controlstock.entities;
+package com.controlstock.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-
-@Entity
-public class Address {
+public class AddressModel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	private int id;
 	
-	@NotNull
+
 	private String city;
 	
-	@NotNull
+
 	private String street;
 	
-	@NotNull
+
 	private int number;
 	
-	@NotNull
+
 	private float latitude;
 	
-	@NotNull
+
 	private float longitude;
 	
-	public Address() {};
+	public AddressModel() {};
 	
-	public Address(int id, String city, String street, int number, float latitude, float longitude) {
+	public AddressModel(int id, String city, String street, int number, float latitude, float longitude) {
 		super();
 		this.id = id;
 		this.city = city;
@@ -40,7 +32,7 @@ public class Address {
 		this.longitude = longitude;
 	}
 	
-	public Address(String city, String street, int number, float latitude, float longitude) {
+	public AddressModel(String city, String street, int number, float latitude, float longitude) {
 		super();
 		this.city = city;
 		this.street = street;
@@ -49,14 +41,14 @@ public class Address {
 		this.longitude = longitude;
 	}
 
-	public boolean equals(Address address) {
-		return address.getLatitude() == latitude && address.getLongitude() == longitude;
+	public boolean equals(AddressModel addressmodel) {
+		return addressmodel.getLatitude() == latitude && addressmodel.getLongitude() == longitude;
 	}
 
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Direcciones</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <header>
+            <div class="headerbg">
+
+                <h3>Control Stock Application.</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Ciudad</th>
+                        <th>Calle</th>
+                        <th>Número</th>
+                        <th>Latitud</th>
+                        <th>Longitud</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="address : ${addresses}">
+                        <td><span th:text="${address.city}"></span></td>
+                        <td><span th:text="${address.street}"></span></td>
+                        <td><span th:text="${address.number}"></span></td>
+                        <td><span th:text="${address.latitude}"></span></td>
+                        <td><span th:text="${address.longitude}"></span></td>
+                        <td><span th:text="${address.id}"></span></td>
+                        <td><a th:href="@{/address/{id}(id=${address.id})}">Ver</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                <br> <a class="btn btn-primary" style="background-color: #9ded07" href="/address/new">Crear nueva dirección</a>
+        </div>
+    </body>
+</html>
