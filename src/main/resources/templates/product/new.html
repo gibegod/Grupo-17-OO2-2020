@@ -1,19 +1,45 @@
-<form action="#" th:action="@{/product/create}" th:object="${product}" method="post">
-	<p>
-		Description: <input type="text" th:field="*{description}" />
-	</p>
-	<p>
-		Brand (Marca): <input type="text" th:field="*{brand}" />
-	</p>
-	<p>
-		Unit price: <input type="text" th:field="*{unitPrice}" />
-	</p>
-	<p>
-		Status (boolean): <input type="text" th:field="*{status}" />
-	</p>
-	<p>
-		Discharge date: <input type="date" th:field="*{dischargeDate}" />
-	</p>
-
-	<input type="submit" value="create" />
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>New Product</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/product-new.css}">
+</head>
+<body>
+	<div class="product-new">
+		<div class="product-new-header">
+			<h5>Add Product</h5>
+		</div>
+		<form action="#" th:action="@{/product/create}" th:object="${product}"
+			method="post">
+			<div class="form-group">
+				<label>Description</label> <input type="text" class="form-control"
+					placeholder="Enter description"  th:field="*{description}">
+			</div>
+			<div class="form-group">
+				<label>Brand</label> <input type="text" class="form-control"
+					placeholder="Enter brand" th:field="*{brand}">
+			</div>
+			<div class="form-group">
+				<label>Unit Price</label> <input type="text" class="form-control"
+					placeholder="Enter unitPrice" th:field="*{unitPrice}">
+			</div>
+			<div class="form-group">
+				<label>Status</label> <input type="text" class="form-control"
+					placeholder="Enter status" th:field="*{status}">
+			</div>
+			<div class="form-group">
+				<label>Discharge Date</label> <input type="date" class="form-control"
+					placeholder="Enter discharge date" th:field="*{dischargeDate}">
+			</div>
+			<input class="btn btn-outline-dark" type="submit"
+				value="Create new product">
+		</form>
+	</div>
+</body>
+</html>
