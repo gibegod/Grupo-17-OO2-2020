@@ -28,11 +28,18 @@ public class ViewRouteHelper {
 	public final static String EMPLOYEE_NEW = "employee/new";
 	public final static String EMPLOYEE_UPDATE = "employee/update";
 	
+	//Direcciones (Address)
+	
+	public final static String ADDRESS_INDEX = "address/index";
+	public final static String ADDRESS_NEW = "address/new";
+	public final static String ADDRESS_UPDATE = "address/update";
+		
+	
 	//Redirects ------------------------------------------------------------
 	
 	public final static String PRODUCT_ROOT = "/product";
 	public final static String STORE_ROOT = "/store";
 	public final static String CLIENT_ROOT = "/client";
 	public final static String EMPLOYEE_ROOT = "/employee";
-
+	public final static String ADDRESS_ROOT = "/address";
 }

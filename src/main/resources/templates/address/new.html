@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Nueva Dirección</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+
+        <header>
+            <div class="headerbg">
+
+                <h3>Control Stock Application</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <form action="#" th:action="@{/address/create}"
+                  th:object="${address}" method="post">
+                <p>
+                    Ciudad: <input type="text" th:field="*{city}" />
+                </p>
+                <p>
+                    Calle: <input type="text" th:field="*{street}" />
+                </p>
+                <p>
+                    Número: <input type="text" th:field="*{number}" />
+                </p>
+                <p>
+                    Latitud: <input type="text" th:field="*{latitude}" />
+                </p>
+                <p>
+                    Longitud: <input type="text" th:field="*{longitude}" />
+                </p>
+                <input class="btn btn-primary" style="background-color: #9ded07" type="submit" value="Crear" />
+            </form>
+        </div>
+    </body>
+</html>

@@ -57,7 +57,6 @@ public class Store {
 	}
 
 	
-	
 	public Address getAddress() {
 		return address;
 	}
