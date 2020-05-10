@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.helpers.ViewRouteHelper;
+import com.controlstock.models.AddressModel;
 import com.controlstock.models.StoreModel;
 import com.controlstock.services.IStoreService;
 
@@ -38,7 +39,13 @@ public class StoreController {
 	}
 
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("store") StoreModel storeModel) {
+	public RedirectView create(@ModelAttribute("store") StoreModel storeModel, @ModelAttribute("address") AddressModel addressModel) {
+		System.out.println(addressModel.getLatitude());
+		System.out.println(addressModel.getLatitude());
+		System.out.println(addressModel.getLatitude());
+		System.out.println(addressModel.getLatitude());
+		System.out.println(addressModel.getLatitude());
+		System.out.println(addressModel.getLatitude());
 		storeService.insertOrUpdate(storeModel);
 		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}

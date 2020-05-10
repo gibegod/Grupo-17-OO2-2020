@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Actualizar Dirección</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+<head>
+<meta charset="UTF-8">
+<title>Actualizar Dirección</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/address-new.css}" />
 
-    </head>
-    <body>
-        <header>
-            <div class="headerbg">
+</head>
+<body>
+	<div class="address-new">
+		<div class="address-new-header">
+			<h5>Add Address</h5>
+		</div>
 
-                <h3>Control Stock Application.</h3>
-
-            </div>
-        </header>
-
-        <div class="divPrincipal">
-            <form action="#" th:action="@{/address/update}" th:object="${address}" method="post">
-                <p>Ciudad: <input type="text" th:field="*{city}" /></p>
-                <p>Calle: <input type="text" th:field="*{street}" /></p>
-                <p>Numero: <input type="text" th:field="*{number}" /></p>
-                <p>Latitud: <input type="number" th:field="*{latitude}" /></p>
-                <p>Longitud: <input type="number" th:field="*{longitude}" /></p>
-                <p>ID: <input type="text" th:field="*{id}" /></p>
-
-                <input class="btn btn-success" style="background-color:  #9ded07" type="submit" value="Editar"/>
-            </form>
-            <br>
-            <br>
-            <form action="#" th:action="@{/address/delete/{id}(id=${address.id})}" method="post">
-                <input class="btn btn-danger" type="submit" value="Eliminar dirección" />
-            </form>
-        </div>
-    </body>
+		<form action="#" th:action="@{/address/update}" th:object="${address}"
+			method="post">
+			<div class="form-group">
+				<label>City</label> <input type="text" class="form-control"
+					placeholder="Enter city" th:field="*{city}">
+			</div>
+			<div class="form-group">
+				<label>Street</label> <input type="text" class="form-control"
+					placeholder="Enter street" th:field="*{street}">
+			</div>
+			<div class="form-group">
+				<label>Number</label> <input type="text" class="form-control"
+					placeholder="Enter number of street" th:field="*{number}">
+			</div>
+			<div class="form-group">
+				<label>Latitude</label> <input type="text" class="form-control"
+					placeholder="Enter latitude" th:field="*{latitude}">
+			</div>
+			<div class="form-group">
+				<label>Longitude</label> <input type="text" class="form-control"
+					placeholder="Enter longitude" th:field="*{longitude}">
+			</div>
+			<input class="btn btn-dark btn-sm" type="submit" value="Edit Address" />
+		</form>
+		<form action="#" th:action="@{/address/delete/{id}(id=${address.id})}"
+			method="post">
+			<input class="btn btn-danger" type="submit"
+				value="Delete Address" />
+		</form>
+	</div>
+</body>
 </html>
