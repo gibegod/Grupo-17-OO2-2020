@@ -1,19 +1,44 @@
-<form action="#" th:action="@{/client/create}" th:object="${client}" method="post">
-	<p>
-		Name: <input type="text" th:field="*{name}" />
-	</p>
-	<p>
-		Surname: <input type="text" th:field="*{surname}" />
-	</p>
-	<p>
-		Birthdate: <input type="date" th:field="*{birthdate}" />
-	</p>
-	<p>
-		DNI: <input type="number" th:field="*{dni}" />
-	</p>
-	<p>
-		Mail: <input type="text" th:field="*{mail}" />
-	</p>
-
-	<input type="submit" value="create" />
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Clients</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/client-new.css}">
+</head>
+<body>
+	<div class="client-new">
+		<div class="client-new-header">
+			<h5>Add Client</h5>
+		</div>
+		<form action="#" th:action="@{/client/create}" th:object="${client}"
+			method="post">
+			<div class="form-group">
+				<label>Name</label> <input type="text" class="form-control"
+					placeholder="Enter name" th:field="*{name}">
+			</div>
+			<div class="form-group">
+				<label>Surname</label> <input type="text" class="form-control"
+					placeholder="Enter surname" th:field="*{surname}">
+			</div>
+			<div class="form-group">
+				<label>Birthdate</label> <input type="date" class="form-control"
+					placeholder="Enter birthdate" th:field="*{birthdate}">
+			</div>
+			<div class="form-group">
+				<label>DNI</label> <input type="text" class="form-control"
+					placeholder="Enter DNI" th:field="*{dni}">
+			</div>
+			<div class="form-group">
+				<label>Mail</label> <input type="text" class="form-control"
+					placeholder="Enter mail" th:field="*{mail}">
+			</div>
+			<input class="btn btn-outline-dark" type="submit" value="Create new client">
+		</form>
+	</div>
+</body>
+</html>

@@ -3,32 +3,38 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Clients</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/client.css}">
 </head>
-<body>	
-	<table border="1px">
-		<thead>
-			<tr>
-				<th>ID Client</th>
-				<th>View</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="client : ${clients}">
-				<td><span th:text="${client.id}"/></td>
-				<td>
-					<a th:href="@{/client/{id}(id=${client.id})}">View</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="/client/new">Create new client</a>
+<body>
 	
-	
-	
-	
-	
-	
-		
+	<div class=client-table>
+		<table class="table table-striped table-dark">
+			<thead>
+				<tr>
+					<th scope="col">ID Client</th>
+					<th scope="col">Name</th>
+					<th scope="col">Surname</th>
+					<th scope="col">Mail</th>
+					<th scope="col">View</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="client : ${clients}">
+					<td><span th:text="${client.id}" /></td>
+					<td><span th:text="${client.name}"/></td>
+					<td><span th:text="${client.surname}"/></td>
+					<td><span th:text="${client.mail}"/></td>
+					<td><a th:href="@{/client/{id}(id=${client.id})}">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/client/new}" type="button" class="btn btn-dark btn-sm">Create new client</a>
+	</div>
 
 </body>
 </html>

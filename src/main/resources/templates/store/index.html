@@ -20,11 +20,11 @@
 				<td><span th:text="${store.manager.name}"/>
 				<span th:text="${store.manager.surname}"/></td>
 				<td>
-					<a th:href="@{/store/{id}(id=${store.id})}">View</a>
+					<a th:href="@{/store/{id}(id=${store.id})}">Edit</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 	<a href="/store/new">New store</a>
-	
-	
+</body>
+</html>

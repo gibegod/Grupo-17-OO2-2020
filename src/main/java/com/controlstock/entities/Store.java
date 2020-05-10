@@ -26,7 +26,7 @@ public class Store {
 	//Direccion
 	private Address address;
 	
-	@NotNull
+	//@NotNull
 	//Telefono
 	private long phoneNumber;
 	
@@ -55,8 +55,6 @@ public class Store {
 		this.setEmployees = new HashSet<Employee>();
 		this.setBatchs = new HashSet<Batch>();
 	}
-
-	
 	
 	public Address getAddress() {
 		return address;
