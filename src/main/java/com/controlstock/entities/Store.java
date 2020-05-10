@@ -21,7 +21,7 @@ public class Store {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@NotNull
+	//@NotNull
 	@OneToOne
 	//Direccion
 	private Address address;
@@ -30,17 +30,17 @@ public class Store {
 	//Telefono
 	private long phoneNumber;
 	
-	@NotNull
+	//@NotNull
 	@OneToOne
 	//Gerente
 	private Employee manager;
 	
-	@NotNull
+	//@NotNull
 	@OneToMany
 	//Vendedores
 	private Set <Employee> setEmployees;
 	
-	@NotNull
+	//@NotNull
 	@OneToMany
 	private Set<Batch> setBatchs;
 	
