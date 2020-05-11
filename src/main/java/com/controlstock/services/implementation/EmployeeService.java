@@ -23,6 +23,10 @@ public class EmployeeService implements IEmployeeService {
 	@Qualifier("employeeConverter")
 	private EmployeeConverter employeeConverter;
 	
+	@Autowired
+	@Qualifier("storeService")
+	private StoreService storeService;
+	
 	@Override
 	public List<Employee> getAll() {
 		return employeeRepository.findAll();
@@ -33,6 +37,20 @@ public class EmployeeService implements IEmployeeService {
 		//employeeModel.setStore(StoreService.findById(employeeModel.getStore().getId()));
 		Employee employee = employeeRepository.save(employeeConverter.modelToEntity(employeeModel));
 		return employeeConverter.entityToModel(employee);
+	}
+	
+	@Override
+	public EmployeeModel insert(EmployeeModel employeeModel) {
+		Employee employee = employeeRepository.save(employeeConverter.modelToEntity(employeeModel));
+		return employeeConverter.entityToModel(employee);
+	}
+	
+	@Override
+	public EmployeeModel update(EmployeeModel employeeModel) {
+		employeeModel.setStore(storeService.findById(employeeModel.getStore().getId()));
+		Employee employee = employeeRepository.save(employeeConverter.modelToEntity(employeeModel));
+		return employeeConverter.entityToModel(employee);
+
 	}
 	
 	@Override

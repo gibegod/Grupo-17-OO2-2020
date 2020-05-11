@@ -3,6 +3,7 @@ package com.controlstock.entities;
 import java.util.Set;
 import java.util.HashSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Store {
@@ -22,7 +24,7 @@ public class Store {
 	private int id;
 	
 	//@NotNull
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	//Direccion
 	private Address address;
 	
@@ -30,10 +32,10 @@ public class Store {
 	//Telefono
 	private long phoneNumber;
 	
-	//@NotNull
-	@OneToOne
+	//@Null
+	//@OneToOne
 	//Gerente
-	private Employee manager;
+	//private Employee manager;
 	
 	//@NotNull
 	@OneToMany
@@ -46,12 +48,12 @@ public class Store {
 	
 	public Store() {}
 	
-	public Store (Address address, int id, long phoneNumber, Employee manager) {
+	public Store (Address address, int id, long phoneNumber) {
 		super();
 		this.address = address;
 		this.id = id;
 		this.phoneNumber = phoneNumber;
-		this.manager = manager;
+		//this.manager = manager;
 		this.setEmployees = new HashSet<Employee>();
 		this.setBatchs = new HashSet<Batch>();
 	}
@@ -72,14 +74,14 @@ public class Store {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Employee getManager() {
+/*	public Employee getManager() {
 		return manager;
 	}
 
 	public void setManager(Employee manager) {
 		this.manager = manager;
 	}
-
+*/
 	public Set<Employee> getSetEmployees() {
 		return setEmployees;
 	}

@@ -15,4 +15,8 @@ public interface IEmployeeService {
 	
 	public boolean remove(int id);
 
+	EmployeeModel insert(EmployeeModel employeeModel);
+
+	EmployeeModel update(EmployeeModel employeeModel);
+
 }

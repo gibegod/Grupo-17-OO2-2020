@@ -23,6 +23,10 @@ public class StoreService implements IStoreService {
 	@Autowired
 	@Qualifier("storeConverter")
 	private StoreConverter storeConverter;
+	
+	@Autowired
+	@Qualifier("addressService")
+	private AddressService addressService;
 
 	@Override
 	public List<Store> getAll() {
@@ -31,6 +35,19 @@ public class StoreService implements IStoreService {
 
 	@Override
 	public StoreModel insertOrUpdate(StoreModel storeModel) {
+		Store store = storeRepository.save(storeConverter.modelToEntity(storeModel));
+		return storeConverter.entityToModel(store);
+	}
+	
+	@Override
+	public StoreModel insert(StoreModel storeModel) {
+		Store store  = storeRepository.save(storeConverter.modelToEntity(storeModel));
+		return storeConverter.entityToModel(store);
+	}
+	
+	@Override
+	public StoreModel Update(StoreModel storeModel) {
+		storeModel.setAddress(addressService.findById(storeModel.getAddress().getId()));
 		Store store = storeRepository.save(storeConverter.modelToEntity(storeModel));
 		return storeConverter.entityToModel(store);
 	}
