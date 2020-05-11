@@ -12,6 +12,7 @@ import com.controlstock.models.StoreModel;
 import com.controlstock.repositories.IStoreRepository;
 import com.controlstock.services.IStoreService;
 
+		
 @Service("storeService")
 public class StoreService implements IStoreService {
 
