@@ -1,0 +1,24 @@
+.product-new {
+	width:25%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	background-color: white;
+	border-radius: 20px;
+	padding: 40px;
+}
+
+.product-new-header {
+	margin-bottom: 30px;
+}
+
+.btn {
+	width: 100%;
+	margin-top: 15px;
+}
+
+
+body{
+	color: black;
+	background-color: grey;
+}
