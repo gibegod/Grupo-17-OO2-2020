@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.AddressModel;
 import com.controlstock.models.StoreModel;
+import com.controlstock.services.IAddressService;
 import com.controlstock.services.IStoreService;
 
 @Controller
@@ -23,6 +24,10 @@ public class StoreController {
 	@Autowired
 	@Qualifier("storeService")
 	private IStoreService storeService;
+	
+	@Autowired
+	@Qualifier("addressService")
+	private IAddressService addressService;
 
 	@GetMapping("")
 	public ModelAndView index() {
@@ -35,18 +40,13 @@ public class StoreController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_NEW);
 		mAV.addObject("store", new StoreModel());
+		mAV.addObject("address", addressService.getAll());
 		return mAV;
 	}
 
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("store") StoreModel storeModel, @ModelAttribute("address") AddressModel addressModel) {
-		System.out.println(addressModel.getLatitude());
-		System.out.println(addressModel.getLatitude());
-		System.out.println(addressModel.getLatitude());
-		System.out.println(addressModel.getLatitude());
-		System.out.println(addressModel.getLatitude());
-		System.out.println(addressModel.getLatitude());
-		storeService.insertOrUpdate(storeModel);
+	public RedirectView create(@ModelAttribute("store") StoreModel storeModel) {
+		storeService.insert(storeModel);
 		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}
 
@@ -54,12 +54,13 @@ public class StoreController {
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_UPDATE);
 		mAV.addObject("store", storeService.findById(id));
+		mAV.addObject("address", addressService.getAll());
 		return mAV;
 	}
 
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("store") StoreModel storeModel) {
-		storeService.insertOrUpdate(storeModel);
+		storeService.Update(storeModel);
 		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}
 

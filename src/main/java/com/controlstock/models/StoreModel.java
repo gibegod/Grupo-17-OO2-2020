@@ -17,11 +17,11 @@ public class StoreModel {
 
 private int id;
 	
-	private Address address;
+	private AddressModel address;
 
 	private long phoneNumber;
 
-	private Employee manager;
+	//private Employee manager;
 
 	private Set <Employee> setEmployees;
 
@@ -29,21 +29,21 @@ private int id;
 
 	public StoreModel() {}
 
-	public StoreModel (Address address, int id, long phoneNumber, Employee manager) {
+	public StoreModel (AddressModel address, int id, long phoneNumber) {
 		super();
 		this.address = address;
 		this.id = id;
 		this.phoneNumber = phoneNumber;
-		this.manager = manager;
+		//this.manager = manager;
 		this.setEmployees = new HashSet<Employee>();
 		this.setBatchs = new HashSet<Batch>();
 	}
 
-	public Address getAddress() {
+	public AddressModel getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(AddressModel address) {
 		this.address = address;
 	}
 
@@ -55,13 +55,13 @@ private int id;
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Employee getManager() {
+	/*public Employee getManager() {
 		return manager;
 	}
 
 	public void setManager(Employee manager) {
 		this.manager = manager;
-	}
+	}*/
 
 	public Set<Employee> getSetEmployees() {
 		return setEmployees;

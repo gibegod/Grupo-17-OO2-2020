@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.EmployeeModel;
 import com.controlstock.services.IEmployeeService;
+import com.controlstock.services.IStoreService;
 import com.controlstock.services.implementation.StoreService;
 
 @Controller
@@ -23,6 +24,10 @@ public class EmployeeController {
 	@Autowired
 	@Qualifier("employeeService")
 	private IEmployeeService employeeService;
+	
+	@Autowired
+	@Qualifier("storeService")
+	private IStoreService storeService;
 	
 	@GetMapping("")
 	public ModelAndView index () {
@@ -35,13 +40,13 @@ public class EmployeeController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EMPLOYEE_NEW);
 		mAV.addObject("employee", new EmployeeModel());
-		//mAV.addObject("stores", StoreService.getAll());
+		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
 	
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("employee") EmployeeModel employeeModel) {
-		employeeService.insertOrUpdate(employeeModel);
+		employeeService.insert(employeeModel);
 		return new RedirectView(ViewRouteHelper.EMPLOYEE_ROOT);
 	}
 	
@@ -49,13 +54,13 @@ public class EmployeeController {
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EMPLOYEE_UPDATE);
 		mAV.addObject("employee", employeeService.findById(id));
-		//mAV.addObject("stores", StoreService.getAll());
+		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
 	
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("employee") EmployeeModel employeeModel) {
-		employeeService.insertOrUpdate(employeeModel);
+		employeeService.update(employeeModel);
 		return new RedirectView(ViewRouteHelper.EMPLOYEE_ROOT);
 	}
 	

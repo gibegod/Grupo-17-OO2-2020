@@ -15,4 +15,8 @@ public interface IStoreService {
 	
 	public boolean remove(int id);
 
+	public StoreModel insert(StoreModel storeModel);
+
+	public StoreModel Update(StoreModel storeModel);
+
 }

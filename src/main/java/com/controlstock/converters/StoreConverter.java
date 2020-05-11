@@ -1,5 +1,7 @@
 package com.controlstock.converters;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.controlstock.entities.Address;
@@ -10,12 +12,16 @@ import com.controlstock.models.StoreModel;
 @Component("storeConverter")
 public class StoreConverter {
 	
+	@Autowired
+	@Qualifier("addressConverter")
+	private AddressConverter addressConverter;
+	
 	public StoreModel entityToModel(Store store) {
-		return new StoreModel(store.getAddress(), store.getId(),  store.getPhoneNumber(), store.getManager());
+		return new StoreModel(addressConverter.entityToModel(store.getAddress()), store.getId(),  store.getPhoneNumber());
 	}
 	
 	public Store modelToEntity(StoreModel storeModel) {
-		return new Store (storeModel.getAddress(), storeModel.getId(), storeModel.getPhoneNumber(), storeModel.getManager()); 
+		return new Store (addressConverter.modelToEntity(storeModel.getAddress()), storeModel.getId(), storeModel.getPhoneNumber()); 
 	}
 	
 }
