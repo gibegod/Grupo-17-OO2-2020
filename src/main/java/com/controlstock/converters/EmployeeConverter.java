@@ -20,6 +20,7 @@ public class EmployeeConverter {
 								employee.getMinimunWage(), employee.getPlus(), storeConverter.entityToModel(employee.getStore()));
 	}
 	
+	
 	public Employee modelToEntity(EmployeeModel employeeModel) {
 		return new Employee(employeeModel.getId(), employeeModel.getName(), employeeModel.getSurname(), 
 							employeeModel.getBirthdate(),
