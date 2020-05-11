@@ -16,6 +16,7 @@
 		</div>
 		<form action="#" th:action="@{/client/update}" th:object="${client}"
 			method="post">
+			<input type="hidden" th:field="*{id}" />
 			<div class="form-group">
 				<label>Name</label> <input type="text" class="form-control"
 					placeholder="Enter your name" th:field="*{name}">

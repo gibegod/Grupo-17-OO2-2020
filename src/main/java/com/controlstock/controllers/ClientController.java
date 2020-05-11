@@ -58,6 +58,7 @@ public class ClientController {
 	
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("client") ClientModel clientModel) {
+		System.out.println(clientModel.getId());
 		clientService.insertOrUpdate(clientModel);
 		return new RedirectView(ViewRouteHelper.CLIENT_ROOT);
 	}
