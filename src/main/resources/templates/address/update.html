@@ -18,6 +18,7 @@
 
 		<form action="#" th:action="@{/address/update}" th:object="${address}"
 			method="post">
+			<input type="hidden" th:field="*{id}" />
 			<div class="form-group">
 				<label>City</label> <input type="text" class="form-control"
 					placeholder="Enter city" th:field="*{city}">
