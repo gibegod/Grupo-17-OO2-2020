@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<form action="#" th:action="@{/store/update}" th:object="${store}"
+	method="post">
+	<input type="hidden" th:field="*{id}" /> 
+	<select placeholder="Address" th:field="*{address.id}">
+		<option th:each="a : ${address}" th:value="${a.id}"
+			th:text="${a.city}"></option>
+	</select>
+	<p>
+		Phone number: <input type="text" th:field="*{phoneNumber}" />
+	</p>
+	<input type="submit" value="Edit" />
+</form>
+<form action="#" th:action="@{/store/delete/{id}(id=${store.id})}"
+	method="post">
+	<input type="submit" value="delete store" />
+</form>

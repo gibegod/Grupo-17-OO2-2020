@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Store {
@@ -33,7 +32,7 @@ public class Store {
 	private long phoneNumber;
 	
 	//@Null
-	//@OneToOne
+	//@OneToMany
 	//Gerente
 	//private Employee manager;
 	

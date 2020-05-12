@@ -24,7 +24,7 @@ public class AddressModel {
 	
 	public AddressModel(int id, String city, String street, int number, float latitude, float longitude) {
 		super();
-		this.id = id;
+		this.setId(id);
 		this.city = city;
 		this.street = street;
 		this.number = number;
@@ -32,6 +32,7 @@ public class AddressModel {
 		this.longitude = longitude;
 	}
 	
+	/*
 	public AddressModel(String city, String street, int number, float latitude, float longitude) {
 		super();
 		this.city = city;
@@ -39,7 +40,7 @@ public class AddressModel {
 		this.number = number;
 		this.latitude = latitude;
 		this.longitude = longitude;
-	}
+	}*/
 
 	public boolean equals(AddressModel addressmodel) {
 		return addressmodel.getLatitude() == latitude && addressmodel.getLongitude() == longitude;
