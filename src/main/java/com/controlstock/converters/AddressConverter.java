@@ -10,13 +10,13 @@ import com.controlstock.models.AddressModel;
 public class AddressConverter {
 	
 	public AddressModel entityToModel(Address address) {
-		return new AddressModel(address.getId(), address.getCity(), address.getStreet(),
-				address.getNumber(), address.getLatitude(), address.getLongitude());
+		return new AddressModel(address.getId(), address.getCity(), address.getStreet(), address.getNumber(), 
+								address.getLatitude(), address.getLongitude());
 	}
 	
-	public Address modelToEntity(AddressModel addressmodel) {
-		return new Address(addressmodel.getId(), addressmodel.getCity(), addressmodel.getStreet(),
-				addressmodel.getNumber(), addressmodel.getLatitude(), addressmodel.getLongitude());
+	public Address modelToEntity(AddressModel addressModel) {
+		return new Address(addressModel.getId(), addressModel.getCity(), addressModel.getStreet(), 
+							addressModel.getNumber(), addressModel.getLatitude(), addressModel.getLongitude());
 	}
 	
 }

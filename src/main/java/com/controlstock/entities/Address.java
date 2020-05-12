@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotNull;
 
 @Entity
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class Address {
 	
 	@Id
@@ -39,7 +42,7 @@ public class Address {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-	
+	/*
 	public Address(String city, String street, int number, float latitude, float longitude) {
 		super();
 		this.city = city;
@@ -47,7 +50,7 @@ public class Address {
 		this.number = number;
 		this.latitude = latitude;
 		this.longitude = longitude;
-	}
+	}*/
 
 	public boolean equals(Address address) {
 		return address.getLatitude() == latitude && address.getLongitude() == longitude;
