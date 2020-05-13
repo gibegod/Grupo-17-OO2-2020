@@ -8,26 +8,32 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" type="text/css" th:href="@{/css/employee.css}">
 </head>
 <body>
-	<div>
-		<table class="table">
+	<div class="employee-table">
+		<table class="table table-striped table-dark">
 			<thead>
 				<tr>
 					<th scope="col">ID Employee</th>
+					<th scope="col">Name</th>
+					<th scope="col">Surname</th>
+					<th scope="col">Manager?</th>
 					<th scope="col">View</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="employee : ${employees}">
 					<td><span th:text="${employee.id}" /></td>
-					<td><a th:href="@{/employee/{id}(id=${employee.id})}">View</a>
+					<td><span th:text="${employee.name}" /></td>
+					<td><span th:text="${employee.surname}" /></td>
+					<td><span th:text="${employee.manager}" /></td>
+					<td><a th:href="@{/employee/{id}(id=${employee.id})}">Edit</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="/employee/new">Create new employee</a>
+		<a th:href="@{/employee/new}" type="button" class="btn btn-dark btn-sm">Create new employee</a>
 	</div>
 </body>
 </html>

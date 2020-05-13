@@ -2,47 +2,64 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Update</title>
+<title>Edit Employee</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/employee-new.css}">
 </head>
 <body>
-	<form action="#" th:action="@{/employee/update}" th:object=${employee}
-		method="post">
-		<input type="hidden" th:field="*{id}" />
-		<p>
-			Name: <input type="text" th:field="*{name}" />
-		</p>
-		<p>
-			Surname: <input type="text" th:field="*{surname}" />
-		</p>
-		<p>
-			Birthdate: <input type="date" th:field="*{birthdate}" />
-		</p>
-		<p>
-			DNI: <input type="number" th:field="*{dni}" />
-		</p>
-		<p>
-			Working Hours: <input type="number" th:field="*{workingHours}" />
-		</p>
-		<p>
-			Manager? (boolean): <input type="text" th:field="*{manager}" />
-		</p>
-		<p>
-			Minimun Wage: <input type="number" th:field="*{minimunWage}" />
-		</p>
-		<p>
-			Plus: <input type="number" th:field="*{plus}" />
-		</p>
-		<p>Store:</p>
-		<select placeholder="Store" th:field="*{store.id}">
-			<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.phoneNumber}"></option>
-		</select> 
-		
-		<input type="submit" value="Edit" />
-	</form>
-	<form action="#"
-		th:action="@{/employee/delete/{id}(id=${employee.id})}" method="post">
-		<input type="submit" value="Delete employee" />
-	</form>
+	<div class="employee-new">
+		<div class="employee-new-header">
+			<h5>Edit Employee</h5>
+		</div>
 
+		<form action="#" th:action="@{/employee/update}"
+			th:object="${employee}" method="post">
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-group">
+				<label>Name</label> <input type="text" class="form-control"
+					placeholder="Enter name" th:field="*{name}" />
+			</div>
+			<div class="form-group">
+				<label>Surname</label> <input type="text" class="form-control"
+					placeholder="Enter surname" th:field="*{surname}" />
+			</div>
+			<div class="form-group">
+				<label>Birthdate</label> <input type="date" class="form-control"
+					placeholder="Enter birthdate" th:field="*{birthdate}" />
+			</div>
+			<div class="form-group">
+
+				<label>DNI</label> <input type="text" class="form-control"
+					placeholder="Enter DNI" th:field="*{dni}" />
+			</div>
+			<div class="form-group">
+
+				<label>Working Hours</label> <input type="number"
+					class="form-control" placeholder="Enter working hours"
+					th:field="*{workingHours}" />
+			</div>
+			<div class="form-group">
+				<label>Manager? (boolean):</label> <input type="checkbox"
+					class="form-check-input" th:field="*{manager}" />
+			</div>
+			<div class="form-group">
+				<select class="form-control" placeholder="Store"
+					th:field="*{store.id}">
+					<option th:each="store : ${stores}" th:value="${store.id}"
+						th:text="${store.phoneNumber}"></option>
+				</select> <input class="btn-edit btn btn-outline-dark" type="submit"
+					value="Create new employee">
+			</div>
+		</form>
+		<form action="#" th:action="@{/employee/delete/{id}(id=${employee.id})}"
+			method="post">
+			<input class="btn btn-outline-danger" type="submit"
+				value="Delete this employee">
+		</form>
+	</div>
 </body>
 </html>
