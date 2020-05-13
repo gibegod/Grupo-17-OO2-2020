@@ -3,26 +3,33 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Store</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/store.css}">
 </head>
-<body>	
-	<table border="1px">
-		<thead>
-			<tr>
-				<th>Address</th>
-				<th>PhoneNumber</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="store : ${stores}">
-				<td><span th:text="${store.address.city}"/></td>
-				<td><span th:text="${store.phoneNumber}"/></td>
+<body>
+	<div class="store-table">
+		<table class="table table-striped table-dark">
+			<thead>
+				<tr>
+					<th>Store ID</th>
+					<th>Address</th>
+					<th>PhoneNumber</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="store : ${stores}">
+					<td><span th:text="${store.id}" /></td>
+					<td><span th:text="${store.address.city}" /></td>
+					<td><span th:text="${store.phoneNumber}" /></td>
 
-				<td>
-					<a th:href="@{/store/{id}(id=${store.id})}">Edit</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="/store/new">New store</a>
+					<td><a th:href="@{/store/{id}(id=${store.id})}">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/store/new}" type="button" class="btn btn-dark btn-sm">Create new store</a>
 </body>
 </html>
