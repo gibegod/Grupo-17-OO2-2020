@@ -13,22 +13,22 @@ import javax.validation.constraints.NotNull;
 public class Address {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull
+	//@NotNull
 	private String city;
 	
-	@NotNull
+	//@NotNull
 	private String street;
 	
-	@NotNull
+	//@NotNull
 	private int number;
 	
-	@NotNull
+	//@NotNull
 	private float latitude;
 	
-	@NotNull
+	//@NotNull
 	private float longitude;
 	
 	public Address() {};

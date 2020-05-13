@@ -19,15 +19,15 @@ import javax.validation.constraints.NotNull;
 public class Store {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	//@NotNull
+	@NotNull
 	@OneToOne(cascade = CascadeType.MERGE)
 	//Direccion
 	private Address address;
 	
-	//@NotNull
+	@NotNull
 	//Telefono
 	private long phoneNumber;
 	
@@ -37,24 +37,32 @@ public class Store {
 	//private Employee manager;
 	
 	//@NotNull
-	@OneToMany
+	//@OneToMany
 	//Vendedores
-	private Set <Employee> setEmployees;
+	//private Set <Employee> setEmployees;
 	
 	//@NotNull
-	@OneToMany
-	private Set<Batch> setBatchs;
+	//@OneToMany
+	//private Set<Batch> setBatchs;
 	
 	public Store() {}
 	
-	public Store (Address address, int id, long phoneNumber) {
+	public Store (int id, Address address, long phoneNumber) {
 		super();
-		this.address = address;
 		this.id = id;
+		this.address = address;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
-		this.setEmployees = new HashSet<Employee>();
-		this.setBatchs = new HashSet<Batch>();
+		//this.setEmployees = new HashSet<Employee>();
+		//this.setBatchs = new HashSet<Batch>();
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public Address getAddress() {
@@ -81,6 +89,7 @@ public class Store {
 		this.manager = manager;
 	}
 */
+	/*
 	public Set<Employee> getSetEmployees() {
 		return setEmployees;
 	}
@@ -96,11 +105,7 @@ public class Store {
 	public void setSetBatchs(Set<Batch> setBatchs) {
 		this.setBatchs = setBatchs;
 	}
-
-	public int getId() {
-		return id;
-	}
-
+*/
 	public boolean equals(Store store)
 	{
 		return store.getAddress().equals(address);

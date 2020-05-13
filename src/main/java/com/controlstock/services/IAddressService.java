@@ -11,7 +11,7 @@ public interface IAddressService {
 	
 	public AddressModel findById(int id);
 	
-	public AddressModel insertOrUpdate(AddressModel productModel);
+	public AddressModel insertOrUpdate(AddressModel addressModel);
 	
 	public boolean remove(int id);
 

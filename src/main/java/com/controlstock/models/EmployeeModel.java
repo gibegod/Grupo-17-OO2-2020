@@ -2,6 +2,8 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
+import com.controlstock.entities.Store;
+
 public class EmployeeModel extends PersonModel {
 	
 	private int workingHours;
@@ -62,8 +64,8 @@ public class EmployeeModel extends PersonModel {
 		return store;
 	}
 
-	public void setStore(StoreModel store) {
-		this.store = store;
+	public void setStore(StoreModel storeModel) {
+		this.store = storeModel;
 	}
 
 }

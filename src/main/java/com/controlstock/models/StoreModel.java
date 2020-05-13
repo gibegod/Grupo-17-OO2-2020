@@ -14,7 +14,7 @@ import com.controlstock.entities.Store;
 
 public class StoreModel {
 
-private int id;
+	private int id;
 	
 	private AddressModel address;
 
@@ -22,20 +22,20 @@ private int id;
 
 	//private Employee manager;
 
-	private Set <Employee> setEmployees;
+	//private Set<Employee> setEmployees;
 
-	private Set<Batch> setBatchs;
+	//private Set<Batch> setBatchs;
 
 	public StoreModel() {}
 
-	public StoreModel (AddressModel address, int id, long phoneNumber) {
+	public StoreModel (int id, AddressModel address, long phoneNumber) {
 		super();
+		setId(id);
 		this.address = address;
-		this.id = id;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
-		this.setEmployees = new HashSet<Employee>();
-		this.setBatchs = new HashSet<Batch>();
+		//this.setEmployees = new HashSet<Employee>();
+		//this.setBatchs = new HashSet<Batch>();
 	}
 
 	public AddressModel getAddress() {
@@ -61,7 +61,7 @@ private int id;
 	public void setManager(Employee manager) {
 		this.manager = manager;
 	}*/
-
+/*
 	public Set<Employee> getSetEmployees() {
 		return setEmployees;
 	}
@@ -77,7 +77,7 @@ private int id;
 	public void setSetBatchs(Set<Batch> setBatchs) {
 		this.setBatchs = setBatchs;
 	}
-
+*/
 	public int getId() {
 		return id;
 	}

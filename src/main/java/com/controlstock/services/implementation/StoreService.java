@@ -41,12 +41,12 @@ public class StoreService implements IStoreService {
 	
 	@Override
 	public StoreModel insert(StoreModel storeModel) {
-		Store store  = storeRepository.save(storeConverter.modelToEntity(storeModel));
+		Store store = storeRepository.save(storeConverter.modelToEntity(storeModel));
 		return storeConverter.entityToModel(store);
 	}
 	
 	@Override
-	public StoreModel Update(StoreModel storeModel) {
+	public StoreModel update(StoreModel storeModel) {
 		storeModel.setAddress(addressService.findById(storeModel.getAddress().getId()));
 		Store store = storeRepository.save(storeConverter.modelToEntity(storeModel));
 		return storeConverter.entityToModel(store);

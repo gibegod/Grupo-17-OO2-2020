@@ -10,8 +10,8 @@ import com.controlstock.models.EmployeeModel;
 @Component("employeeConverter")
 public class EmployeeConverter {
 
-	@Autowired
-	@Qualifier("storeConverter")
+	//@Autowired
+	//@Qualifier("storeConverter")
 	private StoreConverter storeConverter;
 	
 	public EmployeeModel entityToModel(Employee employee) {

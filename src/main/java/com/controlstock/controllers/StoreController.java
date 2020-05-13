@@ -60,7 +60,7 @@ public class StoreController {
 
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("store") StoreModel storeModel) {
-		storeService.Update(storeModel);
+		storeService.update(storeModel);
 		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}
 
