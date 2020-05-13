@@ -3,14 +3,8 @@ package com.controlstock.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-import com.controlstock.entities.Address;
 import com.controlstock.entities.Employee;
 import com.controlstock.entities.Batch;
-import com.controlstock.entities.Store;
 
 public class StoreModel {
 
@@ -36,6 +30,14 @@ public class StoreModel {
 		//this.manager = manager;
 		//this.setEmployees = new HashSet<Employee>();
 		//this.setBatchs = new HashSet<Batch>();
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public AddressModel getAddress() {
@@ -78,13 +80,6 @@ public class StoreModel {
 		this.setBatchs = setBatchs;
 	}
 */
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -104,7 +99,5 @@ public class StoreModel {
 			return false;
 		return true;
 	}
-
-	
 
 }

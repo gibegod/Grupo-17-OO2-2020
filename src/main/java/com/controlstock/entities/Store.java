@@ -56,7 +56,7 @@ public class Store {
 		//this.setEmployees = new HashSet<Employee>();
 		//this.setBatchs = new HashSet<Batch>();
 	}
-	
+
 	public int getId() {
 		return id;
 	}

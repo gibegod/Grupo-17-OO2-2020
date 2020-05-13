@@ -13,7 +13,6 @@ import javax.persistence.InheritanceType;
 import com.sun.istack.NotNull;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "PERSON_TYPE")
 public abstract class Person {

@@ -10,8 +10,8 @@ import com.controlstock.models.StoreModel;
 @Component("storeConverter")
 public class StoreConverter {
 	
-	//@Autowired
-	//@Qualifier("addressConverter")
+	@Autowired
+	@Qualifier("addressConverter")
 	private AddressConverter addressConverter;
 	
 	public StoreModel entityToModel(Store store) {
@@ -20,7 +20,7 @@ public class StoreConverter {
 	}
 	
 	public Store modelToEntity(StoreModel storeModel) {
-		return new Store (storeModel.getId(), addressConverter.modelToEntity(storeModel.getAddress()),  
+		return new Store(storeModel.getId(), addressConverter.modelToEntity(storeModel.getAddress()),  
 						storeModel.getPhoneNumber()); 
 	}
 	

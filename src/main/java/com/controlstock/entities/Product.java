@@ -24,22 +24,22 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	//@NotNull
+	@NotNull
 	private boolean status;
 	
-	//@NotNull
+	@NotNull
 	private String description;
 	
 	//PrecioUnitario
-	//@NotNull
+	@NotNull
 	private float unitPrice;
 	
 	//Fecha de alta
-	//@NotNull
+	@NotNull
 	private LocalDate dischargeDate;
 	
 	//Marca
-	//@NotNull
+	@NotNull
 	private String brand;
 	
 	@CreationTimestamp
@@ -65,7 +65,6 @@ public class Product {
 		return id;
 	}
 	
-	//Tiene que ser public
 	public void setId(int id) {
 		this.id = id;
 	}

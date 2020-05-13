@@ -38,7 +38,6 @@ public class ProductModel {
 		return id;
 	}
 
-	//Tiene que ser public
 	public void setId(int id) {
 		this.id = id;
 	}
