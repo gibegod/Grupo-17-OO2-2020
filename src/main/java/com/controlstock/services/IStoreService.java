@@ -17,6 +17,6 @@ public interface IStoreService {
 
 	public StoreModel insert(StoreModel storeModel);
 
-	public StoreModel Update(StoreModel storeModel);
+	public StoreModel update(StoreModel storeModel);
 
 }

@@ -9,11 +9,11 @@ import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotNull;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Address {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@NotNull
@@ -42,6 +42,13 @@ public class Address {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	
+	/*
+	public Address (int id) {
+		this.id = id;
+	}
+	*/
+	
 	/*
 	public Address(String city, String street, int number, float latitude, float longitude) {
 		super();
@@ -52,9 +59,6 @@ public class Address {
 		this.longitude = longitude;
 	}*/
 
-	public boolean equals(Address address) {
-		return address.getLatitude() == latitude && address.getLongitude() == longitude;
-	}
 
 	public int getId() {
 		return id;
@@ -103,4 +107,9 @@ public class Address {
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
+	
+	public boolean equals(Address address) {
+		return address.getLatitude() == latitude && address.getLongitude() == longitude;
+	}
+	
 }

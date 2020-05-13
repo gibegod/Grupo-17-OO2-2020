@@ -62,8 +62,8 @@ public class EmployeeModel extends PersonModel {
 		return store;
 	}
 
-	public void setStore(StoreModel store) {
-		this.store = store;
+	public void setStore(StoreModel storeModel) {
+		this.store = storeModel;
 	}
 
 }

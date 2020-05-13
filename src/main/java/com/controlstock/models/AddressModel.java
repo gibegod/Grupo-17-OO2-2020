@@ -2,23 +2,18 @@ package com.controlstock.models;
 
 public class AddressModel {
 	
-
 	private int id;
 	
-
 	private String city;
 	
-
 	private String street;
 	
-
 	private int number;
-	
 
-	private float latitude;
-	
+	private float latitude;	
 
 	private float longitude;
+	
 	
 	public AddressModel() {};
 	
@@ -32,20 +27,7 @@ public class AddressModel {
 		this.longitude = longitude;
 	}
 	
-	/*
-	public AddressModel(String city, String street, int number, float latitude, float longitude) {
-		super();
-		this.city = city;
-		this.street = street;
-		this.number = number;
-		this.latitude = latitude;
-		this.longitude = longitude;
-	}*/
-
-	public boolean equals(AddressModel addressmodel) {
-		return addressmodel.getLatitude() == latitude && addressmodel.getLongitude() == longitude;
-	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -92,5 +74,9 @@ public class AddressModel {
 
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
+	}
+	
+	public boolean equals(AddressModel addressmodel) {
+		return addressmodel.getLatitude() == latitude && addressmodel.getLongitude() == longitude;
 	}
 }

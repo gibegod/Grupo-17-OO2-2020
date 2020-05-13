@@ -26,7 +26,7 @@
 	</p>
 	<p>Store:</p>
 	<select placeholder="Store" th:field="*{store.id}">
-		<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.address.city}"></option>
+		<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.phoneNumber}"></option>
 	</select> 
 	<input type="submit" value="create" />
 </form>
