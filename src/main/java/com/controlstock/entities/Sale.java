@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 public class Sale {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@NotNull

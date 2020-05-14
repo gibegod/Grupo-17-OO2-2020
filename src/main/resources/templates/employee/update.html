@@ -47,16 +47,21 @@
 					class="form-check-input" th:field="*{manager}" />
 			</div>
 			<div class="form-group">
-				<select class="form-control" placeholder="Store"
+				<label>Minimun Wage</label> <input type="number"
+					class="form-control" placeholder="Enter minimun wage"
+					th:field="*{minimunWage}" />
+			</div>
+			<div class="form-group">
+				<label>Store</label> <select class="form-control" placeholder="Store"
 					th:field="*{store.id}">
 					<option th:each="store : ${stores}" th:value="${store.id}"
-						th:text="${store.phoneNumber}"></option>
+						th:text="${store.address.city}"></option>
 				</select> <input class="btn-edit btn btn-outline-dark" type="submit"
-					value="Create new employee">
+					value="Edit employee">
 			</div>
 		</form>
-		<form action="#" th:action="@{/employee/delete/{id}(id=${employee.id})}"
-			method="post">
+		<form action="#"
+			th:action="@{/employee/delete/{id}(id=${employee.id})}" method="post">
 			<input class="btn btn-outline-danger" type="submit"
 				value="Delete this employee">
 		</form>
