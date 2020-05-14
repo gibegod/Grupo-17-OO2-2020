@@ -18,7 +18,7 @@ import com.sun.istack.NotNull;
 public abstract class Person {
 	
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
     
     @NotNull

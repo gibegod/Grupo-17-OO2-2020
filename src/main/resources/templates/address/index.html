@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
-<title>Direcciones</title>
+<title>Addresses</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -14,11 +14,11 @@
 		<table class="table table-striped table-dark">
 			<thead>
 				<tr>
-					<th>Ciudad</th>
-					<th>Calle</th>
-					<th>Número</th>
-					<th>Latitud</th>
-					<th>Longitud</th>
+					<th>City</th>
+					<th>Street</th>
+					<th>Number</th>
+					<th>Latitude</th>
+					<th>Longitude</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -29,7 +29,7 @@
 					<td><span th:text="${address.number}"></span></td>
 					<td><span th:text="${address.latitude}"></span></td>
 					<td><span th:text="${address.longitude}"></span></td>
-					<td><a th:href="@{/address/{id}(id=${address.id})}">Ver</a></td>
+					<td><a th:href="@{/address/{id}(id=${address.id})}">View</a></td>
 				</tr>
 			</tbody>
 		</table>

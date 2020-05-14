@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Clients</title>
+<title>Employee</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" th:href="@{/css/employee-new.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/employee-new.css}">
 </head>
 <body>
 	<div class="employee-new">
@@ -31,28 +32,30 @@
 					placeholder="Enter birthdate" th:field="*{birthdate}" />
 			</div>
 			<div class="form-group">
-
 				<label>DNI</label> <input type="text" class="form-control"
 					placeholder="Enter DNI" th:field="*{dni}" />
 			</div>
 			<div class="form-group">
-
 				<label>Working Hours</label> <input type="number"
 					class="form-control" placeholder="Enter working hours"
 					th:field="*{workingHours}" />
 			</div>
 			<div class="form-group">
 				<label>Manager? (boolean):</label> <input type="checkbox"
-					class="form-check-input"
-					th:field="*{manager}" />
+					class="form-check-input" th:field="*{manager}" />
 			</div>
 			<div class="form-group">
-				<select class="form-control" placeholder="Store"
+				<label>Minimun Wage</label> <input type="number"
+					class="form-control" placeholder="Enter minimun wage"
+					th:field="*{minimunWage}" />
+			</div>
+			<div class="form-group">
+				<label>Store</label> <select class="form-control" placeholder="Store"
 					th:field="*{store.id}">
 					<option th:each="store : ${stores}" th:value="${store.id}"
-						th:text="${store.phoneNumber}"></option>
-				</select> 
-				<input class="btn btn-outline-dark" type="submit" value="Create new employee">
+						th:text="${store.address.city}"></option>
+				</select> <input class="btn btn-outline-dark" type="submit"
+					value="Create new employee">
 			</div>
 		</form>
 	</div>
