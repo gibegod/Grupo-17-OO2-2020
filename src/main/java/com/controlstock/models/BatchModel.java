@@ -1,51 +1,35 @@
-package com.controlstock.entities;
+package com.controlstock.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
-//Lote
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Batch {
+public class BatchModel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull
-	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	private Product product;
+	private ProductModel product;
 	
-	@NotNull
 	private char size;
 	
-	@NotNull
 	private int currentAmount;
 	
-	@NotNull
 	private int initialAmount;
 	
-	@NotNull
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate admissionDate;
 	
-	public Batch() {}
 	
-	public Batch(int id, Product product, char size, int currentAmount, int initialAmount, LocalDate admissionDate) {
+	public BatchModel() {}
+
+
+	public BatchModel(int id, ProductModel product, char size, int currentAmount, int initialAmount,
+			LocalDate admissionDate) {
 		super();
 		this.id = id;
 		this.product = product;
 		this.size = size;
-		this.currentAmount = initialAmount;
+		this.currentAmount = currentAmount;
 		this.initialAmount = initialAmount;
 		this.admissionDate = admissionDate;
 	}
@@ -55,16 +39,18 @@ public class Batch {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Product getProduct() {
+
+	public ProductModel getProduct() {
 		return product;
 	}
 
 
-	public void setProduct(Product product) {
+	public void setProduct(ProductModel product) {
 		this.product = product;
 	}
 
@@ -108,4 +94,5 @@ public class Batch {
 		this.admissionDate = admissionDate;
 	}
 
+	
 }

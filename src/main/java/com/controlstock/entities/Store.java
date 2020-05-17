@@ -32,14 +32,14 @@ public class Store {
 	private long phoneNumber;
 	
 	//@Null
-	//@OneToMany
+	//@OneToOne
 	//Gerente
 	//private Employee manager;
 	
-	//@NotNull
-	//@OneToMany
+	//@Null
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
 	//Vendedores
-	//private Set <Employee> setEmployees;
+	//private Set <Employee> setEmployees = newHashSet<Employee>();
 	
 	//@NotNull
 	//@OneToMany

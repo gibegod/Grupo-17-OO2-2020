@@ -1,0 +1,17 @@
+<form action="#" th:action="@{/batch/create}" th:object="${batch}"
+	method="post">
+	<label>Product</label> 
+	<select class="form-control" placeholder="Product" th:field="*{product.id}">
+		<option th:each="product : ${products}" th:value="${product.id}"
+			th:text="${product.description}"></option>
+	</select> 
+	<label>Size</label> <input type="text" class="form-control"
+		placeholder="Enter size" th:field="*{size}">
+		<label>Current amount</label> <input type="text" class="form-control"
+			placeholder="Enter current amount" th:field="*{currentAmount}">
+		<label>Initial amount</label> <input type="text" class="form-control"
+			placeholder="Enter initial amount" th:field="*{initialAmount}">
+		<label>Admission date</label> <input type="date" class="form-control"
+			placeholder="Enter admission date" th:field="*{admissionDate}">
+		<input type="submit" value="New batch" />
+</form>

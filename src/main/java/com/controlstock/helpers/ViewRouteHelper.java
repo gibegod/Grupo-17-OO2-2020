@@ -10,6 +10,12 @@ public class ViewRouteHelper {
 	public final static String PRODUCT_NEW = "product/new";
 	public final static String PRODUCT_UPDATE = "product/update";
 	
+	//Lote (Batch)
+	
+	public final static String BATCH_INDEX = "batch/index";
+	public final static String BATCH_NEW = "batch/new";
+	public final static String BATCH_UPDATE = "batch/update";
+	
 	//Locales (Store)
 	
 	public final static String STORE_INDEX = "store/index";
@@ -38,6 +44,7 @@ public class ViewRouteHelper {
 	//Redirects ------------------------------------------------------------
 	
 	public final static String PRODUCT_ROOT = "/product";
+	public final static String BATCH_ROOT = "/batch";
 	public final static String STORE_ROOT = "/store";
 	public final static String CLIENT_ROOT = "/client";
 	public final static String EMPLOYEE_ROOT = "/employee";
