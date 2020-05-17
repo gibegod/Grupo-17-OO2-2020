@@ -99,22 +99,5 @@ public class StoreModel {
 			return false;
 		return true;
 	}
-	
-	//Calculo distancia entre Stores
-	public static float distanceStores(float lat1, float lng1, float lat2, float lng2) {
-		float radioTierra = 6371; //en km.
-		float dLat = (float) Math.toRadians(lat2 - lat1);
-		float dLng = (float) Math.toRadians(lng2 - lng1);
-		float sindLat = (float) Math.sin(dLat/2);
-		float sindLng = (float) Math.sin(dLng/2);
-		float va1 = (float) (Math.pow(sindLat, 2) + Math.pow(sindLng, 2) * Math.cos(Math.toRadians(lat1)) *
-					Math.cos(Math.toRadians(lat2)));
-		float va2 = (float) (2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1)));
-		
-		return radioTierra * va2;
-	}
-	
-	
-	
 
 }

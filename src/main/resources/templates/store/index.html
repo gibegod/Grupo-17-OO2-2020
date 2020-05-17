@@ -25,12 +25,28 @@
 					<td><span th:text="${store.id}" /></td>
 					<td><span th:text="${store.address.city}" /></td>
 					<td><span th:text="${store.phoneNumber}" /></td>
-					
+
 					<td><a th:href="@{/store/{id}(id=${store.id})}">Edit</a></td>
 					<td><span th:text="${store.id}" /></td>
 				</tr>
 			</tbody>
 		</table>
 		<a th:href="@{/store/new}" type="button" class="btn btn-dark btn-sm">Create new store</a>
+		
+		<form action="" method="post">
+			<p>Store 1:</p>
+			<select placeholder="Store1" name="store1.id">
+				<option th:each="store : ${stores}" th:value="${store.id}"
+					th:text="${store.address.city}"></option>
+			</select>
+
+			<p>Store 2:</p>
+			<select placeholder="Store2" name="store2.id">
+				<option th:each="store : ${stores}" th:value="${store.id}"
+					th:text="${store.address.city}"></option>
+			</select> 
+			<input type="submit" />
+			<span th:text="${distance}" /> km.
+		</form>
 </body>
 </html>
