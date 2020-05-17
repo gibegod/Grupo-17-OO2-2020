@@ -36,11 +36,11 @@ public class StoreController {
 		mAV.addObject("stores", storeService.getAll());
 		
 		//Test distanceStores
-		StoreModel store1 = storeService.findById(1);
-		StoreModel store2 = storeService.findById(2);
-		System.out.println("Distancia: " + distanceStores(store1.getAddress().getLatitude(), 
-											store1.getAddress().getLongitude(), store2.getAddress().getLatitude(), 
-											store2.getAddress().getLongitude()) + " km.");
+		//StoreModel store1 = storeService.findById(1);
+		//StoreModel store2 = storeService.findById(2);
+		//System.out.println("Distancia: " + distanceStores(store1.getAddress().getLatitude(), 
+		//									store1.getAddress().getLongitude(), store2.getAddress().getLatitude(), 
+		//									store2.getAddress().getLongitude()) + " km.");
 		return mAV;
 	}
 

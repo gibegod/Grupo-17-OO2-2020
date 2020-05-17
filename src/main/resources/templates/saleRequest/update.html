@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/product-new.css}">
+</head>
+<body>
+	<div class="saleRequest-new">
+		<form action="#" th:action="@{/saleRequest/update}" th:object="${saleRequest}"
+			method="post">
+			<div class="saleRequest-new-header">
+				<h5>Update Sale Request</h5>
+			</div>
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-group">
+				<label>Product</label> 
+			<select class="form-control" placeholder="Product" th:field="*{product.id}">
+			<option th:each="product : ${products}" th:value="${product.id}"
+			th:text="${product.description}"></option>
+			</select> 
+			</div>
+			<div class="form-group">
+				<label>Amount</label> <input type="number" class="form-control"
+					placeholder="Enter amount" th:field="*{amount}">
+			</div>
+			<label>Assistant Employee</label> 
+			<select class="form-control" placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
+			<option th:each="employee : ${employees}" th:value="${employee.id}"
+			th:text="${employee.name}"></option>
+			</select> 
+		
+		<div class="button-row">
+				<input class="btn btn-outline-dark" type="submit"
+					value="Edit Product">
+			</div>
+		</form>
+		
+		<form action="#" th:action="@{/saleRequest/delete/{id}(id=${saleRequest.id})}"
+			method="post">
+			<input class="btn btn-danger" type="submit" value="Delete Sale Request" />
+		</form>
+	</div>
+</body>
+</html>

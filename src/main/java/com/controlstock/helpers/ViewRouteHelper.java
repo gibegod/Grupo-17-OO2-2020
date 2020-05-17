@@ -40,6 +40,12 @@ public class ViewRouteHelper {
 	public final static String ADDRESS_NEW = "address/new";
 	public final static String ADDRESS_UPDATE = "address/update";
 		
+	//Pedidos (SaleRequest)
+	
+	public final static String SALEREQUEST_INDEX = "saleRequest/index";
+	public final static String SALEREQUEST_NEW = "saleRequest/new";
+	public final static String SALEREQUEST_UPDATE = "saleRequest/update";
+			
 	
 	//Redirects ------------------------------------------------------------
 	
@@ -49,4 +55,5 @@ public class ViewRouteHelper {
 	public final static String CLIENT_ROOT = "/client";
 	public final static String EMPLOYEE_ROOT = "/employee";
 	public final static String ADDRESS_ROOT = "/address";
+	public final static String SALEREQUEST_ROOT = "/saleRequest";
 }

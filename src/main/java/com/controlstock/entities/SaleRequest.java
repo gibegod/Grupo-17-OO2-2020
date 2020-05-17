@@ -1,13 +1,17 @@
 package com.controlstock.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import org.springframework.lang.Nullable;
 
 @Entity
 public class SaleRequest {
@@ -17,19 +21,32 @@ public class SaleRequest {
 	private int id;
 	
 	@NotNull
-	@OneToOne
+	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private Product product;
 	
 	@NotNull
 	private int amount;
 	
-	@OneToOne
+	@Nullable
+	@ManyToOne(optional = true, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private Employee assistantEmployee;
+	
+	
 	public SaleRequest(){};
-	public SaleRequest(Product product, int amount) {
+	
+	public SaleRequest(int id, Product product, int amount) {
 		super();
+		setId(id);
 		this.product = product;
 		this.amount = amount;
+	}
+	
+	public SaleRequest(int id, Product product, int amount, Employee assistantEmployee) {
+		super();
+		setId(id);
+		this.product = product;
+		this.amount = amount;
+		this.assistantEmployee=assistantEmployee;
 	}
 
 	public Product getProduct() {
@@ -58,6 +75,11 @@ public class SaleRequest {
 
 	public int getId() {
 		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
