@@ -25,8 +25,9 @@
 					<td><span th:text="${store.id}" /></td>
 					<td><span th:text="${store.address.city}" /></td>
 					<td><span th:text="${store.phoneNumber}" /></td>
-
+					
 					<td><a th:href="@{/store/{id}(id=${store.id})}">Edit</a></td>
+					<td><span th:text="${store.id}" /></td>
 				</tr>
 			</tbody>
 		</table>
