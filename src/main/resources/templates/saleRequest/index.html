@@ -8,22 +8,24 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" th:href="@{/css/product.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/saleRequest.css}">
 </head>
 <body>
-	<div class="saleRequest_table">
+	<div class="saleRequest-table">
 		<table class="table table-striped table-dark">
 			<thead>
 				<tr>
 					<th>Product</th>
 					<th>Amount</th>
 					<th>Assistant Employee</th>
+					<th>View</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="saleRequest : ${saleRequests}">
 					<td><span th:text="${saleRequest.product.description}" /></td>
 					<td><span th:text="${saleRequest.amount}" /></td>
+					<td><span th:text="${saleRequest.assistantEmployee.getName()}" /></td>
 					<td><a th:href="@{/saleRequest/{id}(id=${saleRequest.id})}">Edit</a></td>
 				</tr>
 			</tbody>
