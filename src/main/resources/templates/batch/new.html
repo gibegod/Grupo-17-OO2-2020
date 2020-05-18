@@ -1,17 +1,37 @@
-<form action="#" th:action="@{/batch/create}" th:object="${batch}"
-	method="post">
-	<label>Product</label> 
-	<select class="form-control" placeholder="Product" th:field="*{product.id}">
-		<option th:each="product : ${products}" th:value="${product.id}"
-			th:text="${product.description}"></option>
-	</select> 
-	<label>Size</label> <input type="text" class="form-control"
-		placeholder="Enter size" th:field="*{size}">
-		<label>Current amount</label> <input type="text" class="form-control"
-			placeholder="Enter current amount" th:field="*{currentAmount}">
-		<label>Initial amount</label> <input type="text" class="form-control"
-			placeholder="Enter initial amount" th:field="*{initialAmount}">
-		<label>Admission date</label> <input type="date" class="form-control"
-			placeholder="Enter admission date" th:field="*{admissionDate}">
-		<input type="submit" value="New batch" />
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Batch</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/batch-new.css}">
+</head>
+<body>
+	<div class="batch-new">
+		<div class="batch-new-header">
+			<h5>Add Client</h5>
+		</div>
+		<form action="#" th:action="@{/batch/create}" th:object="${batch}"
+			method="post">
+			<label>Product</label> <select class="form-control"
+				placeholder="Product" th:field="*{product.id}">
+				<option th:each="product : ${products}" th:value="${product.id}"
+					th:text="${product.description}"></option>
+			</select> <label>Size</label> <input type="text" class="form-control"
+				placeholder="Enter size" th:field="*{size}"> <label>Current
+				amount</label> <input type="text" class="form-control"
+				placeholder="Enter current amount" th:field="*{currentAmount}">
+			<label>Initial amount</label> <input type="text" class="form-control"
+				placeholder="Enter initial amount" th:field="*{initialAmount}">
+			<label>Admission date</label> <input type="date" class="form-control"
+				placeholder="Enter admission date" th:field="*{admissionDate}">
+			<input class="btn btn-outline-dark" type="submit"
+				value="Create new batch">
+		</form>
+	</div>
+</body>
+</html>
