@@ -4,6 +4,9 @@ public class ViewRouteHelper {
 
 	//Views ------------------------------------------------------------------
 	
+	//Index
+	public final static String INDEX = "home/index";
+	
 	//Producto (Product)
 	
 	public final static String PRODUCT_INDEX = "product/index";
@@ -49,6 +52,7 @@ public class ViewRouteHelper {
 	
 	//Redirects ------------------------------------------------------------
 	
+	public final static String ROUTE = "/index";
 	public final static String PRODUCT_ROOT = "/product";
 	public final static String BATCH_ROOT = "/batch";
 	public final static String STORE_ROOT = "/store";
