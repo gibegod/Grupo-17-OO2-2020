@@ -39,3 +39,15 @@ insert into employee values (false, 26000, 0, 8, 4, 1), (true, 35000, 0, 8, 5, 1
 							(false, 18000, 0, 4, 7, 3), (false, 20000, 0, 6, 8, 4), (false, 26500, 0, 8, 9, 4), 
                             (true, 50000, 0, 6, 10, 4), (false, 22000, 0, 6, 11, 5), (false, 26200, 0, 8, 12, 5), 
                             (false, 23200, 0, 7, 13, 6);
+                            
+-- Data Product
+insert into product
+			values 	(1, "Nike", null, "Botines de Messi", '2020-05-19', 1, 6000, null), 
+					(2, "Nike", null, "Zapatillas 2D-1", '2020-05-18', 1, 3400, null), 
+					(3, "Adidas", null, "Remera adudis", '2020-05-17', 0, 2000, null), 
+                    (4, "Adidas", null, "Pantalon de arquero", '2020-05-16', 1, 1600, null),
+                    (5, "Adidas", null, "Botines negros like my soul", '2020-05-16', 1, 5250, null),
+                    (6, "Puma", null, "Medias con un tigre", '2020-03-09', 0, 300, null),
+                    (7, "Gucci", null, "Las gucci de Duki", '2020-02-26', 1, 10000, null),
+                    (8, "Nike", null, "Short de Duki", '2020-05-10', 0, 8000, null),
+                    (9, "Puma", null, "Campera verde militar", '2020-05-03', 1, 4700, null);

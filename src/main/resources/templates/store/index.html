@@ -27,11 +27,13 @@
 					<td><span th:text="${store.phoneNumber}" /></td>
 
 					<td><a th:href="@{/store/{id}(id=${store.id})}">Edit</a></td>
-					<td><span th:text="${store.id}" /></td>
 				</tr>
 			</tbody>
 		</table>
 		<a th:href="@{/store/new}" type="button" class="btn btn-dark btn-sm">Create new store</a>
+		
+		
+		
 		
 		<!-- 
 		<form action="" method="post">
