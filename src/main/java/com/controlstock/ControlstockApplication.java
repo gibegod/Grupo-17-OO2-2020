@@ -1,4 +1,4 @@
-package com.controlstock;
+	package com.controlstock;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

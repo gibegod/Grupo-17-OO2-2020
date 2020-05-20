@@ -48,6 +48,12 @@ public class ViewRouteHelper {
 	public final static String SALEREQUEST_INDEX = "saleRequest/index";
 	public final static String SALEREQUEST_NEW = "saleRequest/new";
 	public final static String SALEREQUEST_UPDATE = "saleRequest/update";
+	
+	//Ventas (SaleRequest)
+	
+		public final static String SALE_INDEX = "sale/index";
+		public final static String SALE_NEW = "sale/new";
+		public final static String SALE_UPDATE = "sale/update";
 			
 	
 	//Redirects ------------------------------------------------------------
@@ -60,4 +66,6 @@ public class ViewRouteHelper {
 	public final static String EMPLOYEE_ROOT = "/employee";
 	public final static String ADDRESS_ROOT = "/address";
 	public final static String SALEREQUEST_ROOT = "/saleRequest";
+
+	public final static String SALE_ROOT = "/sale";
 }

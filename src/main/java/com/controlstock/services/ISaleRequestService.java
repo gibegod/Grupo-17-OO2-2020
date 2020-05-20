@@ -11,9 +11,9 @@ public interface ISaleRequestService {
 	
 	public SaleRequestModel findById(int id);
 	
-	public SaleRequestModel insert(SaleRequestModel batchModel);
+	public SaleRequestModel insert(SaleRequestModel saleRequestModel);
 	
-	public SaleRequestModel update(SaleRequestModel batchModel);
+	public SaleRequestModel update(SaleRequestModel saleRequestModel);
 	
 	public boolean remove(int id);
 

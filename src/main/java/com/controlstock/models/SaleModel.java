@@ -1,95 +1,76 @@
-package com.controlstock.entities;
+package com.controlstock.models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-public class Sale {
+
+
+public class SaleModel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToMany
-	private Set<SaleRequest> setSaleRequests;
+	private Set<SaleRequestModel> setSaleRequests;
+
+	private EmployeeModel employeeInCharge;
+
+	private ClientModel client;
 	
-	@NotNull
-	@OneToOne
-	private Employee employeeInCharge;
-	
-	@NotNull
-	@OneToOne
-	private Client client;
-	
-	@NotNull
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	
-	@NotNull
 	private LocalTime time;
 	
 	private float totalPrice;
 	
-	public Sale(){};
+	public SaleModel(){};
 	
-	public Sale(int id, Employee employeeInCharge, Client client, LocalDate date,
+	public SaleModel(int id, EmployeeModel employeeInCharge, ClientModel client, LocalDate date,
 			LocalTime time) {
 		super();
-		this.id = id;
-		this.setSaleRequests = new HashSet<SaleRequest>();
+		this.setSaleRequests = new HashSet<SaleRequestModel>();
 		this.employeeInCharge = employeeInCharge;
 		this.client = client;
 		this.date = date;
 		this.time = time;
 		this.totalPrice = 0;
 	}
-	
-	
 
 
-
-	public Set<SaleRequest> getSetSaleRequests() {
+	public Set<SaleRequestModel> getSetSaleRequests() {
 		return setSaleRequests;
 	}
 
 
 
-	public void setSetSaleRequests(Set<SaleRequest> setSaleRequests) {
+	public void setSetSaleRequests(Set<SaleRequestModel> setSaleRequests) {
 		this.setSaleRequests = setSaleRequests;
 	}
 
 
 
-	public Employee getEmployeeInCharge() {
+	public EmployeeModel getEmployeeInCharge() {
 		return employeeInCharge;
 	}
 
 
 
-	public void setEmployeeInCharge(Employee employeeInCharge) {
+	public void setEmployeeInCharge(EmployeeModel employeeInCharge) {
 		this.employeeInCharge = employeeInCharge;
 	}
 
 
 
-	public Client getClient() {
+	public ClientModel getClient() {
 		return client;
 	}
 
 
 
-	public void setClient(Client client) {
+	public void setClient(ClientModel client) {
 		this.client = client;
 	}
 
@@ -136,6 +117,9 @@ public class Sale {
 	}
 
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	@Override
 	public String toString() {
