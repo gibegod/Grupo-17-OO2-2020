@@ -1,7 +1,6 @@
 package com.controlstock.entities;
 
 import java.util.Set;
-import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,7 +13,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -38,10 +36,9 @@ public class Store {
 	//Gerente
 	//private Employee manager;
 	
-	@Null
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
 	//Vendedores
-	private Set<Employee> setEmployees = new HashSet<Employee>();
+	private Set<Employee> setEmployees;
 	
 	//@NotNull
 	//@OneToMany
@@ -55,8 +52,8 @@ public class Store {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
-		this.setEmployees = new HashSet<Employee>();
-		//this.setBatchs = new HashSet<Batch>();
+		this.setEmployees = setEmployees;
+		//this.setBatchs = setBatchs;
 	}
 
 	public int getId() {

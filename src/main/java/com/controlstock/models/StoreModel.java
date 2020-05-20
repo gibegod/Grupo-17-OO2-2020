@@ -1,10 +1,6 @@
 package com.controlstock.models;
 
-import java.util.HashSet;
 import java.util.Set;
-
-import com.controlstock.entities.Employee;
-import com.controlstock.entities.Batch;
 
 public class StoreModel {
 
@@ -16,7 +12,7 @@ public class StoreModel {
 
 	//private Employee manager;
 
-	private Set<EmployeeModel> setEmployees = new HashSet<EmployeeModel>();
+	private Set<EmployeeModel> setEmployees;
 
 	//private Set<Batch> setBatchs;
 
@@ -28,7 +24,7 @@ public class StoreModel {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
-		this.setEmployees = new HashSet<EmployeeModel>();
+		this.setEmployees = setEmployees;
 		//this.setBatchs = new HashSet<Batch>();
 	}
 	

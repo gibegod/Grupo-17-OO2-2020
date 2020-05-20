@@ -42,6 +42,16 @@ public class Employee extends Person {
 		this.plus = plus;
 		this.store = store;
 	}
+	
+	//Constructor para setear el SetEmployee
+	public Employee(int id, String name, String surname, LocalDate birthdate, long dni, 
+			int workingHours, boolean manager, float minimunWage,  float plus) {
+		super(id, name, surname, birthdate, dni);
+		this.minimunWage = minimunWage;
+		this.workingHours = workingHours;
+		this.manager = manager;
+		this.plus = plus;
+	}
 
 	public int getWorkingHours() {
 		return workingHours;

@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.controlstock.converters.AddressConverter;
+import com.controlstock.converters.EmployeeConverter;
 import com.controlstock.converters.StoreConverter;
 import com.controlstock.entities.Address;
 import com.controlstock.entities.Store;
 import com.controlstock.models.AddressModel;
 import com.controlstock.models.StoreModel;
 import com.controlstock.repositories.IAddressRepository;
+import com.controlstock.repositories.IEmployeeRepository;
 import com.controlstock.repositories.IStoreRepository;
 import com.controlstock.services.IStoreService;
 
@@ -38,6 +40,19 @@ public class StoreService implements IStoreService {
 	@Autowired
 	@Qualifier("addressConverter")
 	private AddressConverter addressConverter;
+	
+	@Autowired
+	@Qualifier("employeeService")
+	private EmployeeService employeeService;
+	
+	@Autowired
+	@Qualifier("employeeRepository")
+	private IEmployeeRepository employeeRepository;
+	
+	@Autowired
+	@Qualifier("employeeConverter")
+	private EmployeeConverter employeeConverter;
+	
 
 	@Override
 	public List<Store> getAll() {
@@ -64,6 +79,11 @@ public class StoreService implements IStoreService {
 	
 	@Override
 	public StoreModel update(StoreModel storeModel) {
+		
+		Address address = addressRepository.findById(storeModel.getAddress().getId());
+		AddressModel addressModel = addressConverter.entityToModel(address);
+		storeModel.setAddress(addressModel);
+		
 		storeModel.setAddress(addressService.findById(storeModel.getAddress().getId()));
 		Store store = storeRepository.save(storeConverter.modelToEntity(storeModel));
 		return storeConverter.entityToModel(store);
