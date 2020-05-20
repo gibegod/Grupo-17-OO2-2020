@@ -1,11 +1,16 @@
 package com.controlstock.converters;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.controlstock.entities.Employee;
+import com.controlstock.entities.Store;
 import com.controlstock.models.EmployeeModel;
+import com.controlstock.models.StoreModel;
 
 @Component("employeeConverter")
 public class EmployeeConverter {
@@ -21,6 +26,26 @@ public class EmployeeConverter {
 								storeConverter.entityToModel(employee.getStore()));
 	}
 	
+	public Set<EmployeeModel> entityToModelSetEmployee(Set<Employee> setEmployees) {
+		
+		Set<EmployeeModel> setEmployeesModel = new HashSet<EmployeeModel>();
+		
+		for(Employee e : setEmployees) {
+			setEmployeesModel.add(e);
+		}
+		
+		Store store;
+		store.setSetEmployees(setEmployees);
+		StoreModel storeModel;
+		//storeModel.setSetEmployees(setEmployees);
+		Set<EmployeeModel> setEmployeeAux= new HashSet<EmployeeModel>();
+		
+		store.setSetEmployees(setEmployees);
+		storeModel.setSetEmployees(setEmployees);
+		
+		setEmployeeAux = setEmployees;
+		return new HashSet<EmployeeModel>(setEmployees);
+	}
 	
 	
 	public Employee modelToEntity(EmployeeModel employeeModel) {

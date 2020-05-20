@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -36,10 +38,10 @@ public class Store {
 	//Gerente
 	//private Employee manager;
 	
-	//@Null
-	//@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
+	@Null
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
 	//Vendedores
-	//private Set <Employee> setEmployees = newHashSet<Employee>();
+	private Set<Employee> setEmployees = new HashSet<Employee>();
 	
 	//@NotNull
 	//@OneToMany
@@ -47,13 +49,13 @@ public class Store {
 	
 	public Store() {}
 	
-	public Store (int id, Address address, long phoneNumber) {
+	public Store (int id, Address address, long phoneNumber, Set<Employee> setEmployees) {
 		super();
 		this.id = id;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
-		//this.setEmployees = new HashSet<Employee>();
+		this.setEmployees = new HashSet<Employee>();
 		//this.setBatchs = new HashSet<Batch>();
 	}
 
@@ -89,7 +91,7 @@ public class Store {
 		this.manager = manager;
 	}
 */
-	/*
+	
 	public Set<Employee> getSetEmployees() {
 		return setEmployees;
 	}
@@ -97,7 +99,7 @@ public class Store {
 	public void setSetEmployees(Set<Employee> setEmployees) {
 		this.setEmployees = setEmployees;
 	}
-
+	/*
 	public Set<Batch> getSetBatchs() {
 		return setBatchs;
 	}

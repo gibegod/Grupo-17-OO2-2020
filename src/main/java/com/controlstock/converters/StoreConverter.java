@@ -14,9 +14,13 @@ public class StoreConverter {
 	@Qualifier("addressConverter")
 	private AddressConverter addressConverter;
 	
+	@Autowired
+	@Qualifier("employeeConverter")
+	private EmployeeConverter employeeConverter;
+	
 	public StoreModel entityToModel(Store store) {
 		return new StoreModel(store.getId(), addressConverter.entityToModel(store.getAddress()),  
-							store.getPhoneNumber());
+							store.getPhoneNumber(), employeeConverter.entityToModelSetEmployee(store.getSetEmployees()));
 	}
 	
 	public Store modelToEntity(StoreModel storeModel) {

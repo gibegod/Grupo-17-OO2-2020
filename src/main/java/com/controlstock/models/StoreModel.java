@@ -16,19 +16,19 @@ public class StoreModel {
 
 	//private Employee manager;
 
-	//private Set<Employee> setEmployees;
+	private Set<EmployeeModel> setEmployees = new HashSet<EmployeeModel>();
 
 	//private Set<Batch> setBatchs;
 
 	public StoreModel() {}
 
-	public StoreModel (int id, AddressModel address, long phoneNumber) {
+	public StoreModel (int id, AddressModel address, long phoneNumber, Set<EmployeeModel> setEmployees) {
 		super();
 		setId(id);
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
-		//this.setEmployees = new HashSet<Employee>();
+		this.setEmployees = new HashSet<EmployeeModel>();
 		//this.setBatchs = new HashSet<Batch>();
 	}
 	
@@ -63,15 +63,15 @@ public class StoreModel {
 	public void setManager(Employee manager) {
 		this.manager = manager;
 	}*/
-/*
-	public Set<Employee> getSetEmployees() {
+
+	public Set<EmployeeModel> getSetEmployees() {
 		return setEmployees;
 	}
 
-	public void setSetEmployees(Set<Employee> setEmployees) {
+	public void setSetEmployees(Set<EmployeeModel> setEmployees) {
 		this.setEmployees = setEmployees;
 	}
-
+	/*
 	public Set<Batch> getSetBatchs() {
 		return setBatchs;
 	}
