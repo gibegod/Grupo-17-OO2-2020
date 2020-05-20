@@ -45,7 +45,9 @@ public class Sale {
 	
 	@NotNull
 	private float totalPrice;
+	
 	public Sale(){};
+	
 	public Sale(int number, Employee employeeInCharge, Client client, LocalDate date,
 			LocalTime time) {
 		super();

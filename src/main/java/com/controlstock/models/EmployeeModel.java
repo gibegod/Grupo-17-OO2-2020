@@ -3,27 +3,38 @@ package com.controlstock.models;
 import java.time.LocalDate;
 
 public class EmployeeModel extends PersonModel {
-	
+
 	private int workingHours;
-	
+
 	private boolean manager;
 
 	private float minimunWage;
-	
+
 	private float plus;
-	
+
 	private StoreModel store;
-	
-	public EmployeeModel() {}
+
+	public EmployeeModel() {
+	}
 
 	public EmployeeModel(int id, String name, String surname, LocalDate birthdate, long dni, int workingHours,
-						boolean manager, float minimunWage, float plus, StoreModel store) {
+			boolean manager, float minimunWage, float plus, StoreModel store) {
 		super(id, name, surname, birthdate, dni);
 		this.workingHours = workingHours;
 		this.manager = manager;
 		this.minimunWage = minimunWage;
 		this.plus = plus;
 		this.store = store;
+	}
+
+	//Constructor que se una en el set de Set<Employees>
+	public EmployeeModel(int id, String name, String surname, LocalDate birthdate, long dni, int workingHours,
+			boolean manager, float minimunWage, float plus) {
+		super(id, name, surname, birthdate, dni);
+		this.workingHours = workingHours;
+		this.manager = manager;
+		this.minimunWage = minimunWage;
+		this.plus = plus;
 	}
 
 	public int getWorkingHours() {

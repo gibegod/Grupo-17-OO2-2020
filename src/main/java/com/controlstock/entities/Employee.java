@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
@@ -27,7 +28,7 @@ public class Employee extends Person {
 	@NotNull
 	private float plus;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private Store store;
 	
 	public Employee() {};
@@ -40,6 +41,16 @@ public class Employee extends Person {
 		this.manager = manager;
 		this.plus = plus;
 		this.store = store;
+	}
+	
+	//Constructor para setear el SetEmployee
+	public Employee(int id, String name, String surname, LocalDate birthdate, long dni, 
+			int workingHours, boolean manager, float minimunWage,  float plus) {
+		super(id, name, surname, birthdate, dni);
+		this.minimunWage = minimunWage;
+		this.workingHours = workingHours;
+		this.manager = manager;
+		this.plus = plus;
 	}
 
 	public int getWorkingHours() {

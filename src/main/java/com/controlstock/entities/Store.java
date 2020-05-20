@@ -1,10 +1,10 @@
 package com.controlstock.entities;
 
 import java.util.Set;
-import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,10 +36,9 @@ public class Store {
 	//Gerente
 	//private Employee manager;
 	
-	//@Null
-	//@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
 	//Vendedores
-	//private Set <Employee> setEmployees = newHashSet<Employee>();
+	private Set<Employee> setEmployees;
 	
 	//@NotNull
 	//@OneToMany
@@ -47,14 +46,14 @@ public class Store {
 	
 	public Store() {}
 	
-	public Store (int id, Address address, long phoneNumber) {
+	public Store (int id, Address address, long phoneNumber, Set<Employee> setEmployees) {
 		super();
 		this.id = id;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
-		//this.setEmployees = new HashSet<Employee>();
-		//this.setBatchs = new HashSet<Batch>();
+		this.setEmployees = setEmployees;
+		//this.setBatchs = setBatchs;
 	}
 
 	public int getId() {
@@ -89,7 +88,7 @@ public class Store {
 		this.manager = manager;
 	}
 */
-	/*
+	
 	public Set<Employee> getSetEmployees() {
 		return setEmployees;
 	}
@@ -97,7 +96,7 @@ public class Store {
 	public void setSetEmployees(Set<Employee> setEmployees) {
 		this.setEmployees = setEmployees;
 	}
-
+	/*
 	public Set<Batch> getSetBatchs() {
 		return setBatchs;
 	}

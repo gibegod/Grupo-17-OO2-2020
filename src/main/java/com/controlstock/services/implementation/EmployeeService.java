@@ -60,7 +60,14 @@ public class EmployeeService implements IEmployeeService {
 		StoreModel storeModel = storeConverter.entityToModel(store);
 		employeeModel.setStore(storeModel);
 		
-		Employee employee = employeeRepository.save(employeeConverter.modelToEntity(employeeModel));
+		//Se guarda el employee en la bd.
+		Employee employee = employeeConverter.modelToEntity(employeeModel);
+		employeeRepository.save(employee);
+		
+		//Seteo en el Set<Employee> del store correspondiente. 
+		employee.getStore().getSetEmployees().add(employee);
+		storeService.update(storeConverter.entityToModel(employee.getStore()));
+		
 		return employeeConverter.entityToModel(employee);
 	}
 	

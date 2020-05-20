@@ -21,13 +21,26 @@ public class EmployeeConverter {
 								storeConverter.entityToModel(employee.getStore()));
 	}
 	
-	
-	
 	public Employee modelToEntity(EmployeeModel employeeModel) {
 		return new Employee(employeeModel.getId(), employeeModel.getName(), employeeModel.getSurname(), 
 							employeeModel.getBirthdate(), employeeModel.getDni(), employeeModel.getWorkingHours(), 
 							employeeModel.isManager(), employeeModel.getMinimunWage(), employeeModel.getPlus(), 
 							storeConverter.modelToEntity(employeeModel.getStore()));
+	}
+	
+	
+	//Sin store
+	public EmployeeModel entityToModelSetEmployee(Employee employee) {
+		return new EmployeeModel(employee.getId(), employee.getName(), employee.getSurname(), employee.getBirthdate(),
+								employee.getDni(), employee.getWorkingHours(), employee.isManager(), 
+								employee.getMinimunWage(), employee.getPlus());
+	}
+	
+	//Sin store
+	public Employee modelToEntitySetEmployee(EmployeeModel employeeModel) {
+		return new Employee(employeeModel.getId(), employeeModel.getName(), employeeModel.getSurname(), 
+							employeeModel.getBirthdate(), employeeModel.getDni(), employeeModel.getWorkingHours(), 
+							employeeModel.isManager(), employeeModel.getMinimunWage(), employeeModel.getPlus());
 	}
 
 }
