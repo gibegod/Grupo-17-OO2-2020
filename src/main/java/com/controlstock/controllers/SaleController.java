@@ -1,5 +1,7 @@
 package com.controlstock.controllers;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -40,6 +42,16 @@ public class SaleController {
 	public ModelAndView index () {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_INDEX);
 		mAV.addObject("sales", saleService.getAll());
+		
+		
+		//TEST funcionamiento de Set<SaleRequest>
+		/*
+		Set<SaleRequestModel> aa = saleService.findById(1).getSetSaleRequests(); //Store de id 1.
+		System.out.println("Size set store 1: " + aa.size());
+		for(SaleRequestModel s : aa) {
+			System.out.println("SaleRequest ID: " + s.getId());
+		}*/
+		
 		return mAV;
 	}
 	

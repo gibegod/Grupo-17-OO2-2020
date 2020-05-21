@@ -23,6 +23,7 @@ public class StoreConverter {
 	@Qualifier("employeeConverter")
 	private EmployeeConverter employeeConverter;
 	
+	
 	public StoreModel entityToModel(Store store) {
 		return new StoreModel(store.getId(), addressConverter.entityToModel(store.getAddress()),  
 							store.getPhoneNumber(), entityToModelSetEmployee(store.getSetEmployees()));

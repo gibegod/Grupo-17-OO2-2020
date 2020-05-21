@@ -18,7 +18,6 @@
 					<th>Employee In Charge:</th>
 					<th>Client</th>
 					<th>Date</th>
-					<th>Time</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,7 +26,6 @@
 					<td><span th:text="${sale.employeeInCharge.getName()}" /></td>
 					<td><span th:text="${sale.client.name}" /></td>
 					<td><span th:text="${sale.date}" /></td>
-					<td><span th:text="${sale.time}" /></td>
 					<td><a th:href="@{/sale/{id}(id=${sale.id})}">Edit</a></td>
 				</tr>
 			</tbody>

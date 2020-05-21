@@ -27,7 +27,7 @@ public class EmployeeModel extends PersonModel {
 		this.store = store;
 	}
 
-	//Constructor que se una en el set de Set<Employees>
+	//Constructor que se usa en el set de Set<Employees>
 	public EmployeeModel(int id, String name, String surname, LocalDate birthdate, long dni, int workingHours,
 			boolean manager, float minimunWage, float plus) {
 		super(id, name, surname, birthdate, dni);

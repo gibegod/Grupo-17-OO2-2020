@@ -1,13 +1,9 @@
 package com.controlstock.models;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.HashSet;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-
 
 public class SaleModel {
 	
@@ -19,112 +15,77 @@ public class SaleModel {
 
 	private ClientModel client;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate date;
-	
-	private LocalTime time;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime date;
 	
 	private float totalPrice;
 	
+	
 	public SaleModel(){};
 	
-	public SaleModel(int id, EmployeeModel employeeInCharge, ClientModel client, LocalDate date,
-			LocalTime time) {
+	public SaleModel(int id, Set<SaleRequestModel> setSaleRequests, EmployeeModel employeeInCharge,
+					ClientModel client, LocalDateTime date) {
 		super();
-		this.setSaleRequests = new HashSet<SaleRequestModel>();
+		setId(id);
+		this.setSaleRequests = setSaleRequests;
 		this.employeeInCharge = employeeInCharge;
 		this.client = client;
 		this.date = date;
-		this.time = time;
 		this.totalPrice = 0;
 	}
-
-
-	public Set<SaleRequestModel> getSetSaleRequests() {
-		return setSaleRequests;
-	}
-
-
-
-	public void setSetSaleRequests(Set<SaleRequestModel> setSaleRequests) {
-		this.setSaleRequests = setSaleRequests;
-	}
-
-
-
-	public EmployeeModel getEmployeeInCharge() {
-		return employeeInCharge;
-	}
-
-
-
-	public void setEmployeeInCharge(EmployeeModel employeeInCharge) {
-		this.employeeInCharge = employeeInCharge;
-	}
-
-
-
-	public ClientModel getClient() {
-		return client;
-	}
-
-
-
-	public void setClient(ClientModel client) {
-		this.client = client;
-	}
-
-
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-
-
-	public LocalTime getTime() {
-		return time;
-	}
-
-
-
-	public void setTime(LocalTime time) {
-		this.time = time;
-	}
-
-
-
-	public float getTotalPrice() {
-		return totalPrice;
-	}
-
-
-
-	public void setTotalPrice(float totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Set<SaleRequestModel> getSetSaleRequests() {
+		return setSaleRequests;
+	}
+
+	public void setSetSaleRequests(Set<SaleRequestModel> setSaleRequests) {
+		this.setSaleRequests = setSaleRequests;
+	}
+
+	public EmployeeModel getEmployeeInCharge() {
+		return employeeInCharge;
+	}
+
+	public void setEmployeeInCharge(EmployeeModel employeeInCharge) {
+		this.employeeInCharge = employeeInCharge;
+	}
+
+	public ClientModel getClient() {
+		return client;
+	}
+
+	public void setClient(ClientModel client) {
+		this.client = client;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+
+	public float getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	@Override
 	public String toString() {
 		return "Sale [id=" + id + ", setSaleRequests=" + setSaleRequests + ", employeeInCharge="
-				+ employeeInCharge + ", client=" + client + ", date=" + date + ", time=" + time + ", totalPrice="
+				+ employeeInCharge + ", client=" + client + ", date=" + date + ", totalPrice="
 				+ totalPrice + "]";
 	}
 

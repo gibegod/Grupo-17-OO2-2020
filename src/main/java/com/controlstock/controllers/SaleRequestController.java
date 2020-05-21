@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.SaleRequestModel;
 import com.controlstock.services.ISaleRequestService;
+import com.controlstock.services.ISaleService;
 import com.controlstock.services.IProductService;
 import com.controlstock.services.IEmployeeService;
 
@@ -33,6 +34,10 @@ public class SaleRequestController {
 	@Qualifier("employeeService")
 	private IEmployeeService employeeService;
 	
+	@Autowired
+	@Qualifier("saleService")
+	private ISaleService saleService;
+	
 	@GetMapping("")
 	public ModelAndView index () {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_INDEX);
@@ -46,6 +51,7 @@ public class SaleRequestController {
 		mAV.addObject("saleRequest", new SaleRequestModel());
 		mAV.addObject("products", productService.getAll());
 		mAV.addObject("employees", employeeService.getAll());
+		mAV.addObject("sales", saleService.getAll());
 		return mAV;
 	}
 	

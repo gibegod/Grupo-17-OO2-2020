@@ -1,16 +1,13 @@
 package com.controlstock.entities;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.HashSet;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
@@ -22,7 +19,7 @@ public class Sale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="sale")
 	private Set<SaleRequest> setSaleRequests;
 	
 	@NotNull
@@ -34,117 +31,77 @@ public class Sale {
 	private Client client;
 	
 	@NotNull
-	private LocalDate date;
-	
-	@NotNull
-	private LocalTime time;
+	private LocalDateTime date;
 	
 	private float totalPrice;
 	
 	public Sale(){};
 	
-	public Sale(int id, Employee employeeInCharge, Client client, LocalDate date,
-			LocalTime time) {
+	public Sale(int id, Set<SaleRequest> setSaleRequests, Employee employeeInCharge, Client client, LocalDateTime date) {
 		super();
 		this.id = id;
-		this.setSaleRequests = new HashSet<SaleRequest>();
+		this.setSaleRequests = setSaleRequests;
 		this.employeeInCharge = employeeInCharge;
 		this.client = client;
 		this.date = date;
-		this.time = time;
 		this.totalPrice = 0;
 	}
-	
-	
-
-
-
-	public Set<SaleRequest> getSetSaleRequests() {
-		return setSaleRequests;
-	}
-
-
-
-	public void setSetSaleRequests(Set<SaleRequest> setSaleRequests) {
-		this.setSaleRequests = setSaleRequests;
-	}
-
-
-
-	public Employee getEmployeeInCharge() {
-		return employeeInCharge;
-	}
-
-
-
-	public void setEmployeeInCharge(Employee employeeInCharge) {
-		this.employeeInCharge = employeeInCharge;
-	}
-
-
-
-	public Client getClient() {
-		return client;
-	}
-
-
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-
-
-	public LocalTime getTime() {
-		return time;
-	}
-
-
-
-	public void setTime(LocalTime time) {
-		this.time = time;
-	}
-
-
-
-	public float getTotalPrice() {
-		return totalPrice;
-	}
-
-
-
-	public void setTotalPrice(float totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
+	public Set<SaleRequest> getSetSaleRequests() {
+		return setSaleRequests;
+	}
+
+	public void setSetSaleRequests(Set<SaleRequest> setSaleRequests) {
+		this.setSaleRequests = setSaleRequests;
+	}
+
+	public Employee getEmployeeInCharge() {
+		return employeeInCharge;
+	}
+
+	public void setEmployeeInCharge(Employee employeeInCharge) {
+		this.employeeInCharge = employeeInCharge;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+
+	public float getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
 	@Override
 	public String toString() {
 		return "Sale [id=" + id + ", setSaleRequests=" + setSaleRequests + ", employeeInCharge="
-				+ employeeInCharge + ", client=" + client + ", date=" + date + ", time=" + time + ", totalPrice="
+				+ employeeInCharge + ", client=" + client + ", date=" + date + ", totalPrice="
 				+ totalPrice + "]";
 	}
 
-	
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
