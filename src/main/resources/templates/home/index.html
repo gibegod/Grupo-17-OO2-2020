@@ -3,14 +3,108 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>HOME</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
 </head>
-<body>
-	<a href="/address">Address</a> | 
-	<a href="/batch">Batch</a> | 
-	<a href="/client">Client</a> | 
-	<a href="/employee">Employee</a> | 
-	<a href="/product">Product</a> | 
-	<a href="/saleRequest">Sale Request</a> | 
-	<a href="/store">Store</a>
-</body>
+<header>
+	<div class="navbar navbar-dark bg-dark box-shadow">
+		<div class="container d-flex justify-content-between">
+			<a href="#" class="navbar-brand d-flex align-items-center"> <strong>Home</strong>
+			</a>
+		</div>
+	</div>
+</header>
+
+<main role="main">
+
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1 class="jumbotron-heading">Stock Control System®</h1>
+			<p class="lead text-muted">Web Application For Stock Management</p>
+			<p>
+				<a href="#" class="btn btn-primary my-2">dejo por si pinta</a> <a
+					href="#" class="btn btn-secondary my-2">dejo por si pinta 2</a>
+			</p>
+		</div>
+	</section>
+
+	<div class="album py-5 bg-light">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4">
+					<div
+						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+						<img class="card-img-top" src="/img/product1.png">
+						<div class="btn-group">
+							<a th:href="@{/product}" type="button" class="btn btn-sm btn-outline-dark">View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div
+						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+						<img class="card-img-top" src="/img/sale1.png">
+						<div class="btn-group">
+							<a th:href="@{*}" type="button" class="btn btn-sm btn-outline-dark">View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 each-box">
+					<div
+						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+						<img class="card-img-top" src="/img/sale-request1.png">
+						<div class="btn-group">
+							<a th:href="@{/saleRequest}" type="button" class="btn btn-sm btn-outline-dark">View</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 each-box">
+					<div
+						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+						<img class="card-img-top" src="/img/batch1.png">
+						<div class="btn-group">
+							<a th:href="@{/batch}" type="button" class="btn btn-sm btn-outline-dark">View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div
+						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+						<img class="card-img-top" src="/img/employee1.jpg">
+						<div class="btn-group">
+							<a th:href="@{/employee}" type="button" class="btn btn-sm btn-outline-dark">View</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div
+						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+						<img class="card-img-top" src="/img/Client1.png">
+						<div class="btn-group">
+							<a th:href="@{/client}" type="button" class="btn btn-sm btn-outline-dark">View</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div
+						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+						<img class="card-img-top" src="/img/Address1.png">
+						<div class="btn-group">
+							<a th:href="@{/address}" type="button" class="btn btn-sm btn-outline-dark">View</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</main>
+
 </html>
