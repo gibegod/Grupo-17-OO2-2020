@@ -20,6 +20,8 @@ public class SaleModel {
 	
 	private float totalPrice;
 	
+	private boolean status; //Esta en progreso o termino?
+	
 	
 	public SaleModel(){};
 	

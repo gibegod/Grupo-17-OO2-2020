@@ -35,6 +35,8 @@ public class Sale {
 	
 	private float totalPrice;
 	
+	private boolean status;
+	
 	public Sale(){};
 	
 	public Sale(int id, Set<SaleRequest> setSaleRequests, Employee employeeInCharge, Client client, LocalDateTime date) {
