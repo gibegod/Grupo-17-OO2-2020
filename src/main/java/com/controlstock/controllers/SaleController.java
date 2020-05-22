@@ -23,6 +23,7 @@ import com.controlstock.services.IStoreService;
 import com.controlstock.services.ISaleRequestService;
 import com.controlstock.services.IClientService;
 import com.controlstock.services.IEmployeeService;
+import com.controlstock.services.IProductService;
 
 @Controller
 @RequestMapping("/sale")
@@ -43,6 +44,14 @@ public class SaleController {
 	@Autowired
 	@Qualifier("storeService")
 	private IStoreService storeService;
+	
+	@Autowired
+	@Qualifier("saleRequestService")
+	private ISaleRequestService saleRequestService;
+	
+	@Autowired
+	@Qualifier("productService")
+	private IProductService productService;
 	
 	@GetMapping("")
 	public ModelAndView index () {
@@ -76,12 +85,16 @@ public class SaleController {
 		return mAV;
 	}
 	
-	@GetMapping("/addSaleRequest")
-	public ModelAndView addSalesRequest() {
-		ModelAndView mAV = new ModelAndView();
+	@RequestMapping(value = "/addSaleRequest", method = RequestMethod.GET)
+	public ModelAndView addSaleRequest(@ModelAttribute("sale") SaleModel saleModel) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_ADDSALEREQUEST);
+		mAV.addObject("saleRequestModel", new SaleRequestModel());
+		mAV.addObject("saleRequests", saleModel.getSetSaleRequests());
+		mAV.addObject("products", productService.getAll());
+		mAV.addObject("employees", employeeService.getAll());
 		return mAV;
 	}
-	@PostMapping("/create")
+	@PostMapping("/createSaleRequest")
 	public RedirectView create(@ModelAttribute("sale") SaleModel saleModel) {
 		saleService.insert(saleModel);
 		return new RedirectView(ViewRouteHelper.SALE_ROOT);
