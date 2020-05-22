@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -18,6 +19,7 @@ import com.controlstock.models.SaleRequestModel;
 
 import com.controlstock.models.SaleModel;
 import com.controlstock.services.ISaleService;
+import com.controlstock.services.IStoreService;
 import com.controlstock.services.ISaleRequestService;
 import com.controlstock.services.IClientService;
 import com.controlstock.services.IEmployeeService;
@@ -38,6 +40,10 @@ public class SaleController {
 	@Qualifier("employeeService")
 	private IEmployeeService employeeService;
 	
+	@Autowired
+	@Qualifier("storeService")
+	private IStoreService storeService;
+	
 	@GetMapping("")
 	public ModelAndView index () {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_INDEX);
@@ -55,15 +61,26 @@ public class SaleController {
 		return mAV;
 	}
 	
-	@GetMapping("/new")
-	public ModelAndView create() {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_NEW);
+	@GetMapping("/initial")
+	public ModelAndView initial() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_INITIAL);
 		mAV.addObject("sale", new SaleModel());
-		mAV.addObject("clients", clientService.getAll());
-		mAV.addObject("employees", employeeService.getAll());
+		mAV.addObject("stores", storeService.getAll());
+		return mAV;
+	}
+		
+	@RequestMapping(value = "/selectEmployee", method = RequestMethod.GET)
+	public ModelAndView selectEmployee(@ModelAttribute("sale") SaleModel saleModel) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_SELECTEMPLOYEE);
+		mAV.addObject("employees", employeeService.getEmployeeByStore(saleModel.getStoreModel().getId()));
 		return mAV;
 	}
 	
+	@GetMapping("/addSaleRequest")
+	public ModelAndView addSalesRequest() {
+		ModelAndView mAV = new ModelAndView();
+		return mAV;
+	}
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("sale") SaleModel saleModel) {
 		saleService.insert(saleModel);

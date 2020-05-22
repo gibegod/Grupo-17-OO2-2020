@@ -22,6 +22,10 @@ public class SaleConverter {
 	@Autowired
 	@Qualifier("employeeConverter")
 	private EmployeeConverter employeeConverter;
+	
+	@Autowired
+	@Qualifier("storeConverter")
+	private StoreConverter storeConverter;
 
 	@Autowired
 	@Qualifier("saleRequestConverter")
@@ -30,13 +34,13 @@ public class SaleConverter {
 	public SaleModel entityToModel(Sale sale) {
 		return new SaleModel(sale.getId(), entityToModelSetSaleRequests(sale.getSetSaleRequests()),
 				employeeConverter.entityToModel(sale.getEmployeeInCharge()),
-				clientConverter.entityToModel(sale.getClient()), sale.getDate());
+				clientConverter.entityToModel(sale.getClient()), sale.getDate(), storeConverter.entityToModel(sale.getStore()));
 	}
 
 	public Sale modelToEntity(SaleModel saleModel) {
 		return new Sale(saleModel.getId(), modelToEntitySetSaleRequests(saleModel.getSetSaleRequests()),
 				employeeConverter.modelToEntity(saleModel.getEmployeeInCharge()),
-				clientConverter.modelToEntity(saleModel.getClient()), saleModel.getDate());
+				clientConverter.modelToEntity(saleModel.getClient()), saleModel.getDate(), storeConverter.modelToEntity(saleModel.getStoreModel()));
 	}
 
 	public Set<SaleRequestModel> entityToModelSetSaleRequests(Set<SaleRequest> setSaleRequests) {

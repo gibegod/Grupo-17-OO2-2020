@@ -31,6 +31,10 @@ public class Sale {
 	private Client client;
 	
 	@NotNull
+	@OneToOne
+	private Store store;
+	
+	@NotNull
 	private LocalDateTime date;
 	
 	private float totalPrice;
@@ -39,7 +43,7 @@ public class Sale {
 	
 	public Sale(){};
 	
-	public Sale(int id, Set<SaleRequest> setSaleRequests, Employee employeeInCharge, Client client, LocalDateTime date) {
+	public Sale(int id, Set<SaleRequest> setSaleRequests, Employee employeeInCharge, Client client, LocalDateTime date, Store store) {
 		super();
 		this.id = id;
 		this.setSaleRequests = setSaleRequests;
@@ -47,6 +51,8 @@ public class Sale {
 		this.client = client;
 		this.date = date;
 		this.totalPrice = 0;
+		this.status = false;
+		this.store = store;
 	}
 
 	public int getId() {
@@ -67,6 +73,22 @@ public class Sale {
 
 	public Employee getEmployeeInCharge() {
 		return employeeInCharge;
+	}
+	
+	public boolean getStatus() {
+		return status;
+	}
+	
+	public Store getStore() {
+		return store;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	public void setEmployeeInCharge(Employee employeeInCharge) {
