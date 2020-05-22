@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.sun.istack.Nullable;
+
 @Entity
 public class Sale {
 	
@@ -22,19 +24,20 @@ public class Sale {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="sale")
 	private Set<SaleRequest> setSaleRequests;
 	
-	@NotNull
+	//@NotNull
 	@OneToOne
 	private Employee employeeInCharge;
 	
-	@NotNull
+	//@NotNull
+	@Nullable
 	@OneToOne
 	private Client client;
 	
-	@NotNull
+	//@NotNull
 	@OneToOne
 	private Store store;
 	
-	@NotNull
+	//@NotNull
 	private LocalDateTime date;
 	
 	private float totalPrice;

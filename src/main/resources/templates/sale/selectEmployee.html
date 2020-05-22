@@ -15,11 +15,14 @@
 		<div class="Sale-new-header">
 			<h5>Select Employee</h5>
 		</div>
-		<form action="#" th:action="@{/sale/addSaleRequest}" th:object="${sale}"
-			method="get">
-			<td><span th:text="${sale.status}" /></td>
-			<label>Employee In Charge</label> 
+		<!-- <form action="#" th:action="@{/sale/addSaleRequest}" th:object="${sale}"
+			method="get"> -->
+			<form action="#" th:action="@{/sale/create}" th:object="${sale}"
+			method="post">
+			<label>Status: </label>
+			<td><span th:text="${sale.status}" /></td> <br/>
 			
+			<label>Employee In Charge</label> 
 			<select class="form-control" placeholder="Employee" th:field="*{employeeInCharge.id}">
 			<option th:each="employee : ${employees}" th:value="${employee.id}"
 			th:text="${employee.name}"></option>

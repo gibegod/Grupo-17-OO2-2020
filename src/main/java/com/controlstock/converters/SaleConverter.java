@@ -32,15 +32,31 @@ public class SaleConverter {
 	private SaleRequestConverter saleRequestConverter;
 
 	public SaleModel entityToModel(Sale sale) {
-		return new SaleModel(sale.getId(), entityToModelSetSaleRequests(sale.getSetSaleRequests()),
-				employeeConverter.entityToModel(sale.getEmployeeInCharge()),
-				clientConverter.entityToModel(sale.getClient()), sale.getDate(), storeConverter.entityToModel(sale.getStore()));
+		//Si cliente no es null
+		if (sale.getClient() != null) {
+			return new SaleModel (sale.getId(), entityToModelSetSaleRequests(sale.getSetSaleRequests()),
+					employeeConverter.entityToModel(sale.getEmployeeInCharge()),
+					clientConverter.entityToModel(sale.getClient()), sale.getDate(), 
+					storeConverter.entityToModel(sale.getStore()));
+		} else {
+			return new SaleModel (sale.getId(), entityToModelSetSaleRequests(sale.getSetSaleRequests()),
+					employeeConverter.entityToModel(sale.getEmployeeInCharge()),
+					null, null, storeConverter.entityToModel(sale.getStore()));
+		}
 	}
 
 	public Sale modelToEntity(SaleModel saleModel) {
-		return new Sale(saleModel.getId(), modelToEntitySetSaleRequests(saleModel.getSetSaleRequests()),
+		//Si cliente no es null
+		if (saleModel.getClient() != null) {
+			return new Sale (saleModel.getId(), modelToEntitySetSaleRequests(saleModel.getSetSaleRequests()),
 				employeeConverter.modelToEntity(saleModel.getEmployeeInCharge()),
-				clientConverter.modelToEntity(saleModel.getClient()), saleModel.getDate(), storeConverter.modelToEntity(saleModel.getStoreModel()));
+				clientConverter.modelToEntity(saleModel.getClient()), saleModel.getDate(), 
+				storeConverter.modelToEntity(saleModel.getStoreModel()));
+		} else {
+			return new Sale (saleModel.getId(), modelToEntitySetSaleRequests(saleModel.getSetSaleRequests()),
+					employeeConverter.modelToEntity(saleModel.getEmployeeInCharge()), null, null, 
+					storeConverter.modelToEntity(saleModel.getStoreModel()));
+		}
 	}
 
 	public Set<SaleRequestModel> entityToModelSetSaleRequests(Set<SaleRequest> setSaleRequests) {

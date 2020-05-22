@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.SaleRequestModel;
-
+import com.controlstock.models.StoreModel;
 import com.controlstock.models.SaleModel;
 import com.controlstock.services.ISaleService;
 import com.controlstock.services.IStoreService;
@@ -70,6 +70,7 @@ public class SaleController {
 		return mAV;
 	}
 	
+	//Selecciona Store
 	@GetMapping("/initial")
 	public ModelAndView initial() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_INITIAL);
@@ -78,11 +79,19 @@ public class SaleController {
 		return mAV;
 	}
 		
+	//Selecciona empleado del store
 	@RequestMapping(value = "/selectEmployee", method = RequestMethod.GET)
 	public ModelAndView selectEmployee(@ModelAttribute("sale") SaleModel saleModel) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_SELECTEMPLOYEE);
 		mAV.addObject("employees", employeeService.getEmployeeByStore(saleModel.getStoreModel().getId()));
 		return mAV;
+	}
+	
+	//Guarda el sale.
+	@PostMapping("/create")
+	public RedirectView create(@ModelAttribute("sale") SaleModel saleModel) {
+		saleService.insert(saleModel);
+		return new RedirectView(ViewRouteHelper.SALE_ROOT);
 	}
 	
 	@RequestMapping(value = "/addSaleRequest", method = RequestMethod.GET)
@@ -95,7 +104,7 @@ public class SaleController {
 		return mAV;
 	}
 	@PostMapping("/createSaleRequest")
-	public RedirectView create(@ModelAttribute("sale") SaleModel saleModel) {
+	public RedirectView createSR(@ModelAttribute("sale") SaleModel saleModel) {
 		saleService.insert(saleModel);
 		return new RedirectView(ViewRouteHelper.SALE_ROOT);
 	}
