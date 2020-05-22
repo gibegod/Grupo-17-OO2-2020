@@ -22,11 +22,12 @@ public class SaleModel {
 	
 	private boolean status; //Esta en progreso o termino?
 	
+	private StoreModel storeModel;
 	
 	public SaleModel(){};
 	
 	public SaleModel(int id, Set<SaleRequestModel> setSaleRequests, EmployeeModel employeeInCharge,
-					ClientModel client, LocalDateTime date) {
+					ClientModel client, LocalDateTime date, StoreModel storeModel) {
 		super();
 		setId(id);
 		this.setSaleRequests = setSaleRequests;
@@ -34,6 +35,8 @@ public class SaleModel {
 		this.client = client;
 		this.date = date;
 		this.totalPrice = 0;
+		this.status = false;
+		this.storeModel = storeModel;
 	}
 
 	public int getId() {
@@ -82,6 +85,22 @@ public class SaleModel {
 
 	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+	
+	public boolean getStatus() {
+		return status;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
+	public StoreModel getStoreModel() {
+		return storeModel;
+	}
+	
+	public void setStoreModel(StoreModel store) {
+		this.storeModel = store;
 	}
 
 	@Override

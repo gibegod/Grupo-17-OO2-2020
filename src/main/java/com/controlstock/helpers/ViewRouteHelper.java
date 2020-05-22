@@ -54,6 +54,9 @@ public class ViewRouteHelper {
 		public final static String SALE_INDEX = "sale/index";
 		public final static String SALE_NEW = "sale/new";
 		public final static String SALE_UPDATE = "sale/update";
+		public final static String SALE_INITIAL = "sale/initial";
+		public final static String SALE_SELECTEMPLOYEE = "sale/selectEmployee";
+		public final static String SALE_ADDSALEREQUEST = "sale/addSaleRequest";
 			
 	
 	//Redirects ------------------------------------------------------------

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sale Requests</title>
+</head>
+<body>
+	<div class="saleRequest-table">
+		<table class="table table-striped table-dark">
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th>Amount</th>
+					<th>Assistant Employee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="saleRequest : ${saleRequests}">
+					<td><span th:text="${saleRequest.product.description}" /></td>
+					<td><span th:text="${saleRequest.amount}" /></td>
+					<td><span th:text="${saleRequest.assistantEmployee.getName()}" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+<!-- 	<div class="saleRequest-new">
+		<div class="SaleRequest-new-header">
+			<h5>Add Sale Request</h5>
+		</div>
+		<form action="#" th:action="@{/saleRequest/create}"
+			th:object="${saleRequestModel}" method="post">
+
+			<div class="form-group">
+				<label>Product</label> <select class="form-control"
+					placeholder="Product" th:field="*{saleRequestModel.product.id}">
+					<option th:each="product : ${products}" th:value="${product.id}"
+						th:text="${product.description}"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Amount</label> <input type="number" class="form-control"
+					placeholder="Enter amount" th:field="*{saleRequestModel.amount}">
+			</div>
+			<label>Assistant Employee</label> <select class="form-control"
+				placeholder="Assistant Employee" th:field="*{saleRequestModel.assistantEmployee.id}">
+				<option th:each="employee : ${employees}" th:value="${employee.id}"
+					th:text="${employee.name}"></option>
+			</select> <input class="btn btn-outline-dark" type="submit"
+				value="Add Product">
+
+		</form>
+	</div> -->
+</body>
+</html>
