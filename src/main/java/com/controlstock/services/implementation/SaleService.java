@@ -1,5 +1,6 @@
 package com.controlstock.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +115,6 @@ public class SaleService implements ISaleService {
 		} 
 		
 
-		
 		Sale sale = saleRepository.save(saleConverter.modelToEntity(saleModel));
 		return saleConverter.entityToModel(sale);
 	}
@@ -122,10 +122,11 @@ public class SaleService implements ISaleService {
 	@Override
 	public SaleModel update(SaleModel saleModel) {
 		
-		saleModel.setClient(clientService.findById(saleModel.getClient().getId()));
+		if (saleModel.getClient() != null) {
+			saleModel.setClient(clientService.findById(saleModel.getClient().getId()));
+		}
 		
 		saleModel.setEmployeeInCharge(employeeService.findById(saleModel.getEmployeeInCharge().getId()));
-
 		
 		Sale sale = saleRepository.save(saleConverter.modelToEntity(saleModel));
 		return saleConverter.entityToModel(sale);
@@ -144,6 +145,19 @@ public class SaleService implements ISaleService {
 	@Override
 	public SaleModel findById(int id) {
 		return saleConverter.entityToModel(saleRepository.findById(id));
+	}
+	
+	//Busca entre todas las sales y devuelve la que es false (que esta en proceso).
+	//No deberia ser una lista pero es para que no se rompa en el desarrollo.
+	@Override
+	public List<Sale> getSaleByStatus() {
+		List<Sale> sales = new ArrayList<Sale>();
+		for (Sale sale : getAll()) {
+			if(sale.getStatus() == false) {
+				sales.add(sale);
+			}
+		}
+		return sales;
 	}
 
 }

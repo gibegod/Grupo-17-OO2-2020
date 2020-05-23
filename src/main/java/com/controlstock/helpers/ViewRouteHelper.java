@@ -47,6 +47,7 @@ public class ViewRouteHelper {
 	
 	public final static String SALEREQUEST_INDEX = "saleRequest/index";
 	public final static String SALEREQUEST_NEW = "saleRequest/new";
+	public final static String SALEREQUEST_OTHERNEW = "new";
 	public final static String SALEREQUEST_UPDATE = "saleRequest/update";
 	
 	//Ventas (SaleRequest)
