@@ -60,10 +60,10 @@ public class SaleRequestController {
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW);
-
 		mAV.addObject("saleRequest", new SaleRequestModel());
 		mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales abiertos
 		//mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
+		System.out.println(saleService.getSaleByStatus().getId());
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
 		mAV.addObject("products", productService.getAll());
 		mAV.addObject("employees", employeeService.getAll());

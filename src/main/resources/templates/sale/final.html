@@ -18,16 +18,8 @@
 				<h5>Update Sale</h5>
 			</div>
 			<input type="hidden" th:field="*{id}" />
-			<!--
-			<label>Employee In Charge</label> 
-			<select class="form-control" placeholder="Employee" th:field="*{employeeInCharge.id}">
-			<option th:each="employee : ${employees}" th:value="${employee.id}"
-			th:text="${employee.name}"></option>
-			</select> -->
-			<label>Status: </label>
-			<select class="form-control" placeholder="Status" th:field="*{status}">
-			<option th:each="s : ${status}" th:value="${s}" th:text="${s}"></option>
-			</select>  <br/>
+			
+			Total: $<span th:text="${total}" />
 			
 			<div class="form-group">
 				<label>Client</label> 
@@ -36,8 +28,8 @@
 			th:text="${client.name}"></option>
 			</select> 
 			</div>
-			<!-- <label>Date</label> <input type="datetime-local" class="form-control"
-				placeholder="Enter date" th:field="*{date}">  -->
+			 <label>Date</label> <input type="datetime-local" class="form-control"
+				placeholder="Enter date" th:field="*{date}">  
 		
 		<div class="button-row">
 				<input class="btn btn-outline-dark" type="submit"
