@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.helpers.ViewRouteHelper;
+import com.controlstock.models.SaleModel;
 import com.controlstock.models.SaleRequestModel;
 import com.controlstock.services.ISaleRequestService;
 import com.controlstock.services.ISaleService;
@@ -19,7 +21,8 @@ import com.controlstock.services.IProductService;
 import com.controlstock.services.IEmployeeService;
 
 @Controller
-@RequestMapping("/saleRequest")
+//@RequestMapping("/saleRequest")
+@RequestMapping("/sale/saleRequest")
 public class SaleRequestController {
 
 	@Autowired
@@ -45,10 +48,21 @@ public class SaleRequestController {
 		return mAV;
 	}
 	
-	@GetMapping("/new")
-	public ModelAndView create() {
+	
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public ModelAndView create(@ModelAttribute("sale") SaleModel saleModel) {
+	//public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW);
+		//mAV.addObject("employees", employeeService.getEmployeeByStore(saleModel.getStoreModel().getId()));
 		mAV.addObject("saleRequest", new SaleRequestModel());
+		//mAV.addObject("sale", saleService.getSaleByStatus();
+		/*  
+		 	Trae las sales con status false. En la app final deberia traer solo 1 sale.
+		    Esta hecho con lista para que no se rompa en el desarrollo.
+		*/
+		mAV.addObject("sales", saleService.getSaleByStatus());
+		//mAV.addObject("saleRequests", saleModel.getId().getSetSaleRequests());
+		//mAV.addObject("employees", employeeService.getEmployeeByStore(saleModel.getStoreModel().getId()));
 		mAV.addObject("products", productService.getAll());
 		mAV.addObject("employees", employeeService.getAll());
 		mAV.addObject("sales", saleService.getAll());
@@ -58,7 +72,7 @@ public class SaleRequestController {
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("saleRequest") SaleRequestModel saleRequestModel) {
 		saleRequestService.insert(saleRequestModel);
-		return new RedirectView(ViewRouteHelper.SALEREQUEST_ROOT);
+		return new RedirectView(ViewRouteHelper.SALEREQUEST_OTHERNEW);
 	}
 	
 	@GetMapping("/{id}")

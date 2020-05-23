@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -78,7 +79,7 @@ public class SaleController {
 		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
-		
+	
 	//Selecciona empleado del store
 	@RequestMapping(value = "/selectEmployee", method = RequestMethod.GET)
 	public ModelAndView selectEmployee(@ModelAttribute("sale") SaleModel saleModel) {
@@ -87,13 +88,14 @@ public class SaleController {
 		return mAV;
 	}
 	
-	//Guarda el sale.
+	//Guarda el sale y va a crear un saleRequest.
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("sale") SaleModel saleModel) {
 		saleService.insert(saleModel);
-		return new RedirectView(ViewRouteHelper.SALE_ROOT);
+		return new RedirectView(ViewRouteHelper.SALEREQUEST_NEW);
 	}
 	
+	//No se usa
 	@RequestMapping(value = "/addSaleRequest", method = RequestMethod.GET)
 	public ModelAndView addSaleRequest(@ModelAttribute("sale") SaleModel saleModel) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_ADDSALEREQUEST);
@@ -103,6 +105,8 @@ public class SaleController {
 		mAV.addObject("employees", employeeService.getAll());
 		return mAV;
 	}
+	
+	//No se usa
 	@PostMapping("/createSaleRequest")
 	public RedirectView createSR(@ModelAttribute("sale") SaleModel saleModel) {
 		saleService.insert(saleModel);
