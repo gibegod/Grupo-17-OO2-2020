@@ -101,7 +101,6 @@ public class SaleRequestService implements ISaleRequestService {
 		saleRequest.getSale().getSetSaleRequests().add(saleRequest);
 		saleService.update(saleConverter.entityToModel(saleRequest.getSale()));
 		
-		//System.out.println("ID sale: " + saleRequest.getSale().getId());
 
 		// SaleRequest saleRequest = saleRequestRepository.save(saleRequestConverter.modelToEntity(saleRequestModel));
 		return saleRequestConverter.entityToModel(saleRequest);

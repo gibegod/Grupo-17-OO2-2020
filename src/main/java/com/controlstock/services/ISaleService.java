@@ -18,6 +18,8 @@ public interface ISaleService {
 	
 	public boolean remove(int id);
 	
-	public List<Sale> getSaleByStatus();
+	public List<Sale> getSaleListByStatus();
+	
+	public Sale getSaleByStatus();
 
 }

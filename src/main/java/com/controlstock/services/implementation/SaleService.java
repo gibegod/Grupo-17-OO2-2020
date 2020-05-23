@@ -150,7 +150,7 @@ public class SaleService implements ISaleService {
 	//Busca entre todas las sales y devuelve la que es false (que esta en proceso).
 	//No deberia ser una lista pero es para que no se rompa en el desarrollo.
 	@Override
-	public List<Sale> getSaleByStatus() {
+	public List<Sale> getSaleListByStatus() {
 		List<Sale> sales = new ArrayList<Sale>();
 		for (Sale sale : getAll()) {
 			if(sale.getStatus() == false) {
@@ -160,4 +160,14 @@ public class SaleService implements ISaleService {
 		return sales;
 	}
 
+	@Override
+	public Sale getSaleByStatus() {
+		for (Sale sale : getAll()) {
+			if(sale.getStatus() == false) {
+				return sale;
+			}
+		}
+		return null;
+	}
+	
 }

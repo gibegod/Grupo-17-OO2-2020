@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.controlstock.converters.SaleConverter;
+import com.controlstock.entities.Sale;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.SaleModel;
 import com.controlstock.models.SaleRequestModel;
@@ -41,6 +44,10 @@ public class SaleRequestController {
 	@Qualifier("saleService")
 	private ISaleService saleService;
 	
+	@Autowired
+	@Qualifier("saleConverter")
+	private SaleConverter saleConverter;
+	
 	@GetMapping("")
 	public ModelAndView index () {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_INDEX);
@@ -49,23 +56,17 @@ public class SaleRequestController {
 	}
 	
 	
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public ModelAndView create(@ModelAttribute("sale") SaleModel saleModel) {
-	//public ModelAndView create() {
+	//Crea el SaleRequest. Estaria bueno que el parametro sale se mande solo pero funciona igual.
+	@GetMapping("/new")
+	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW);
-		//mAV.addObject("employees", employeeService.getEmployeeByStore(saleModel.getStoreModel().getId()));
+
 		mAV.addObject("saleRequest", new SaleRequestModel());
-		//mAV.addObject("sale", saleService.getSaleByStatus();
-		/*  
-		 	Trae las sales con status false. En la app final deberia traer solo 1 sale.
-		    Esta hecho con lista para que no se rompa en el desarrollo.
-		*/
-		mAV.addObject("sales", saleService.getSaleByStatus());
-		//mAV.addObject("saleRequests", saleModel.getId().getSetSaleRequests());
-		//mAV.addObject("employees", employeeService.getEmployeeByStore(saleModel.getStoreModel().getId()));
+		mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales abiertos
+		//mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
+		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
 		mAV.addObject("products", productService.getAll());
 		mAV.addObject("employees", employeeService.getAll());
-		mAV.addObject("sales", saleService.getAll());
 		return mAV;
 	}
 	
