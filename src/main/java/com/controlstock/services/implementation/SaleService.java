@@ -145,17 +145,20 @@ public class SaleService implements ISaleService {
 		
 		if (saleModel.getClient() != null) {
 			saleModel.setClient(clientService.findById(saleModel.getClient().getId()));
+			sale.setClient(clientConverter.modelToEntity(clientService.findById(saleModel.getClient().getId())));
+			sale.setDate(saleModel.getDate());
+			saleRepository.saveAndFlush(sale);
 		}
-		/*
-		//Venta finalizada ESTA TROLEANDO
-		System.out.println(saleModelDB.getStatus());
+
+		return saleModel;
+	}
+	
+	public void updateStatus(SaleModel saleModel) {
+		saleModel = update(saleModel);
+		Sale sale = saleRepository.findById(saleModel.getId());
+		sale.setStatus(true);
+		saleRepository.saveAndFlush(sale);
 		saleModel.setStatus(true);
-		System.out.println(saleModel.getStatus());
-		*/
-		
-		sale = saleRepository.save(saleConverter.modelToEntity(saleModel));
-		//sale.setStatus(true); //TROLEAAAA
-		return saleConverter.entityToModel(sale);
 	}
 	
 	@Override
@@ -173,6 +176,16 @@ public class SaleService implements ISaleService {
 		return saleConverter.entityToModel(saleRepository.findById(id));
 	}
 	
+	public float calculateTotal(int id) {
+		Sale sale = saleRepository.findById(id);
+		float total = 0;
+		for (SaleRequest request : sale.getSetSaleRequests()) {
+			 total = total + (request.getProduct().getUnitPrice() * request.getAmount()); 
+		}
+		sale.setTotalPrice(total);
+		saleRepository.saveAndFlush(sale);
+		return total;
+	}
 	//Busca entre todas las sales y devuelve la que es false (que esta en proceso).
 	//No deberia ser una lista pero es para que no se rompa en el desarrollo.
 	@Override

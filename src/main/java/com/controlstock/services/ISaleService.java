@@ -16,10 +16,14 @@ public interface ISaleService {
 	
 	public SaleModel update(SaleModel saleModel);
 	
+	public void updateStatus(SaleModel saleModel);
+	
 	public boolean remove(int id);
 	
 	public List<Sale> getSaleListByStatus();
 	
 	public Sale getSaleByStatus();
+	
+	public float calculateTotal(int id);
 
 }
