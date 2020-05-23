@@ -115,9 +115,11 @@ public class SaleController {
 	
 	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_UPDATE);
+		//ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_UPDATE);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_FINAL);
 		mAV.addObject("sale", saleService.findById(id));
-		mAV.addObject("client", clientService.getAll());
+		mAV.addObject("status", true);
+		mAV.addObject("clients", clientService.getAll());
 		mAV.addObject("employee", employeeService.getAll());
 		return mAV;
 	}

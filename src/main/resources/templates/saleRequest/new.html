@@ -44,9 +44,10 @@
 				<option th:each="employee : ${employees}" th:value="${employee.id}"
 					th:text="${employee.name}"></option></select> -->
 			<input class="btn btn-outline-dark" type="submit"
-				value="Create new sale Request"> <a><input
-				class="btn btn-outline-dark" type="submit" value="Finish sale"></a>
-
+				value="Create new sale Request"> 
+			<tr th:each="sale : ${sales}">
+				<a th:href="@{/sale/{id}(id=${sale.id})}">Finish sale</a>
+			</tr>
 
 		</form>
 	</div>

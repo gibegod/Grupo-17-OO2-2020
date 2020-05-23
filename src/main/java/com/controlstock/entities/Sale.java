@@ -46,7 +46,8 @@ public class Sale {
 	
 	public Sale(){};
 	
-	public Sale(int id, Set<SaleRequest> setSaleRequests, Employee employeeInCharge, Client client, LocalDateTime date, Store store) {
+	public Sale(int id, Set<SaleRequest> setSaleRequests, Employee employeeInCharge, Client client, 
+			LocalDateTime date, Store store) {
 		super();
 		this.id = id;
 		this.setSaleRequests = setSaleRequests;

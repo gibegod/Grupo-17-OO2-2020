@@ -122,13 +122,39 @@ public class SaleService implements ISaleService {
 	@Override
 	public SaleModel update(SaleModel saleModel) {
 		
+		System.out.println(saleModel.getId()); //Bien
+		
+		Sale sale = saleRepository.findById(saleModel.getId());
+		SaleModel saleModelDB = saleConverter.entityToModel(sale); //El sale que esta en la base de datos
+		
+		System.out.println(saleModelDB.getEmployeeInCharge().getName()); ///Bien
+		
+		Employee employee = employeeRepository.findById(saleModelDB.getEmployeeInCharge().getId());
+		EmployeeModel employeeModel = employeeConverter.entityToModel(employee);
+		saleModel.setEmployeeInCharge(employeeModel);
+	
+		
+		Store store = storeRepository.findById(saleModelDB.getEmployeeInCharge().getStore().getId());
+		StoreModel storeModel = storeConverter.entityToModel(store);
+		saleModel.setStoreModel(storeModel);
+		
+		Address address = addressRepository.findById(saleModelDB.getStoreModel().getAddress().getId());
+		AddressModel addressModel = addressConverter.entityToModel(address);
+		saleModel.getStoreModel().setAddress(addressModel);
+		
+		
 		if (saleModel.getClient() != null) {
 			saleModel.setClient(clientService.findById(saleModel.getClient().getId()));
 		}
+		/*
+		//Venta finalizada ESTA TROLEANDO
+		System.out.println(saleModelDB.getStatus());
+		saleModel.setStatus(true);
+		System.out.println(saleModel.getStatus());
+		*/
 		
-		saleModel.setEmployeeInCharge(employeeService.findById(saleModel.getEmployeeInCharge().getId()));
-		
-		Sale sale = saleRepository.save(saleConverter.modelToEntity(saleModel));
+		sale = saleRepository.save(saleConverter.modelToEntity(saleModel));
+		//sale.setStatus(true); //TROLEAAAA
 		return saleConverter.entityToModel(sale);
 	}
 	
