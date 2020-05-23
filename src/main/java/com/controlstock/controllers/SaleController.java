@@ -121,12 +121,13 @@ public class SaleController {
 		mAV.addObject("status", true);
 		mAV.addObject("clients", clientService.getAll());
 		mAV.addObject("employee", employeeService.getAll());
+		mAV.addObject("total", saleService.calculateTotal(id));
 		return mAV;
 	}
 	
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("sale") SaleModel saleModel) {
-		saleService.update(saleModel);
+		saleService.updateStatus(saleModel);
 		return new RedirectView(ViewRouteHelper.SALE_ROOT);
 	}
 	
