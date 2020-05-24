@@ -92,6 +92,15 @@ public class BatchService implements IBatchService {
 		return batchConverter.entityToModel(batch);
 	}
 	
+	
+	@Override
+	public BatchModel updateCurrentAmount(BatchModel batchModel) {
+		Batch batch2 = batchRepository.findById(batchModel.getId());
+		batch2.setCurrentAmount(batchModel.getCurrentAmount());
+		Batch batch = batchRepository.save(batch2);
+		return batchConverter.entityToModel(batch);
+	}
+	
 	@Override
 	public boolean remove(int id) {
 		try {

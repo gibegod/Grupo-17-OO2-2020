@@ -19,4 +19,6 @@ public interface IBatchService {
 	
 	public List<Batch> getBatchByStore(int idStore);
 
+	public BatchModel updateCurrentAmount(BatchModel batchModel);
+
 }

@@ -19,6 +19,7 @@
 					<th>Size</th>
 					<th>Current amount</th>
 					<th>Initial amount</th>
+					<th>Store</th>
 					<th>Admission date</th>
 				</tr>
 			</thead>
@@ -28,6 +29,7 @@
 					<td><span th:text="${batch.size}" /></td>
 					<td><span th:text="${batch.currentAmount}" /></td>
 					<td><span th:text="${batch.initialAmount}" /></td>
+					<td><span th:text="${batch.store.address.city}" /></td>
 					<td><span th:text="${batch.admissionDate}" /></td>
 					<td><a th:href="@{/batch/{id}(id=${batch.id})}">Edit</a></td>
 				</tr>

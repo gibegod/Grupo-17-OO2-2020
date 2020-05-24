@@ -35,7 +35,6 @@ public class BatchConverter {
 		}
 	
 	
-	
 	//Sin store
 	public BatchModel entityToModelSetBatch(Batch batch) {
 		return new BatchModel (batch.getId(), productConverter.entityToModel(batch.getProduct()), batch.getSize(),

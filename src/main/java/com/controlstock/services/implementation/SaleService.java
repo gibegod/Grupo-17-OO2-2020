@@ -2,6 +2,7 @@ package com.controlstock.services.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,13 +18,16 @@ import com.controlstock.entities.Sale;
 import com.controlstock.entities.SaleRequest;
 import com.controlstock.entities.Store;
 import com.controlstock.entities.Employee;
+import com.controlstock.entities.Product;
 import com.controlstock.entities.Address;
 import com.controlstock.entities.Client;
 import com.controlstock.models.SaleModel;
 import com.controlstock.models.SaleRequestModel;
 import com.controlstock.models.StoreModel;
 import com.controlstock.models.EmployeeModel;
+import com.controlstock.models.ProductModel;
 import com.controlstock.models.AddressModel;
+import com.controlstock.models.BatchModel;
 import com.controlstock.models.ClientModel;
 import com.controlstock.repositories.ISaleRepository;
 import com.controlstock.repositories.ISaleRequestRepository;
@@ -84,6 +88,10 @@ public class SaleService implements ISaleService {
 	@Qualifier("addressConverter")
 	private AddressConverter addressConverter;
 	
+	@Autowired
+	@Qualifier("batchService")
+	private BatchService batchService;
+	
 	@Override
 	public List<Sale> getAll() {
 		return saleRepository.findAll();
@@ -114,7 +122,6 @@ public class SaleService implements ISaleService {
 			saleModel.setClient(clientModel);
 		} 
 		
-
 		Sale sale = saleRepository.save(saleConverter.modelToEntity(saleModel));
 		return saleConverter.entityToModel(sale);
 	}
@@ -122,12 +129,12 @@ public class SaleService implements ISaleService {
 	@Override
 	public SaleModel update(SaleModel saleModel) {
 		
-		System.out.println(saleModel.getId()); //Bien
+		//System.out.println(saleModel.getId()); //Bien
 		
 		Sale sale = saleRepository.findById(saleModel.getId());
 		SaleModel saleModelDB = saleConverter.entityToModel(sale); //El sale que esta en la base de datos
 		
-		System.out.println(saleModelDB.getEmployeeInCharge().getName()); ///Bien
+		//System.out.println(saleModelDB.getEmployeeInCharge().getName()); ///Bien
 		
 		Employee employee = employeeRepository.findById(saleModelDB.getEmployeeInCharge().getId());
 		EmployeeModel employeeModel = employeeConverter.entityToModel(employee);
@@ -141,7 +148,7 @@ public class SaleService implements ISaleService {
 		Address address = addressRepository.findById(saleModelDB.getStoreModel().getAddress().getId());
 		AddressModel addressModel = addressConverter.entityToModel(address);
 		saleModel.getStoreModel().setAddress(addressModel);
-		
+		 
 		
 		if (saleModel.getClient() != null) {
 			saleModel.setClient(clientService.findById(saleModel.getClient().getId()));
@@ -150,9 +157,44 @@ public class SaleService implements ISaleService {
 			saleRepository.saveAndFlush(sale);
 		}
 
+		subtractStock(sale);
+		
 		return saleModel;
 	}
 	
+	//Cantidad en SR hay que restarla al lote correspondiente al store y al producto.
+	void subtractStock (Sale sale) {
+		SaleModel saleModel =  saleConverter.entityToModel(sale);
+		Set<SaleRequestModel> setSaleRequestsModel = saleModel.getSetSaleRequests();
+		Set<BatchModel> setBatchModel  = saleModel.getStoreModel().getSetBatchs();
+		
+		// current amount = current amount - amount
+		for(SaleRequestModel srm : setSaleRequestsModel) {
+			
+			ProductModel productSR = srm.getProduct();
+			System.out.println("SR: " + productSR.getDescription());
+			int amountSR = srm.getAmount();
+			System.out.println(amountSR);
+			
+			for(BatchModel bm : setBatchModel) {
+				ProductModel productB = bm.getProduct();
+				System.out.println("B: " + productB.getDescription());
+				int amountB = bm.getCurrentAmount(); //20
+				System.out.println(amountB);
+				
+				if (productSR.getId() == productB.getId()) {
+					amountB = amountB - amountSR;
+					System.out.println("Batch Final: " + amountB);
+					bm.setCurrentAmount(amountB);
+					batchService.updateCurrentAmount(bm);
+				}
+			}
+
+		}
+		
+	}
+	
+	//Seteamos el status en true
 	public void updateStatus(SaleModel saleModel) {
 		saleModel = update(saleModel);
 		Sale sale = saleRepository.findById(saleModel.getId());
@@ -176,6 +218,7 @@ public class SaleService implements ISaleService {
 		return saleConverter.entityToModel(saleRepository.findById(id));
 	}
 	
+	//Calcula el total del sale
 	public float calculateTotal(int id) {
 		Sale sale = saleRepository.findById(id);
 		float total = 0;
@@ -186,6 +229,7 @@ public class SaleService implements ISaleService {
 		saleRepository.saveAndFlush(sale);
 		return total;
 	}
+	
 	//Busca entre todas las sales y devuelve la que es false (que esta en proceso).
 	//No deberia ser una lista pero es para que no se rompa en el desarrollo.
 	@Override
@@ -208,5 +252,7 @@ public class SaleService implements ISaleService {
 		}
 		return null;
 	}
+
+	
 	
 }

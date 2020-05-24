@@ -27,7 +27,7 @@ public class Batch {
 	private Product product;
 	
 	@NotNull
-	private char size;
+	private String size;
 	
 	@NotNull
 	private int currentAmount;
@@ -43,7 +43,7 @@ public class Batch {
 	
 	public Batch() {}
 	
-	public Batch(int id, Product product, char size, int currentAmount, int initialAmount, LocalDate admissionDate, Store store) {
+	public Batch(int id, Product product, String size, int currentAmount, int initialAmount, LocalDate admissionDate, Store store) {
 		super();
 		this.id = id;
 		this.product = product;
@@ -54,7 +54,7 @@ public class Batch {
 		this.store=store;
 	}
 	
-	public Batch(int id, Product product, char size, int currentAmount, int initialAmount, LocalDate admissionDate) {
+	public Batch(int id, Product product, String size, int currentAmount, int initialAmount, LocalDate admissionDate) {
 		super();
 		this.id = id;
 		this.product = product;
@@ -83,12 +83,12 @@ public class Batch {
 	}
 
 
-	public char getSize() {
+	public String getSize() {
 		return size;
 	}
 
 
-	public void setSize(char size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 
