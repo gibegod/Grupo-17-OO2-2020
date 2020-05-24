@@ -1,5 +1,6 @@
 package com.controlstock.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import com.controlstock.converters.BatchConverter;
 import com.controlstock.converters.ProductConverter;
 import com.controlstock.entities.Batch;
 import com.controlstock.entities.Product;
+import com.controlstock.entities.Store;
 import com.controlstock.models.BatchModel;
 import com.controlstock.models.ProductModel;
+import com.controlstock.models.StoreModel;
 import com.controlstock.repositories.IBatchRepository;
 import com.controlstock.repositories.IProductRepository;
 import com.controlstock.services.IBatchService;
@@ -32,6 +35,10 @@ public class BatchService implements IBatchService {
 	private ProductService productService;
 	
 	@Autowired
+	@Qualifier("storeService")
+	private StoreService storeService;
+	
+	@Autowired
 	@Qualifier("productRepository")
 	private IProductRepository productRepository;
 	
@@ -43,6 +50,7 @@ public class BatchService implements IBatchService {
 	public List<Batch> getAll() {
 		return batchRepository.findAll();
 	}
+	
 	
 	@Override
 	public BatchModel insert(BatchModel batchModel) {

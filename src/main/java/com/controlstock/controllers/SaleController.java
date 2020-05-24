@@ -101,7 +101,7 @@ public class SaleController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_ADDSALEREQUEST);
 		mAV.addObject("saleRequestModel", new SaleRequestModel());
 		mAV.addObject("saleRequests", saleModel.getSetSaleRequests());
-		mAV.addObject("products", productService.getAll());
+		mAV.addObject("products", storeService.getByStore(saleModel.getStoreModel().getId()));
 		mAV.addObject("employees", employeeService.getAll());
 		return mAV;
 	}
