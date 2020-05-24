@@ -79,6 +79,7 @@ public class SaleRequestService implements ISaleRequestService {
 	@Override
 	public SaleRequestModel insert(SaleRequestModel saleRequestModel) {
 
+		
 		Product product = productRepository.findById(saleRequestModel.getProduct().getId());
 		ProductModel productModel = productConverter.entityToModel(product);
 		saleRequestModel.setProduct(productModel);

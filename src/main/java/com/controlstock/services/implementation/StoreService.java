@@ -1,5 +1,6 @@
 package com.controlstock.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,11 @@ import com.controlstock.converters.AddressConverter;
 import com.controlstock.converters.EmployeeConverter;
 import com.controlstock.converters.StoreConverter;
 import com.controlstock.entities.Address;
+import com.controlstock.entities.Batch;
+import com.controlstock.entities.Product;
 import com.controlstock.entities.Store;
 import com.controlstock.models.AddressModel;
+import com.controlstock.models.ProductModel;
 import com.controlstock.models.StoreModel;
 import com.controlstock.repositories.IAddressRepository;
 import com.controlstock.repositories.IEmployeeRepository;
@@ -58,11 +62,21 @@ public class StoreService implements IStoreService {
 	public List<Store> getAll() {
 		return storeRepository.findAll();
 	}
-
+	
+	
 	@Override
 	public StoreModel insertOrUpdate(StoreModel storeModel) {
 		Store store = storeRepository.save(storeConverter.modelToEntity(storeModel));
 		return storeConverter.entityToModel(store);
+	}
+	
+	public List<Product> getByStore(int idStore){
+		Store store = storeRepository.findById(idStore);
+		List<Product> products = new ArrayList<Product>();
+		for(Batch b : store.getSetBatchs()) {
+			products.add(b.getProduct());
+		}
+		return products;
 	}
 	
 	@Override

@@ -20,6 +20,7 @@ import com.controlstock.models.SaleModel;
 import com.controlstock.models.SaleRequestModel;
 import com.controlstock.services.ISaleRequestService;
 import com.controlstock.services.ISaleService;
+import com.controlstock.services.IStoreService;
 import com.controlstock.services.IProductService;
 import com.controlstock.services.IEmployeeService;
 
@@ -45,6 +46,10 @@ public class SaleRequestController {
 	private ISaleService saleService;
 	
 	@Autowired
+	@Qualifier("storeService")
+	private IStoreService storeService;
+	
+	@Autowired
 	@Qualifier("saleConverter")
 	private SaleConverter saleConverter;
 	
@@ -61,11 +66,12 @@ public class SaleRequestController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW);
 		mAV.addObject("saleRequest", new SaleRequestModel());
-		mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales abiertos
-		//mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
-		System.out.println(saleService.getSaleByStatus().getId());
+
+		//mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales abiertos
+		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
+
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
-		mAV.addObject("products", productService.getAll());
+		mAV.addObject("products", storeService.getByStore(saleService.getSaleByStatus().getStore().getId()));
 		mAV.addObject("employees", employeeService.getAll());
 		return mAV;
 	}

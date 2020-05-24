@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 //Lote
@@ -22,7 +23,6 @@ public class Batch {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull
 	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private Product product;
 	
@@ -38,7 +38,21 @@ public class Batch {
 	@NotNull
 	private LocalDate admissionDate;
 	
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	private Store store;
+	
 	public Batch() {}
+	
+	public Batch(int id, Product product, char size, int currentAmount, int initialAmount, LocalDate admissionDate, Store store) {
+		super();
+		this.id = id;
+		this.product = product;
+		this.size = size;
+		this.currentAmount = initialAmount;
+		this.initialAmount = initialAmount;
+		this.admissionDate = admissionDate;
+		this.store=store;
+	}
 	
 	public Batch(int id, Product product, char size, int currentAmount, int initialAmount, LocalDate admissionDate) {
 		super();
@@ -107,5 +121,15 @@ public class Batch {
 	public void setAdmissionDate(LocalDate admissionDate) {
 		this.admissionDate = admissionDate;
 	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+	
+	
 
 }

@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import com.controlstock.entities.Batch;
 import com.controlstock.entities.Employee;
 import com.controlstock.entities.Store;
+import com.controlstock.models.BatchModel;
 import com.controlstock.models.EmployeeModel;
 import com.controlstock.models.StoreModel;
 
@@ -23,15 +25,19 @@ public class StoreConverter {
 	@Qualifier("employeeConverter")
 	private EmployeeConverter employeeConverter;
 	
+	@Autowired
+	@Qualifier("batchConverter")
+	private BatchConverter batchConverter;
+	
 	
 	public StoreModel entityToModel(Store store) {
 		return new StoreModel(store.getId(), addressConverter.entityToModel(store.getAddress()),  
-							store.getPhoneNumber(), entityToModelSetEmployee(store.getSetEmployees()));
+							store.getPhoneNumber(), entityToModelSetEmployee(store.getSetEmployees()), entityToModelSetBatch(store.getSetBatchs()));
 	}
 	
 	public Store modelToEntity(StoreModel storeModel) {
 		return new Store(storeModel.getId(), addressConverter.modelToEntity(storeModel.getAddress()),  
-						storeModel.getPhoneNumber(), modelToEntitySetEmployee(storeModel.getSetEmployees())); 
+						storeModel.getPhoneNumber(), modelToEntitySetEmployee(storeModel.getSetEmployees()), modelToEntitySetBatch(storeModel.getSetBatchs())); 
 	}
 	
 	
@@ -60,5 +66,31 @@ public class StoreConverter {
 
 		return setEmployeesEntity;
 	}
+	
+	public Set<BatchModel> entityToModelSetBatch(Set<Batch> setBatchs){
+		Set<BatchModel> setBatchsModel = new HashSet<BatchModel>();
+		
+		for(Batch b : setBatchs) {
+			BatchModel batchM = batchConverter.entityToModelSetBatch(b);
+			setBatchsModel.add(batchM);
+		}
+		return setBatchsModel;
+	}
+	
+	public Set<Batch> modelToEntitySetBatch(Set<BatchModel> setBatchs){
+		Set<Batch> setBatchsE = new HashSet<Batch>();
+		if (setBatchs == null) {
+			return setBatchsE;
+		}
+		else {
+		for(BatchModel b : setBatchs) {
+			Batch batchM = batchConverter.modelToEntitySetBatch(b);
+			setBatchsE.add(batchM);
+			}
+		}
+		return setBatchsE;
+	}
+	
+	
 	
 }

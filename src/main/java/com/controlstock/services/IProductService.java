@@ -8,7 +8,7 @@ import com.controlstock.models.ProductModel;
 public interface IProductService {
 	
 	public List<Product> getAll();
-	
+		
 	public ProductModel findById(int id);
 	
 	public ProductModel insertOrUpdate(ProductModel productModel);
