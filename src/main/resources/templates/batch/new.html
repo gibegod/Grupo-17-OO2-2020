@@ -29,8 +29,16 @@
 				placeholder="Enter initial amount" th:field="*{initialAmount}">
 			<label>Admission date</label> <input type="date" class="form-control"
 				placeholder="Enter admission date" th:field="*{admissionDate}">
-			<input class="btn btn-outline-dark" type="submit"
+		
+				<div class="form-group">
+				<label>Store</label> <select class="form-control" placeholder="Store"
+					th:field="*{store.id}">
+					<option th:each="store : ${stores}" th:value="${store.id}"
+						th:text="${store.address.city}"></option>
+				</select> 	
+				<input class="btn btn-outline-dark" type="submit"
 				value="Create new batch">
+			</div>
 		</form>
 	</div>
 </body>

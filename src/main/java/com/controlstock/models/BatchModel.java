@@ -18,11 +18,24 @@ public class BatchModel {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate admissionDate;
-	
+
+	private StoreModel store;
 	
 	public BatchModel() {}
 
 
+	public BatchModel(int id, ProductModel product, char size, int currentAmount, int initialAmount,
+			LocalDate admissionDate, StoreModel store) {
+		super();
+		this.id = id;
+		this.product = product;
+		this.size = size;
+		this.currentAmount = currentAmount;
+		this.initialAmount = initialAmount;
+		this.admissionDate = admissionDate;
+		this.store = store;
+	}
+	
 	public BatchModel(int id, ProductModel product, char size, int currentAmount, int initialAmount,
 			LocalDate admissionDate) {
 		super();
@@ -93,6 +106,18 @@ public class BatchModel {
 	public void setAdmissionDate(LocalDate admissionDate) {
 		this.admissionDate = admissionDate;
 	}
+
+
+	public StoreModel getStore() {
+		return store;
+	}
+
+
+	public void setStore(StoreModel store) {
+		this.store = store;
+	}
+	
+	
 
 	
 }
