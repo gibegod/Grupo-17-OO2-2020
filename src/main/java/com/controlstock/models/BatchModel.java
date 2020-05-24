@@ -10,7 +10,7 @@ public class BatchModel {
 	
 	private ProductModel product;
 	
-	private char size;
+	private String size;
 	
 	private int currentAmount;
 	
@@ -24,7 +24,7 @@ public class BatchModel {
 	public BatchModel() {}
 
 
-	public BatchModel(int id, ProductModel product, char size, int currentAmount, int initialAmount,
+	public BatchModel(int id, ProductModel product, String size, int currentAmount, int initialAmount,
 			LocalDate admissionDate, StoreModel store) {
 		super();
 		this.id = id;
@@ -36,7 +36,7 @@ public class BatchModel {
 		this.store = store;
 	}
 	
-	public BatchModel(int id, ProductModel product, char size, int currentAmount, int initialAmount,
+	public BatchModel(int id, ProductModel product, String size, int currentAmount, int initialAmount,
 			LocalDate admissionDate) {
 		super();
 		this.id = id;
@@ -68,12 +68,12 @@ public class BatchModel {
 	}
 
 
-	public char getSize() {
+	public String getSize() {
 		return size;
 	}
 
 
-	public void setSize(char size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 
