@@ -52,26 +52,6 @@ public class StoreConverter {
 		return setEmployeesModel;
 	}
 	
-	public Set<BatchModel> entityToModelSetBatch(Set<Batch> setBatchs){
-		Set<BatchModel> setBatchsModel = new HashSet<BatchModel>();
-		
-		for(Batch b : setBatchs) {
-			BatchModel batchM = batchConverter.entityToModel(b);
-			setBatchsModel.add(batchM);
-		}
-		return setBatchsModel;
-	}
-	
-	public Set<Batch> modelToEntitySetBatch(Set<BatchModel> setBatchs){
-		Set<Batch> setBatchsE = new HashSet<Batch>();
-		
-		for(BatchModel b : setBatchs) {
-			Batch batchM = batchConverter.modelToEntity(b);
-			setBatchsE.add(batchM);
-		}
-		return setBatchsE;
-	}
-	
 	public Set<Employee> modelToEntitySetEmployee(Set<EmployeeModel> setEmployees) {
 		Set<Employee> setEmployeesEntity = new HashSet<Employee>();
 		
@@ -86,5 +66,31 @@ public class StoreConverter {
 
 		return setEmployeesEntity;
 	}
+	
+	public Set<BatchModel> entityToModelSetBatch(Set<Batch> setBatchs){
+		Set<BatchModel> setBatchsModel = new HashSet<BatchModel>();
+		
+		for(Batch b : setBatchs) {
+			BatchModel batchM = batchConverter.entityToModelSetBatch(b);
+			setBatchsModel.add(batchM);
+		}
+		return setBatchsModel;
+	}
+	
+	public Set<Batch> modelToEntitySetBatch(Set<BatchModel> setBatchs){
+		Set<Batch> setBatchsE = new HashSet<Batch>();
+		if (setBatchs == null) {
+			return setBatchsE;
+		}
+		else {
+		for(BatchModel b : setBatchs) {
+			Batch batchM = batchConverter.modelToEntitySetBatch(b);
+			setBatchsE.add(batchM);
+			}
+		}
+		return setBatchsE;
+	}
+	
+	
 	
 }

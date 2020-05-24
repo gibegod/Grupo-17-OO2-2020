@@ -57,9 +57,9 @@ public class EmployeeService implements IEmployeeService {
 	public EmployeeModel insert(EmployeeModel employeeModel) {
 		
 		//Relaciono el id del store con todo el objeto store y lo seteo en employeeModel.
-		Store store = storeRepository.findById(employeeModel.getStore().getId());
-		StoreModel storeModel = storeConverter.entityToModel(store);
-		employeeModel.setStore(storeModel);
+				Store store = storeRepository.findById(employeeModel.getStore().getId());
+				StoreModel storeModel = storeConverter.entityToModel(store);
+				employeeModel.setStore(storeModel);
 		
 		//Se guarda el employee en la bd.
 		Employee employee = employeeConverter.modelToEntity(employeeModel);

@@ -40,7 +40,7 @@ public class Store {
 	//Vendedores
 	private Set<Employee> setEmployees;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
 	private Set<Batch> setBatchs;
 	
 	public Store() {}
