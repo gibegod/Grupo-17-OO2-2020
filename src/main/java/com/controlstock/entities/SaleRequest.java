@@ -6,8 +6,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
@@ -20,6 +18,9 @@ public class SaleRequest {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	private Sale sale;
+	
 	@NotNull
 	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private Product product;
@@ -31,9 +32,37 @@ public class SaleRequest {
 	@ManyToOne(optional = true, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private Employee assistantEmployee;
 	
-	
 	public SaleRequest(){};
 	
+	//Constructor completo
+	public SaleRequest(int id, Sale sale, Product product, int amount, Employee assistantEmployee) {
+		super();
+		setId(id);
+		this.sale = sale;
+		this.product = product;
+		this.amount = amount;
+		this.assistantEmployee=assistantEmployee;
+	}
+	
+	//Constructor sin empleado auxiliar.
+	public SaleRequest(int id, Sale sale, Product product, int amount) {
+		super();
+		setId(id);
+		this.sale = sale;
+		this.product = product;
+		this.amount = amount;
+	}
+	
+	//Constructor sin sale.
+	public SaleRequest(int id, Product product, int amount, Employee assistantEmployee) {
+		super();
+		setId(id);
+		this.product = product;
+		this.amount = amount;
+		this.assistantEmployee=assistantEmployee;
+	}
+	
+	//Constructor sin empleado auxiliar ni sale.
 	public SaleRequest(int id, Product product, int amount) {
 		super();
 		setId(id);
@@ -41,12 +70,13 @@ public class SaleRequest {
 		this.amount = amount;
 	}
 	
-	public SaleRequest(int id, Product product, int amount, Employee assistantEmployee) {
-		super();
-		setId(id);
-		this.product = product;
-		this.amount = amount;
-		this.assistantEmployee=assistantEmployee;
+	
+	public Sale getSale() {
+		return sale;
+	}
+
+	public void setSale(Sale sale) {
+		this.sale = sale;
 	}
 
 	public Product getProduct() {

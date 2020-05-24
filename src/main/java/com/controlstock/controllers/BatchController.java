@@ -15,6 +15,7 @@ import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.BatchModel;
 import com.controlstock.services.IBatchService;
 import com.controlstock.services.IProductService;
+import com.controlstock.services.IStoreService;
 
 @Controller
 @RequestMapping("/batch")
@@ -28,6 +29,10 @@ public class BatchController {
 	@Qualifier("productService")
 	private IProductService productService;
 	
+	@Autowired
+	@Qualifier("storeService")
+	private IStoreService storeService;
+	
 	@GetMapping("")
 	public ModelAndView index () {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.BATCH_INDEX);
@@ -40,6 +45,7 @@ public class BatchController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.BATCH_NEW);
 		mAV.addObject("batch", new BatchModel());
 		mAV.addObject("products", productService.getAll());
+		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
 	
@@ -53,7 +59,10 @@ public class BatchController {
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.BATCH_UPDATE);
 		mAV.addObject("batch", batchService.findById(id));
+		
 		mAV.addObject("products", productService.getAll());
+
+		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
 	

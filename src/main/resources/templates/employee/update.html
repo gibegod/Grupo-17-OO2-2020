@@ -56,7 +56,8 @@
 					th:field="*{store.id}">
 					<option th:each="store : ${stores}" th:value="${store.id}"
 						th:text="${store.address.city}"></option>
-				</select> <input class="btn-edit btn btn-outline-dark" type="submit"
+				</select> 
+				<input class="btn-edit btn btn-outline-dark" type="submit"
 					value="Edit employee">
 			</div>
 		</form>

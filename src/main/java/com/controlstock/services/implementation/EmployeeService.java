@@ -1,5 +1,6 @@
 package com.controlstock.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +57,9 @@ public class EmployeeService implements IEmployeeService {
 	public EmployeeModel insert(EmployeeModel employeeModel) {
 		
 		//Relaciono el id del store con todo el objeto store y lo seteo en employeeModel.
-		Store store = storeRepository.findById(employeeModel.getStore().getId());
-		StoreModel storeModel = storeConverter.entityToModel(store);
-		employeeModel.setStore(storeModel);
+				Store store = storeRepository.findById(employeeModel.getStore().getId());
+				StoreModel storeModel = storeConverter.entityToModel(store);
+				employeeModel.setStore(storeModel);
 		
 		//Se guarda el employee en la bd.
 		Employee employee = employeeConverter.modelToEntity(employeeModel);
@@ -94,4 +95,13 @@ public class EmployeeService implements IEmployeeService {
 		return employeeConverter.entityToModel(employeeRepository.findById(id));
 	}
 	
+	public List<Employee> getEmployeeByStore(int idStore){
+		List<Employee> employeesStore = new ArrayList<Employee>();
+		for (Employee e : getAll()) {
+			if(e.getStore().getId() == idStore) {
+				employeesStore.add(e);
+			}
+		}
+		return employeesStore;
+	}
 }

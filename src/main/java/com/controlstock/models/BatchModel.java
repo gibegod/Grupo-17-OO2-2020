@@ -10,7 +10,7 @@ public class BatchModel {
 	
 	private ProductModel product;
 	
-	private char size;
+	private String size;
 	
 	private int currentAmount;
 	
@@ -18,12 +18,25 @@ public class BatchModel {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate admissionDate;
-	
+
+	private StoreModel store;
 	
 	public BatchModel() {}
 
 
-	public BatchModel(int id, ProductModel product, char size, int currentAmount, int initialAmount,
+	public BatchModel(int id, ProductModel product, String size, int currentAmount, int initialAmount,
+			LocalDate admissionDate, StoreModel store) {
+		super();
+		this.id = id;
+		this.product = product;
+		this.size = size;
+		this.currentAmount = currentAmount;
+		this.initialAmount = initialAmount;
+		this.admissionDate = admissionDate;
+		this.store = store;
+	}
+	
+	public BatchModel(int id, ProductModel product, String size, int currentAmount, int initialAmount,
 			LocalDate admissionDate) {
 		super();
 		this.id = id;
@@ -55,12 +68,12 @@ public class BatchModel {
 	}
 
 
-	public char getSize() {
+	public String getSize() {
 		return size;
 	}
 
 
-	public void setSize(char size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 
@@ -93,6 +106,18 @@ public class BatchModel {
 	public void setAdmissionDate(LocalDate admissionDate) {
 		this.admissionDate = admissionDate;
 	}
+
+
+	public StoreModel getStore() {
+		return store;
+	}
+
+
+	public void setStore(StoreModel store) {
+		this.store = store;
+	}
+	
+	
 
 	
 }

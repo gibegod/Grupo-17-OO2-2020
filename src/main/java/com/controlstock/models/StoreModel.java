@@ -2,6 +2,8 @@ package com.controlstock.models;
 
 import java.util.Set;
 
+import com.controlstock.entities.Batch;
+
 public class StoreModel {
 
 	private int id;
@@ -14,18 +16,18 @@ public class StoreModel {
 
 	private Set<EmployeeModel> setEmployees;
 
-	//private Set<Batch> setBatchs;
+	private Set<BatchModel> setBatchs;
 
 	public StoreModel() {}
 
-	public StoreModel (int id, AddressModel address, long phoneNumber, Set<EmployeeModel> setEmployees) {
+	public StoreModel (int id, AddressModel address, long phoneNumber, Set<EmployeeModel> setEmployees, Set<BatchModel> setBatchs) {
 		super();
 		setId(id);
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		//this.manager = manager;
 		this.setEmployees = setEmployees;
-		//this.setBatchs = new HashSet<Batch>();
+		this.setBatchs = setBatchs;
 	}
 	
 	public int getId() {
@@ -67,15 +69,15 @@ public class StoreModel {
 	public void setSetEmployees(Set<EmployeeModel> setEmployees) {
 		this.setEmployees = setEmployees;
 	}
-	/*
-	public Set<Batch> getSetBatchs() {
+	
+	public Set<BatchModel> getSetBatchs() {
 		return setBatchs;
 	}
 
-	public void setSetBatchs(Set<Batch> setBatchs) {
+	public void setSetBatchs(Set<BatchModel> setBatchs) {
 		this.setBatchs = setBatchs;
 	}
-*/
+
 
 	@Override
 	public boolean equals(Object obj) {
