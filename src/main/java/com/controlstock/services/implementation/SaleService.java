@@ -1,6 +1,8 @@
 package com.controlstock.services.implementation;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +19,7 @@ import com.controlstock.converters.EmployeeConverter;
 import com.controlstock.entities.Sale;
 import com.controlstock.entities.SaleRequest;
 import com.controlstock.entities.Store;
+import com.controlstock.helpers.DateBatchComparator;
 import com.controlstock.entities.Employee;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Address;
@@ -167,27 +170,33 @@ public class SaleService implements ISaleService {
 		SaleModel saleModel =  saleConverter.entityToModel(sale);
 		Set<SaleRequestModel> setSaleRequestsModel = saleModel.getSetSaleRequests();
 		Set<BatchModel> setBatchModel  = saleModel.getStoreModel().getSetBatchs();
-		
+		List<BatchModel> aux = new ArrayList<>(setBatchModel);
+
 		// current amount = current amount - amount
-		for(SaleRequestModel srm : setSaleRequestsModel) {
+		for(SaleRequestModel srm : setSaleRequestsModel) { //por cada pedido del set
 			
-			ProductModel productSR = srm.getProduct();
+			ProductModel productSR = srm.getProduct(); //saco el producto y la cantidad inicial.
 			int amountSR = srm.getAmount();
 			
-			for(BatchModel bm : setBatchModel) {
+			Collections.sort(aux, new DateBatchComparator()); //magia ordena batch
+			//clase que hereda del comparator, esta en helpers. Necesita que sea una lista para funcionar, por eso la transformacion.
+			
+			for(BatchModel bm : aux) { //por cada lote en el store. 
 				ProductModel productB = bm.getProduct();
 				int amountB = bm.getCurrentAmount();
 				
-				if (productSR.getId() == productB.getId()) {
+				if (productSR.getId() == productB.getId()) { //si el producto es igual.
 					amountB = amountB - amountSR;
 					bm.setCurrentAmount(amountB);
 					batchService.updateCurrentAmount(bm);
+					aux.remove(bm); //saca el lote de la lista.
 				}
 			}
 
 		}
 		
 	}
+	
 	
 	//Seteamos el status en true
 	public void updateStatus(SaleModel saleModel) {
@@ -247,7 +256,7 @@ public class SaleService implements ISaleService {
 		}
 		return null;
 	}
-
-	
 	
 }
+
+

@@ -120,7 +120,7 @@ public class SaleController {
 		mAV.addObject("sale", saleService.findById(id));
 		mAV.addObject("status", true);
 		mAV.addObject("clients", clientService.getAll());
-		mAV.addObject("employee", employeeService.getAll());
+		mAV.addObject("employee", saleService.findById(id).getEmployeeInCharge() );
 		mAV.addObject("total", saleService.calculateTotal(id));
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
 		return mAV;

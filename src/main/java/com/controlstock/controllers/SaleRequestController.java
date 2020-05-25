@@ -71,6 +71,7 @@ public class SaleRequestController {
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
 		mAV.addObject("products", storeService.getByStore(saleService.getSaleByStatus().getStore().getId()));
 		mAV.addObject("employees", employeeService.getAll());
+		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;
 	}
 	
