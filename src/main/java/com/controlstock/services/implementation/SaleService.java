@@ -172,19 +172,14 @@ public class SaleService implements ISaleService {
 		for(SaleRequestModel srm : setSaleRequestsModel) {
 			
 			ProductModel productSR = srm.getProduct();
-			System.out.println("SR: " + productSR.getDescription());
 			int amountSR = srm.getAmount();
-			System.out.println(amountSR);
 			
 			for(BatchModel bm : setBatchModel) {
 				ProductModel productB = bm.getProduct();
-				System.out.println("B: " + productB.getDescription());
-				int amountB = bm.getCurrentAmount(); //20
-				System.out.println(amountB);
+				int amountB = bm.getCurrentAmount();
 				
 				if (productSR.getId() == productB.getId()) {
 					amountB = amountB - amountSR;
-					System.out.println("Batch Final: " + amountB);
 					bm.setCurrentAmount(amountB);
 					batchService.updateCurrentAmount(bm);
 				}

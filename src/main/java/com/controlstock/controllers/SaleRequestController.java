@@ -100,7 +100,7 @@ public class SaleRequestController {
 	@PostMapping("/delete/{id}")
 	public RedirectView delete (@PathVariable("id") int id) {
 		saleRequestService.remove(id);
-		return new RedirectView(ViewRouteHelper.SALEREQUEST_ROOT);
+		return new RedirectView(ViewRouteHelper.SALEREQUEST_ROOT2);
 	}
 		
 }

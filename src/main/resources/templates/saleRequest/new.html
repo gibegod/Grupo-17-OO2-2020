@@ -39,10 +39,9 @@
 			</div>
 
 			<label>Assistant Employee</label>
-			<!--<select class="form-control"
-				placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
-				<option th:each="employee : ${employees}" th:value="${employee.id}"
-					th:text="${employee.name}"></option></select> -->
+			<!--<select class="form-control" placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
+				<option th:each="employee : ${employees}" th:value="${employee.id}"th:text="${employee.name}"></option>
+			</select>-->
 			<input class="btn btn-outline-dark" type="submit"
 				value="Create new sale Request"> 
 			<tr th:each="sale : ${sales}">
@@ -60,6 +59,7 @@
 					<th>Amount</th>
 					<th>UnitPrice</th>
 					<th>Assistant Employee</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -68,6 +68,9 @@
 					<td><span th:text="${saleRequest.amount}" /></td>
 					<td><span th:text="${saleRequest.product.unitPrice}" /></td>
 					<!--<td><span th:text="${saleRequest.assistantEmployee.name}" /></td> -->
+					<td><form action="#" th:action="@{/sale/saleRequest/delete/{id}(id=${saleRequest.id})}" method="post">
+						<input class="btn btn-danger" type="submit"value="Remove" />
+						</form></td>
 				</tr>
 			</tbody>
 		</table>
