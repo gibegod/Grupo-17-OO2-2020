@@ -2,8 +2,6 @@ package com.controlstock.models;
 
 import java.util.Set;
 
-import com.controlstock.entities.Batch;
-
 public class StoreModel {
 
 	private int id;

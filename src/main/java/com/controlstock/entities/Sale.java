@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 import com.sun.istack.Nullable;
 
@@ -24,20 +23,16 @@ public class Sale {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="sale")
 	private Set<SaleRequest> setSaleRequests;
 	
-	//@NotNull
 	@OneToOne
 	private Employee employeeInCharge;
 	
-	//@NotNull
 	@Nullable
 	@OneToOne
 	private Client client;
 	
-	//@NotNull
 	@OneToOne
 	private Store store;
 	
-	//@NotNull
 	private LocalDateTime date;
 	
 	private float totalPrice;

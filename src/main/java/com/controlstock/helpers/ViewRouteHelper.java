@@ -52,14 +52,13 @@ public class ViewRouteHelper {
 	
 	//Ventas (SaleRequest)
 	
-		public final static String SALE_INDEX = "sale/index";
-		public final static String SALE_NEW = "sale/new";
-		public final static String SALE_UPDATE = "sale/update";
-		public final static String SALE_INITIAL = "sale/initial";
-		public final static String SALE_FINAL = "sale/final";
-		public final static String SALE_SELECTEMPLOYEE = "sale/selectEmployee";
-		public final static String SALE_ADDSALEREQUEST = "sale/addSaleRequest";
-			
+	public final static String SALE_INDEX = "sale/index";
+	public final static String SALE_NEW = "sale/new";
+	public final static String SALE_UPDATE = "sale/update";
+	public final static String SALE_INITIAL = "sale/initial";
+	public final static String SALE_FINAL = "sale/final";
+	public final static String SALE_SELECTEMPLOYEE = "sale/selectEmployee";
+	public final static String SALE_ADDSALEREQUEST = "sale/addSaleRequest";
 	
 	//Redirects ------------------------------------------------------------
 	
@@ -71,6 +70,7 @@ public class ViewRouteHelper {
 	public final static String EMPLOYEE_ROOT = "/employee";
 	public final static String ADDRESS_ROOT = "/address";
 	public final static String SALEREQUEST_ROOT = "/saleRequest";
+	public final static String SALEREQUEST_ROOT2 = "/sale/saleRequest/new";
 
 	public final static String SALE_ROOT = "/sale";
 }
