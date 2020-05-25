@@ -1,6 +1,7 @@
 package com.controlstock.services.implementation;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,6 +18,7 @@ import com.controlstock.entities.Employee;
 import com.controlstock.models.SaleRequestModel;
 import com.controlstock.models.ProductModel;
 import com.controlstock.models.SaleModel;
+import com.controlstock.models.BatchModel;
 import com.controlstock.models.EmployeeModel;
 import com.controlstock.repositories.ISaleRequestRepository;
 import com.controlstock.repositories.IProductRepository;
@@ -87,6 +89,20 @@ public class SaleRequestService implements ISaleRequestService {
 		SaleModel saleModel = saleConverter.entityToModel(sale);
 		saleRequestModel.setSale(saleModel);
 
+		//Si la cantidad de producto x que se quiere comprar no esta disponible en el batch tire error.
+		Set<BatchModel> setBatchModel = saleRequestModel.getSale().getStoreModel().getSetBatchs();
+		
+		for (BatchModel bm : setBatchModel) {
+			if(bm.getProduct().getId() == saleRequestModel.getProduct().getId()) {
+				if(saleRequestModel.getAmount() > bm.getCurrentAmount()) {
+					System.out.println("ERROR: la cantidad de producto " + 
+							saleRequestModel.getProduct().getDescription()  + 
+							" que se pide no se encuentra en stock.");
+				}
+			}
+		}
+		
+		
 		if (saleRequestModel.getAssistantEmployee() != null) {
 			Employee employee = employeeRepository.findById(saleRequestModel.getAssistantEmployee().getId());
 			EmployeeModel employeeModel = employeeConverter.entityToModel(employee);
