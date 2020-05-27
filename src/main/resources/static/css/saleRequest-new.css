@@ -22,3 +22,7 @@ body{
 	color: black;
 	background-color: grey;
 }
+
+.saleRequest-table {
+	width: 50%;
+}

@@ -1,4 +1,4 @@
-.employee-new {
+.saleRequest-new {
 	width:25%;
 	margin-left: auto;
 	margin-right: auto;
@@ -8,7 +8,7 @@
 	padding: 40px;
 }
 
-.employee-new-header {
+.saleRequest-new-header {
 	margin-bottom: 30px;
 }
 
@@ -16,8 +16,8 @@
 	width: 100%;
 }
 
-.btn-edit {
-	margin-top: 25px;
+.m-top {
+	margin-top: 15px;
 }
 
 
@@ -26,7 +26,9 @@ body{
 	background-color: grey;
 }
 
-.form-check-input {
-
-	margin-left: 10px;
+.saleRequest-table {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 50%;
 }

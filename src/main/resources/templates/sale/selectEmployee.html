@@ -20,7 +20,7 @@
 			<form action="#" th:action="@{/sale/create}" th:object="${sale}"
 			method="post">
 			<label>Status: </label>
-			<td><span th:text="${sale.status}" /></td> <br/>
+			<td><span class="form-control"  th:text="${sale.status}" /></td> <br/>
 			
 			<label>Employee In Charge</label> 
 			<select class="form-control" placeholder="Employee" th:field="*{employeeInCharge.id}">
