@@ -69,7 +69,7 @@ public class SaleRequestController {
 		//mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales abiertos
 		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
-		mAV.addObject("products", storeService.getByStore(saleService.getSaleByStatus().getStore().getId()));
+		mAV.addObject("products", storeService.getProductsByStore(saleService.getSaleByStatus().getStore().getId()));
 		mAV.addObject("employees", employeeService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;

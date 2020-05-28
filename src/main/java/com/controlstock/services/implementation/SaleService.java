@@ -39,6 +39,7 @@ import com.controlstock.repositories.IAddressRepository;
 import com.controlstock.repositories.IClientRepository;
 import com.controlstock.repositories.IEmployeeRepository;
 import com.controlstock.services.ISaleService;
+import com.controlstock.services.IStoreService;
 
 @Service("saleService")
 public class SaleService implements ISaleService {
@@ -82,6 +83,10 @@ public class SaleService implements ISaleService {
 	@Autowired
 	@Qualifier("storeConverter")
 	private StoreConverter storeConverter;
+	
+	@Autowired
+	@Qualifier("storeService")
+	private IStoreService storeService;
 	
 	@Autowired
 	@Qualifier("addressRepository")
@@ -165,9 +170,12 @@ public class SaleService implements ISaleService {
 		return saleModel;
 	}
 	
+	
+	/*--------------------------------------------------*/
+	
 	//Cantidad en SR hay que restarla al lote correspondiente al store y al producto.
 	void subtractStock (Sale sale) {
-		SaleModel saleModel =  saleConverter.entityToModel(sale);
+		/*SaleModel saleModel =  saleConverter.entityToModel(sale);
 		Set<SaleRequestModel> setSaleRequestsModel = saleModel.getSetSaleRequests();
 		Set<BatchModel> setBatchModel  = saleModel.getStoreModel().getSetBatchs();
 		List<BatchModel> aux = new ArrayList<>(setBatchModel);
@@ -189,10 +197,19 @@ public class SaleService implements ISaleService {
 					amountB = amountB - amountSR;
 					bm.setCurrentAmount(amountB);
 					batchService.updateCurrentAmount(bm);
-					aux.remove(bm); //saca el lote de la lista.
+					//aux.remove(bm); //saca el lote de la lista.
 				}
 			}
 
+		}*/
+		
+		SaleModel saleModel =  saleConverter.entityToModel(sale);
+		Set<SaleRequestModel> setSaleRequestsModel = saleModel.getSetSaleRequests();
+		Store store = storeRepository.findById(saleModel.getEmployeeInCharge().getStore().getId());
+		for(SaleRequestModel srm : setSaleRequestsModel) {
+			System.out.println(srm.getProduct().getId());
+			System.out.println(srm.getAmount());
+			storeService.substractBatches(store.getId(), srm.getProduct().getId(), srm.getAmount());
 		}
 		
 	}
