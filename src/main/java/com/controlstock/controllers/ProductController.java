@@ -62,4 +62,15 @@ public class ProductController {
 		return new RedirectView(ViewRouteHelper.PRODUCT_ROOT);
 	}
 		
+	/*
+	//TestAJAX
+	@GetMapping("/partial/{id}")
+	public ModelAndView getPartial(@PathVariable("id") int id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PRODUCT_PARTIAL_VIEW);
+		mAV.addObject("product", productService.findById(id));
+		return mAV;
+	}*/
+	
+	
+	
 }

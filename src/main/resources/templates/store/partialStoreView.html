@@ -1,0 +1,3 @@
+<select class="form-control" placeholder="Store">
+	<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.id}"></option>
+</select>

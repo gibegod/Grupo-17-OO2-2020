@@ -94,6 +94,15 @@ public class StoreController {
 	}
 	
 	
+	@GetMapping("/partial/{id}")
+	public ModelAndView getPartial(@PathVariable("id") int id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_PARTIAL_VIEW);
+		//Stores que contienen el product con la id.
+		mAV.addObject("stores", storeService.getStoresByProductId(id));
+		return mAV;
+	}
+	
+	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ModelAndView distanceStores(StoresModel stores) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_INDEX);
