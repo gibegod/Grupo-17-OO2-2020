@@ -12,6 +12,7 @@ public class ViewRouteHelper {
 	public final static String PRODUCT_INDEX = "product/index";
 	public final static String PRODUCT_NEW = "product/new";
 	public final static String PRODUCT_UPDATE = "product/update";
+	//public final static String PRODUCT_PARTIAL_VIEW = "product/partialProductView"; //TestAJAX
 	
 	//Lote (Batch)
 	
@@ -24,6 +25,7 @@ public class ViewRouteHelper {
 	public final static String STORE_INDEX = "store/index";
 	public final static String STORE_NEW = "store/new";
 	public final static String STORE_UPDATE = "store/update";
+	public final static String STORE_PARTIAL_VIEW = "store/partialStoreView";
 	
 	//Clientes (Client)
 	

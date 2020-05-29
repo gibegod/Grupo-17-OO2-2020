@@ -120,6 +120,43 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- 
+	<!-- TestAJAX --
+	<div class="container">
+		<h1 class="my-2">Vistas de productos</h1>
+		<select class="my-4" id="select-product">
+			<option>...</option>
+			<option th:each="product : ${products}" th:value="${product.id}">
+				<p th:text="${product.description}"/>
+			</option>
+		</select>
+		<div id="div-select-product" class="row"></div>
+	</div>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your
+				Website 2018</p>
+		</div>
+	</footer>
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+		$("#select-product").change(function() {
+			var productId = $("#select-product").val();
+			if($.isNumeric(productId)){
+				$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
+					method: "GET",
+				 	url: "/product/partial/" + productId,
+				})
+				.done(function(result) {
+					$("#div-select-product").html(result);
+				})
+				.fail(function() {
+					alert("error");
+				});
+			}else $("#div-select-product").html("");
+		});
+	</script>
+	 -->
 </main>
 </html>
