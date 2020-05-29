@@ -1,6 +1,7 @@
 package com.controlstock.services.implementation;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,15 @@ import com.controlstock.entities.Address;
 import com.controlstock.entities.Batch;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Store;
+import com.controlstock.helpers.DateBatchComparator;
 import com.controlstock.models.AddressModel;
 import com.controlstock.models.ProductModel;
 import com.controlstock.models.StoreModel;
 import com.controlstock.repositories.IAddressRepository;
+
+import com.controlstock.repositories.IProductRepository;
 import com.controlstock.repositories.IEmployeeRepository;
+import com.controlstock.repositories.IBatchRepository;
 import com.controlstock.repositories.IStoreRepository;
 import com.controlstock.services.IStoreService;
 
@@ -38,6 +43,10 @@ public class StoreService implements IStoreService {
 	private AddressService addressService;
 	
 	@Autowired
+	@Qualifier("batchService")
+	private BatchService batchService;
+	
+	@Autowired
 	@Qualifier("addressRepository")
 	private IAddressRepository addressRepository;
 	
@@ -50,8 +59,16 @@ public class StoreService implements IStoreService {
 	private EmployeeService employeeService;
 	
 	@Autowired
+	@Qualifier("batchRepository")
+	private IBatchRepository batchRepository;
+	
+	@Autowired
 	@Qualifier("employeeRepository")
 	private IEmployeeRepository employeeRepository;
+	
+	@Autowired
+	@Qualifier("productRepository")
+	private IProductRepository productRepository;
 	
 	@Autowired
 	@Qualifier("employeeConverter")
@@ -70,8 +87,9 @@ public class StoreService implements IStoreService {
 		return storeConverter.entityToModel(store);
 	}
 	
-	public List<Product> getByStore(int idStore){
-		Store store = storeRepository.findById(idStore);
+	@Override
+	public List<Product> getProductsByStore(int id){
+		Store store = storeRepository.findById(id);
 		List<Product> products = new ArrayList<Product>();
 		for(Batch b : store.getSetBatchs()) {
 			products.add(b.getProduct());
@@ -79,6 +97,60 @@ public class StoreService implements IStoreService {
 		return products;
 	}
 	
+	@Override
+	public int getProductQuantity(int idStore, int idProduct) {
+
+		Product product = productRepository.findById(idProduct);
+		
+		int cantidad=0;
+		for(int indice=0; indice<getActiveBatchs(idStore, idProduct).size(); indice++){
+			if(this.getActiveBatchs(idStore, idProduct).get(indice).getProduct().getId()==product.getId()){
+				cantidad += this.getActiveBatchs(idStore, idProduct).get(indice).getCurrentAmount();
+			}
+		}
+		return cantidad;
+	}
+	
+	@Override
+	public List<Batch> getActiveBatchs(int idStore, int idProduct){
+		Store store = storeRepository.findById(idStore);
+		Product product = productRepository.findById(idProduct);
+		List<Batch> batchs = new ArrayList<Batch>(store.getSetBatchs());
+		for(Batch b : store.getSetBatchs()) {
+			if (b.getCurrentAmount()>0 && b.getProduct().getId()==product.getId()) {
+			batchs.add(b);
+			}
+		}
+		return batchs;
+	}
+	
+	 @Override
+	public boolean validateStock (int idStore, int idProduct, int quantity) {
+		return (quantity<=this.getProductQuantity(idStore,idProduct));
+	}
+	
+	 @Override
+	public void substractBatches(int idStore, int idProduct, int quantity) {
+			Store store = storeRepository.findById(idStore);
+			Product product = productRepository.findById(idProduct);
+			
+			int i=0;
+			List<Batch> active = this.getActiveBatchs(idStore, idProduct);
+			
+			while(quantity > 0) {
+					if(active.get(i).getCurrentAmount() > quantity) {
+						active.get(i).setCurrentAmount(active.get(i).getCurrentAmount()-quantity);
+						quantity=0;
+					}
+					else {
+						quantity -= active.get(i).getCurrentAmount();
+						active.get(i).setCurrentAmount(0);
+					}
+					batchRepository.save(active.get(i));
+					i++;
+				}
+	}
+	 
 	@Override
 	public StoreModel insert(StoreModel storeModel) {
 		

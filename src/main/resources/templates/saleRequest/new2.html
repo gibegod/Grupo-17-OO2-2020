@@ -26,6 +26,7 @@
 						th:text="${sale.id}"></option>
 				</select>
 			</div> 
+			
 			<div class="form-group">
 				<label>Product</label> <select class="form-control"
 					placeholder="Product" th:field="*{product.id}">
@@ -33,54 +34,33 @@
 						th:text="${product.description}"></option>
 				</select>
 			</div>
+			
 			<div class="form-group">
 				<label>Amount</label> <input type="number" class="form-control"
 					placeholder="Enter amount" th:field="*{amount}">
 			</div>
 
-			<a class="btn btn-outline-dark m-top" href="/sale/saleRequest/new2">Choice product of other sale</a>
+			<div class="form-group">
+				<label>Store</label> 
+				<select class="form-control" placeholder="Store">
+					<option th:each="store : ${stores}" th:value="${store.id}"
+						th:text="${store.id}"></option>
+				</select>
+			</div>
 			
 			<label>Assistant Employee</label>
-			<!--<select class="form-control" placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
-				<option th:each="employee : ${employees}" th:value="${employee.id}"th:text="${employee.name}"></option>
-			</select>-->
+			<select class="form-control" placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
+				<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
+			</select>
+			
 			<input class="btn btn-outline-dark m-top" type="submit"
 				value="Create new sale Request"> 
-			<tr th:each="sale : ${sales}">
-				<a class="btn btn-outline-dark m-top" th:href="@{/sale/{id}(id=${sale.id})}">Finish sale</a>
-			</tr>
-
 		</form>
 	</div>
 	
 <!-- 	<p th:each="batch : ${batchs}">
 	    <span th:if="${batch.currentAmount < amount}">No hay suficientes productos de este articulo.</span>
 			</p> -->
-	
-	<div class="saleRequest-table">
-		<table class="table table-striped table-dark">
-			<thead>
-				<tr>
-					<th>Product</th>
-					<th>Amount</th>
-					<th>UnitPrice</th>
-					<th>Assistant Employee</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="saleRequest : ${saleRequests}">
-					<td><span th:text="${saleRequest.product.id}" /> - <span th:text="${saleRequest.product.description}" /></td>
-					<td><span th:text="${saleRequest.amount}" /></td>
-					<td><span th:text="${saleRequest.product.unitPrice}" /></td>
-					<!--<td><span th:text="${saleRequest.assistantEmployee.getName()}" /></td>-->
-					<td>Assitant Employee</td>
-					<td><form action="#" th:action="@{/sale/saleRequest/delete/{id}(id=${saleRequest.id})}" method="post">
-						<input class="btn btn-danger" type="submit"value="Remove" />
-						</form></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+			
 </body>
 </html>

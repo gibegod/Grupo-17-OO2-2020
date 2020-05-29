@@ -61,7 +61,7 @@ public class SaleRequestController {
 	}
 	
 	
-	//Crea el SaleRequest. Estaria bueno que el parametro sale se mande solo pero funciona igual.
+	//Crea el SaleRequest.
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW);
@@ -69,12 +69,26 @@ public class SaleRequestController {
 		//mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales abiertos
 		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
-		mAV.addObject("products", storeService.getByStore(saleService.getSaleByStatus().getStore().getId()));
+		mAV.addObject("products", storeService.getProductsByStore(saleService.getSaleByStatus().getStore().getId()));
 		mAV.addObject("employees", employeeService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;
 	}
 	
+	//Crea el SaleRequest cuando se requiere un producto de otra sucursal.
+	@GetMapping("/new2")
+	public ModelAndView create2() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW2);
+		mAV.addObject("saleRequest", new SaleRequestModel());
+		mAV.addObject("stores", storeService.getAll());
+		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
+		mAV.addObject("products", productService.getAll());
+		mAV.addObject("employees", employeeService.getAll());
+		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
+		return mAV;
+	}
+	
+	//SR de la store actual
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("saleRequest") SaleRequestModel saleRequestModel) {
 		saleRequestService.insert(saleRequestModel);

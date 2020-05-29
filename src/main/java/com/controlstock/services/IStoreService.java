@@ -2,6 +2,7 @@ package com.controlstock.services;
 
 import java.util.List;
 
+import com.controlstock.entities.Batch;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Store;
 import com.controlstock.models.ProductModel;
@@ -9,10 +10,17 @@ import com.controlstock.models.StoreModel;
 
 public interface IStoreService {
 	
+	public int getProductQuantity(int idStore, int idProduct);
+	
 	public List<Store> getAll();
 	
-	public List<Product> getByStore(int id);
+	public List<Product> getProductsByStore(int id);
 
+	public List<Batch> getActiveBatchs(int idStore, int idProduct);
+	
+	public void substractBatches(int idStore, int idProduct, int quantity);
+	
+	public boolean validateStock (int idStore, int idProduct, int quantity);
 	
 	public StoreModel findById(int id);
 	
