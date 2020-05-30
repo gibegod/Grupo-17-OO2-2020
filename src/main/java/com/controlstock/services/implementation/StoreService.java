@@ -97,6 +97,18 @@ public class StoreService implements IStoreService {
 		return products;
 	}
 	
+	public List<Store> getStoreByStock(int id, int amount){
+		List<Store> storesProduct = getStoresByProductId(id);
+		List<Store> stores = new  ArrayList<Store>();
+		
+		for(Store store: storesProduct) {
+			if(amount <= getProductQuantity(store.getId(), id)) {
+				stores.add(store);
+			}
+		}
+		return stores;
+		
+	}
 	@Override
 	public int getProductQuantity(int idStore, int idProduct) {
 

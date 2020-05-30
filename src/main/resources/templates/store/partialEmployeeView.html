@@ -1,0 +1,3 @@
+<select class="form-control" placeholder="Assistant Employee">
+	<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
+</select>
