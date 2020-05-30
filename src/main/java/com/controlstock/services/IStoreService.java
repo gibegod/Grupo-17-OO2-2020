@@ -34,5 +34,6 @@ public interface IStoreService {
 
 	public List<Store> getStoresByProductId(int id);
 	
+	public List<Store> getStoreByStock(int id, int amount);
 
 }

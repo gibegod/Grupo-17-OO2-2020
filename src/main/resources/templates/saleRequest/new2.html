@@ -36,26 +36,16 @@
 			</div>
 			
 			<div class="form-group">
-				<label>Amount</label> <input type="number" class="form-control"
+				<label>Amount</label> <input id ="select-amount" type="number" class="form-control"
 					placeholder="Enter amount" th:field="*{amount}">
 			</div>
 
 			<label>Stores</label> 
 			<div id="div-show-stores" class="row"></div>
-
-			<!-- 
-			<div class="form-group" id="div-show-stores">
-				<label>Store</label> 
-				<select class="form-control" placeholder="Store">
-					<option th:each="store : ${stores}" th:value="${store.id}"
-						th:text="${store.id}"></option>
-				</select>
-			</div> -->
 			
-			<label>Assistant Employee</label>
-			<select class="form-control" placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
-				<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
-			</select>
+		<label>Assistant Employee</label>
+			
+		<div id="div-show-employees" class="row"></div>
 			
 			<input class="btn btn-outline-dark m-top" type="submit"
 				value="Create new sale Request"> 
@@ -71,10 +61,11 @@
 	<script type="text/javascript">
 		$("#select-product").change(function() {
 			var productId = $("#select-product").val();
+			var amount = $("#select-amount").val();
 			if($.isNumeric(productId)){
 				$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
 					method: "GET",
-				 	url: "/store/partial/" + productId,
+				 	url: "/store/partial/"+ productId +"/"+amount ,
 				})
 				.done(function(result) {
 					$("#div-show-stores").html(result);
@@ -84,7 +75,8 @@
 				});
 			}else $("#div-show-stores").html("");
 		});
-	</script>
 		
+	</script>
+
 </body>
 </html>

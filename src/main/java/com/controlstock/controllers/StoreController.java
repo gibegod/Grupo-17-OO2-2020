@@ -94,11 +94,19 @@ public class StoreController {
 	}
 	
 	
-	@GetMapping("/partial/{id}")
-	public ModelAndView getPartial(@PathVariable("id") int id) {
+	@GetMapping("/partial/{id}/{amount}")
+	public ModelAndView getPartial(@PathVariable("id") int id, @PathVariable("amount") int amount) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_PARTIAL_VIEW);
-		//Stores que contienen el product con la id.
-		mAV.addObject("stores", storeService.getStoresByProductId(id));
+		//Stores que contienen el product con la id y la cantidad.
+		mAV.addObject("stores", storeService.getStoreByStock(id, amount));
+		return mAV;
+	}
+	
+	@GetMapping("/partial/employees/{id}")
+	public ModelAndView getPartialEmployee(@PathVariable("id") int id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_PARTIAL_VIEW_EMPLOYEES);
+		System.out.println( storeService.findById(id).getSetEmployees());
+		mAV.addObject("employees", storeService.findById(id).getSetEmployees());
 		return mAV;
 	}
 	

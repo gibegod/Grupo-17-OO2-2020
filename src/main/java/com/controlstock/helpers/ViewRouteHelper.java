@@ -26,6 +26,7 @@ public class ViewRouteHelper {
 	public final static String STORE_NEW = "store/new";
 	public final static String STORE_UPDATE = "store/update";
 	public final static String STORE_PARTIAL_VIEW = "store/partialStoreView";
+	public final static String STORE_PARTIAL_VIEW_EMPLOYEES = "store/partialEmployeeView";
 	
 	//Clientes (Client)
 	
