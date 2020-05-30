@@ -67,7 +67,7 @@
 			if($.isNumeric(productId)){
 				$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
 					method: "GET",
-				 	url: "/store/partial/"+ productId +"/"+amount ,
+				 	url: "/store/partial/"+ productId + "/" + amount
 				})
 				.done(function(result) {
 					$("#div-show-stores").html(result);

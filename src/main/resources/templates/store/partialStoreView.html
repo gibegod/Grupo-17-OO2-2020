@@ -1,5 +1,6 @@
 
 <select class="form-control" id="select-store" placeholder="Store">
+    <option>...</option>
 	<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.id}"></option>
 </select>
 
@@ -9,7 +10,7 @@
 		if($.isNumeric(store)){
 			$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
 				method: "GET",
-			 	url: "/store/partial/employees/"+ store
+			 	url: "/store/partial/employees/" + store
 			})
 			.done(function(result) {
 				$("#div-show-employees").html(result);

@@ -60,7 +60,6 @@ public class SaleRequestController {
 		return mAV;
 	}
 	
-	
 	//Crea el SaleRequest.
 	@GetMapping("/new")
 	public ModelAndView create() {
