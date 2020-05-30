@@ -93,7 +93,6 @@ public class StoreController {
 		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}
 	
-	
 	@GetMapping("/partial/{id}/{amount}")
 	public ModelAndView getPartial(@PathVariable("id") int id, @PathVariable("amount") int amount) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_PARTIAL_VIEW);
