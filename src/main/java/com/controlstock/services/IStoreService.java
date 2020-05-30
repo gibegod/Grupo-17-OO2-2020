@@ -31,6 +31,8 @@ public interface IStoreService {
 	public StoreModel insert(StoreModel storeModel);
 
 	public StoreModel update(StoreModel storeModel);
+
+	public List<Store> getStoresByProductId(int id);
 	
 
 }

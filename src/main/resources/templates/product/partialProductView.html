@@ -1,0 +1,11 @@
+<div class="col-lg-4 mb-4">
+	<div class="card h-100" th:object="${product}">
+		<h4 class="card-header" th:text="${product.description}" />
+		<div class="card-body">
+			<p class="card-text">Details</p>
+		</div>
+		<div class="card-footer">
+			<a class="btn btn-primary" th:href="@{/product/{id}(id=${product.id})}">View</a>
+		</div>
+	</div>
+</div>

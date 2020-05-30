@@ -28,7 +28,7 @@
 			</div> 
 			
 			<div class="form-group">
-				<label>Product</label> <select class="form-control"
+				<label>Product</label> <select class="form-control" id="select-product"
 					placeholder="Product" th:field="*{product.id}">
 					<option th:each="product : ${products}" th:value="${product.id}"
 						th:text="${product.description}"></option>
@@ -40,13 +40,17 @@
 					placeholder="Enter amount" th:field="*{amount}">
 			</div>
 
-			<div class="form-group">
+			<label>Stores</label> 
+			<div id="div-show-stores" class="row"></div>
+
+			<!-- 
+			<div class="form-group" id="div-show-stores">
 				<label>Store</label> 
 				<select class="form-control" placeholder="Store">
 					<option th:each="store : ${stores}" th:value="${store.id}"
 						th:text="${store.id}"></option>
 				</select>
-			</div>
+			</div> -->
 			
 			<label>Assistant Employee</label>
 			<select class="form-control" placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
@@ -61,6 +65,26 @@
 <!-- 	<p th:each="batch : ${batchs}">
 	    <span th:if="${batch.currentAmount < amount}">No hay suficientes productos de este articulo.</span>
 			</p> -->
-			
+		
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+		$("#select-product").change(function() {
+			var productId = $("#select-product").val();
+			if($.isNumeric(productId)){
+				$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
+					method: "GET",
+				 	url: "/store/partial/" + productId,
+				})
+				.done(function(result) {
+					$("#div-show-stores").html(result);
+				})
+				.fail(function() {
+					alert("error");
+				});
+			}else $("#div-show-stores").html("");
+		});
+	</script>
+		
 </body>
 </html>

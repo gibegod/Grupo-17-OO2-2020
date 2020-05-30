@@ -190,4 +190,20 @@ public class StoreService implements IStoreService {
 		return storeConverter.entityToModel(storeRepository.findById(id));
 	}
 
+	
+	@Override
+	public List<Store> getStoresByProductId (int id) {
+		//Product product = productRepository.findById(id);
+		List<Store> stores = new ArrayList<Store>();
+		
+		//Recorro todas las stores que hay en el service. Si esta store contiene el producto se guarda en stores.
+		for (Store s : getAll()) {
+			for(Batch b : s.getSetBatchs()) {
+				if(b.getProduct().getId() == id) {
+					stores.add(s);
+				}
+			}
+		}
+		return stores;
+	}
 }
