@@ -20,8 +20,7 @@
 
  			<div class="form-group">
 
-				<label>Sale</label> <select class="form-control" placeholder="Sale"
-					th:field="*{sale.id}">
+				<label>Sale</label> <select class="form-control" placeholder="Sale" th:field="*{sale.id}">
 					<option th:each="sale : ${sales}" th:value="${sale.id}"
 						th:text="${sale.id}"></option>
 				</select>

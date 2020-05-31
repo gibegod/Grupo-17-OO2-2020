@@ -1,4 +1,22 @@
-<select class="form-control" placeholder="Assistant Employee">
+<select class="form-control" id="select-employee" placeholder="Assistant Employee">
     <option>...</option>
 	<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
 </select>
+
+
+<script type="text/javascript">
+	$("#select-employee").change(function() {
+		var employee = $("#select-employee").val();
+		if ($.isNumeric(employee)) {
+			$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
+				method : "GET",
+				//url : "/store/partial/employees/" + store
+			}).done(function(result) {
+				//$("#div-show-employees").html(result);
+				alert("Id assistant employee: " + employee);
+			}).fail(function() {
+				alert("error");
+			});
+		}
+	});
+</script>

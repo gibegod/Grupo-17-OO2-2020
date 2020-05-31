@@ -28,25 +28,22 @@
 			</div> 
 			
 			<div class="form-group">
+				<label>Amount</label> <input id="select-amount" type="number" class="form-control"
+					placeholder="Enter amount" th:field="*{amount}">
+			</div>
+			
+			<div class="form-group">
 				<label>Product</label> <select class="form-control" id="select-product"
 					placeholder="Product" th:field="*{product.id}">
 					<option th:each="product : ${products}" th:value="${product.id}"
 						th:text="${product.description}"></option>
 				</select>
 			</div>
-			
-			<div class="form-group">
-				<label>Amount</label> <input id ="select-amount" type="number" class="form-control"
-					placeholder="Enter amount" th:field="*{amount}">
-			</div>
 
-			<label>Stores</label> 
-			
+			<label>Stores</label>
 			<div id="div-show-stores" class="row"></div>
 
-			
 			<label>Assistant Employee</label>
-			
 			<div id="div-show-employees" class="row"></div>
 			
 			<input class="btn btn-outline-dark m-top" type="submit"
@@ -77,6 +74,7 @@
 				});
 			}else $("#div-show-stores").html("");
 		});		
+		
 	</script>
 
 </body>
