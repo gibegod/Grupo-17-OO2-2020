@@ -1,25 +1,24 @@
-
 <select class="form-control" id="select-store" placeholder="Store">
+	<option>...</option>
 	<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.id}"></option>
 </select>
 
-	<script type ="text/javascript">
+<script type="text/javascript">
 	$("#select-store").change(function() {
 		var store = $("#select-store").val();
-		if($.isNumeric(store)){
+		if ($.isNumeric(store)) {
 			$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
-				method: "GET",
-			 	url: "/store/partial/employees/"+ store
-			})
-			.done(function(result) {
+				method : "GET",
+				url : "/store/partial/employees/" + store
+			}).done(function(result) {
 				$("#div-show-employees").html(result);
-			})
-			.fail(function() {
+				//var employee = $("#div-show-employees").val();
+				//alert(employee);
+			}).fail(function() {
 				alert("error");
 			});
-		}else $("#div-show-employees").html("");
+		} else
+			$("#div-show-employees").html("");
 	});
-	
-
-	</script>
+</script>
 

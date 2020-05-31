@@ -102,7 +102,6 @@ public class SaleRequestService implements ISaleRequestService {
 			}
 		}
 		
-		
 		if (saleRequestModel.getAssistantEmployee() != null) {
 			Employee employee = employeeRepository.findById(saleRequestModel.getAssistantEmployee().getId());
 			EmployeeModel employeeModel = employeeConverter.entityToModel(employee);

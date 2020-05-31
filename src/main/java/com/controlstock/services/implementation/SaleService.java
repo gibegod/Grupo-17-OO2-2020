@@ -203,13 +203,18 @@ public class SaleService implements ISaleService {
 
 		}*/
 		
-		SaleModel saleModel =  saleConverter.entityToModel(sale);
+		SaleModel saleModel = saleConverter.entityToModel(sale);
 		Set<SaleRequestModel> setSaleRequestsModel = saleModel.getSetSaleRequests();
-		Store store = storeRepository.findById(saleModel.getEmployeeInCharge().getStore().getId());
+		Store store = storeRepository.findById(saleModel.getEmployeeInCharge().getStore().getId()); //NO
 		for(SaleRequestModel srm : setSaleRequestsModel) {
-			System.out.println(srm.getProduct().getId());
-			System.out.println(srm.getAmount());
-			storeService.substractBatches(store.getId(), srm.getProduct().getId(), srm.getAmount());
+			if(srm.getAssistantEmployee() != null) { //Si tiene auxEmployee y es SR de otra store.
+				//srm.getAssistantEmployee().getStore().getId();
+				storeService.substractBatches(srm.getAssistantEmployee().getStore().getId(), srm.getProduct().getId(), srm.getAmount());
+			} else {
+				//System.out.println(srm.getProduct().getId());
+				//System.out.println(srm.getAmount());
+				storeService.substractBatches(store.getId(), srm.getProduct().getId(), srm.getAmount());
+			}
 		}
 		
 	}

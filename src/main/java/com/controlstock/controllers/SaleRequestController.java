@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.converters.SaleConverter;
 import com.controlstock.entities.Sale;
+import com.controlstock.entities.SaleRequest;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.SaleModel;
 import com.controlstock.models.SaleRequestModel;
@@ -60,7 +61,6 @@ public class SaleRequestController {
 		return mAV;
 	}
 	
-	
 	//Crea el SaleRequest.
 	@GetMapping("/new")
 	public ModelAndView create() {
@@ -80,10 +80,10 @@ public class SaleRequestController {
 	public ModelAndView create2() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW2);
 		mAV.addObject("saleRequest", new SaleRequestModel());
-		mAV.addObject("stores", storeService.getAll());
+		//mAV.addObject("stores", storeService.getAll());
 		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
 		mAV.addObject("products", productService.getAll());
-		mAV.addObject("employees", employeeService.getAll());
+		//mAV.addObject("employees", employeeService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;
 	}
