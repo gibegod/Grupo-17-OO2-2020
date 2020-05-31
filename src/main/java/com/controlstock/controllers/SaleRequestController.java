@@ -80,10 +80,8 @@ public class SaleRequestController {
 	public ModelAndView create2() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW2);
 		mAV.addObject("saleRequest", new SaleRequestModel());
-		//mAV.addObject("stores", storeService.getAll());
 		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
 		mAV.addObject("products", productService.getAll());
-		//mAV.addObject("employees", employeeService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;
 	}

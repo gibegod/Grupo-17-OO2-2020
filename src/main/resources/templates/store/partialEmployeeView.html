@@ -3,16 +3,15 @@
 	<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
 </select>
 
-
 <script type="text/javascript">
 	$("#select-employee").change(function() {
 		var employee = $("#select-employee").val();
 		if ($.isNumeric(employee)) {
-			$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
+			$.ajax({
 				method : "GET",
-				//url : "/store/partial/employees/" + store
+				//url : "/store/partial/employee/" + employee
 			}).done(function(result) {
-				//$("#div-show-employees").html(result);
+				//$("#div-employee").html(result);
 				alert("Id assistant employee: " + employee);
 			}).fail(function() {
 				alert("error");

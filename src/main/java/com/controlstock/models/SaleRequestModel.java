@@ -21,7 +21,7 @@ public class SaleRequestModel {
 		this.sale = sale;
 		this.product = product;
 		this.amount = amount;
-		this.assistantEmployee=assistantEmployee;
+		this.assistantEmployee = assistantEmployee;
 	}
 	
 	//Constructor sin empleado auxiliar

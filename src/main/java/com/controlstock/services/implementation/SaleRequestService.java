@@ -81,6 +81,8 @@ public class SaleRequestService implements ISaleRequestService {
 	@Override
 	public SaleRequestModel insert(SaleRequestModel saleRequestModel) {
 		
+		//System.out.println(saleRequestModel.getAssistantEmployee().getId());
+		
 		Product product = productRepository.findById(saleRequestModel.getProduct().getId());
 		ProductModel productModel = productConverter.entityToModel(product);
 		saleRequestModel.setProduct(productModel);

@@ -19,6 +19,7 @@ import com.controlstock.models.EmployeeModel;
 import com.controlstock.models.StoreModel;
 import com.controlstock.models.StoresModel;
 import com.controlstock.services.IAddressService;
+import com.controlstock.services.IEmployeeService;
 import com.controlstock.services.IStoreService;
 
 @Controller
@@ -32,6 +33,12 @@ public class StoreController {
 	@Autowired
 	@Qualifier("addressService")
 	private IAddressService addressService;
+	
+	@Autowired
+	@Qualifier("employeeService")
+	private IEmployeeService employeeService;
+	
+	
 
 	@GetMapping("")
 	public ModelAndView index() {
@@ -108,7 +115,6 @@ public class StoreController {
 		mAV.addObject("employees", storeService.findById(id).getSetEmployees());
 		return mAV;
 	}
-	
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ModelAndView distanceStores(StoresModel stores) {
