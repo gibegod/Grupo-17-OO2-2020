@@ -12,6 +12,7 @@
 	th:href="@{/css/saleRequest-new.css}">
 </head>
 <body>
+	<div th:replace="fragments/header :: header" />
 	<div class="saleRequest-new">
 		<form action="#" th:action="@{/saleRequest/update}"
 			th:object="${saleRequest}" method="post">

@@ -9,15 +9,8 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
 </head>
-<header>
-	<div class="navbar navbar-dark bg-dark box-shadow">
-		<div class="container d-flex justify-content-between">
-			<a href="#" class="navbar-brand d-flex align-items-center"> <strong>Home</strong>
-			</a>
-		</div>
-	</div>
-</header>
 
+<div th:replace="fragments/header :: header" />
 <main role="main">
 
 	<section class="jumbotron text-center">
