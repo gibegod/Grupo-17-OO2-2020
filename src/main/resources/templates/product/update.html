@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/product-new.css}">
 </head>
 <body>
+	<div th:replace="fragments/header :: header" />
 	<div class="product-new">
 		<form action="#" th:action="@{/product/update}" th:object="${product}"
 			method="post">
