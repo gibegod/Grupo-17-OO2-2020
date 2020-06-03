@@ -17,18 +17,22 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Employee In Charge:</th>
+					<th>Employee In Charge</th>
+					<th>Store</th>
 					<!--<th>Client</th>
 					<th>Date</th> -->
+					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="sale : ${sales}">
 					<td><span th:text="${sale.id}" /></td>
-					<td><span th:text="${sale.employeeInCharge.getName()}" /></td>
+					<td><span th:text="${sale.employeeInCharge.name + ' ' + sale.employeeInCharge.surname}" /></td>
 					<!-- <td><span th:text="${sale.client.name}" /></td>
 					<td><span th:text="${sale.date}" /></td> -->
-					<td><a th:href="@{/sale/{id}(id=${sale.id})}">Edit</a></td>
+					<td><span th:text="${sale.store.id + ' - ' + sale.store.address.city}" /></td>	
+					<td><span th:text="${'$' + sale.totalPrice}" /></td>					
+					<!--<td><a th:href="@{/sale/{id}(id=${sale.id})}">Edit</a></td>-->
 				</tr>
 			</tbody>
 		</table>

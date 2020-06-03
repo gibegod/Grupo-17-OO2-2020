@@ -127,7 +127,7 @@ public class StoreService implements IStoreService {
 	public List<Batch> getActiveBatchs(int idStore, int idProduct){
 		Store store = storeRepository.findById(idStore);
 		Product product = productRepository.findById(idProduct);
-		List<Batch> batchs = new ArrayList<Batch>(store.getSetBatchs());
+		List<Batch> batchs = new ArrayList<Batch>();
 		for(Batch b : store.getSetBatchs()) {
 			if (b.getCurrentAmount()>0 && b.getProduct().getId()==product.getId()) {
 			batchs.add(b);

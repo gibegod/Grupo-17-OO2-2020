@@ -85,6 +85,7 @@ public class StoreController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_UPDATE);
 		mAV.addObject("store", storeService.findById(id));
 		mAV.addObject("address", addressService.getAll());
+		mAV.addObject("employees", employeeService.getEmployeeByStore(id));
 		return mAV;
 	}
 

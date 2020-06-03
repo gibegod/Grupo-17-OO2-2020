@@ -67,6 +67,8 @@ public class BatchService implements IBatchService {
 	@Override
 	public BatchModel insert(BatchModel batchModel) {
 		
+		batchModel.setCurrentAmount(batchModel.getInitialAmount());
+		
 		//Relaciono el id del store con todo el objeto store y lo seteo en batchModel.
 		Store store = storeRepository.findById(batchModel.getStore().getId());
 		StoreModel storeModel = storeConverter.entityToModel(store);

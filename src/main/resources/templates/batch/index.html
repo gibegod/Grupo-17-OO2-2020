@@ -18,21 +18,18 @@
 			<thead>
 				<tr>
 					<th>Product</th>
-					<th>Size</th>
 					<th>Current amount</th>
 					<th>Initial amount</th>
 					<th>Store</th>
-					<th>Admission date</th>
+					<th>View</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="batch : ${batchs}">
-					<td><span th:text="${batch.product.description}" /></td>
-					<td><span th:text="${batch.size}" /></td>
+					<td><span th:text="${batch.product.id + ' - ' + batch.product.description}" /></td>
 					<td><span th:text="${batch.currentAmount}" /></td>
 					<td><span th:text="${batch.initialAmount}" /></td>
-					<td><span th:text="${batch.store.address.city}" /></td>
-					<td><span th:text="${batch.admissionDate}" /></td>
+					<td><span th:text="${batch.store.id + ' - ' + batch.store.address.city}" /></td>
 					<td><a th:href="@{/batch/{id}(id=${batch.id})}">Edit</a></td>
 				</tr>
 			</tbody>

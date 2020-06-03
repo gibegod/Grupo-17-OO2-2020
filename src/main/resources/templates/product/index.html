@@ -16,8 +16,9 @@
 		<table class="table table-striped table-dark">
 			<thead>
 				<tr>
-					<th>Brand</th>
+					<th>ID</th>
 					<th>Description</th>
+					<th>Brand</th>
 					<th>Price per unit</th>
 					<th>Status</th>
 					<th>View</th>
@@ -25,9 +26,10 @@
 			</thead>
 			<tbody>
 				<tr th:each="product : ${products}">
-					<td><span th:text="${product.brand}" /></td>
+					<td><span th:text="${product.id}" /></td>
 					<td><span th:text="${product.description}" /></td>
-					<td><span th:text="${product.unitPrice}" /></td>
+					<td><span th:text="${product.brand}" /></td>
+					<td><span th:text="${'$' + product.unitPrice}" /></td>
 					<td><span th:text="${product.status}" /></td>
 					<td><a th:href="@{/product/{id}(id=${product.id})}">Edit</a></td>
 				</tr>

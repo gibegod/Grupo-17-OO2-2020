@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +19,12 @@
 		<form action="#" th:action="@{/store/update}" th:object="${store}"
 			method="post">
 			<input type="hidden" th:field="*{id}" /> 
+			
+			<div class="form-group">
+				<label>ID</label>
+				<span class="form-control" th:text="${id}" />
+			</div>
+			
 			<div class="form-group">
 			<label>Address</label>
 				<select class="form-control" placeholder="Address"
@@ -38,8 +43,33 @@
 		<form action="#" th:action="@{/store/delete/{id}(id=${store.id})}"
 			method="post">
 			<input class="btn btn-outline-danger" type="submit"
-				value="Delete this store">
+				value="Delete store (FK)">
 		</form>
+	</div>
+	
+	<div class="saleRequest-table">
+		<table class="table table-striped table-dark">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Name</th>
+					<th scope="col">Surname</th>
+					<th scope="col">Manager?</th>
+					<th scope="col">View</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td><span th:text="${employee.id}" /></td>
+					<td><span th:text="${employee.name}" /></td>
+					<td><span th:text="${employee.surname}" /></td>
+					<td><span th:text="${employee.manager}" /></td>
+					<!-- <td><form action="#" th:action="@{/sale/saleRequest/delete/{id}(id=${saleRequest.id})}" method="post">
+						<input class="btn btn-danger" type="submit"value="Remove" />
+						</form></td> -->
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
