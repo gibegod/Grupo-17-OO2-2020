@@ -19,17 +19,17 @@
 			th:object="${saleRequest}" method="post">
 
  			<div class="form-group">
-
 				<label>Sale</label> <select class="form-control" placeholder="Sale" th:field="*{sale.id}">
 					<option th:each="sale : ${sales}" th:value="${sale.id}"
 						th:text="${sale.id}"></option>
 				</select>
 			</div> 
 			<div class="form-group">
-				<label>Product</label> <select class="form-control"
+				<label>Product</label> 
+				<select class="form-control"
 					placeholder="Product" th:field="*{product.id}">
 					<option th:each="product : ${products}" th:value="${product.id}"
-						th:text="${product.description}"></option>
+						th:text="${product.id + ' - ' + product.description}"></option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -37,12 +37,8 @@
 					placeholder="Enter amount" th:field="*{amount}">
 			</div>
 
-			<a class="btn btn-outline-dark m-top" href="/sale/saleRequest/new2">Choice product of other sale</a>
+			<a class="btn btn-outline-dark m-top" href="/sale/saleRequest/new2">Select product of another sale</a>
 			
-			<label>Assistant Employee</label>
-			<!--<select class="form-control" placeholder="Assistant Employee" th:field="*{assistantEmployee.id}">
-				<option th:each="employee : ${employees}" th:value="${employee.id}"th:text="${employee.name}"></option>
-			</select>-->
 			<input class="btn btn-outline-dark m-top" type="submit"
 				value="Create new sale Request"> 
 			<tr th:each="sale : ${sales}">
@@ -73,7 +69,7 @@
 					<td><span th:text="${saleRequest.amount}" /></td>
 					<td><span th:text="${saleRequest.product.unitPrice}" /></td>
 					<!--<td><span th:text="${saleRequest.assistantEmployee.getName()}" /></td>-->
-					<td>Assitant Employee</td>
+					<td>Assistant Employee</td>
 					<td><form action="#" th:action="@{/sale/saleRequest/delete/{id}(id=${saleRequest.id})}" method="post">
 						<input class="btn btn-danger" type="submit"value="Remove" />
 						</form></td>

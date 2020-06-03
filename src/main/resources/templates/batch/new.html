@@ -14,32 +14,32 @@
 	<div th:replace="fragments/header :: header" />
 	<div class="batch-new">
 		<div class="batch-new-header">
-			<h5>Add Client</h5>
+			<h5>Add Batch</h5>
 		</div>
-		<form action="#" th:action="@{/batch/create}" th:object="${batch}"
-			method="post">
-			<label>Product</label> <select class="form-control"
-				placeholder="Product" th:field="*{product.id}">
-				<option th:each="product : ${products}" th:value="${product.id}"
-					th:text="${product.description}"></option>
-			</select> <label>Size</label> <input type="text" class="form-control"
-				placeholder="Enter size" th:field="*{size}"> 
-				<label>Current amount</label> <input type="text" class="form-control"
-				placeholder="Enter current amount" th:field="*{currentAmount}">
-			<label>Initial amount</label> <input type="text" class="form-control"
-				placeholder="Enter initial amount" th:field="*{initialAmount}">
-			<label>Admission date</label> <input type="date" class="form-control"
-				placeholder="Enter admission date" th:field="*{admissionDate}">
+		
+			<form action="#" th:action="@{/batch/create}" th:object="${batch}" method="post">
+				<label>Product</label> 
+				<select class="form-control" placeholder="Product" th:field="*{product.id}">
+					<option th:each="product : ${products}" th:value="${product.id}" th:text="${product.id + ' - ' + product.description}"></option>
+				</select> 
+				
+				<label>Size</label> 
+				<input type="text" class="form-control" placeholder="Enter size" th:field="*{size}"> 
+				
+				<label>Initial amount</label> 
+				<input type="text" class="form-control" placeholder="Enter initial amount" th:field="*{initialAmount}">
+			
+				<label>Admission date</label> 
+				<input type="date" class="form-control" placeholder="Enter admission date" th:field="*{admissionDate}">
 
-			<div class="form-group">
-				<label>Store</label> <select class="form-control"
-					placeholder="Store" th:field="*{store.id}">
-					<option th:each="store : ${stores}" th:value="${store.id}"
-						th:text="${store.address.city}"></option>
-				</select> <input class="btn btn-outline-dark" type="submit"
-					value="Create new batch">
-			</div>
-		</form>
+				<div class="form-group">
+					<label>Store</label>
+					<select class="form-control" placeholder="Store" th:field="*{store.id}">
+						<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.id + ' - ' + store.address.city}"></option>
+					</select> 
+					<input class="btn btn-outline-dark" type="submit"value="Create new batch">
+				</div>
+			</form>
 	</div>
 </body>
 </html>

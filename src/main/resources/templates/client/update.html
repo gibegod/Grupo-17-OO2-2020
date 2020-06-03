@@ -18,6 +18,12 @@
 		<form action="#" th:action="@{/client/update}" th:object="${client}"
 			method="post">
 			<input type="hidden" th:field="*{id}" />
+			
+			<div class="form-group">
+				<label>ID</label>
+				<span class="form-control" th:text="${id}" />
+			</div>
+			
 			<div class="form-group">
 				<label>Name</label> <input type="text" class="form-control"
 					placeholder="Enter your name" th:field="*{name}">
@@ -45,7 +51,7 @@
 		</form>
 		<form class="delete-button"
 			th:action="@{/client/delete/{id}(id=${client.id})}" method="post">
-			<input class="btn btn-danger" type="submit" value="Delete client">
+			<input class="btn btn-danger" type="submit" value="Delete client (FK?)">
 		</form>
 	</div>
 </body>

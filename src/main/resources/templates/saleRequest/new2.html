@@ -33,7 +33,8 @@
 			</div>
 			
 			<div class="form-group">
-				<label>Product</label> <select class="form-control" id="select-product"
+				<label>Product</label> 
+				<select class="form-control" id="select-product"
 					placeholder="Product" th:field="*{product.id}">
 					<option th:each="product : ${products}" th:value="${product.id}"
 						th:text="${product.description}"></option>
