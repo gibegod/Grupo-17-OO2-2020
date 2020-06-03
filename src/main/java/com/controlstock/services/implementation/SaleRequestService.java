@@ -116,6 +116,8 @@ public class SaleRequestService implements ISaleRequestService {
 
 		// Seteo en el Set<SaleRequest> del sale correspondiente.
 		saleRequest.getSale().getSetSaleRequests().add(saleRequest);
+		
+		
 		saleService.update(saleConverter.entityToModel(saleRequest.getSale()));
 		
 

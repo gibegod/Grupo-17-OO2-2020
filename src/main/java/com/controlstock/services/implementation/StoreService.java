@@ -141,7 +141,7 @@ public class StoreService implements IStoreService {
 		return (quantity<=this.getProductQuantity(idStore,idProduct));
 	}
 	
-	 @Override
+	@Override
 	public void substractBatches(int idStore, int idProduct, int quantity) {
 			Store store = storeRepository.findById(idStore);
 			Product product = productRepository.findById(idProduct);
@@ -150,7 +150,7 @@ public class StoreService implements IStoreService {
 			List<Batch> active = this.getActiveBatchs(idStore, idProduct);
 			
 			while(quantity > 0) {
-					if(active.get(i).getCurrentAmount() > quantity) {
+					if(active.get(i).getCurrentAmount() >= quantity) {
 						active.get(i).setCurrentAmount(active.get(i).getCurrentAmount()-quantity);
 						quantity=0;
 					}

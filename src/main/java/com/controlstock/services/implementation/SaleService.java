@@ -163,10 +163,9 @@ public class SaleService implements ISaleService {
 			sale.setClient(clientConverter.modelToEntity(clientService.findById(saleModel.getClient().getId())));
 			sale.setDate(saleModel.getDate());
 			saleRepository.saveAndFlush(sale);
+			subtractStock(sale);
 		}
 
-		subtractStock(sale);
-		
 		return saleModel;
 	}
 	
@@ -207,6 +206,7 @@ public class SaleService implements ISaleService {
 		Set<SaleRequestModel> setSaleRequestsModel = saleModel.getSetSaleRequests();
 		Store store = storeRepository.findById(saleModel.getEmployeeInCharge().getStore().getId()); //NO
 		for(SaleRequestModel srm : setSaleRequestsModel) {
+			
 			if(srm.getAssistantEmployee() != null) { //Si tiene auxEmployee y es SR de otra store.
 				//srm.getAssistantEmployee().getStore().getId();
 				storeService.substractBatches(srm.getAssistantEmployee().getStore().getId(), srm.getProduct().getId(), srm.getAmount());

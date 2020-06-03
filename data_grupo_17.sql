@@ -46,8 +46,8 @@ insert into product
 					(2, "Nike", null, "Zapatillas 2D-1", '2020-05-18', 1, 3400, null), 
 					(3, "Adidas", null, "Remera adudis", '2020-05-17', 0, 2000, null), 
                     (4, "Adidas", null, "Pantalon de arquero", '2020-05-16', 1, 1600, null),
-                    (5, "Adidas", null, "Botines negros like my soul", '2020-05-16', 1, 5250, null),
-                    (6, "Puma", null, "Medias con un tigre", '2020-03-09', 0, 300, null),
+                    (5, "Adidas", null, "Botines negros", '2020-05-16', 1, 5250, null),
+                    (6, "Puma", null, "Medias 4A3", '2020-03-09', 0, 300, null),
                     (7, "Gucci", null, "Las gucci de Duki", '2020-02-26', 1, 10000, null),
                     (8, "Nike", null, "Short de Duki", '2020-05-10', 0, 8000, null),
                     (9, "Puma", null, "Campera verde militar", '2020-05-03', 1, 4700, null);
