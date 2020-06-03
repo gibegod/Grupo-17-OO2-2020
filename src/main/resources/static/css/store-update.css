@@ -24,8 +24,12 @@ body{
 }
 
 .saleRequest-table {
-	width: 50% !important;
+	width: 60% !important;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
+	margin-top: 40px;
+}
+
+.table-name-title {
+	color: #3E444A;
 }

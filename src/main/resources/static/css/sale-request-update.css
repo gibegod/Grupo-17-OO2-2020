@@ -1,4 +1,4 @@
-.store-new {
+.employee-new {
 	width:25%;
 	margin-left: auto;
 	margin-right: auto;
@@ -8,13 +8,16 @@
 	padding: 40px;
 }
 
-.store-new-header {
+.employee-new-header {
 	margin-bottom: 30px;
 }
 
 .btn {
 	width: 100%;
-	margin-top: 15px;
+}
+
+.btn-edit {
+	margin-top: 25px;
 }
 
 
@@ -23,9 +26,7 @@ body{
 	background-color: grey;
 }
 
-.saleRequest-table {
-	width: 50% !important;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
+.form-check-input {
+
+	margin-left: 10px;
 }
