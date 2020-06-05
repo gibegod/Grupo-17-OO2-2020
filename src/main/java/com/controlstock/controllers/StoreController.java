@@ -101,11 +101,13 @@ public class StoreController {
 		return new RedirectView(ViewRouteHelper.STORE_ROOT);
 	}
 	
-	@GetMapping("/partial/{id}/{amount}")
-	public ModelAndView getPartial(@PathVariable("id") int id, @PathVariable("amount") int amount) {
+	@GetMapping("/partial/{productid}/{amount}/{saleid}")
+	public ModelAndView getPartial(@PathVariable("productid") int productId, @PathVariable("amount") int amount, 
+			@PathVariable("saleid") int saleId) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_PARTIAL_VIEW);
 		//Stores que contienen el product con la id y la cantidad.
-		mAV.addObject("stores", storeService.getStoreByStock(id, amount));
+		
+		mAV.addObject("stores", storeService.getStoresByStock(productId, amount, saleId));
 		return mAV;
 	}
 	
@@ -127,23 +129,9 @@ public class StoreController {
 		float latstore2 = storeService.findById(stores.getStore2().getId()).getAddress().getLatitude();
 		float longstore2 = storeService.findById(stores.getStore2().getId()).getAddress().getLongitude();
 		
-		mAV.addObject("distance" , distanceStores(latstore1, longstore1, latstore2, longstore2));
+		mAV.addObject("distance" , storeService.distanceStores(latstore1, longstore1, latstore2, longstore2));
 		
 		return mAV;
-	}
-	
-	//Calculo distancia entre Stores
-	public static float distanceStores(float lat1, float lng1, float lat2, float lng2) {
-		float radioTierra = 6371; //en km.
-		float dLat = (float) Math.toRadians(lat2 - lat1);
-		float dLng = (float) Math.toRadians(lng2 - lng1);
-		float sindLat = (float) Math.sin(dLat/2);
-		float sindLng = (float) Math.sin(dLng/2);
-		float va1 = (float) (Math.pow(sindLat, 2) + Math.pow(sindLng, 2) * Math.cos(Math.toRadians(lat1)) *
-					Math.cos(Math.toRadians(lat2)));
-		float va2 = (float) (2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1)));
-		
-		return radioTierra * va2;
 	}
 	
 }
