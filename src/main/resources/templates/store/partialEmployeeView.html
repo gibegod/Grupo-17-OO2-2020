@@ -1,21 +1,4 @@
-<select class="form-control" id="select-employee" placeholder="Assistant Employee">
+<select class="form-control" id="select-employee" placeholder="Assistant Employee" name="assistantEmployee.id">
     <option>...</option>
 	<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
 </select>
-
-<script type="text/javascript">
-	$("#select-employee").change(function() {
-		var employee = $("#select-employee").val();
-		if ($.isNumeric(employee)) {
-			$.ajax({
-				method : "GET",
-				//url : "/store/partial/employee/" + employee
-			}).done(function(result) {
-				//$("#div-employee").html(result);
-				alert("Id assistant employee: " + employee);
-			}).fail(function() {
-				alert("error");
-			});
-		}
-	});
-</script>
