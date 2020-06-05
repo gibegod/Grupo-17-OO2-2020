@@ -28,11 +28,17 @@ insert into person
                     ("Employee", 10, '1978-06-24', 26752869, "Juan Román", "Riquelme"),
                     ("Employee", 11, '1984-09-08', 32419312, "Dario", "Benedetto"),
                     ("Employee", 12, '1991-08-30', 38213403, "Carlos", "Silva"),
-                    ("Employee", 13, '1996-11-27', 40123485, "Celeste", "Rios");
+                    ("Employee", 13, '1996-11-27', 40123485, "Celeste", "Rios"),
+                    ("Client", 14, '1986-5-16', 28296757, "Leandro", "Romero"),
+                    ("Client", 15, '1996-2-14', 40213573, "Lautaro", "Turati"),
+                    ("Client", 16, '2000-10-2', 43218429, "Federico", "Luengo"),
+                    ("Client", 17, '2002-4-28', 45810251, "Ramiro", "Ruiz");
                     
 -- Data Client
 insert into `client`
-			values ("carlos.silva@gmail.com", 1), ("martitah.torres@hotmail.com", 2), ("rmilic@gmail.com", 3);
+			values 	("carlos.silva@gmail.com", 1), ("martitah.torres@hotmail.com", 2), ("rmilic@gmail.com", 3),
+					("leito.r.r@outlook.com", 14), ("otaku03@gmail.com", 15), ("fede_ebrio_23@yahoo.com.ar", 16),
+                    ("ramadmg@hotmail.com", 17);
             
 -- Data Employee
 insert into employee values (false, 26000, 0, 8, 4, 1), (true, 35000, 0, 8, 5, 1), (false, 25000, 0, 8, 6, 2), 

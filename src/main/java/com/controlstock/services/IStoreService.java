@@ -34,6 +34,8 @@ public interface IStoreService {
 
 	public List<Store> getStoresByProductId(int id);
 	
-	public List<Store> getStoreByStock(int id, int amount);
+	public List<Store> getStoresByStock(int productId, int amount, int saleId);
+	
+	public float distanceStores(float lat1, float lng1, float lat2, float lng2);
 
 }

@@ -20,7 +20,7 @@
 
  			<div class="form-group">
 
-				<label>Sale</label> <select class="form-control" placeholder="Sale"
+				<label>Sale</label> <select id="sale" class="form-control" placeholder="Sale"
 					th:field="*{sale.id}">
 					<option th:each="sale : ${sales}" th:value="${sale.id}"
 						th:text="${sale.id}"></option>
@@ -37,7 +37,7 @@
 				<select class="form-control" id="select-product"
 					placeholder="Product" th:field="*{product.id}">
 					<option th:each="product : ${products}" th:value="${product.id}"
-						th:text="${product.description}"></option>
+						th:text="${product.id + ' - ' + product.description}"></option>
 				</select>
 			</div>
 
@@ -62,10 +62,11 @@
 		$("#select-product").change(function() {
 			var productId = $("#select-product").val();
 			var amount = $("#select-amount").val();
+			var saleId = $("#sale").val();
 			if($.isNumeric(productId)){
 				$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
 					method: "GET",
-				 	url: "/store/partial/"+ productId + "/" + amount
+				 	url: "/store/partial/"+ productId + "/" + amount + "/" + saleId
 				})
 				.done(function(result) {
 					$("#div-show-stores").html(result);
