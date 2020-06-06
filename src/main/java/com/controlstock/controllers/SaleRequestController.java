@@ -113,5 +113,37 @@ public class SaleRequestController {
 		saleRequestService.remove(id);
 		return new RedirectView(ViewRouteHelper.SALEREQUEST_ROOT2);
 	}
+	
+	
+	  @GetMapping("/stockVerify/{idSale}/{idProduct}/{quantity}") public
+	  ModelAndView stockVerify(@PathVariable("idSale") int
+	  idSale, @PathVariable("idProduct") int idProduct,
+	  
+	  @PathVariable("quantity") int quantity) { ModelAndView mAV = new
+	  ModelAndView(ViewRouteHelper.SALEREQUEST_VERIFY_STOCK); SaleModel sale =
+	  saleService.findById(idSale);
+	  if(!storeService.validateStock(sale.getStoreModel().getId(), idProduct,
+	  quantity)) { mAV.addObject("message", new Message("No hay stock")); } else {
+	  mAV.addObject("message", new Message("")); } return mAV;
+	  
+	  }
+	 
+	
 		
+}
+
+class Message{
+	private String text;
+	
+	public Message(String text) {
+		this.setText(text);
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	};
 }

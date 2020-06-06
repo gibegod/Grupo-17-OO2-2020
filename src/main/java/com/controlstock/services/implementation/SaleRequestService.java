@@ -1,5 +1,6 @@
 package com.controlstock.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -75,8 +76,10 @@ public class SaleRequestService implements ISaleRequestService {
 
 	@Override
 	public List<SaleRequest> getAll() {
+		
 		return saleRequestRepository.findAll();
 	}
+	
 
 	@Override
 	public SaleRequestModel insert(SaleRequestModel saleRequestModel) {

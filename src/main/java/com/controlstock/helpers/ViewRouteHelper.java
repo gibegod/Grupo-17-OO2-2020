@@ -52,7 +52,6 @@ public class ViewRouteHelper {
 	public final static String SALEREQUEST_OTHERNEW = "new";
 	public final static String SALEREQUEST_NEW2 = "saleRequest/new2";
 	public final static String SALEREQUEST_UPDATE = "saleRequest/update";
-	
 	//Ventas (SaleRequest)
 	
 	public final static String SALE_INDEX = "sale/index";
@@ -74,6 +73,8 @@ public class ViewRouteHelper {
 	public final static String ADDRESS_ROOT = "/address";
 	public final static String SALEREQUEST_ROOT = "/saleRequest";
 	public final static String SALEREQUEST_ROOT2 = "/sale/saleRequest/new";
+	public final static String SALEREQUEST_VERIFY_STOCK = "/saleRequest/stockVerify";
+
 
 	public final static String SALE_ROOT = "/sale";
 }

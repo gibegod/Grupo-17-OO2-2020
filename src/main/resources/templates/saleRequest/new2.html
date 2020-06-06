@@ -30,6 +30,7 @@
 			<div class="form-group">
 				<label>Amount</label> <input id="select-amount" type="number" class="form-control"
 					placeholder="Enter amount" th:field="*{amount}">
+					<div id="stock"></div>
 			</div>
 			
 			<div class="form-group">
@@ -77,6 +78,23 @@
 			}else $("#div-show-stores").html("");
 		});		
 		
+		$("#select-amount").change(function() {
+			var amount = $("#select-amount").val();
+			var productId = $("#select-product").val();
+			var saleId = $("#select-store").val();
+			if($.isNumeric(amount)){
+				$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
+					method: "GET",
+				 	url: "/sale/saleRequest/stockVerify/"+ saleId + "/" + productId + "/" + amount
+				})
+				.done(function(result) {
+						$("#stock").html(result);
+						//$("#boton").prop("disabled", true);
+				})
+				.fail(function() {
+				});
+			}else $("#stock").html("");
+		});	
 	</script>
 
 </body>

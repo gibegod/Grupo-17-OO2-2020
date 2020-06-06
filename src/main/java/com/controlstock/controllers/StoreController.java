@@ -21,6 +21,7 @@ import com.controlstock.models.StoresModel;
 import com.controlstock.services.IAddressService;
 import com.controlstock.services.IEmployeeService;
 import com.controlstock.services.IStoreService;
+import com.controlstock.services.implementation.StoreService;
 
 @Controller
 @RequestMapping("/store")
@@ -114,10 +115,10 @@ public class StoreController {
 	@GetMapping("/partial/employees/{id}")
 	public ModelAndView getPartialEmployee(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_PARTIAL_VIEW_EMPLOYEES);
-		System.out.println( storeService.findById(id).getSetEmployees());
 		mAV.addObject("employees", storeService.findById(id).getSetEmployees());
 		return mAV;
 	}
+	
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ModelAndView distanceStores(StoresModel stores) {
