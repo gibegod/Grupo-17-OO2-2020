@@ -25,8 +25,9 @@ public class ProductRanking {
 	
 	public ProductRanking(){};
 	
-	public ProductRanking(Product product, int amount) {
+	public ProductRanking(int id, Product product, int amount) {
 		super();
+		this.id = id;
 		this.product = product;
 		this.amount = amount;
 	}
