@@ -2,7 +2,9 @@ package com.controlstock.services.implementation;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -117,18 +119,24 @@ public class StoreService implements IStoreService {
 				stores.add(store);
 			}
 		}
-		
+		//Genero un mapa que funciona como diccionario, con el tipo "llave, valor", donde la llave es la distancia.
+		Map<Float, String> listaDistancias = new HashMap<Float, String>();
+		//Creo la lista de distancias, para despues ir comparando.
+		List<Float> distancias = new ArrayList<Float>();
 		for (Store s : stores) {
 			//lat1, long1, lat2, long2
 			float distance = distanceStores(storeActual.getAddress().getLatitude(), storeActual.getAddress().getLongitude(),
 					s.getAddress().getLatitude(), s.getAddress().getLongitude());
-			
-			//las stores de menor distancia van primero en la lista.
-			//INCOMPLETO
+			//Ingreso en el diccionario como llave la distancia y como valor el id. 
+			listaDistancias.put(distance, String.valueOf(s.getId()));
+			distancias.add(distance); //Voy guardando todas las distancias.
 		}
-		
+		Collections.sort(distancias); //Ordeno las distancias.
+		for(Float d: distancias) { //Itero las distancias y agrego en storesList.
+			storesList.add(storeRepository.findById(Integer.parseInt(listaDistancias.get(d))));
+		}
 		//tiene que retornear storesList
-		return stores;
+		return storesList;
 
 	}
 
