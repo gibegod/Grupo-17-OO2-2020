@@ -1,10 +1,31 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="header">
-	<header>
-		<div class="navbar navbar-dark bg-dark box-shadow">
-			<div class="container d-flex flex-start">
-				<a href="/index	" class="navbar-brand d-flex align-items-center">
-					<strong>Stock Control System</strong>
-				</a>
-			</div>
-	</header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/index">Stock Control System</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+				<li class="nav-item"><a class="nav-link" href="/product">Product</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/sale">Sale</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/sale/saleRequest">Sale Request</a></li>
+				<li class="nav-item"><a class="nav-link" href="/batch">Batch</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/employee">Employee</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/client">Client</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/address">Address</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/store">Store</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 </div>
+

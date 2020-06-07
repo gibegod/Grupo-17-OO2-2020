@@ -7,10 +7,11 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/css/sale-request-new.css}" />
+<link rel="stylesheet" href="/css/sale-request-n.css" />
 </head>
 <body>
 	<div th:replace="fragments/header :: header" />
+<div class='sale-request-new-parent'>
 	<div class="saleRequest-new">
 		<div class="SaleRequest-new-header">
 			<h5>Add Sale Request</h5>
@@ -81,6 +82,7 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 	
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

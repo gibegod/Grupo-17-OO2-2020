@@ -1,0 +1,43 @@
+.saleRequest-new {
+	width:25%;
+	background-color: white;
+	border-radius: 20px;
+	padding: 40px;
+	left: 180px;
+	top: 85px;
+	position: absolute;
+}
+
+.saleRequest-new-header {
+	margin-bottom: 30px;
+}
+
+.btn {
+	width: 100%;
+}
+
+.m-top {
+	margin-top: 15px;
+}
+
+
+body{
+	color: black;
+	background-color: grey;
+}
+
+.saleRequest-table {
+	margin-left: auto;
+	margin-right: 150px;
+	margin-top: 30px;
+	width: 50%;
+}
+
+.table {
+	border-radius: 5px;
+}
+
+.sale-request-new-parent {
+	display: flex;
+	flex-direction: row;
+}
