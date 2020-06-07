@@ -13,6 +13,10 @@ public class ViewRouteHelper {
 	public final static String PRODUCT_NEW = "product/new";
 	public final static String PRODUCT_UPDATE = "product/update";
 	
+	//ProductRanking
+	
+	public final static String PRODUCT_RANKING_INDEX ="productRanking/index";
+	
 	//Lote (Batch)
 	
 	public final static String BATCH_INDEX = "batch/index";

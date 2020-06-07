@@ -16,6 +16,8 @@ import com.controlstock.converters.StoreConverter;
 import com.controlstock.converters.AddressConverter;
 import com.controlstock.converters.ClientConverter;
 import com.controlstock.converters.EmployeeConverter;
+import com.controlstock.converters.ProductConverter;
+import com.controlstock.converters.ProductRankingConverter;
 import com.controlstock.entities.Sale;
 import com.controlstock.entities.SaleRequest;
 import com.controlstock.entities.Store;
@@ -29,6 +31,7 @@ import com.controlstock.models.SaleRequestModel;
 import com.controlstock.models.StoreModel;
 import com.controlstock.models.EmployeeModel;
 import com.controlstock.models.ProductModel;
+import com.controlstock.models.ProductRankingModel;
 import com.controlstock.models.AddressModel;
 import com.controlstock.models.BatchModel;
 import com.controlstock.models.ClientModel;
@@ -38,6 +41,8 @@ import com.controlstock.repositories.IStoreRepository;
 import com.controlstock.repositories.IAddressRepository;
 import com.controlstock.repositories.IClientRepository;
 import com.controlstock.repositories.IEmployeeRepository;
+import com.controlstock.services.IProductRankingService;
+import com.controlstock.services.IProductService;
 import com.controlstock.services.ISaleService;
 import com.controlstock.services.IStoreService;
 
@@ -99,6 +104,14 @@ public class SaleService implements ISaleService {
 	@Autowired
 	@Qualifier("batchService")
 	private BatchService batchService;
+	
+	@Autowired
+	@Qualifier("productRankingService")
+	private IProductRankingService productRankingService;
+	
+	@Autowired
+	@Qualifier("productConverter")
+	private ProductConverter productConverter;
 	
 	@Override
 	public List<Sale> getAll() {
@@ -163,6 +176,10 @@ public class SaleService implements ISaleService {
 			sale.setClient(clientConverter.modelToEntity(clientService.findById(saleModel.getClient().getId())));
 			sale.setDate(saleModel.getDate());
 			saleRepository.saveAndFlush(sale);
+			
+			for(SaleRequest sr: sale.getSetSaleRequests()) {
+				productRankingService.insertOrUpdate(new ProductRankingModel(0, productConverter.entityToModel(sr.getProduct()), sr.getAmount()));
+			}
 			subtractStock(sale);
 		}
 
