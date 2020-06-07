@@ -3,6 +3,7 @@ package com.controlstock.services.implementation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -122,7 +123,7 @@ public class StoreService implements IStoreService {
 		//Genero un mapa que funciona como diccionario, con el tipo "llave, valor", donde la llave es la distancia.
 		Map<Float, String> listaDistancias = new HashMap<Float, String>();
 		//Creo la lista de distancias, para despues ir comparando.
-		List<Float> distancias = new ArrayList<Float>();
+		HashSet<Float> distancias = new HashSet<Float>();
 		for (Store s : stores) {
 			//lat1, long1, lat2, long2
 			float distance = distanceStores(storeActual.getAddress().getLatitude(), storeActual.getAddress().getLongitude(),
@@ -131,7 +132,8 @@ public class StoreService implements IStoreService {
 			listaDistancias.put(distance, String.valueOf(s.getId()));
 			distancias.add(distance); //Voy guardando todas las distancias.
 		}
-		Collections.sort(distancias); //Ordeno las distancias.
+		List<Float> distanciasList = new ArrayList<>(distancias);
+		Collections.sort(distanciasList); //Ordeno las distancias.
 		for(Float d: distancias) { //Itero las distancias y agrego en storesList.
 			storesList.add(storeRepository.findById(Integer.parseInt(listaDistancias.get(d))));
 		}
