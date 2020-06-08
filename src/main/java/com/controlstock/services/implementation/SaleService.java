@@ -24,6 +24,7 @@ import com.controlstock.entities.Store;
 import com.controlstock.helpers.DateBatchComparator;
 import com.controlstock.entities.Employee;
 import com.controlstock.entities.Product;
+import com.controlstock.entities.ProductRanking;
 import com.controlstock.entities.Address;
 import com.controlstock.entities.Client;
 import com.controlstock.models.SaleModel;
@@ -180,10 +181,26 @@ public class SaleService implements ISaleService {
 			sale.setDate(saleModel.getDate());
 			saleRepository.saveAndFlush(sale);
 
+			//ProductRanking
 			for (SaleRequest sr : sale.getSetSaleRequests()) {
-				productRankingService.insertOrUpdate(
-						new ProductRankingModel(0, productConverter.entityToModel(sr.getProduct()), sr.getAmount()));
+				
+				int aux = 0;
+				for(ProductRanking pr : productRankingService.getAll()) {
+					if(pr.getId() == sr.getProduct().getId()) {
+						aux = 1;
+					}
+				}
+				
+				//Si no hay ningun productoRanking con el id del producto del saleRequest va al insert,si no al update.
+				if (aux == 0) {
+					productRankingService.insert(new ProductRankingModel(sr.getProduct().getId(), 
+							productConverter.entityToModel(sr.getProduct()), sr.getAmount()));
+				} else {
+					productRankingService.update(new ProductRankingModel(sr.getProduct().getId(),
+							productConverter.entityToModel(sr.getProduct()), sr.getAmount()));
+				}
 			}
+			
 			subtractStock(sale);
 		}
 
