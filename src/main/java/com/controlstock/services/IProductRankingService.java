@@ -9,5 +9,11 @@ public interface IProductRankingService {
 
 	public List<ProductRanking> getAll();
 	
-	public ProductRankingModel insertOrUpdate(ProductRankingModel product);
+	//public ProductRankingModel insertOrUpdate(ProductRankingModel product);
+
+	public ProductRankingModel insert(ProductRankingModel productRankingModel);
+	
+	public ProductRankingModel update(ProductRankingModel productRankingModel);
+
+	public ProductRankingModel findById(int id);
 }
