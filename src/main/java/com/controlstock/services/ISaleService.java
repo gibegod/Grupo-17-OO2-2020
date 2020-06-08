@@ -26,4 +26,6 @@ public interface ISaleService {
 	
 	public float calculateTotal(int id);
 
+	public void checkSales(List<Sale> salesList);
+
 }

@@ -57,8 +57,8 @@ public class SaleController {
 	@GetMapping("")
 	public ModelAndView index () {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_INDEX);
+		saleService.checkSales(saleService.getAll());
 		mAV.addObject("sales", saleService.getAll());
-		
 		
 		//TEST funcionamiento de Set<SaleRequest>
 		/*
