@@ -7,6 +7,8 @@ import com.controlstock.entities.Product;
 import com.controlstock.entities.Store;
 import com.controlstock.models.ProductModel;
 import com.controlstock.models.StoreModel;
+import java.time.LocalDateTime;
+import com.controlstock.entities.Sale;
 
 public interface IStoreService {
 	
@@ -37,5 +39,7 @@ public interface IStoreService {
 	public List<Store> getStoresByStock(int productId, int amount, int saleId);
 	
 	public float distanceStores(float lat1, float lng1, float lat2, float lng2);
+	
+	public List<Sale> getSalesInRangeByStore(int id, LocalDateTime minDate, LocalDateTime maxDate);
 
 }

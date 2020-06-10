@@ -19,7 +19,7 @@
 				<tr th:each="saleRequest : ${saleRequests}">
 					<td><span th:text="${saleRequest.product.description}" /></td>
 					<td><span th:text="${saleRequest.amount}" /></td>
-					<td><span th:text="${saleRequest.assistantEmployee.getName()}" /></td>
+					<td><span th:text="${saleRequest.assistantEmployee.getName() + ' ' + saleRequest.assistantEmployee.getSurname()}" /></td>
 				</tr>
 			</tbody>
 		</table>
