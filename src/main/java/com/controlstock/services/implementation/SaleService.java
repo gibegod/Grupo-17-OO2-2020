@@ -185,18 +185,22 @@ public class SaleService implements ISaleService {
 			for (SaleRequest sr : sale.getSetSaleRequests()) {
 				
 				int aux = 0;
-				for(ProductRanking pr : productRankingService.getAll()) {
-					if(pr.getId() == sr.getProduct().getId()) {
-						aux = 1;
+				int idAux = 0;
+				if(productRankingService.getAll().isEmpty() == false) {
+					for(ProductRanking pr : productRankingService.getAll()) {
+						if(pr.getProduct().getId() == sr.getProduct().getId()) {
+							aux = 1;
+							idAux = pr.getId();
+						}
 					}
 				}
 				
 				//Si no hay ningun productoRanking con el id del producto del saleRequest va al insert,si no al update.
 				if (aux == 0) {
-					productRankingService.insert(new ProductRankingModel(sr.getProduct().getId(), 
+					productRankingService.insert(new ProductRankingModel(0, 
 							productConverter.entityToModel(sr.getProduct()), sr.getAmount()));
 				} else {
-					productRankingService.update(new ProductRankingModel(sr.getProduct().getId(),
+					productRankingService.update(new ProductRankingModel(idAux,
 							productConverter.entityToModel(sr.getProduct()), sr.getAmount()));
 				}
 			}
