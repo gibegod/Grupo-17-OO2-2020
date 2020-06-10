@@ -33,66 +33,67 @@ public class SaleRequestController {
 	@Autowired
 	@Qualifier("saleRequestService")
 	private ISaleRequestService saleRequestService;
-	
+
 	@Autowired
 	@Qualifier("productService")
 	private IProductService productService;
-	
+
 	@Autowired
 	@Qualifier("employeeService")
 	private IEmployeeService employeeService;
-	
+
 	@Autowired
 	@Qualifier("saleService")
 	private ISaleService saleService;
-	
+
 	@Autowired
 	@Qualifier("storeService")
 	private IStoreService storeService;
-	
+
 	@Autowired
 	@Qualifier("saleConverter")
 	private SaleConverter saleConverter;
-	
+
 	@GetMapping("")
-	public ModelAndView index () {
+	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_INDEX);
 		mAV.addObject("saleRequests", saleRequestService.getAll());
 		return mAV;
 	}
-	
-	//Crea el SaleRequest.
+
+	// Crea el SaleRequest.
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW);
 		mAV.addObject("saleRequest", new SaleRequestModel());
-		//mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales abiertos
-		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
+		// mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales
+		// abiertos
+		mAV.addObject("sales", saleService.getSaleByStatus()); // Tiene que haber 1 solo sale.
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
 		mAV.addObject("products", storeService.getProductsByStore(saleService.getSaleByStatus().getStore().getId()));
 		mAV.addObject("employees", employeeService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;
 	}
-	
-	//Crea el SaleRequest cuando se requiere un producto de otra sucursal.
+
+	// Crea el SaleRequest cuando se requiere un producto de otra sucursal.
 	@GetMapping("/new2")
 	public ModelAndView create2() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW2);
 		mAV.addObject("saleRequest", new SaleRequestModel());
-		mAV.addObject("sales", saleService.getSaleByStatus()); //Tiene que haber 1 solo sale.
+		mAV.addObject("sales", saleService.getSaleByStatus()); // Tiene que haber 1 solo sale.
 		mAV.addObject("products", productService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;
 	}
-	
-	//SR de la store actual
+
+	// SR de la store actual
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("saleRequest") SaleRequestModel saleRequestModel) {
 		saleRequestService.insert(saleRequestModel);
 		return new RedirectView(ViewRouteHelper.SALEREQUEST_OTHERNEW);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_UPDATE);
@@ -101,40 +102,38 @@ public class SaleRequestController {
 		mAV.addObject("employee", employeeService.getAll());
 		return mAV;
 	}
-	
+
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("saleRequest") SaleRequestModel saleRequestModel) {
 		saleRequestService.update(saleRequestModel);
 		return new RedirectView(ViewRouteHelper.SALEREQUEST_ROOT);
 	}
-	
+
 	@PostMapping("/delete/{id}")
-	public RedirectView delete (@PathVariable("id") int id) {
+	public RedirectView delete(@PathVariable("id") int id) {
 		saleRequestService.remove(id);
 		return new RedirectView(ViewRouteHelper.SALEREQUEST_ROOT2);
 	}
-	
-	
-	  @GetMapping("/stockVerify/{idSale}/{idProduct}/{quantity}") public
-	  ModelAndView stockVerify(@PathVariable("idSale") int
-	  idSale, @PathVariable("idProduct") int idProduct,
-	  
-	  @PathVariable("quantity") int quantity) { ModelAndView mAV = new
-	  ModelAndView(ViewRouteHelper.SALEREQUEST_VERIFY_STOCK); SaleModel sale =
-	  saleService.findById(idSale);
-	  if(!storeService.validateStock(sale.getStoreModel().getId(), idProduct,
-	  quantity)) { mAV.addObject("message", new Message("No hay stock")); } else {
-	  mAV.addObject("message", new Message("")); } return mAV;
-	  
-	  }
-	 
-	
-		
+
+	@GetMapping("/stockVerify/{idSale}/{idProduct}/{quantity}")
+	public ModelAndView stockVerify(@PathVariable("idSale") int idSale, @PathVariable("idProduct") int idProduct,
+			@PathVariable("quantity") int quantity) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_VERIFY_STOCK);
+		SaleModel sale = saleService.findById(idSale);
+		if (!storeService.validateStock(sale.getStoreModel().getId(), idProduct, quantity)) {
+			mAV.addObject("message", new Message("No hay stock"));
+		} else {
+			mAV.addObject("message", new Message(""));
+		}
+
+		return mAV;
+	}
+
 }
 
-class Message{
+class Message {
 	private String text;
-	
+
 	public Message(String text) {
 		this.setText(text);
 	}

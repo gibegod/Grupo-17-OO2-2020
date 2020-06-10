@@ -30,7 +30,7 @@
 					<td><span th:text="${saleRequest.amount}" /></td>
 					 <td><span th:if="${saleRequest.assistantEmployee == null}">------------------------</span>
 					 <span th:if="${saleRequest.assistantEmployee != null}">
-					 <span th:text="${saleRequest.assistantEmployee.name}"></span>
+					 <span th:text="${saleRequest.assistantEmployee.name + ' ' + saleRequest.assistantEmployee.surname}"></span>
 					 </span></td>
 					<!--<td><a th:href="@{/sale/saleRequest/{id}(id=${saleRequest.id})}">Edit</a></td> -->
 				</tr>

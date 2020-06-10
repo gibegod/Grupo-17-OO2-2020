@@ -26,7 +26,7 @@
 
 			<div class="form-group m-top">
 				<label>Client</label> <select class="form-control" placeholder="Client" th:field="*{client.id}">
-					<option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name}"></option>
+					<option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name + ' ' + client.surname}"></option>
 				</select>
 			</div>
 
@@ -67,8 +67,10 @@
 					<td><span th:text="${saleRequest.product.id}" /> - <span th:text="${saleRequest.product.description}" /></td>
 					<td><span th:text="${saleRequest.amount}" /></td>
 					<td><span th:text="${saleRequest.product.unitPrice}" /></td>
-					<!--<td><span th:text="${saleRequest.assistantEmployee.name}" /></td> -->
-					<td>Assistant Employee</td>
+					<td><span th:if="${saleRequest.assistantEmployee == null}">------------------------</span>
+					 <span th:if="${saleRequest.assistantEmployee != null}">
+					 <span th:text="${saleRequest.assistantEmployee.name + ' ' + saleRequest.assistantEmployee.surname}"></span>
+					 </span></td>
 					<td>
 						<form action="#" th:action="@{/sale/saleRequest/delete/{id}(id=${saleRequest.id})}" method="post">
 							<input class="btn btn-danger" type="submit" value="Remove" />

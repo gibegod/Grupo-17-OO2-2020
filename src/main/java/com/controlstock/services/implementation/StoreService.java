@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -17,13 +17,14 @@ import com.controlstock.converters.StoreConverter;
 import com.controlstock.entities.Address;
 import com.controlstock.entities.Batch;
 import com.controlstock.entities.Product;
+import com.controlstock.entities.Sale;
 import com.controlstock.entities.Store;
 import com.controlstock.helpers.DateBatchComparator;
 import com.controlstock.models.AddressModel;
 import com.controlstock.models.ProductModel;
 import com.controlstock.models.StoreModel;
+import com.controlstock.models.SaleModel;
 import com.controlstock.repositories.IAddressRepository;
-
 import com.controlstock.repositories.IProductRepository;
 import com.controlstock.repositories.ISaleRepository;
 import com.controlstock.repositories.IEmployeeRepository;
@@ -106,6 +107,20 @@ public class StoreService implements IStoreService {
 			products.add(b.getProduct());
 		}
 		return products;
+	}
+	
+	@Override
+	public List<Sale> getSalesInRangeByStore(int id, LocalDateTime minDate, LocalDateTime maxDate) {
+		Store store = storeRepository.findById(id);
+		List<Sale> sales = new ArrayList<Sale>();
+		for (Sale s : saleService.getAll()) {
+				if(s.getDate().isAfter(minDate) && s.getDate().isBefore(maxDate) && s.getStore().getId()==store.getId()) {
+					
+				sales.add(s);
+				
+			}
+		}
+		return sales;
 	}
 
 	public List<Store> getStoresByStock(int productId, int amount, int saleId) {

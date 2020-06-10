@@ -20,13 +20,13 @@
 			<label>Employee In Charge</label> 
 			<select class="form-control" placeholder="Employee" th:field="*{employeeInCharge.id}">
 			<option th:each="employee : ${employees}" th:value="${employee.id}"
-			th:text="${employee.name}"></option>
+			th:text="${employee.name + ' ' + employee.surname}"></option>
 			</select>
 			<div class="form-group">
 				<label>Client</label> 
 				<select class="form-control" placeholder="Client" th:field="*{client.id}">
 			<option th:each="client : ${clients}" th:value="${client.id}"
-			th:text="${client.name}"></option>
+			th:text="${client.name + ' ' + client.surname}"></option>
 			</select> 
 			</div>
 			<label>Date</label> <input type="datetime-local" class="form-control"

@@ -66,10 +66,14 @@ public class ViewRouteHelper {
 	public final static String SALE_SELECTEMPLOYEE = "sale/selectEmployee";
 	public final static String SALE_ADDSALEREQUEST = "sale/addSaleRequest";
 	
+	public final static String SALEINRANGE_INDEX = "saleInRange/salesByRangeIndex";
+	public final static String SALEINRANGE_CHECK = "saleInRange/salesByRangeCheck";
+	
 	//Redirects ------------------------------------------------------------
 	
 	public final static String ROUTE = "/index";
 	public final static String PRODUCT_ROOT = "/product";
+	public final static String PRODUCTRANKING_ROOT = "/productRanking";
 	public final static String BATCH_ROOT = "/batch";
 	public final static String STORE_ROOT = "/store";
 	public final static String CLIENT_ROOT = "/client";
@@ -78,6 +82,7 @@ public class ViewRouteHelper {
 	public final static String SALEREQUEST_ROOT = "/saleRequest";
 	public final static String SALEREQUEST_ROOT2 = "/sale/saleRequest/new";
 	public final static String SALEREQUEST_VERIFY_STOCK = "/saleRequest/stockVerify";
+	public final static String SALEINRANGE_ROOT = "/saleInRange";
 
 
 	public final static String SALE_ROOT = "/sale";
