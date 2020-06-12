@@ -1,6 +1,5 @@
 package com.controlstock.services;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import com.controlstock.entities.Product;

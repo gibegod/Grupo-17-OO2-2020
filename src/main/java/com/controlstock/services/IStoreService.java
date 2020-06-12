@@ -5,7 +5,6 @@ import java.util.List;
 import com.controlstock.entities.Batch;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Store;
-import com.controlstock.models.ProductModel;
 import com.controlstock.models.StoreModel;
 import java.time.LocalDateTime;
 import com.controlstock.entities.Sale;

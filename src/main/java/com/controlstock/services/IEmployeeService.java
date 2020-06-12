@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.controlstock.entities.Employee;
 import com.controlstock.models.EmployeeModel;
-import com.controlstock.models.StoreModel;
 
 public interface IEmployeeService {
 	

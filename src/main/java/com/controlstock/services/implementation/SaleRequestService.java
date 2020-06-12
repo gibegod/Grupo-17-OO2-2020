@@ -1,6 +1,5 @@
 package com.controlstock.services.implementation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -74,17 +73,15 @@ public class SaleRequestService implements ISaleRequestService {
 	@Qualifier("saleRepository")
 	private ISaleRepository saleRepository;
 
+	
 	@Override
 	public List<SaleRequest> getAll() {
 		
 		return saleRequestRepository.findAll();
 	}
-	
 
 	@Override
 	public SaleRequestModel insert(SaleRequestModel saleRequestModel) {
-		
-		//System.out.println(saleRequestModel.getAssistantEmployee().getId());
 		
 		Product product = productRepository.findById(saleRequestModel.getProduct().getId());
 		ProductModel productModel = productConverter.entityToModel(product);
@@ -120,11 +117,8 @@ public class SaleRequestService implements ISaleRequestService {
 		// Seteo en el Set<SaleRequest> del sale correspondiente.
 		saleRequest.getSale().getSetSaleRequests().add(saleRequest);
 		
-		
 		saleService.update(saleConverter.entityToModel(saleRequest.getSale()));
-		
-
-		// SaleRequest saleRequest = saleRequestRepository.save(saleRequestConverter.modelToEntity(saleRequestModel));
+	
 		return saleRequestConverter.entityToModel(saleRequest);
 	}
 
@@ -137,8 +131,9 @@ public class SaleRequestService implements ISaleRequestService {
 			saleRequestModel
 					.setAssistantEmployee(employeeService.findById(saleRequestModel.getAssistantEmployee().getId()));
 		}
-
+		
 		SaleRequest saleRequest = saleRequestRepository.save(saleRequestConverter.modelToEntity(saleRequestModel));
+		
 		return saleRequestConverter.entityToModel(saleRequest);
 	}
 

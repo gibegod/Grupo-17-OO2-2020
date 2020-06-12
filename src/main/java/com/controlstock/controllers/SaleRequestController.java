@@ -8,14 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.converters.SaleConverter;
-import com.controlstock.entities.Sale;
-import com.controlstock.entities.SaleRequest;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.SaleModel;
 import com.controlstock.models.SaleRequestModel;
@@ -66,9 +62,7 @@ public class SaleRequestController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_NEW);
 		mAV.addObject("saleRequest", new SaleRequestModel());
-		// mAV.addObject("sales", saleService.getSaleListByStatus()); //Lista de sales
-		// abiertos
-		mAV.addObject("sales", saleService.getSaleByStatus()); // Tiene que haber 1 solo sale.
+		mAV.addObject("sales", saleService.getSaleByStatus());
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
 		mAV.addObject("products", storeService.getProductsByStore(saleService.getSaleByStatus().getStore().getId()));
 		mAV.addObject("employees", employeeService.getAll());
@@ -125,12 +119,11 @@ public class SaleRequestController {
 		} else {
 			mAV.addObject("message", new Message(""));
 		}
-
 		return mAV;
 	}
-
 }
 
+//Clase Message
 class Message {
 	private String text;
 

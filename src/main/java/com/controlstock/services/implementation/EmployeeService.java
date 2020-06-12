@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import com.controlstock.converters.EmployeeConverter;
 import com.controlstock.converters.StoreConverter;
 import com.controlstock.entities.Employee;
-import com.controlstock.entities.Sale;
-import com.controlstock.entities.SaleRequest;
 import com.controlstock.entities.Store;
 import com.controlstock.models.EmployeeModel;
 import com.controlstock.models.SaleModel;
@@ -73,9 +71,9 @@ public class EmployeeService implements IEmployeeService {
 	public EmployeeModel insert(EmployeeModel employeeModel) {
 		
 		//Relaciono el id del store con todo el objeto store y lo seteo en employeeModel.
-				Store store = storeRepository.findById(employeeModel.getStore().getId());
-				StoreModel storeModel = storeConverter.entityToModel(store);
-				employeeModel.setStore(storeModel);
+		Store store = storeRepository.findById(employeeModel.getStore().getId());
+		StoreModel storeModel = storeConverter.entityToModel(store);
+		employeeModel.setStore(storeModel);
 		
 		//Se guarda el employee en la bd.
 		Employee employee = employeeConverter.modelToEntity(employeeModel);
@@ -108,22 +106,22 @@ public class EmployeeService implements IEmployeeService {
 	
 	public void calculatePay(Employee e, int idSale ) {
 		SaleModel s = saleService.findById(idSale);
-			e.setMinimunWage(20000);
-			for(SaleRequestModel sq: s.getSetSaleRequests()) {
-					SaleRequestModel sqp = saleRequestService.findById(sq.getId());
-					float precio = productService.findById(sqp.getProduct().getId()).getUnitPrice();
-					e.setPlus((float) (e.getPlus() +((precio*0.05)) * sqp.getAmount()));
+		e.setMinimunWage(20000);
+		for(SaleRequestModel sq: s.getSetSaleRequests()) {
+			SaleRequestModel sqp = saleRequestService.findById(sq.getId());
+			float precio = productService.findById(sqp.getProduct().getId()).getUnitPrice();
+			e.setPlus((float) (e.getPlus() +((precio*0.05)) * sqp.getAmount()));
+		}
+		for(SaleRequestModel sq: s.getSetSaleRequests()) {
+			if(sq.getAssistantEmployee() != null) {
+				Employee emp = employeeRepository.findById(sq.getAssistantEmployee().getId());
+				SaleRequestModel sqp = saleRequestService.findById(sq.getId());
+				float precio = productService.findById(sqp.getProduct().getId()).getUnitPrice();
+				emp.setPlus((float) (emp.getPlus() + ((precio*0.02) * sqp.getAmount())));
+				e.setPlus((float) (e.getPlus() + ((precio*0.03) * sqp.getAmount())));
+				update(employeeConverter.entityToModel(emp));
 			}
-			for(SaleRequestModel sq: s.getSetSaleRequests()) {
-					if(sq.getAssistantEmployee() != null) {
-						Employee emp = employeeRepository.findById(sq.getAssistantEmployee().getId());
-						SaleRequestModel sqp = saleRequestService.findById(sq.getId());
-						float precio = productService.findById(sqp.getProduct().getId()).getUnitPrice();
-						emp.setPlus((float) (emp.getPlus() + ((precio*0.02) * sqp.getAmount())));
-						e.setPlus((float) (e.getPlus() + ((precio*0.03) * sqp.getAmount())));
-						update(employeeConverter.entityToModel(emp));
-					}
-			}
+		}
 		update(employeeConverter.entityToModel(e));
 	}
 	
@@ -142,4 +140,5 @@ public class EmployeeService implements IEmployeeService {
 		}
 		return employeesStore;
 	}
+	
 }

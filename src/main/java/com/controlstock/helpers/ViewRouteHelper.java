@@ -56,19 +56,17 @@ public class ViewRouteHelper {
 	public final static String SALEREQUEST_OTHERNEW = "new";
 	public final static String SALEREQUEST_NEW2 = "saleRequest/new2";
 	public final static String SALEREQUEST_UPDATE = "saleRequest/update";
+	public final static String SALEREQUEST_VERIFY_STOCK = "/saleRequest/stockVerify";
 	
 	//Ventas (Sale)
 	
 	public final static String SALE_INDEX = "sale/index";
 	public final static String SALE_NEW = "sale/new";
-	public final static String SALE_UPDATE = "sale/update";
 	public final static String SALE_INITIAL = "sale/initial";
 	public final static String SALE_FINAL = "sale/final";
 	public final static String SALE_SELECTEMPLOYEE = "sale/selectEmployee";
-	public final static String SALE_ADDSALEREQUEST = "sale/addSaleRequest";
-	
-	public final static String SALEINRANGE_INDEX = "saleInRange/salesByRangeIndex";
-	public final static String SALEINRANGE_CHECK = "saleInRange/salesByRangeCheck";
+
+	//Reporte de productos vendidos (productsDates)
 	
 	public final static String PRODUCTSDATES_INDEX = "productsDates/index";
 	public final static String PRODUCTSDATES_TABLE = "productsDates/table";
@@ -85,9 +83,5 @@ public class ViewRouteHelper {
 	public final static String ADDRESS_ROOT = "/address";
 	public final static String SALEREQUEST_ROOT = "/saleRequest";
 	public final static String SALEREQUEST_ROOT2 = "/sale/saleRequest/new";
-	public final static String SALEREQUEST_VERIFY_STOCK = "/saleRequest/stockVerify";
-	public final static String SALEINRANGE_ROOT = "/saleInRange";
-
-
 	public final static String SALE_ROOT = "/sale";
 }

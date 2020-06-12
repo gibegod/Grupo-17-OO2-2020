@@ -1,7 +1,5 @@
 package com.controlstock.controllers;
 
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,13 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.helpers.ViewRouteHelper;
-import com.controlstock.models.SaleRequestModel;
-import com.controlstock.models.StoreModel;
 import com.controlstock.models.SaleModel;
 import com.controlstock.services.ISaleService;
 import com.controlstock.services.IStoreService;
@@ -57,17 +52,8 @@ public class SaleController {
 	@GetMapping("")
 	public ModelAndView index () {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_INDEX);
-		saleService.checkSales(saleService.getAll());
+		saleService.checkSales(saleService.getAll()); //Elimina sales vacias o incompletas.
 		mAV.addObject("sales", saleService.getAll());
-		
-		//TEST funcionamiento de Set<SaleRequest>
-		/*
-		Set<SaleRequestModel> aa = saleService.findById(1).getSetSaleRequests(); //Store de id 1.
-		System.out.println("Size set store 1: " + aa.size());
-		for(SaleRequestModel s : aa) {
-			System.out.println("SaleRequest ID: " + s.getId());
-		}*/
-		
 		return mAV;
 	}
 	
@@ -95,24 +81,7 @@ public class SaleController {
 		return new RedirectView(ViewRouteHelper.SALEREQUEST_NEW);
 	}
 	
-	//No se usa
-	@RequestMapping(value = "/addSaleRequest", method = RequestMethod.GET)
-	public ModelAndView addSaleRequest(@ModelAttribute("sale") SaleModel saleModel) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_ADDSALEREQUEST);
-		mAV.addObject("saleRequestModel", new SaleRequestModel());
-		mAV.addObject("saleRequests", saleModel.getSetSaleRequests());
-		mAV.addObject("products", storeService.getProductsByStore(saleModel.getStoreModel().getId()));
-		mAV.addObject("employees", employeeService.getAll());
-		return mAV;
-	}
-	
-	//No se usa
-	@PostMapping("/createSaleRequest")
-	public RedirectView createSR(@ModelAttribute("sale") SaleModel saleModel) {
-		saleService.insert(saleModel);
-		return new RedirectView(ViewRouteHelper.SALE_ROOT);
-	}
-	
+	//View donde se finaliza la sale
 	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
 		//ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_UPDATE);
@@ -126,6 +95,7 @@ public class SaleController {
 		return mAV;
 	}
 	
+	//Actualiza la sale.
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("sale") SaleModel saleModel) {
 		saleService.updateStatus(saleModel);

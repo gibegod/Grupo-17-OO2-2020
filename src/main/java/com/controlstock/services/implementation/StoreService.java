@@ -19,11 +19,8 @@ import com.controlstock.entities.Batch;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Sale;
 import com.controlstock.entities.Store;
-import com.controlstock.helpers.DateBatchComparator;
 import com.controlstock.models.AddressModel;
-import com.controlstock.models.ProductModel;
 import com.controlstock.models.StoreModel;
-import com.controlstock.models.SaleModel;
 import com.controlstock.repositories.IAddressRepository;
 import com.controlstock.repositories.IProductRepository;
 import com.controlstock.repositories.ISaleRepository;
@@ -87,6 +84,7 @@ public class StoreService implements IStoreService {
 	@Autowired
 	@Qualifier("saleRepository")
 	private ISaleRepository saleRepository;
+	
 	
 	@Override
 	public List<Store> getAll() {
@@ -152,7 +150,7 @@ public class StoreService implements IStoreService {
 		for(Float d: distancias) { //Itero las distancias y agrego en storesList.
 			storesList.add(storeRepository.findById(Integer.parseInt(listaDistancias.get(d))));
 		}
-		//tiene que retornear storesList
+		//tiene que retornar storesList
 		return storesList;
 
 	}
@@ -191,8 +189,6 @@ public class StoreService implements IStoreService {
 
 	@Override
 	public void substractBatches(int idStore, int idProduct, int quantity) {
-		Store store = storeRepository.findById(idStore);
-		Product product = productRepository.findById(idProduct);
 
 		int i = 0;
 		List<Batch> active = this.getActiveBatchs(idStore, idProduct);

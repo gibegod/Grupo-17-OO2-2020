@@ -11,7 +11,6 @@ import com.controlstock.converters.BatchConverter;
 import com.controlstock.converters.ProductConverter;
 import com.controlstock.converters.StoreConverter;
 import com.controlstock.entities.Batch;
-import com.controlstock.entities.Employee;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Store;
 import com.controlstock.models.BatchModel;
@@ -49,7 +48,6 @@ public class BatchService implements IBatchService {
 	@Qualifier("storeConverter")
 	private StoreConverter storeConverter;
 	
-	
 	@Autowired
 	@Qualifier("productRepository")
 	private IProductRepository productRepository;
@@ -58,11 +56,11 @@ public class BatchService implements IBatchService {
 	@Qualifier("productConverter")
 	private ProductConverter productConverter;
 	
+	
 	@Override
 	public List<Batch> getAll() {
 		return batchRepository.findAll();
 	}
-	
 	
 	@Override
 	public BatchModel insert(BatchModel batchModel) {
@@ -93,7 +91,6 @@ public class BatchService implements IBatchService {
 		Batch batch = batchRepository.save(batchConverter.modelToEntity(batchModel));
 		return batchConverter.entityToModel(batch);
 	}
-	
 	
 	@Override
 	public BatchModel updateCurrentAmount(BatchModel batchModel) {
