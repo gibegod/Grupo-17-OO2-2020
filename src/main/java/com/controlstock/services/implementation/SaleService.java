@@ -118,6 +118,7 @@ public class SaleService implements ISaleService {
 	@Autowired
 	@Qualifier("saleRequestService")
 	private ISaleRequestService saleRequestService;
+	
 
 	@Override
 	public List<Sale> getAll() {
@@ -206,6 +207,7 @@ public class SaleService implements ISaleService {
 			}
 			
 			subtractStock(sale);
+			employeeService.calculatePay(sale.getEmployeeInCharge(), sale.getId());
 		}
 
 		return saleModel;

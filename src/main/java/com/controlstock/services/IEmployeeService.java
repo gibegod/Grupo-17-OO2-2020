@@ -21,5 +21,7 @@ public interface IEmployeeService {
 	EmployeeModel update(EmployeeModel employeeModel);
 	
 	public List<Employee> getEmployeeByStore(int idStore);
-
+	
+	public void calculatePay(Employee e, int idSale);
+	
 }
