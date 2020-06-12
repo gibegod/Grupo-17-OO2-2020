@@ -1,8 +1,10 @@
 package com.controlstock.services.implementation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -339,5 +341,37 @@ public class SaleService implements ISaleService {
 		}
 		return null;
 	}
+	
+	/*
+	@Override
+	public Set<Product> getProductsByDates(int storeId, LocalDate date1, LocalDate date2){
+		Set<Product> productsList = new HashSet<Product>();
+		for (Sale sale : getAll()) {
+			LocalDate saleDate = sale.getDate().toLocalDate();
+			//Si la sale es entre esas fechas y la store coincide.
+			if(saleDate.isAfter(date1) && saleDate.isBefore(date2) && sale.getStore().getId() == storeId) {
+				for(SaleRequest sr : sale.getSetSaleRequests()) {
+						productsList.add(sr.getProduct());
+				}
+			}
+		}
+		return productsList;
+	}*/
+	
+	@Override
+	public Set<SaleRequest> getSaleRequestsByDates(int storeId, LocalDate date1, LocalDate date2){
+		Set<SaleRequest> srList = new HashSet<SaleRequest>();
+		for (Sale sale : getAll()) {
+			LocalDate saleDate = sale.getDate().toLocalDate();
+			//Si la sale es entre esas fechas y la store coincide.
+			if(saleDate.isAfter(date1) && saleDate.isBefore(date2) && sale.getStore().getId() == storeId) {
+				for(SaleRequest sr : sale.getSetSaleRequests()) {
+						srList.add(sr);
+				}
+			}
+		}
+		return srList;
+	}
+	
 
 }

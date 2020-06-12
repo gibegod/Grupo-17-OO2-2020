@@ -28,18 +28,18 @@
 			</div> 
 			
 			<div class="form-group">
-				<label>Amount</label> <input id="select-amount" type="number" class="form-control"
-					placeholder="Enter amount" th:field="*{amount}">
-					<div id="stock"></div>
-			</div>
-			
-			<div class="form-group">
 				<label>Product</label> 
 				<select class="form-control" id="select-product"
 					placeholder="Product" th:field="*{product.id}">
 					<option th:each="product : ${products}" th:value="${product.id}"
 						th:text="${product.id + ' - ' + product.description}"></option>
 				</select>
+			</div>
+			
+			<div class="form-group">
+				<label>Amount</label> <input id="select-amount" type="number" class="form-control"
+					placeholder="Enter amount" th:field="*{amount}">
+					<div id="stock"></div>
 			</div>
 
 			<label>Stores</label>
@@ -60,7 +60,7 @@
 	<script src="/vendor/jquery/jquery.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		$("#select-product").change(function() {
+		$("#select-amount").change(function() {
 			var productId = $("#select-product").val();
 			var amount = $("#select-amount").val();
 			var saleId = $("#sale").val();

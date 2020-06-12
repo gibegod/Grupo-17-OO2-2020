@@ -107,7 +107,6 @@ public class StoreController {
 			@PathVariable("saleid") int saleId) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STORE_PARTIAL_VIEW);
 		//Stores que contienen el product con la id y la cantidad.
-		
 		mAV.addObject("stores", storeService.getStoresByStock(productId, amount, saleId));
 		return mAV;
 	}

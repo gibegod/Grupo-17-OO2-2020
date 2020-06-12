@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.services.IStoreService;
 
-
 @Controller
 @RequestMapping("/saleInRange")
 public class SaleInRangeController {
