@@ -15,7 +15,7 @@ public class ViewRouteHelper {
 	
 	//ProductRanking
 	
-	public final static String PRODUCT_RANKING_INDEX ="productRanking/index";
+	public final static String PRODUCT_RANKING_INDEX = "productRanking/index";
 	
 	//Lote (Batch)
 	
@@ -56,7 +56,8 @@ public class ViewRouteHelper {
 	public final static String SALEREQUEST_OTHERNEW = "new";
 	public final static String SALEREQUEST_NEW2 = "saleRequest/new2";
 	public final static String SALEREQUEST_UPDATE = "saleRequest/update";
-	//Ventas (SaleRequest)
+	
+	//Ventas (Sale)
 	
 	public final static String SALE_INDEX = "sale/index";
 	public final static String SALE_NEW = "sale/new";
@@ -68,6 +69,9 @@ public class ViewRouteHelper {
 	
 	public final static String SALEINRANGE_INDEX = "saleInRange/salesByRangeIndex";
 	public final static String SALEINRANGE_CHECK = "saleInRange/salesByRangeCheck";
+	
+	public final static String PRODUCTSDATES_INDEX = "productsDates/index";
+	public final static String PRODUCTSDATES_TABLE = "productsDates/table";
 	
 	//Redirects ------------------------------------------------------------
 	
