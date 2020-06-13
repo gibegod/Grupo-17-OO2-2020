@@ -6,8 +6,6 @@
 	background-color: white;
 	border-radius: 20px;
 	padding: 40px;
-	display: flex;
-	flex-direction: row;
 }
 
 .saleRequest-new-header {
@@ -16,6 +14,9 @@
 
 .btn {
 	width: 100%;
+}
+
+.m-top {
 	margin-top: 15px;
 }
 
@@ -25,13 +26,22 @@ body{
 	background-color: grey;
 }
 
-.m-top {
-	margin-top: 15px;
-}
-
 .saleRequest-table {
-	margin-left:auto;
+	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
 	width: 50%;
+}
+
+#div-show-stores {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+}
+
+#div-show-employees	 {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }

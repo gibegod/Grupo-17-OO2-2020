@@ -8,12 +8,13 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" th:href="@{/css/employee.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/employee-index.css}">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 </head>
 <body>
 	<div th:replace="fragments/header :: header" />
 	<div class="employee-table">
-		<table class="table table-striped table-dark">
+		<table id="employee" class="display table table-striped table-dark">
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
@@ -41,5 +42,14 @@
 		<a th:href="@{/employee/new}" type="button" class="btn btn-dark btn-sm">Create new employee</a>
 		<a class="btn btn-dark btn-sm" href="/index">Back to index</a>
 	</div>
+	
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<script>
+		$(document).ready( function () {
+	    	$('#employee').DataTable();
+		});
+	</script>
 </body>
 </html>

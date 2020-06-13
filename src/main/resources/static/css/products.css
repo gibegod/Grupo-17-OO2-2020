@@ -1,8 +1,8 @@
-.batch-table {
-	width: 65%;
+.product-table {
+	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
+	margin-top: 55px;
 }
 
 .table {
@@ -13,6 +13,6 @@ body{
 	background-color: grey;
 }
 
-.span {
+span {
 	color: black;
 }
