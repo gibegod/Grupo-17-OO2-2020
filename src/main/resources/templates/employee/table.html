@@ -1,0 +1,23 @@
+	<div class="employee-table">
+		<table id="employee" class="display table table-striped table-dark">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Name</th>
+					<th scope="col">Surname</th>
+					<th scope="col">Sueldo base</th>
+					<th scope="col">Plus</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td><span th:text="${employee.id}" /></td>
+					<td><span th:text="${employee.name}" /></td>
+					<td><span th:text="${employee.surname}" /></td>
+					<td><span th:text="${employee.minimunWage}" /></td>
+					<td><span th:text="${employee.plus}" /></td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

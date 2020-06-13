@@ -1,6 +1,7 @@
 package com.controlstock.services;
 
 import java.util.List;
+import java.util.Set;
 
 import com.controlstock.entities.Employee;
 import com.controlstock.models.EmployeeModel;
@@ -22,5 +23,7 @@ public interface IEmployeeService {
 	public List<Employee> getEmployeeByStore(int idStore);
 	
 	public void calculatePay(Employee e, int idSale);
+	
+	public Set<Employee> setSalarys(String date);
 	
 }

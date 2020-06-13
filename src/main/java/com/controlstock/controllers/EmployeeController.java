@@ -1,5 +1,7 @@
 package com.controlstock.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.controlstock.entities.Employee;
 import com.controlstock.helpers.ViewRouteHelper;
 import com.controlstock.models.EmployeeModel;
 import com.controlstock.services.IEmployeeService;
@@ -68,6 +71,20 @@ public class EmployeeController {
 	public RedirectView delete (@PathVariable("id") int id) {
 		employeeService.remove(id);
 		return new RedirectView(ViewRouteHelper.EMPLOYEE_ROOT);
+	}
+	
+	@GetMapping("/salary")
+	public ModelAndView getSalary() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EMPLOYEE_SALARY);
+		mAV.addObject("stores", storeService.getAll());
+		return mAV;
+	}
+	
+	@GetMapping("/table/{date}")
+	public ModelAndView getSalaryTable(@PathVariable("date")String date) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EMPLOYEE_SALARY_TABLE);
+		mAV.addObject("employees", employeeService.setSalarys(date));
+		return mAV;	
 	}
 		
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Salary Date</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/product-date.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/employee-index.css}">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+</head>
+<body>
+	<div th:replace="fragments/header :: header" />
+	
+	<div class="form-group data">
+		<label class="data-title">Data</label> 
+		<input type="month" class="form-control data-input" placeholder="Enter date" id="date" />
+	</div>
+	
+	<div id="div-table" class="row"></div>
+	
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+	$("#date").change(function() {
+		var date = $("#date").val();
+		//var storeId = $("#storeId").val();
+		if (date != null) {
+			$.ajax({
+				method : "GET",
+				url : "/employee/table/" + date //+ "/" + storeId 
+			}).done(function(result) {
+				$("#div-table").html(result);
+			}).fail(function() {
+				alert("ERROR: posiblemente hiciste una sale sin date brouchi.");
+			});
+		} else
+			$("#div-tables").html("");
+	});
+</script>
+	
+	
+	
+</body>
+</html>
