@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -8,10 +8,12 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" th:href="@{/css/confirm-sale.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/confirm-sl.css}">
 </head>
 <body>
 	<div th:replace="fragments/header :: header" />
+	
+	<div class="confirm-sale-box">
 	<div class="saleRequest-new">
 		<form action="#" th:action="@{/sale/update}" th:object="${sale}" method="post">
 			<div class="saleRequest-new-header">
@@ -79,6 +81,7 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
 	</div>
 
 </body>

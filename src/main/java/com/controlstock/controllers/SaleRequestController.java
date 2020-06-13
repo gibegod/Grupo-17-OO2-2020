@@ -78,6 +78,7 @@ public class SaleRequestController {
 		mAV.addObject("sales", saleService.getSaleByStatus()); // Tiene que haber 1 solo sale.
 		mAV.addObject("products", productService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
+		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
 

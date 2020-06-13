@@ -1,3 +1,9 @@
+.confirm-sale-box {
+	display: flex;
+	flex-direction: row;
+}
+
+
 .saleRequest-new {
 	width:25%;
 	margin-left: auto;
@@ -6,8 +12,7 @@
 	background-color: white;
 	border-radius: 20px;
 	padding: 40px;
-	display: flex;
-	flex-direction: row;
+
 }
 
 .saleRequest-new-header {
@@ -34,4 +39,5 @@ body{
 	margin-right: auto;
 	margin-top: 20px;
 	width: 50%;
+	margin-top: 40px;
 }
