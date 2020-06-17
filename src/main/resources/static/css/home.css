@@ -28,6 +28,10 @@
   max-width: 40rem;
 }
 
+.card-img-top{
+	opacity: .9;
+}
+
 .btn-group {
 	position: absolute;
 	bottom: 10px;
