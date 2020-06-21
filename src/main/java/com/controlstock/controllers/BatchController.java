@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.helpers.ViewRouteHelper;
@@ -73,9 +74,19 @@ public class BatchController {
 	}
 	
 	@PostMapping("/delete/{id}")
-	public RedirectView delete (@PathVariable("id") int id) {
-		batchService.remove(id);
-		return new RedirectView(ViewRouteHelper.BATCH_ROOT);
+	public RedirectView delete (@PathVariable("id") int id, RedirectAttributes redirectAttrs) {
+		RedirectView rVT = new RedirectView(ViewRouteHelper.BATCH_ROOT);
+		boolean rem = batchService.remove(id);	
+		
+		//Si rem es falso que siga en la misma vista y tire el error. Si es true que vaya al index
+		if(rem == false) {
+			RedirectView rVF = new RedirectView("/batch/{id}");
+		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: El batch seleccionado tiene relacion con otras clases (FK)")
+		    			.addFlashAttribute("clase", "danger");
+			return rVF;
+		} else {
+			return rVT;
+		}
 	}
 		
 }

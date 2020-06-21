@@ -51,8 +51,11 @@
 		<form action="#" th:action="@{/address/delete/{id}(id=${address.id})}"
 			method="post">
 			<input class="btn btn-danger" type="submit"
-				value="Delete Address (FK)" />
+				value="Delete Address" />
 		</form>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     		th:text="${mensaje}" class="alert">
+		</div>
 	</div>
 </body>
 </html>

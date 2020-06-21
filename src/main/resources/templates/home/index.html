@@ -29,127 +29,71 @@
 
 			<div class="row">
 				<div class="col-md-4">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+					<a th:href="@{/product}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/product1.png">
-						<div class="btn-group">
-							<a th:href="@{/product}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
+				
 				<div class="col-md-4">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+					<a th:href="@{/sale}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/sale1.png">
-						<div class="btn-group">
-							<a th:href="@{/sale}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
+				
 				<div class="col-md-4 each-box">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+					<a th:href="@{/sale/saleRequest}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/sale-request1.png">
-						<div class="btn-group">
-							<a th:href="@{/sale/saleRequest}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
 
 				<div class="col-md-4 each-box">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+					<a th:href="@{/batch}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/batch1.png">
-						<div class="btn-group">
-							<a th:href="@{/batch}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
+				
 				<div class="col-md-4">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+				<a th:href="@{/employee}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/employee1.jpg">
-						<div class="btn-group">
-							<a th:href="@{/employee}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
+				
 				<div class="col-md-4">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+					<a th:href="@{/client}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/Client1.png">
-						<div class="btn-group">
-							<a th:href="@{/client}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
+				
 				<div class="col-md-4">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+					<a th:href="@{/address}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/Address1.png">
-						<div class="btn-group">
-							<a th:href="@{/address}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
+				
 				<div class="col-md-4">
-					<div
-						class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
+					<a th:href="@{/store}">
+					<div class="card mb-4 box-shadow d-flex justify-content-between align-items-center">
 						<img class="card-img-top" src="/img/store1.png">
-						<div class="btn-group">
-							<a th:href="@{/store}" type="button"
-								class="btn btn-sm btn-outline-dark">View</a>
-						</div>
 					</div>
+					</a>
 				</div>
 
 			</div>
 		</div>
 	</div>
-	<!-- 
-	<!-- TestAJAX --
-	<div class="container">
-		<h1 class="my-2">Vistas de productos</h1>
-		<select class="my-4" id="select-product">
-			<option>...</option>
-			<option th:each="product : ${products}" th:value="${product.id}">
-				<p th:text="${product.description}"/>
-			</option>
-		</select>
-		<div id="div-select-product" class="row"></div>
-	</div>
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2018</p>
-		</div>
-	</footer>
-	<script src="/vendor/jquery/jquery.min.js"></script>
-	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript">
-		$("#select-product").change(function() {
-			var productId = $("#select-product").val();
-			if($.isNumeric(productId)){
-				$.ajax({ //https://api.jquery.com/jquery.ajax/ => Examples:
-					method: "GET",
-				 	url: "/product/partial/" + productId,
-				})
-				.done(function(result) {
-					$("#div-select-product").html(result);
-				})
-				.fail(function() {
-					alert("error");
-				});
-			}else $("#div-select-product").html("");
-		});
-	</script>
-	 -->
 </main>
 </html>
