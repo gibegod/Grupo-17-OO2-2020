@@ -59,8 +59,11 @@
 		</form>
 		<form action="#" th:action="@{/product/delete/{id}(id=${product.id})}"
 			method="post">
-			<input class="btn btn-danger" type="submit" value="Delete product (first batch)" />
+			<input class="btn btn-danger" type="submit" value="Delete product" />
 		</form>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     		th:text="${mensaje}" class="alert">
+		</div>
 	</div>
 </body>
 </html>

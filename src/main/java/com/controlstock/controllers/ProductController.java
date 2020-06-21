@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.controlstock.helpers.ViewRouteHelper;
@@ -57,9 +58,19 @@ public class ProductController {
 	}
 	
 	@PostMapping("/delete/{id}")
-	public RedirectView delete (@PathVariable("id") int id) {
-		productService.remove(id);
-		return new RedirectView(ViewRouteHelper.PRODUCT_ROOT);
+	public RedirectView delete (@PathVariable("id") int id, RedirectAttributes redirectAttrs) {
+		RedirectView rVT = new RedirectView(ViewRouteHelper.PRODUCT_ROOT);
+		boolean rem = productService.remove(id);	
+		
+		//Si rem es falso que siga en la misma vista y tire el error. Si es true que vaya al index
+		if(rem == false) {
+			RedirectView rVF = new RedirectView("/product/{id}");
+		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: El producto seleccionado tiene relacion con otras clases (FK)")
+		    			.addFlashAttribute("clase", "danger");
+			return rVF;
+		} else {
+			return rVT;
+		}
 	}
 	
 }

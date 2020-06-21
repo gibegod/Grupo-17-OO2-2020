@@ -43,8 +43,11 @@
 		<form action="#" th:action="@{/store/delete/{id}(id=${store.id})}"
 			method="post">
 			<input class="btn btn-outline-danger" type="submit"
-				value="Delete store (FK)">
+				value="Delete store">
 		</form>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     		th:text="${mensaje}" class="alert">
+		</div>
 	</div>
 	
 	<div class="saleRequest-table">

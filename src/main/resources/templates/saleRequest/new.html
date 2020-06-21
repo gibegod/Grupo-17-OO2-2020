@@ -51,10 +51,6 @@
 		</form>
 	</div>
 	
-<!-- 	<p th:each="batch : ${batchs}">
-	    <span th:if="${batch.currentAmount < amount}">No hay suficientes productos de este articulo.</span>
-			</p> -->
-	
 	<div class="saleRequest-table">
 		<table class="table table-striped table-dark">
 			<thead>
@@ -76,7 +72,7 @@
 					 <span th:text="${saleRequest.assistantEmployee.name}"></span>
 					 </span></td>
 					<td><form action="#" th:action="@{/sale/saleRequest/delete/{id}(id=${saleRequest.id})}" method="post">
-						<input  class="btn btn-danger" type="submit"value="Remove" />
+						<input class="btn btn-danger" type="submit"value="Remove" />
 						</form></td>
 				</tr>
 			</tbody>
