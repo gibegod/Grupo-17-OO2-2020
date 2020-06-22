@@ -7,6 +7,7 @@
 					<th scope="col">Surname</th>
 					<th scope="col">Standard Salary</th>
 					<th scope="col">Plus</th>
+					<th scope="col">Total Salary</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -16,6 +17,7 @@
 					<td><span th:text="${employee.surname}" /></td>
 					<td><span th:text="${employee.minimunWage}" /></td>
 					<td><span th:text="${employee.plus}" /></td>
+					<td><span th:text="${employee.plus} + ${employee.minimunWage}" /></td>
 					</td>
 				</tr>
 			</tbody>
