@@ -26,23 +26,23 @@
 			
 			<div class="form-group">
 				<label>Name</label> <input type="text" class="form-control"
-					placeholder="Enter your name" th:field="*{name}">
+					placeholder="Enter your name" th:field="*{name}" required>
 			</div>
 			<div class="form-group">
 				<label>Surname</label> <input type="text" class="form-control"
-					placeholder="Enter your surname" th:field="*{surname}">
+					placeholder="Enter your surname" th:field="*{surname}" required>
 			</div>
 			<div class="form-group">
 				<label>Birthdate</label> <input type="date" class="form-control"
-					placeholder="Enter your birthdate" th:field="*{birthdate}">
+					placeholder="Enter your birthdate" th:field="*{birthdate}" required>
 			</div>
 			<div class="form-group">
-				<label>DNI</label> <input type="text" class="form-control"
-					placeholder="Enter your DNI" th:field="*{dni}">
+				<label>DNI</label> <input type="number" class="form-control"
+					placeholder="Enter your DNI" th:field="*{dni}" required>
 			</div>
 			<div class="form-group">
 				<label>Mail</label> <input type="email" class="form-control"
-					placeholder="Enter your email" th:field="*{mail}">
+					placeholder="Enter your email" th:field="*{mail}" required>
 			</div>
 			<div class="button-row">
 				<input class="btn btn-outline-dark" type="submit"

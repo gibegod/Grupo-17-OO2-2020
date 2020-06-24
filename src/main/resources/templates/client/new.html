@@ -20,23 +20,23 @@
 			method="post">
 			<div class="form-group">
 				<label>Name</label> <input type="text" class="form-control"
-					placeholder="Enter name" th:field="*{name}">
+					placeholder="Enter name" th:field="*{name}" required>
 			</div>
 			<div class="form-group">
 				<label>Surname</label> <input type="text" class="form-control"
-					placeholder="Enter surname" th:field="*{surname}">
+					placeholder="Enter surname" th:field="*{surname}" required>
 			</div>
 			<div class="form-group">
 				<label>Birthdate</label> <input type="date" class="form-control"
-					placeholder="Enter birthdate" th:field="*{birthdate}">
+					placeholder="Enter birthdate" th:field="*{birthdate}" required>
 			</div>
 			<div class="form-group">
-				<label>DNI</label> <input type="text" class="form-control"
-					placeholder="Enter DNI" th:field="*{dni}">
+				<label>DNI</label> <input type="number" class="form-control"
+					placeholder="Enter DNI" th:field="*{dni}" required>
 			</div>
 			<div class="form-group">
 				<label>Mail</label> <input type="email" class="form-control"
-					placeholder="Enter mail" th:field="*{mail}">
+					placeholder="Enter mail" th:field="*{mail}" required>
 			</div>
 			<input class="btn btn-outline-dark" type="submit" value="Create new client">
 		</form>

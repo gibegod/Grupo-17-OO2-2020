@@ -24,13 +24,13 @@
 				</select> 
 				
 				<label>Size</label> 
-				<input type="text" class="form-control" placeholder="Enter size" th:field="*{size}"> 
+				<input type="text" class="form-control" placeholder="Enter size" th:field="*{size}" required> 
 				
 				<label>Initial amount</label> 
-				<input type="text" class="form-control" placeholder="Enter initial amount" th:field="*{initialAmount}">
+				<input type="number" class="form-control" placeholder="Enter initial amount" th:field="*{initialAmount}" required>
 			
 				<label>Admission date</label> 
-				<input type="date" class="form-control" placeholder="Enter admission date" th:field="*{admissionDate}">
+				<input type="date" class="form-control" placeholder="Enter admission date" th:field="*{admissionDate}" required>
 
 				<div class="form-group">
 					<label>Store</label>

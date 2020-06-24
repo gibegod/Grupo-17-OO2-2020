@@ -28,23 +28,23 @@
 			
 			<div class="form-group">
 				<label>City</label> <input type="text" class="form-control"
-					placeholder="Enter city" th:field="*{city}">
+					placeholder="Enter city" th:field="*{city}" required>
 			</div>
 			<div class="form-group">
 				<label>Street</label> <input type="text" class="form-control"
-					placeholder="Enter street" th:field="*{street}">
+					placeholder="Enter street" th:field="*{street}"required>
 			</div>
 			<div class="form-group">
-				<label>Number</label> <input type="text" class="form-control"
-					placeholder="Enter number of street" th:field="*{number}">
+				<label>Number</label> <input type="number" class="form-control"
+					placeholder="Enter number of street" th:field="*{number}"required>
 			</div>
 			<div class="form-group">
-				<label>Latitude</label> <input type="text" class="form-control"
-					placeholder="Enter latitude" th:field="*{latitude}">
+				<label>Latitude</label> <input type="number" class="form-control"
+					placeholder="Enter latitude" th:field="*{latitude}" required>
 			</div>
 			<div class="form-group">
-				<label>Longitude</label> <input type="text" class="form-control"
-					placeholder="Enter longitude" th:field="*{longitude}">
+				<label>Longitude</label> <input type="number" class="form-control"
+					placeholder="Enter longitude" th:field="*{longitude}" required>
 			</div>
 			<input class="btn btn-dark btn-sm" type="submit" value="Edit Address" />
 		</form>

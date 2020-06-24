@@ -35,20 +35,20 @@
 			</div>
 			<div class="form-group">
 				<label>Size</label> <input type="text" class="form-control"
-					placeholder="Enter size" th:field="*{size}">
+					placeholder="Enter size" th:field="*{size}" required>
 			</div>
 			<div class="form-group">
-				<label>Current amount</label> <input type="text" class="form-control"
-					placeholder="Enter current amount" th:field="*{currentAmount}">
+				<label>Current amount</label> <input type="number" class="form-control"
+					placeholder="Enter current amount" th:field="*{currentAmount}" required>
 			</div>
 			<div class="form-group">
-				<label>Initial amount</label> <input type="text" class="form-control"
-					placeholder="Enter initial amount" th:field="*{initialAmount}">
+				<label>Initial amount</label> <input type="number" class="form-control"
+					placeholder="Enter initial amount" th:field="*{initialAmount}" required>
 			</div>
 			<div class="form-group">
 				<label>Admission date</label> <input type="date"
 					class="form-control" placeholder="Enter admission date"
-					th:field="*{admissionDate}">
+					th:field="*{admissionDate}" required>
 			</div>
 			<div class="form-group">
 				<label>Store</label> <select class="form-control" placeholder="Store"
