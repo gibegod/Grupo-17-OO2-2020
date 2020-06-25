@@ -1,12 +1,13 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/grupo-17-bdd-oo2-2020
+    url: jdbc:mysql://localhost:3306/grupo-17-bdd-oo2-2020?serverTimezone=UTC
     username: root
-    password: localhost
+    password: 
+    initialization-mode: always
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       dialect: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:
