@@ -45,6 +45,9 @@
 			<div class="button-row">
 				<input class="btn btn-outline-dark" type="submit" value="Finish Sale">
 			</div>
+			<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     			th:text="${mensaje}" class="alert">
+			</div>
 		</form>
 		<!-- 
 		<form action="#" th:action="@{/sale/delete/{id}(id=${sale.id})}" method="post">

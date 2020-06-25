@@ -65,7 +65,7 @@ public class ClientController {
 		//Si rem es falso que siga en la misma vista y tire el error. Si es true que vaya al index
 		if(rem == false) {
 			RedirectView rVF = new RedirectView("/client/{id}");
-		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: El client seleccionado tiene relacion con otras clases (FK)")
+		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: The chosen client is related to other objects.")
 		    			.addFlashAttribute("clase", "danger");
 			return rVF;
 		} else {
