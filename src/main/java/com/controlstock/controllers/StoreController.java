@@ -81,7 +81,7 @@ public class StoreController {
 		//Si rem es falso que siga en la misma vista y tire el error. Si es true que vaya al index
 		if(rem == false) {
 			RedirectView rVF = new RedirectView("/store/{id}");
-		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: El store seleccionado tiene relacion con otras clases (FK)")
+		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: The chosen store is related to other objects.")
 		    			.addFlashAttribute("clase", "danger");
 			return rVF;
 		} else {

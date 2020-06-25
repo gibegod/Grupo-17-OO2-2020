@@ -65,7 +65,7 @@ public class ProductController {
 		//Si rem es falso que siga en la misma vista y tire el error. Si es true que vaya al index
 		if(rem == false) {
 			RedirectView rVF = new RedirectView("/product/{id}");
-		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: El producto seleccionado tiene relacion con otras clases (FK)")
+		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: The chosen product is related to other objects.")
 		    			.addFlashAttribute("clase", "danger");
 			return rVF;
 		} else {

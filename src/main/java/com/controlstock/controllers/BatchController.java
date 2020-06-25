@@ -81,7 +81,7 @@ public class BatchController {
 		//Si rem es falso que siga en la misma vista y tire el error. Si es true que vaya al index
 		if(rem == false) {
 			RedirectView rVF = new RedirectView("/batch/{id}");
-		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: El batch seleccionado tiene relacion con otras clases (FK)")
+		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: The chosen batch is related to other objects.")
 		    			.addFlashAttribute("clase", "danger");
 			return rVF;
 		} else {

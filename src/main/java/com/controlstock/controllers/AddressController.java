@@ -65,7 +65,7 @@ public class AddressController {
 		//Si rem es falso que siga en la misma vista y tire el error. Si es true que vaya al index
 		if(rem == false) {
 			RedirectView rVF = new RedirectView("/address/{id}");
-		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: El address seleccionado tiene relacion con otras clases (FK)")
+		    redirectAttrs.addFlashAttribute("mensaje", "ERROR: The chosen address is related to other objects.")
 		    			.addFlashAttribute("clase", "danger");
 			return rVF;
 		} else {

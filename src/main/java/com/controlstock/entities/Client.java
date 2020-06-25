@@ -6,6 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 public class Client extends Person {
 	
 	@NotNull
+	@Email
 	private String mail;
 	
 	public Client() {};
