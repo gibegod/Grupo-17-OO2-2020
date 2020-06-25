@@ -9,6 +9,7 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 	<div th:replace="fragments/header :: header" />
@@ -27,7 +28,7 @@
 					<td><span th:text="${store.address.city}" /></td>
 					<td><span th:text="${store.phoneNumber}" /></td>
 
-					<td><a th:href="@{/store/{id}(id=${store.id})}">Edit</a></td>
+					<td><a th:href="@{/store/{id}(id=${store.id})}" class="fas" style='font-size:24px;color:black'>&#xf044;</a></td>
 				</tr>
 			</tbody>
 		</table>
