@@ -9,6 +9,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/address-index.css}" />
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header" />
@@ -20,7 +21,7 @@
 					<th>City</th>
 					<th>Street</th>
 					<th>Number</th>
-					<th></th>
+					<th>View</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,7 +30,7 @@
 					<td><span th:text="${address.city}"></span></td>
 					<td><span th:text="${address.street}"></span></td>
 					<td><span th:text="${address.number}"></span></td>
-					<td><a th:href="@{/address/{id}(id=${address.id})}">View</a></td>
+					<td><a th:href="@{/address/{id}(id=${address.id})}" class="fas" style='font-size:24px;color:black'>&#xf044;</a></td>
 				</tr>
 			</tbody>
 		</table>
