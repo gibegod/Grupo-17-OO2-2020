@@ -2,6 +2,9 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class ProductModel {
@@ -10,9 +13,11 @@ public class ProductModel {
 	
 	private boolean status;
 	
+	@Size(min= 3, message= "Description must have more than 3 characters")
 	private String description;
 
 	//Precio Unitario
+	@Min(value = 1, message= "Unit price must be higher than 1")
 	private float unitPrice;
 	
 	//FechaAlta
@@ -20,6 +25,7 @@ public class ProductModel {
 	private LocalDate dischargeDate;
 	
 	//Marca
+	@Size(min= 3, message= "Brand must have more than 3 characters")
 	private String brand;
 	
 	public ProductModel() {}

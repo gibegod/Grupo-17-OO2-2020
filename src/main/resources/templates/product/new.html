@@ -18,26 +18,38 @@
 		</div>
 		<form action="#" th:action="@{/product/create}" th:object="${product}"
 			method="post">
+			
 			<div class="form-group">
 				<label>Description</label> <input type="text" class="form-control"
-					placeholder="Enter description"  th:field="*{description}" required>
+					placeholder="Enter description"  th:field="*{description}"
+					th:classappend="${#fields.hasErrors('description')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{description}"></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Brand</label> <input type="text" class="form-control"
-					placeholder="Enter brand" th:field="*{brand}" required>
+					placeholder="Enter brand" th:field="*{brand}"
+					th:classappend="${#fields.hasErrors('brand')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{brand}"></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Unit Price</label> <input type="text" class="form-control"
-					placeholder="Enter unitPrice" th:field="*{unitPrice}" required> 
+					placeholder="Enter unitPrice" th:field="*{unitPrice}" 
+					th:classappend="${#fields.hasErrors('unitPrice')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{unitPrice}"></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Status</label> <input type="checkbox" class="form-control"
 					placeholder="Enter status" th:field="*{status}">
 			</div>
+			
 			<div class="form-group">
 				<label>Discharge Date</label> <input type="date" class="form-control"
 					placeholder="Enter discharge date" th:field="*{dischargeDate}" required>
 			</div>
+			
 			<input class="btn btn-outline-dark" type="submit"
 				value="Create new product">
 		</form>
