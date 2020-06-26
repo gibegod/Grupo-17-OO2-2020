@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
 
@@ -59,18 +60,23 @@ public abstract class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getSurname() {
 		return surname;
 	}
+	
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	
 	public LocalDate getBirthdate() {
 		return birthdate;
 	}
+	
 	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}
+	
 	public long getDni() {
 		return dni;
 	}

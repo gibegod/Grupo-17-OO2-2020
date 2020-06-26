@@ -17,33 +17,47 @@
 		</div>
 		<form action="#" th:action="@{/client/update}" th:object="${client}"
 			method="post">
+			
 			<input type="hidden" th:field="*{id}" />
 			
 			<div class="form-group">
 				<label>ID</label>
-				<span class="form-control" th:text="${id}" />
+				<span class="form-control" th:text="*{id}" />
+			</div>
+			
+						<div class="form-group">
+				<label>Name</label> <input type="text" class="form-control"
+					placeholder="Enter name" th:field="*{name}" 					
+					th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{name}" ></div>
 			</div>
 			
 			<div class="form-group">
-				<label>Name</label> <input type="text" class="form-control"
-					placeholder="Enter your name" th:field="*{name}" required>
-			</div>
-			<div class="form-group">
 				<label>Surname</label> <input type="text" class="form-control"
-					placeholder="Enter your surname" th:field="*{surname}" required>
+					placeholder="Enter surname" th:field="*{surname}"					
+					th:classappend="${#fields.hasErrors('surname')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{surname}" ></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Birthdate</label> <input type="date" class="form-control"
-					placeholder="Enter your birthdate" th:field="*{birthdate}" required>
+					placeholder="Enter birthdate" th:field="*{birthdate}" required>
 			</div>
+			
 			<div class="form-group">
 				<label>DNI</label> <input type="number" class="form-control"
-					placeholder="Enter your DNI" th:field="*{dni}" required>
+					placeholder="Enter DNI" th:field="*{dni}"
+					th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{dni}" ></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Mail</label> <input type="email" class="form-control"
-					placeholder="Enter your email" th:field="*{mail}" required>
+					placeholder="Enter mail" th:field="*{mail}" 
+					th:classappend="${#fields.hasErrors('mail')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{mail}" ></div>
 			</div>
+			
 			<div class="button-row">
 				<input class="btn btn-outline-dark" type="submit"
 					value="Edit client">

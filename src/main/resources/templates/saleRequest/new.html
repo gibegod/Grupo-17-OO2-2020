@@ -35,7 +35,9 @@
 			</div>
 			<div class="form-group">
 				<label>Amount</label> <input id="amount" type="number" class="form-control"
-					placeholder="Enter amount" th:field="*{amount}">
+					placeholder="Enter amount" th:field="*{amount}" 
+					th:classappend="${#fields.hasErrors('amount')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{amount}" ></div>
 					<div id="stock"></div>
 			</div>
 

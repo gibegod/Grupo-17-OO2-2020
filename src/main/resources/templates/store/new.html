@@ -30,7 +30,9 @@
 	
 			<div class="form-group">
 				<label>Phone Number</label> <input type="text" class="form-control"
-					placeholder="Enter phone number" th:field="*{phoneNumber}" required />
+					placeholder="Enter phone number" th:field="*{phoneNumber}" 
+					th:classappend="${#fields.hasErrors('phoneNumber')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{phoneNumber}" ></div>
 			</div>
 			<input class="btn btn-outline-dark" type="submit"
 				value="Create new store">

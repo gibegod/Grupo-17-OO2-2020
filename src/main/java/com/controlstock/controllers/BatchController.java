@@ -1,8 +1,11 @@
 package com.controlstock.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,26 +54,40 @@ public class BatchController {
 	}
 	
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("batch") BatchModel batchModel) {
-		batchService.insert(batchModel);
-		return new RedirectView(ViewRouteHelper.BATCH_ROOT);
+	public ModelAndView create(@Valid @ModelAttribute("batch") BatchModel batchModel, BindingResult bindingResult) {
+		ModelAndView mAV = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			mAV.setViewName(ViewRouteHelper.BATCH_NEW);
+			mAV.addObject("products", productService.getAll());
+			mAV.addObject("stores", storeService.getAll());
+		} else {
+			mAV.setViewName("redirect:/batch");
+			batchService.insert(batchModel);
+		}
+		return mAV;
 	}
 	
 	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.BATCH_UPDATE);
 		mAV.addObject("batch", batchService.findById(id));
-		
 		mAV.addObject("products", productService.getAll());
-
 		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
 	
 	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("batch") BatchModel batchModel) {
-		batchService.update(batchModel);
-		return new RedirectView(ViewRouteHelper.BATCH_ROOT);
+	public ModelAndView update(@Valid @ModelAttribute("batch") BatchModel batchModel, BindingResult bindingResult) {
+		ModelAndView mAV = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			mAV.setViewName(ViewRouteHelper.BATCH_UPDATE);
+			mAV.addObject("products", productService.getAll());
+			mAV.addObject("stores", storeService.getAll());
+		} else {
+			mAV.setViewName("redirect:/batch");
+			batchService.update(batchModel);
+		}
+		return mAV;
 	}
 	
 	@PostMapping("/delete/{id}")

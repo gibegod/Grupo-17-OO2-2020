@@ -2,15 +2,16 @@ package com.controlstock.models;
 
 import java.util.Set;
 
+import javax.validation.constraints.Min;
+
 public class StoreModel {
 
 	private int id;
 	
 	private AddressModel address;
 
+	@Min(value = 99999, message= "Description must have more than 6 characters")
 	private long phoneNumber;
-
-	//private Employee manager;
 
 	private Set<EmployeeModel> setEmployees;
 
@@ -18,12 +19,12 @@ public class StoreModel {
 
 	public StoreModel() {}
 
-	public StoreModel (int id, AddressModel address, long phoneNumber, Set<EmployeeModel> setEmployees, Set<BatchModel> setBatchs) {
+	public StoreModel (int id, AddressModel address, long phoneNumber, Set<EmployeeModel> setEmployees, 
+			Set<BatchModel> setBatchs) {
 		super();
 		setId(id);
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		//this.manager = manager;
 		this.setEmployees = setEmployees;
 		this.setBatchs = setBatchs;
 	}
@@ -52,14 +53,6 @@ public class StoreModel {
 		this.phoneNumber = phoneNumber;
 	}
 
-	/*public Employee getManager() {
-		return manager;
-	}
-
-	public void setManager(Employee manager) {
-		this.manager = manager;
-	}*/
-
 	public Set<EmployeeModel> getSetEmployees() {
 		return setEmployees;
 	}
@@ -75,7 +68,6 @@ public class StoreModel {
 	public void setSetBatchs(Set<BatchModel> setBatchs) {
 		this.setBatchs = setBatchs;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

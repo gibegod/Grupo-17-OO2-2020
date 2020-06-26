@@ -1,5 +1,7 @@
 package com.controlstock.models;
 
+import javax.validation.constraints.Min;
+
 public class SaleRequestModel {
 
 	private int id;
@@ -8,6 +10,7 @@ public class SaleRequestModel {
 
 	private ProductModel product;
 	
+	@Min(value = 1, message= "Amount must be higher than 0")
 	private int amount;
 	
 	private EmployeeModel assistantEmployee;

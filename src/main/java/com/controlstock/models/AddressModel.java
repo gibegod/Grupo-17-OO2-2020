@@ -1,19 +1,24 @@
 package com.controlstock.models;
 
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
 public class AddressModel {
 	
 	private int id;
 	
+	@Size(min= 3, message= "City must have more than 3 characters")
 	private String city;
 	
+	@Size(min= 3, message= "Street must have more than 3 characters")
 	private String street;
 	
+	@Positive(message="Number must be positive")
 	private int number;
 
 	private float latitude;	
 
 	private float longitude;
-	
 	
 	public AddressModel() {};
 	
