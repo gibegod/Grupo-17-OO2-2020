@@ -59,6 +59,7 @@ public class StoreController {
 		ModelAndView mAV = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			mAV.setViewName(ViewRouteHelper.STORE_NEW);
+			mAV.addObject("address", addressService.getAll());
 		} else {
 			mAV.setViewName("redirect:/store");
 			storeService.insert(storeModel);
@@ -80,6 +81,8 @@ public class StoreController {
 		ModelAndView mAV = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			mAV.setViewName(ViewRouteHelper.STORE_UPDATE);
+			mAV.addObject("address", addressService.getAll());
+			mAV.addObject("employees", employeeService.getEmployeeByStore(storeModel.getId()));
 		} else {
 			mAV.setViewName("redirect:/store");
 			storeService.update(storeModel);

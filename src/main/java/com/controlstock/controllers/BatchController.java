@@ -58,6 +58,8 @@ public class BatchController {
 		ModelAndView mAV = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			mAV.setViewName(ViewRouteHelper.BATCH_NEW);
+			mAV.addObject("products", productService.getAll());
+			mAV.addObject("stores", storeService.getAll());
 		} else {
 			mAV.setViewName("redirect:/batch");
 			batchService.insert(batchModel);
@@ -69,9 +71,7 @@ public class BatchController {
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.BATCH_UPDATE);
 		mAV.addObject("batch", batchService.findById(id));
-		
 		mAV.addObject("products", productService.getAll());
-
 		mAV.addObject("stores", storeService.getAll());
 		return mAV;
 	}
@@ -81,6 +81,8 @@ public class BatchController {
 		ModelAndView mAV = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			mAV.setViewName(ViewRouteHelper.BATCH_UPDATE);
+			mAV.addObject("products", productService.getAll());
+			mAV.addObject("stores", storeService.getAll());
 		} else {
 			mAV.setViewName("redirect:/batch");
 			batchService.update(batchModel);

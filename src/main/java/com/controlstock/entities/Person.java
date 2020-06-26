@@ -60,18 +60,23 @@ public abstract class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getSurname() {
 		return surname;
 	}
+	
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	
 	public LocalDate getBirthdate() {
 		return birthdate;
 	}
+	
 	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}
+	
 	public long getDni() {
 		return dni;
 	}

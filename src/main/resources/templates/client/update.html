@@ -25,29 +25,36 @@
 				<span class="form-control" th:text="*{id}" />
 			</div>
 			
-			<div class="form-group">
+						<div class="form-group">
 				<label>Name</label> <input type="text" class="form-control"
-					placeholder="Enter your name" th:field="*{name}" required>
+					placeholder="Enter name" th:field="*{name}" 					
+					th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{name}" ></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Surname</label> <input type="text" class="form-control"
-					placeholder="Enter your surname" th:field="*{surname}" required>
+					placeholder="Enter surname" th:field="*{surname}"					
+					th:classappend="${#fields.hasErrors('surname')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{surname}" ></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Birthdate</label> <input type="date" class="form-control"
-					placeholder="Enter your birthdate" th:field="*{birthdate}" required>
+					placeholder="Enter birthdate" th:field="*{birthdate}" required>
 			</div>
+			
 			<div class="form-group">
 				<label>DNI</label> <input type="number" class="form-control"
 					placeholder="Enter DNI" th:field="*{dni}"
-					th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''">
+					th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''" required>
                 <div class="invalid-feedback" th:errors="*{dni}" ></div>
 			</div>
 			
 			<div class="form-group">
 				<label>Mail</label> <input type="email" class="form-control"
 					placeholder="Enter mail" th:field="*{mail}" 
-					th:classappend="${#fields.hasErrors('mail')} ? 'is-invalid' : ''">
+					th:classappend="${#fields.hasErrors('mail')} ? 'is-invalid' : ''" required>
                 <div class="invalid-feedback" th:errors="*{mail}" ></div>
 			</div>
 			

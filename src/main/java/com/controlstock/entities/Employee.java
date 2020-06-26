@@ -34,7 +34,7 @@ public class Employee extends Person {
 	public Employee() {};
 	
 	public Employee(int id, String name, String surname, LocalDate birthdate, long dni, 
-			int workingHours, boolean manager, float minimunWage,  float plus, Store store) {
+			int workingHours, boolean manager, float minimunWage, float plus, Store store) {
 		super(id, name, surname, birthdate, dni);
 		this.minimunWage = minimunWage;
 		this.workingHours = workingHours;
@@ -45,7 +45,7 @@ public class Employee extends Person {
 	
 	//Constructor para setear el SetEmployee
 	public Employee(int id, String name, String surname, LocalDate birthdate, long dni, 
-			int workingHours, boolean manager, float minimunWage,  float plus) {
+			int workingHours, boolean manager, float minimunWage, float plus) {
 		super(id, name, surname, birthdate, dni);
 		this.minimunWage = minimunWage;
 		this.workingHours = workingHours;

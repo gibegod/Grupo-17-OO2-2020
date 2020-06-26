@@ -2,7 +2,7 @@ package com.controlstock.models;
 
 import java.util.Set;
 
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Min;
 
 public class StoreModel {
 
@@ -10,6 +10,7 @@ public class StoreModel {
 	
 	private AddressModel address;
 
+	@Min(value = 99999, message= "Description must have more than 6 characters")
 	private long phoneNumber;
 
 	private Set<EmployeeModel> setEmployees;

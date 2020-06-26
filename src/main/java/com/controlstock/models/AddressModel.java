@@ -20,7 +20,6 @@ public class AddressModel {
 
 	private float longitude;
 	
-	
 	public AddressModel() {};
 	
 	public AddressModel(int id, String city, String street, int number, float latitude, float longitude) {

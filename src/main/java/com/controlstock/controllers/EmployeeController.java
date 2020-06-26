@@ -53,6 +53,7 @@ public class EmployeeController {
 		ModelAndView mAV = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			mAV.setViewName(ViewRouteHelper.EMPLOYEE_NEW);
+			mAV.addObject("stores", storeService.getAll());
 		} else {
 			mAV.setViewName("redirect:/employee");
 			employeeService.insert(employeeModel);
@@ -74,6 +75,7 @@ public class EmployeeController {
 		ModelAndView mAV = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			mAV.setViewName(ViewRouteHelper.EMPLOYEE_UPDATE);
+			mAV.addObject("stores", storeService.getAll());
 		} else {
 			mAV.setViewName("redirect:/employee");
 			employeeService.update(employeeModel);

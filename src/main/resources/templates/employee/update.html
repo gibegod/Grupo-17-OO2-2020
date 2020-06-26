@@ -28,37 +28,47 @@
 			
 			<div class="form-group">
 				<label>Name</label> <input type="text" class="form-control"
-					placeholder="Enter name" th:field="*{name}" required />
+					placeholder="Enter name" th:field="*{name}" 					
+					th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{name}" ></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Surname</label> <input type="text" class="form-control"
-					placeholder="Enter surname" th:field="*{surname}" required />
+					placeholder="Enter surname" th:field="*{surname}"					
+					th:classappend="${#fields.hasErrors('surname')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{surname}" ></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Birthdate</label> <input type="date" class="form-control"
-					placeholder="Enter birthdate" th:field="*{birthdate}" required />
+					placeholder="Enter birthdate" th:field="*{birthdate}" required>
 			</div>
 			
 			<div class="form-group">
 				<label>DNI</label> <input type="number" class="form-control"
-					placeholder="Enter DNI" th:field="*{dni}" required>
+					placeholder="Enter DNI" th:field="*{dni}"
+					th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{dni}" ></div>
 			</div>
 			
 			<div class="form-group">
-
 				<label>Working Hours</label> <input type="number"
 					class="form-control" placeholder="Enter working hours"
-					th:field="*{workingHours}" required />
+					th:field="*{workingHours}" required/>
 			</div>
+			
 			<div class="form-group">
 				<label>Manager? (boolean):</label> <input type="checkbox"
 					class="form-check-input" th:field="*{manager}"/>
 			</div>
+			
 			<div class="form-group">
 				<label>Minimun Wage</label> <input type="number"
 					class="form-control" placeholder="Enter minimun wage"
 					th:field="*{minimunWage}" required />
 			</div>
+			
 			<div class="form-group">
 				<label>Store</label> <select class="form-control" placeholder="Store"
 					th:field="*{store.id}">
@@ -68,6 +78,7 @@
 				<input class="btn-edit btn btn-outline-dark" type="submit"
 					value="Edit employee">
 			</div>
+			
 		</form>
 		<form action="#"
 			th:action="@{/employee/delete/{id}(id=${employee.id})}" method="post">

@@ -42,7 +42,7 @@
 			<div class="form-group">
 				<label>Current amount</label> <input type="number" class="form-control"
 					placeholder="Enter current amount" th:field="*{currentAmount}"
-					th:classappend="${#fields.hasErrors('currentAmount')} ? 'is-invalid' : ''">
+					th:classappend="${#fields.hasErrors('currentAmount')} ? 'is-invalid' : ''" required>
                 <div class="invalid-feedback" th:errors="*{currentAmount}" ></div>
 			</div>
 			
@@ -50,7 +50,7 @@
 				<label>Initial amount</label> 
 				<input type="number" class="form-control" placeholder="Enter initial amount" 
 					th:field="*{initialAmount}" 
-					th:classappend="${#fields.hasErrors('initialAmount')} ? 'is-invalid' : ''">
+					th:classappend="${#fields.hasErrors('initialAmount')} ? 'is-invalid' : ''" required>
                 <div class="invalid-feedback" th:errors="*{initialAmount}" ></div>
 			</div>
 			

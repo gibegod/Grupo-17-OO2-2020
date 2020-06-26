@@ -2,6 +2,8 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,13 +12,17 @@ public class PersonModel {
 	
 	protected int id;
     
+	@Size(min= 3, message= "Name must have more than 2 characters")
 	protected String name;
     
+	@Size(min= 3, message= "Surname must have more than 2 characters")
 	protected String surname;
     
 	@DateTimeFormat(pattern = "yyyy-MM-dd") //Sirve para que funcione el type="date" del input del HTML.
 	protected LocalDate birthdate;
 	
+	@Min(value = 10000000, message= "Description must have 8 characters")
+	@Max(value = 99999999, message= "Description must have 8 characters")
     private long dni;
 	
 	public PersonModel() {}
