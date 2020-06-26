@@ -1,8 +1,11 @@
 package com.controlstock.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +25,6 @@ import com.controlstock.services.IProductService;
 import com.controlstock.services.IEmployeeService;
 
 @Controller
-//@RequestMapping("/saleRequest")
 @RequestMapping("/sale/saleRequest")
 public class SaleRequestController {
 
@@ -65,7 +67,7 @@ public class SaleRequestController {
 		mAV.addObject("sales", saleService.getSaleByStatus());
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
 		mAV.addObject("products", storeService.getProductsByStore(saleService.getSaleByStatus().getStore().getId()));
-		mAV.addObject("employees", employeeService.getAll());
+		//mAV.addObject("employees", employeeService.getAll());
 		mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
 		return mAV;
 	}
@@ -82,13 +84,42 @@ public class SaleRequestController {
 		return mAV;
 	}
 
-	// SR de la store actual
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("saleRequest") SaleRequestModel saleRequestModel) {
-		saleRequestService.insert(saleRequestModel);
-		return new RedirectView(ViewRouteHelper.SALEREQUEST_OTHERNEW);
+	public ModelAndView create(@Valid @ModelAttribute("saleRequest") SaleRequestModel saleRequestModel,
+			BindingResult bindingResult) {
+		ModelAndView mAV = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			mAV.setViewName(ViewRouteHelper.SALEREQUEST_NEW);
+			mAV.addObject("sales", saleService.getSaleByStatus());
+			mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
+			mAV.addObject("products", storeService.getProductsByStore(saleService.getSaleByStatus().getStore().getId()));
+			mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
+		} else {
+			mAV.setViewName("redirect:/sale/saleRequest/new");
+			saleRequestService.insert(saleRequestModel);
+		}
+		return mAV;
+	}
+	
+	@PostMapping("/create2")
+	public ModelAndView create2(@Valid @ModelAttribute("saleRequest") SaleRequestModel saleRequestModel,
+			BindingResult bindingResult) {
+		ModelAndView mAV = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			mAV.setViewName(ViewRouteHelper.SALEREQUEST_NEW2);
+			mAV.addObject("saleRequest", new SaleRequestModel());
+			mAV.addObject("sales", saleService.getSaleByStatus()); // Tiene que haber 1 solo sale.
+			mAV.addObject("products", productService.getAll());
+			mAV.addObject("batchs", storeService.findById(saleService.getSaleByStatus().getStore().getId()).getSetBatchs());
+			mAV.addObject("stores", storeService.getAll());
+		} else {
+			mAV.setViewName("redirect:/sale/saleRequest/new");
+			saleRequestService.insert(saleRequestModel);
+		}
+		return mAV;
 	}
 
+	//Creo que no se usa
 	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALEREQUEST_UPDATE);
@@ -98,6 +129,7 @@ public class SaleRequestController {
 		return mAV;
 	}
 
+	//Creo que no se usa
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("saleRequest") SaleRequestModel saleRequestModel) {
 		saleRequestService.update(saleRequestModel);

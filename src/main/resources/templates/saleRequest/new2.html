@@ -15,7 +15,7 @@
 		<div class="SaleRequest-new-header">
 			<h5>Add Sale Request</h5>
 		</div>
-		<form action="#" th:action="@{/sale/saleRequest/create}"
+		<form action="#" th:action="@{/sale/saleRequest/create2}"
 			th:object="${saleRequest}" method="post">
 
  			<div class="form-group">
@@ -38,7 +38,9 @@
 			
 			<div class="form-group">
 				<label>Amount</label> <input id="select-amount" type="number" class="form-control"
-					placeholder="Enter amount" th:field="*{amount}">
+					placeholder="Enter amount" th:field="*{amount}"
+					th:classappend="${#fields.hasErrors('amount')} ? 'is-invalid' : ''" required>
+                <div class="invalid-feedback" th:errors="*{amount}" ></div>
 					<div id="stock"></div>
 			</div>
 
@@ -74,7 +76,7 @@
 					$("#div-show-stores").html(result);
 				})
 				.fail(function() {
-					alert("error");
+					alert("ERROR: Amount is empty");
 				});
 			}else $("#div-show-stores").html("");
 		});		

@@ -13,11 +13,11 @@ public class ProductModel {
 	
 	private boolean status;
 	
-	@Size(min= 3, message= "Description must have more than 3 characters")
+	@Size(min= 3, message= "Description must have more than 0 characters")
 	private String description;
 
 	//Precio Unitario
-	@Min(value = 1, message= "Unit price must be higher than 1")
+	@Min(value = 1, message= "Unit price must be higher than 0")
 	private float unitPrice;
 	
 	//FechaAlta
