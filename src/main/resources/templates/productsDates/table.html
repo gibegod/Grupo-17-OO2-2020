@@ -1,25 +1,55 @@
-<div class="product-table">
-	<table class="table table-striped table-dark">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>ID Sale</th>
-				<th>Product</th>
-				<th>Amount</th>
-				<th>AssistantEmployee</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="saleRequest : ${saleRequests}">
-				<td><span th:text="${saleRequest.id}" /></td>
-				<td><span th:text="${saleRequest.sale.id}" /></td>
-				<td><span th:text="${saleRequest.product.id + ' - ' + saleRequest.product.description}" /></td>
-				<td><span th:text="${saleRequest.amount}" /></td>
-				<td><span th:if="${saleRequest.assistantEmployee == null}">------------------------</span>
-					 <span th:if="${saleRequest.assistantEmployee != null}">
-					 <span th:text="${saleRequest.assistantEmployee.name + ' ' + saleRequest.assistantEmployee.surname}"></span>
-					 </span></td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Products By Date</title>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/product-date.css}">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+	<div class="product-table">
+		<table  id="productDate" class="display table table-striped table-dark">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>ID Sale</th>
+					<th>Product</th>
+					<th>Amount</th>
+					<th>AssistantEmployee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="saleRequest : ${saleRequests}">
+					<td><span th:text="${saleRequest.id}" /></td>
+					<td><span th:text="${saleRequest.sale.id}" /></td>
+					<td><span
+						th:text="${saleRequest.product.id + ' - ' + saleRequest.product.description}" /></td>
+					<td><span th:text="${saleRequest.amount}" /></td>
+					<td><span th:if="${saleRequest.assistantEmployee == null}">------------------------</span>
+						<span th:if="${saleRequest.assistantEmployee != null}"> <span
+							th:text="${saleRequest.assistantEmployee.name + ' ' + saleRequest.assistantEmployee.surname}"></span>
+					</span></td>
+				</tr>
+			</tbody>
+		</table>
+				<a class="btn btn-dark btn-sm" href="/index">Back to index</a>
+	</div>
+
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#productDate').DataTable();
+		});
+	</script>
+</body>
+</html>

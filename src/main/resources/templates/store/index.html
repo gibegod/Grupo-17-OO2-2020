@@ -9,17 +9,20 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 	<div th:replace="fragments/header :: header" />
 	<div class="store-table">
-		<table class="table table-striped table-dark">
+		<table id="store" class="display table table-dark">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>Address</th>
 					<th>PhoneNumber</th>
+					<td>View</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,17 +30,14 @@
 					<td><span th:text="${store.id}" /></td>
 					<td><span th:text="${store.address.city}" /></td>
 					<td><span th:text="${store.phoneNumber}" /></td>
-
-					<td><a th:href="@{/store/{id}(id=${store.id})}" class="fas" style='font-size:24px;color:black'>&#xf044;</a></td>
+					<td><a th:href="@{/store/{id}(id=${store.id})}" class="fas"
+						style='font-size: 24px; color: black'>&#xf044;</a></td>
 				</tr>
 			</tbody>
 		</table>
-		<a th:href="@{/store/new}" type="button" class="btn btn-dark btn-sm">Create new store</a>
-		<a class="btn btn-dark btn-sm" href="/index">Back to index</a>
-		
-		
-		
-		
+		<a th:href="@{/store/new}" type="button" class="btn btn-dark btn-sm">Create
+			new store</a> <a class="btn btn-dark btn-sm" href="/index">Back to
+			index</a>
 		<!-- 
 		<form action="" method="post">
 			<p>Store 1:</p>
@@ -55,5 +55,14 @@
 			<span th:text="${distance}" /> km.
 		</form>
 		 -->
+		<script src="/vendor/jquery/jquery.min.js"></script>
+		<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#store').DataTable();
+			});
+		</script>
 </body>
 </html>
