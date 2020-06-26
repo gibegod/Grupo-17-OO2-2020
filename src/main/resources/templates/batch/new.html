@@ -27,7 +27,9 @@
 				<input type="text" class="form-control" placeholder="Enter size" th:field="*{size}" required> 
 				
 				<label>Initial amount</label> 
-				<input type="number" class="form-control" placeholder="Enter initial amount" th:field="*{initialAmount}" required>
+				<input type="number" class="form-control" placeholder="Enter initial amount" th:field="*{initialAmount}"
+					th:classappend="${#fields.hasErrors('initialAmount')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{initialAmount}" ></div>
 			
 				<label>Admission date</label> 
 				<input type="date" class="form-control" placeholder="Enter admission date" th:field="*{admissionDate}" required>

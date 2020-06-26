@@ -14,8 +14,7 @@ public class EmployeeModel extends PersonModel {
 
 	private StoreModel store;
 
-	public EmployeeModel() {
-	}
+	public EmployeeModel() {}
 
 	public EmployeeModel(int id, String name, String surname, LocalDate birthdate, long dni, int workingHours,
 			boolean manager, float minimunWage, float plus, StoreModel store) {

@@ -2,6 +2,8 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Min;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class BatchModel {
@@ -12,8 +14,10 @@ public class BatchModel {
 	
 	private String size;
 	
+	@Min(value = 0, message= "Initial amount must be higher than 0")
 	private int currentAmount;
 	
+	@Min(value = 1, message= "Initial amount must be higher than 1")
 	private int initialAmount;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

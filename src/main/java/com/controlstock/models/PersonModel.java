@@ -2,6 +2,8 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class PersonModel {

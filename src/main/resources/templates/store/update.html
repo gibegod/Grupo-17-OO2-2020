@@ -22,7 +22,7 @@
 			
 			<div class="form-group">
 				<label>ID</label>
-				<span class="form-control" th:text="${id}" />
+				<span class="form-control" th:text="*{id}" />
 			</div>
 			
 			<div class="form-group">
@@ -33,10 +33,12 @@
 						th:text="${a.city}"></option>
 				</select>
 			</div>
+			
 			<div class="form-group">
 				<label>Phone Number</label> <input type="text" class="form-control"
-					placeholder="Enter phone number" th:field="*{phoneNumber}" required />
+					placeholder="Enter phone number" th:field="*{phoneNumber}" required>
 			</div>
+			
 			<input class="btn btn-outline-dark" type="submit"
 				value="Edit this store">
 		</form>

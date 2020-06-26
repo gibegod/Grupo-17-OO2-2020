@@ -25,7 +25,7 @@ public class ProductModel {
 	private LocalDate dischargeDate;
 	
 	//Marca
-	@Size(min= 3, message= "Brand must have more than 3 characters")
+	@Size(min= 2, message= "Brand must have more than 2 characters")
 	private String brand;
 	
 	public ProductModel() {}

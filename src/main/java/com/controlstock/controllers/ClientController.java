@@ -1,8 +1,11 @@
 package com.controlstock.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,9 +42,15 @@ public class ClientController {
 	}
 	
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("client") ClientModel clientModel) {
-		clientService.insertOrUpdate(clientModel);
-		return new RedirectView(ViewRouteHelper.CLIENT_ROOT);
+	public ModelAndView create(@Valid @ModelAttribute("client") ClientModel clientModel, BindingResult bindingResult) {
+		ModelAndView mAV = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			mAV.setViewName(ViewRouteHelper.CLIENT_NEW);
+		} else {
+			mAV.setViewName("redirect:/client");
+			clientService.insertOrUpdate(clientModel);
+		}
+		return mAV;
 	}
 	
 	@GetMapping("/{id}")
@@ -52,9 +61,15 @@ public class ClientController {
 	}
 	
 	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("client") ClientModel clientModel) {
-		clientService.insertOrUpdate(clientModel);
-		return new RedirectView(ViewRouteHelper.CLIENT_ROOT);
+	public ModelAndView update(@Valid @ModelAttribute("client") ClientModel clientModel, BindingResult bindingResult) {
+		ModelAndView mAV = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			mAV.setViewName(ViewRouteHelper.CLIENT_UPDATE);
+		} else {
+			mAV.setViewName("redirect:/client");
+			clientService.insertOrUpdate(clientModel);
+		}
+		return mAV;
 	}
 	
 	@PostMapping("/delete/{id}")

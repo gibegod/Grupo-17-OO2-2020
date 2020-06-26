@@ -2,6 +2,8 @@ package com.controlstock.models;
 
 import java.util.Set;
 
+import javax.validation.constraints.Size;
+
 public class StoreModel {
 
 	private int id;
@@ -10,20 +12,18 @@ public class StoreModel {
 
 	private long phoneNumber;
 
-	//private Employee manager;
-
 	private Set<EmployeeModel> setEmployees;
 
 	private Set<BatchModel> setBatchs;
 
 	public StoreModel() {}
 
-	public StoreModel (int id, AddressModel address, long phoneNumber, Set<EmployeeModel> setEmployees, Set<BatchModel> setBatchs) {
+	public StoreModel (int id, AddressModel address, long phoneNumber, Set<EmployeeModel> setEmployees, 
+			Set<BatchModel> setBatchs) {
 		super();
 		setId(id);
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		//this.manager = manager;
 		this.setEmployees = setEmployees;
 		this.setBatchs = setBatchs;
 	}
@@ -52,14 +52,6 @@ public class StoreModel {
 		this.phoneNumber = phoneNumber;
 	}
 
-	/*public Employee getManager() {
-		return manager;
-	}
-
-	public void setManager(Employee manager) {
-		this.manager = manager;
-	}*/
-
 	public Set<EmployeeModel> getSetEmployees() {
 		return setEmployees;
 	}
@@ -75,7 +67,6 @@ public class StoreModel {
 	public void setSetBatchs(Set<BatchModel> setBatchs) {
 		this.setBatchs = setBatchs;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

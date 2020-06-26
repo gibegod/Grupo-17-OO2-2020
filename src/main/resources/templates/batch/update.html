@@ -23,7 +23,7 @@
 			
 			<div class="form-group">
 				<label>ID</label>
-				<span class="form-control" th:text="${id}" />
+				<span class="form-control" th:text="*{id}" />
 			</div>
 			
 			<div class="form-group">
@@ -33,18 +33,27 @@
 						th:text="${product.id + ' - ' + product.description}"></option>
 				</select>
 			</div>
+			
 			<div class="form-group">
 				<label>Size</label> <input type="text" class="form-control"
 					placeholder="Enter size" th:field="*{size}" required>
 			</div>
+			
 			<div class="form-group">
 				<label>Current amount</label> <input type="number" class="form-control"
-					placeholder="Enter current amount" th:field="*{currentAmount}" required>
+					placeholder="Enter current amount" th:field="*{currentAmount}"
+					th:classappend="${#fields.hasErrors('currentAmount')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{currentAmount}" ></div>
 			</div>
+			
 			<div class="form-group">
-				<label>Initial amount</label> <input type="number" class="form-control"
-					placeholder="Enter initial amount" th:field="*{initialAmount}" required>
+				<label>Initial amount</label> 
+				<input type="number" class="form-control" placeholder="Enter initial amount" 
+					th:field="*{initialAmount}" 
+					th:classappend="${#fields.hasErrors('initialAmount')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{initialAmount}" ></div>
 			</div>
+			
 			<div class="form-group">
 				<label>Admission date</label> <input type="date"
 					class="form-control" placeholder="Enter admission date"

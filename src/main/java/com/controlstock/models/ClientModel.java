@@ -2,8 +2,11 @@ package com.controlstock.models;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Email;
+
 public class ClientModel extends PersonModel {
 	
+	@Email(message= "Please enter a valid email")
 	private String mail;
 	
 	public ClientModel() {};
