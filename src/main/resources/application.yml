@@ -2,11 +2,12 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/grupo-17-bdd-oo2-2020
     username: root
-    password: root
+    password: localhost
+    #aca iba lo de initalizate creo
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update #create es lo que habia puesto lau
     properties:
       dialect: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:

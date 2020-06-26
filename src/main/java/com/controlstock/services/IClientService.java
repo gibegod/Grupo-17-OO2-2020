@@ -15,4 +15,6 @@ public interface IClientService {
 	
 	public boolean remove(int id);
 
+	public List<Client> getAllSortedBySurname();
+
 }

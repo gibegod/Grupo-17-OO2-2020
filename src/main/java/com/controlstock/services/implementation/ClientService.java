@@ -1,5 +1,6 @@
-	package com.controlstock.services.implementation;
+package com.controlstock.services.implementation;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,13 @@ public class ClientService implements IClientService {
 	@Override
 	public List<Client> getAll() {
 		return clientRepository.findAll();
+	}
+	
+	@Override
+	public List<Client> getAllSortedBySurname() {
+		List<Client> list= clientRepository.findAll();
+		list.sort(Comparator.comparing(Client::getSurname));
+		return list;
 	}
 	
 	@Override

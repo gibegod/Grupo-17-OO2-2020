@@ -28,7 +28,7 @@
 
 			<div class="form-group m-top">
 				<label>Client</label> <select class="form-control" placeholder="Client" th:field="*{client.id}">
-					<option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name + ' ' + client.surname + ' ' + client.dni}"></option>
+					<option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.surname + ' ' + client.name + ' ' + client.dni}"></option>
 				</select>
 			</div>
 

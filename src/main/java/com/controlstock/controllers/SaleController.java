@@ -84,11 +84,10 @@ public class SaleController {
 	//View donde se finaliza la sale
 	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
-		//ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_UPDATE);
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SALE_FINAL);
 		mAV.addObject("sale", saleService.findById(id));
 		mAV.addObject("status", true);
-		mAV.addObject("clients", clientService.getAll());
+		mAV.addObject("clients", clientService.getAllSortedBySurname());
 		mAV.addObject("employee", saleService.findById(id).getEmployeeInCharge());
 		mAV.addObject("total", saleService.calculateTotal(id));
 		mAV.addObject("saleRequests", saleService.findById(saleService.getSaleByStatus().getId()).getSetSaleRequests());
