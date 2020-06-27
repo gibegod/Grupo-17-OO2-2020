@@ -76,7 +76,6 @@ public class SaleRequestService implements ISaleRequestService {
 	
 	@Override
 	public List<SaleRequest> getAll() {
-		
 		return saleRequestRepository.findAll();
 	}
 

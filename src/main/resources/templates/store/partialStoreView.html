@@ -1,5 +1,5 @@
-<select class="form-control" id="select-store" placeholder="Store">
-	<option>...</option>
+<select th:required="true" class="form-control" id="select-store" placeholder="Store">
+	<option value="">...</option>
 	<option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.id + ' - ' + store.address.city}"></option>
 </select>
 
