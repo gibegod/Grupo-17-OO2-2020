@@ -22,7 +22,6 @@
 					<th>Description</th>
 					<th>Brand</th>
 					<th>Price per unit</th>
-					<th>Status</th>
 					<th>View</th>
 				</tr>
 			</thead>
@@ -32,7 +31,6 @@
 					<td><span th:text="${product.description}" /></td>
 					<td><span th:text="${product.brand}" /></td>
 					<td><span th:text="${'$' + product.unitPrice}" /></td>
-					<td><span th:text="${product.status}" /></td>
 					<td><a th:href="@{/product/{id}(id=${product.id})}" class="fas" style='font-size:24px;color:black'>&#xf044;</a></td>
 				</tr>
 			</tbody>

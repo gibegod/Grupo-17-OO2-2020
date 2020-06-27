@@ -1,4 +1,4 @@
 <select class="form-control" id="select-employee" placeholder="Assistant Employee" name="assistantEmployee.id">
     <option>...</option>
-	<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
+	<option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name + ' ' + employee.surname + ' ' + employee.dni}"></option>
 </select>

@@ -21,9 +21,10 @@
 					<th scope="col">ID</th>
 					<th scope="col">Name</th>
 					<th scope="col">Surname</th>
+					<th scope="col">Store</th>
 					<th scope="col">Manager?</th>
-					<th scope="col">Sueldo base</th>
-					<th scope="col">Plus</th>
+					<th scope="col">Working Hours</th>
+					<th scope="col">Minimun wage</th>
 					<th scope="col">View</th>
 				</tr>
 			</thead>
@@ -32,10 +33,12 @@
 					<td><span th:text="${employee.id}" /></td>
 					<td><span th:text="${employee.name}" /></td>
 					<td><span th:text="${employee.surname}" /></td>
-					<td><span th:text="${employee.manager}" /></td>
-					<td><span th:text="${employee.minimunWage}" /></td>
-					<td><span th:text="${employee.plus}" /></td>
-					<td><a th:href="@{/employee/{id}(id=${employee.id})}" class="fas" style='font-size:24px;color:black'>&#xf044;</a></td>
+					<td><span th:text="${employee.store.id + ' - ' + employee.store.address.city}" /></td>
+					<td><span th:if="${employee.manager == true}" style='font-size:22px;'>&#10003;</span>
+					<span th:if="${employee.manager == false}" style='font-size:22px;'>&#10007;</span></td>
+					<td><span th:text="${employee.workingHours + ' hs '}" /></td>
+					<td><span th:text="${'$' + employee.minimunWage}" /></td>
+					<td><a th:href="@{/employee/{id}(id=${employee.id})}" class="fas" style='font-size:22px;color:black'>&#xf044;</a></td>
 					</td>
 				</tr>
 			</tbody>

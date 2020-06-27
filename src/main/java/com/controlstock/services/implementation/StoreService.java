@@ -2,6 +2,7 @@ package com.controlstock.services.implementation;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.controlstock.converters.EmployeeConverter;
 import com.controlstock.converters.StoreConverter;
 import com.controlstock.entities.Address;
 import com.controlstock.entities.Batch;
+import com.controlstock.entities.Client;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Sale;
 import com.controlstock.entities.Store;
@@ -104,6 +106,8 @@ public class StoreService implements IStoreService {
 		for (Batch b : store.getSetBatchs()) {
 			products.add(b.getProduct());
 		}
+		
+		products.sort(Comparator.comparing(Product::getId));
 		return products;
 	}
 	

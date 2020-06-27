@@ -19,6 +19,7 @@
 		<table class="display table table-striped table-dark" id="batch">
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Product</th>
 					<th>Current amount</th>
 					<th>Initial amount</th>
@@ -28,6 +29,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="batch : ${batchs}">
+					<td><span th:text="${batch.id}" /></td>
 					<td><span th:text="${batch.product.id + ' - ' + batch.product.description}" /></td>
 					<td><span th:text="${batch.currentAmount}" /></td>
 					<td><span th:text="${batch.initialAmount}" /></td>

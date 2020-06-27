@@ -41,10 +41,10 @@
 					<div id="stock"></div>
 			</div>
 
-			<a class="btn btn-outline-dark m-top" href="/sale/saleRequest/new2">Select product of another store</a>
+			<a class="btn btn-outline-dark m-top" href="/sale/saleRequest/new2">Select product from another store</a>
 			
 			<input class="btn btn-outline-dark m-top" type="submit" id="boton"
-				value="Create new sale Request"> 
+				value="Create new sale request"> 
 				
 			<tr th:each="sale : ${sales}">
 				<a class="btn btn-outline-dark m-top" th:href="@{/sale/{id}(id=${sale.id})}">Finish sale</a>
@@ -68,10 +68,10 @@
 				<tr th:each="saleRequest : ${saleRequests}">
 					<td><span th:text="${saleRequest.product.id}" /> - <span th:text="${saleRequest.product.description}" /></td>
 					<td><span th:text="${saleRequest.amount}" /></td>
-					<td><span th:text="${saleRequest.product.unitPrice}" /></td>
+					<td><span th:text="${'$' + saleRequest.product.unitPrice}" /></td>
 					<td><span th:if="${saleRequest.assistantEmployee == null}">------------------------</span>
 					 <span th:if="${saleRequest.assistantEmployee != null}">
-					 <span th:text="${saleRequest.assistantEmployee.name}"></span>
+					 <span th:text="${saleRequest.assistantEmployee.name + ' ' + saleRequest.assistantEmployee.surname + ' ' + saleRequest.assistantEmployee.dni}"></span>
 					 </span></td>
 					<td><form action="#" th:action="@{/sale/saleRequest/delete/{id}(id=${saleRequest.id})}" method="post">
 						<input class="btn btn-danger" type="submit"value="Remove" />
