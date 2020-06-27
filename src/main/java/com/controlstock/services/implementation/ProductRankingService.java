@@ -15,7 +15,6 @@ import com.controlstock.services.IProductRankingService;
 import com.controlstock.services.IProductService;
 
 @Service("productRankingService")
-
 public class ProductRankingService implements IProductRankingService {
 
 	@Autowired

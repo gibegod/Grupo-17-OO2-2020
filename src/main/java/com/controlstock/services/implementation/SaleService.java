@@ -204,7 +204,6 @@ public class SaleService implements ISaleService {
 	//saleRequest correspondientes.
 	@Override
 	public void checkSales(List<Sale> salesList) {
-
 		for (Sale s : salesList) {
 			Sale sale = saleRepository.findById(s.getId());
 			if (sale.getTotalPrice() == 0.0 || sale.getStatus() == false) {
@@ -221,7 +220,6 @@ public class SaleService implements ISaleService {
 	// Cantidad en SR hay que restarla al lote correspondiente al store y al
 	// producto.
 	void subtractStock(Sale sale) {
-
 		SaleModel saleModel = saleConverter.entityToModel(sale);
 		Set<SaleRequestModel> setSaleRequestsModel = saleModel.getSetSaleRequests();
 		Store store = storeRepository.findById(saleModel.getEmployeeInCharge().getStore().getId()); //NO ???

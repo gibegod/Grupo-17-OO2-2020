@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import com.controlstock.entities.Batch;
 
+//CREO que no esta en uso
 public class DateBatchComparator implements Comparator<Batch>{
 	
 	public int compare(Batch o1, Batch o2) {

@@ -17,7 +17,6 @@ import com.controlstock.converters.EmployeeConverter;
 import com.controlstock.converters.StoreConverter;
 import com.controlstock.entities.Address;
 import com.controlstock.entities.Batch;
-import com.controlstock.entities.Client;
 import com.controlstock.entities.Product;
 import com.controlstock.entities.Sale;
 import com.controlstock.entities.Store;
@@ -82,12 +81,11 @@ public class StoreService implements IStoreService {
 	@Autowired
 	@Qualifier("saleService")
 	private ISaleService saleService;
-	
+
 	@Autowired
 	@Qualifier("saleRepository")
 	private ISaleRepository saleRepository;
-	
-	
+
 	@Override
 	public List<Store> getAll() {
 		return storeRepository.findAll();
@@ -106,22 +104,22 @@ public class StoreService implements IStoreService {
 		for (Batch b : store.getSetBatchs()) {
 			products.add(b.getProduct());
 		}
-		
+
 		products.sort(Comparator.comparing(Product::getId));
 		return products;
 	}
-	
+
 	@Override
 	public List<Sale> getSalesInRangeByStore(int id, LocalDateTime minDate, LocalDateTime maxDate) {
 		Store store = storeRepository.findById(id);
 		List<Sale> sales = new ArrayList<Sale>();
 		for (Sale s : saleService.getAll()) {
-				if(s.getDate().isAfter(minDate) && s.getDate().isBefore(maxDate) && s.getStore().getId()==store.getId()) {
-					
+			if (s.getDate().isAfter(minDate) && s.getDate().isBefore(maxDate)
+					&& s.getStore().getId() == store.getId()) {
 				sales.add(s);
-				
 			}
 		}
+
 		return sales;
 	}
 
@@ -130,36 +128,37 @@ public class StoreService implements IStoreService {
 		List<Store> stores = new ArrayList<Store>();
 		List<Store> storesList = new ArrayList<Store>();
 		Store storeActual = saleRepository.findById(saleId).getEmployeeInCharge().getStore();
-		
+
 		for (Store store : storesProduct) {
-			//Si el store tiene stock del producto y si el store no es el actual..
+			// Si el store tiene stock del producto y si el store no es el actual..
 			if (amount <= getProductQuantity(store.getId(), productId) && store.getId() != storeActual.getId()) {
 				stores.add(store);
 			}
 		}
-		
-		//Genero un mapa que funciona como diccionario, con el tipo "llave, valor", donde la llave es la distancia.
+
+		// Genero un mapa que funciona como diccionario, con el tipo "llave, valor",
+		// donde la llave es la distancia.
 		Map<Float, String> listaDistancias = new HashMap<Float, String>();
-		//Creo la lista de distancias, para despues ir comparando.
+		// Creo la lista de distancias, para despues ir comparando.
 		HashSet<Float> distancias = new HashSet<Float>();
-		
+
 		for (Store s : stores) {
-			//lat1, long1, lat2, long2
-			float distance = distanceStores(storeActual.getAddress().getLatitude(), storeActual.getAddress().getLongitude(),
-					s.getAddress().getLatitude(), s.getAddress().getLongitude());
-			//Ingreso en el diccionario como llave la distancia y como valor el id. 
+			// lat1, long1, lat2, long2
+			float distance = distanceStores(storeActual.getAddress().getLatitude(),
+					storeActual.getAddress().getLongitude(), s.getAddress().getLatitude(),
+					s.getAddress().getLongitude());
+			// Ingreso en el diccionario como llave la distancia y como valor el id.
 			listaDistancias.put(distance, String.valueOf(s.getId()));
-			distancias.add(distance); //Voy guardando todas las distancias.
+			distancias.add(distance); // Voy guardando todas las distancias.
 		}
-		
+
 		List<Float> distanciasList = new ArrayList<>(distancias);
-		Collections.sort(distanciasList); //Ordeno las distancias.
-		for(Float d: distancias) { //Itero las distancias y agrego en storesList.
+		Collections.sort(distanciasList); // Ordeno las distancias.
+		for (Float d : distancias) { // Itero las distancias y agrego en storesList.
 			storesList.add(storeRepository.findById(Integer.parseInt(listaDistancias.get(d))));
 		}
-		//tiene que retornar storesList
-		return storesList;
 
+		return storesList;
 	}
 
 	@Override
@@ -196,7 +195,6 @@ public class StoreService implements IStoreService {
 
 	@Override
 	public void substractBatches(int idStore, int idProduct, int quantity) {
-
 		int i = 0;
 		List<Batch> active = this.getActiveBatchs(idStore, idProduct);
 
@@ -215,7 +213,6 @@ public class StoreService implements IStoreService {
 
 	@Override
 	public StoreModel insert(StoreModel storeModel) {
-
 		// Relaciono el id de address con todo el objeto address y lo seteo en
 		// storeModel.
 		Address address = addressRepository.findById(storeModel.getAddress().getId());
@@ -228,7 +225,6 @@ public class StoreService implements IStoreService {
 
 	@Override
 	public StoreModel update(StoreModel storeModel) {
-
 		Address address = addressRepository.findById(storeModel.getAddress().getId());
 		AddressModel addressModel = addressConverter.entityToModel(address);
 		storeModel.setAddress(addressModel);
@@ -255,7 +251,6 @@ public class StoreService implements IStoreService {
 
 	@Override
 	public List<Store> getStoresByProductId(int id) {
-		// Product product = productRepository.findById(id);
 		List<Store> stores = new ArrayList<Store>();
 
 		// Recorro todas las stores que hay en el service. Si esta store contiene el
