@@ -10,7 +10,7 @@ public class StoreModel {
 	
 	private AddressModel address;
 
-	@Min(value = 99999, message= "Description must have more than 6 characters")
+	@Min(value = 99999, message= "Description must have at least 6 characters")
 	private long phoneNumber;
 
 	private Set<EmployeeModel> setEmployees;

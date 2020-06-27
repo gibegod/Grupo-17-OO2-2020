@@ -13,7 +13,7 @@ public class ProductModel {
 	
 	private boolean status;
 	
-	@Size(min= 3, message= "Description must have more than 0 characters")
+	@Size(min= 3, message= "Description must have at least 3 characters")
 	private String description;
 
 	//Precio Unitario

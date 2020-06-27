@@ -2,8 +2,8 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/grupo-17-bdd-oo2-2020
     username: root
-    password: localhost
-    initialization-mode: always
+    password:
+    initialization-mode: always #
   jpa:
     show-sql: true
     hibernate:

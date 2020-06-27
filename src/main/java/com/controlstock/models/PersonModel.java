@@ -12,10 +12,10 @@ public class PersonModel {
 	
 	protected int id;
     
-	@Size(min= 3, message= "Name must have more than 2 characters")
+	@Size(min= 3, message= "Name must have at least 3 characters")
 	protected String name;
     
-	@Size(min= 3, message= "Surname must have more than 2 characters")
+	@Size(min= 3, message= "Surname must have at least 3 characters")
 	protected String surname;
     
 	@DateTimeFormat(pattern = "yyyy-MM-dd") //Sirve para que funcione el type="date" del input del HTML.
